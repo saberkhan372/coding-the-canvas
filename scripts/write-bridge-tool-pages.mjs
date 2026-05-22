@@ -64,8 +64,8 @@ function shell({ filePath, active = '', title, kicker, description, body }) {
     ${body}
   </main>
   <footer class="site-footer">
-    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
-    <span>p5.js - Canvas API - Processing Java</span>
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="${href(prefix, 'assets/site.js')}"></script>
 </body>
@@ -385,6 +385,7 @@ function ccFestBody() {
 for (const page of bridges) {
   writeFileSync(join(root, page.filePath), shell({
     filePath: page.filePath,
+    active: 'browse',
     title: page.title,
     kicker: 'concept bridge',
     description: page.description,
@@ -395,6 +396,7 @@ for (const page of bridges) {
 for (const page of tools) {
   writeFileSync(join(root, page.filePath), shell({
     filePath: page.filePath,
+    active: 'browse',
     title: page.title,
     kicker: 'classroom tool',
     description: page.description,

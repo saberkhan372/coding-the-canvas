@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Noise vs Random Explorer - Coding the Canvas</title>
+  <meta name="description" content="One function produces chaos. The other produces landscape. Compare jitter, walk, wave, and terrain to make smooth randomness visible." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/resource-pages.css" />
+</head>
+<body data-page="tools">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Coding the Canvas</a>
+    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="active" href="../../tools/index.html">Tools</a><a class="" href="../../sketches/index.html">Sketches</a><a class="" href="../../browse/index.html">Browse</a><a class="" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+
+    <section class="hero">
+      <p class="kicker">classroom tool · ◎ Motion</p>
+      <h1>Noise vs Random Explorer</h1>
+      <p class="lede">One function produces chaos. The other produces landscape. Both look unpredictable — but only one you can walk through.</p>
+      <div class="actions">
+        <a class="button primary" href="../../sketches/noise-walker/index.html">Noise Walker sketch</a>
+        <a class="button" href="../../tools/index.html">All tools</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <h2>Same idea, completely different feel.</h2>
+        <p><code>random()</code> picks any value with no memory of the last one — output is disconnected and jittery. <code>noise(t)</code> moves through a smooth continuous field — output flows. The key insight is that <code>noise()</code> needs a <em>changing</em> input: the same argument returns the same value every time.</p>
+        <ul class="checklist">
+          <li>Show jitter first — students find it harsh and uncontrollable.</li>
+          <li><code>noise()</code> is the fix. But only if the input changes each frame.</li>
+          <li>Advance the input: <code>t += 0.02</code> each frame.</li>
+          <li>Smaller increments = smoother output. Larger = more jitter.</li>
+        </ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- Top: jittery random path -->
+          <polyline points="10,30 32,18 54,42 76,22 98,38 120,14 142,40 164,20" fill="none" stroke="currentColor" stroke-width="2" opacity=".4"/>
+          <text x="10" y="12" font-family="monospace" font-size="6" fill="currentColor" opacity=".5">random()</text>
+          <!-- Bottom: smooth noise path -->
+          <path d="M10,100 C30,88 50,112 70,100 S110,88 130,100 S160,112 170,100" fill="none" stroke="#d96a3d" stroke-width="2.5"/>
+          <text x="10" y="94" font-family="monospace" font-size="6" fill="#d96a3d">noise(t)</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="mock-tool">
+        <div class="mock-tool-pane">
+          <p class="meta">Mode</p>
+          <h2 style="margin:8px 0 4px">Walk</h2>
+          <p style="font-size:13px;color:var(--soft);margin:0 0 14px">x moves right; y controlled by noise. The dot drifts — never teleports.</p>
+          <div class="token-row">
+            <span class="token">Jitter</span>
+            <span class="token">Walk</span>
+            <span class="token">Wave</span>
+            <span class="token">Terrain</span>
+          </div>
+          <p style="font-size:12px;color:var(--faint);margin-top:14px">Each mode uses the same noise() call with a different visual mapping.</p>
+        </div>
+        <div class="mock-canvas">
+          <svg viewBox="0 0 220 150">
+            <!-- Smooth noise walk path in orange -->
+            <path d="M10,100 C30,70 50,120 80,90 S120,60 150,85 S190,110 210,75" fill="none" stroke="#d96a3d" stroke-width="3" stroke-linecap="round"/>
+            <!-- Jittery random path in grey (faded, top) -->
+            <polyline points="10,35 30,20 50,45 70,28 90,42 110,18 130,38 150,24 170,40 190,15 210,35" fill="none" stroke="#8c857a" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <text x="12" y="14" font-family="monospace" font-size="7" fill="#8c857a">random()</text>
+            <text x="12" y="140" font-family="monospace" font-size="7" fill="#d96a3d">noise(t) — Walk mode</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta">Classroom flow</p>
+      <div class="tool-flow">
+        <div class="tool-step"><div><h2>Jitter first</h2><p>Show a dot at <code>random(width)</code> each frame. Students feel how abrasive it is. Ask: "What would you change to make it calmer?" Let them reach toward the idea of memory.</p></div></div>
+        <div class="tool-step"><div><h2>Introduce noise(t)</h2><p>Replace with <code>noise(t)</code> where <code>t += 0.02</code> each frame. The dot now drifts. Ask: "What is <code>t</code> doing? What happens if we don't change it?" (Same value every frame — it freezes.)</p></div></div>
+        <div class="tool-step"><div><h2>Tune the increment</h2><p>Set <code>t += 0.001</code> (very slow) vs <code>t += 0.1</code> (fast/jittery). Ask: "What does the increment control?" Smooth randomness is a design parameter, not an accident.</p></div></div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article class="resource-panel">
+        <h2>Common mistake</h2>
+        <p style="font-size:13px">Calling <code>noise(0)</code> every frame — the input never changes, so the output never changes. Always advance: <code>noise(t)</code> where <code>t</code> increments each frame.</p>
+      </article>
+      <article class="resource-panel">
+        <h2>Discussion question</h2>
+        <p style="font-size:13px">If <code>t += 0.02</code> gives smooth movement, what does <code>t += 0.5</code> look like? Is there an increment that makes noise indistinguishable from random?</p>
+      </article>
+      <article class="resource-panel">
+        <h2>Extension: 2D noise</h2>
+        <p style="font-size:13px">Map a grid of cells to <code>noise(x * 0.05, y * 0.05)</code> — values close in space are close in value. This produces terrain. Compare to a grid of <code>random()</code> values (static snow).</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <div class="code-sample">
+        <span class="meta">p5.js — noise walk vs jitter</span>
+        <pre>let t = 0;
+
+function draw() {
+  background(246);
+
+  // noise: smooth drift
+  let nx = map(noise(t), 0, 1, 20, width - 20);
+  fill('#d96a3d');
+  circle(nx, height / 3, 20);
+
+  // random: teleports every frame
+  let rx = random(width);
+  fill(100);
+  circle(rx, (2 * height) / 3, 20);
+
+  // advance the noise input — required
+  t += 0.02;
+}</pre>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="grid cards">
+        <a class="card" href="../../concepts/draw-loop-time/index.html">
+          <span class="meta">concept 03</span>
+          <h2>Draw Loop / Time</h2>
+          <p>frameCount, time, and variables that change each frame.</p>
+        </a>
+        <a class="card" href="../../concepts/for-loops-and-grids/index.html">
+          <span class="meta">concept 06</span>
+          <h2>For Loops &amp; Grids</h2>
+          <p>Use noise() in a loop to fill a 2D terrain grid.</p>
+        </a>
+        <a class="card" href="../../sketches/noise-walker/index.html">
+          <span class="meta">starter sketch</span>
+          <h2>Noise Walker</h2>
+          <p>A single dot drifting through noise space.</p>
+        </a>
+        <a class="card" href="../../concepts/objects/index.html">
+          <span class="meta">concept 09</span>
+          <h2>Objects</h2>
+          <p>Give each particle its own noise offset for organic swarming.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

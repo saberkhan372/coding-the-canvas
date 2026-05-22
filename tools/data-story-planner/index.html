@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data Story Planner - Coding the Canvas</title>
+  <meta name="description" content="Five questions that turn a dataset into a drawing decision — before any code is written." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/resource-pages.css" />
+</head>
+<body data-page="tools">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Coding the Canvas</a>
+    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="active" href="../../tools/index.html">Tools</a><a class="" href="../../sketches/index.html">Sketches</a><a class="" href="../../browse/index.html">Browse</a><a class="" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+
+    <section class="hero">
+      <p class="kicker">classroom tool · ▦ Data</p>
+      <h1>Data Story Planner</h1>
+      <p class="lede">Five questions that turn a dataset into drawing decisions — before a single line of code is written.</p>
+      <div class="actions">
+        <a class="button primary" href="../../sketches/data-self-portrait/index.html">Data Self-Portrait sketch</a>
+        <a class="button" href="../../tools/index.html">All tools</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <h2>Plan the drawing before planning the code.</h2>
+        <p>Students who jump straight to code make two decisions at once: what to show and how to show it. This planner separates them. Answer the five questions on paper first. By the time students open an editor, the hard design work is already done.</p>
+        <ul class="checklist">
+          <li>Name your data and its real-world range before mapping anything.</li>
+          <li>Choose the visual mark (bar height, circle size, color) deliberately.</li>
+          <li>Write the <code>map()</code> call on paper — then copy it into code.</li>
+          <li>Ask what the chart reveals that a table of numbers doesn't.</li>
+        </ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- Simple bar chart -->
+          <rect x="18" y="92" width="16" height="28" fill="currentColor" opacity=".3"/>
+          <rect x="42" y="68" width="16" height="52" fill="currentColor" opacity=".3"/>
+          <rect x="66" y="50" width="16" height="70" fill="#d96a3d" opacity=".85"/>
+          <rect x="90" y="80" width="16" height="40" fill="currentColor" opacity=".3"/>
+          <rect x="114" y="44" width="16" height="76" fill="#d96a3d" opacity=".85"/>
+          <rect x="138" y="74" width="16" height="46" fill="currentColor" opacity=".3"/>
+          <line x1="10" y1="120" x2="165" y2="120" stroke="currentColor" stroke-width="1.5" opacity=".4"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">The five planning questions</p>
+      <div style="display:grid;gap:12px">
+
+        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start">
+          <span style="font:700 36px/1 var(--hand);color:var(--accent)">1</span>
+          <div>
+            <h2 style="margin:0 0 6px;font-size:18px">What is your dataset?</h2>
+            <p style="font-size:13px;color:var(--soft);margin:0 0 8px">Name the data and where it came from. A dataset without a source is just numbers.</p>
+            <div style="background:var(--edge);border-radius:3px;padding:8px 12px;font:600 12px/1.5 var(--mono);color:var(--soft)">Example: Hours of sleep for each day of the week. Collected from my own phone health app.</div>
+          </div>
+        </div>
+
+        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start">
+          <span style="font:700 36px/1 var(--hand);color:var(--accent)">2</span>
+          <div>
+            <h2 style="margin:0 0 6px;font-size:18px">What is the real range of your values?</h2>
+            <p style="font-size:13px;color:var(--soft);margin:0 0 8px">The minimum and maximum in the real world — not on the canvas. You need this to write your <code>map()</code> call.</p>
+            <div style="background:var(--edge);border-radius:3px;padding:8px 12px;font:600 12px/1.5 var(--mono);color:var(--soft)">Example: Minimum 4 hours, maximum 9 hours. Real range: 0 to 10 (or 4 to 9 — your choice).</div>
+          </div>
+        </div>
+
+        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start">
+          <span style="font:700 36px/1 var(--hand);color:var(--accent)">3</span>
+          <div>
+            <h2 style="margin:0 0 6px;font-size:18px">What visual mark will carry the data?</h2>
+            <p style="font-size:13px;color:var(--soft);margin:0 0 8px">Height? Width? Radius? Brightness? Color hue? Each encodes differently. Choose deliberately, not by default.</p>
+            <div style="background:var(--edge);border-radius:3px;padding:8px 12px;font:600 12px/1.5 var(--mono);color:var(--soft)">Example: Bar height. Taller bar = more sleep. Bars grow up from the bottom edge.</div>
+          </div>
+        </div>
+
+        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start">
+          <span style="font:700 36px/1 var(--hand);color:var(--accent)">4</span>
+          <div>
+            <h2 style="margin:0 0 6px;font-size:18px">What are your canvas dimensions and output range?</h2>
+            <p style="font-size:13px;color:var(--soft);margin:0 0 8px">Write the <code>map()</code> call before opening the editor. If you can write it on paper, you understand it.</p>
+            <div style="background:var(--edge);border-radius:3px;padding:8px 12px;font:600 12px/1.5 var(--mono);color:var(--soft)">Example: Canvas 500 × 300. Bar height: map(value, 0, 10, 0, 220). Bars drawn from y=260 upward.</div>
+          </div>
+        </div>
+
+        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start">
+          <span style="font:700 36px/1 var(--hand);color:var(--accent)">5</span>
+          <div>
+            <h2 style="margin:0 0 6px;font-size:18px">What does this chart reveal that numbers alone don't?</h2>
+            <p style="font-size:13px;color:var(--soft);margin:0 0 8px">This is the most important question. If the chart doesn't reveal anything new, the visual mark choice may be wrong.</p>
+            <div style="background:var(--edge);border-radius:3px;padding:8px 12px;font:600 12px/1.5 var(--mono);color:var(--soft)">Example: The Thursday dip is obvious at a glance. A table of numbers makes it easy to skip over.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta">Classroom flow</p>
+      <div class="tool-flow">
+        <div class="tool-step"><div><h2>Paper first</h2><p>Print the five questions as a half-sheet. Students answer in pencil before opening any editor. The planner should take 5–8 minutes.</p></div></div>
+        <div class="tool-step"><div><h2>Write the map() call</h2><p>Question 4 forces students to write <code>map(value, min, max, 0, height - 40)</code> before seeing a canvas. If they can write it, they understand the scaling.</p></div></div>
+        <div class="tool-step"><div><h2>Compare with a partner</h2><p>Swap planners. Can your partner read your plan and describe what the canvas will look like? If yes, the plan is complete. If not, revise before coding.</p></div></div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article class="resource-panel">
+        <h2>Use in class</h2>
+        <p style="font-size:13px">Give students a shared dataset (class survey results, weather data) and run the planner together before anyone codes. Compare the different visual mark choices — height vs radius vs color.</p>
+      </article>
+      <article class="resource-panel">
+        <h2>The hardest question</h2>
+        <p style="font-size:13px">Question 5 ("what does this reveal?") is where most students get stuck. That's the right place to get stuck — it means they're thinking about communication, not just code.</p>
+      </article>
+      <article class="resource-panel">
+        <h2>Extension</h2>
+        <p style="font-size:13px">Run the planner twice with the same data but two different visual marks. Draw both charts and compare: which shows the story more clearly? Which hides something the other reveals?</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <div class="code-sample">
+        <span class="meta">p5.js — the map() call from the planner, in code</span>
+        <pre>// From the planner:
+// Data range: 0 to 10 (hours of sleep)
+// Canvas: 500 × 300, bars from bottom
+
+let data = [7, 6, 8, 5, 7, 9, 6];
+
+function draw() {
+  background(246);
+  for (let i = 0; i &lt; data.length; i++) {
+    // Question 4 answer, translated directly:
+    let h = map(data[i], 0, 10, 0, 220);
+    let x = 50 + i * 62;
+    rect(x, 260 - h, 44, h);
+  }
+}</pre>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="grid cards">
+        <a class="card" href="../../concepts/data-as-material/index.html">
+          <span class="meta">concept 16</span>
+          <h2>Data as Material</h2>
+          <p>Arrays of values become visual marks.</p>
+        </a>
+        <a class="card" href="../../concepts/histograms-and-sampling/index.html">
+          <span class="meta">concept 15</span>
+          <h2>Histograms &amp; Sampling</h2>
+          <p>Extract visual information from image data.</p>
+        </a>
+        <a class="card" href="../../sketches/data-self-portrait/index.html">
+          <span class="meta">starter sketch</span>
+          <h2>Data Self-Portrait</h2>
+          <p>A handmade dataset becomes a visual self-portrait.</p>
+        </a>
+        <a class="card" href="../../bridges/pattern-logic/index.html">
+          <span class="meta">bridge</span>
+          <h2>Pattern Logic Bridge</h2>
+          <p>map() and visual encoding explained step by step.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

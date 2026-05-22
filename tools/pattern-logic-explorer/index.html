@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pattern Logic Explorer - Coding the Canvas</title>
+  <meta name="description" content="Click a rule, see it on the grid. Every visual pattern is an if-statement with a loop variable." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/resource-pages.css" />
+</head>
+<body data-page="tools">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Coding the Canvas</a>
+    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="active" href="../../tools/index.html">Tools</a><a class="" href="../../sketches/index.html">Sketches</a><a class="" href="../../browse/index.html">Browse</a><a class="" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+
+    <section class="hero">
+      <p class="kicker">classroom tool · ⬡ Systems</p>
+      <h1>Pattern Logic Explorer</h1>
+      <p class="lede">Pick a rule, see it on the grid. Every visual pattern is an if-statement riding a loop variable.</p>
+      <div class="actions">
+        <a class="button primary" href="../../bridges/pattern-logic/index.html">Pattern Logic bridge</a>
+        <a class="button" href="../../tools/index.html">All tools</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <h2>See it, say it, code it.</h2>
+        <p>Students often write <code>if (i % 2 === 0)</code> without understanding why even-numbered positions get colored. This tool makes the rule visible: pick a divisor, watch which cells light up, count aloud. The pattern explains the code, not the reverse.</p>
+        <ul class="checklist">
+          <li>Say the rule in plain English before touching the code.</li>
+          <li>Change the divisor — predict first, then check.</li>
+          <li>Every even/odd pattern is just <code>% 2</code>. Every third is <code>% 3</code>.</li>
+          <li>Nested rules (<code>i % 2 === 0 &amp;&amp; j % 3 === 0</code>) still follow the same logic.</li>
+        </ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <circle cx="18" cy="30" r="7" fill="#d96a3d" opacity=".9"/>
+          <circle cx="46" cy="30" r="7" fill="currentColor" opacity=".2"/>
+          <circle cx="74" cy="30" r="7" fill="currentColor" opacity=".2"/>
+          <circle cx="102" cy="30" r="7" fill="#d96a3d" opacity=".9"/>
+          <circle cx="130" cy="30" r="7" fill="currentColor" opacity=".2"/>
+          <circle cx="158" cy="30" r="7" fill="currentColor" opacity=".2"/>
+          <circle cx="18" cy="60" r="7" fill="#d96a3d" opacity=".9"/>
+          <circle cx="46" cy="60" r="7" fill="currentColor" opacity=".2"/>
+          <circle cx="74" cy="60" r="7" fill="currentColor" opacity=".2"/>
+          <circle cx="102" cy="60" r="7" fill="#d96a3d" opacity=".9"/>
+          <circle cx="130" cy="60" r="7" fill="currentColor" opacity=".2"/>
+          <circle cx="158" cy="60" r="7" fill="currentColor" opacity=".2"/>
+          <text x="18" y="80" font-family="monospace" font-size="5" text-anchor="middle" fill="#d96a3d">0%3=0</text>
+          <text x="46" y="80" font-family="monospace" font-size="5" text-anchor="middle" fill="currentColor" opacity=".5">1%3=1</text>
+          <text x="74" y="80" font-family="monospace" font-size="5" text-anchor="middle" fill="currentColor" opacity=".5">2%3=2</text>
+          <text x="102" y="80" font-family="monospace" font-size="5" text-anchor="middle" fill="#d96a3d">3%3=0</text>
+          <text x="130" y="80" font-family="monospace" font-size="5" text-anchor="middle" fill="currentColor" opacity=".5">4%3=1</text>
+          <text x="158" y="80" font-family="monospace" font-size="5" text-anchor="middle" fill="currentColor" opacity=".5">5%3=2</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="mock-tool">
+        <div class="mock-tool-pane">
+          <p class="meta">Current rule</p>
+          <h2 style="font-family:var(--mono);font-size:18px;margin:8px 0">i % 3 === 0</h2>
+          <p style="font-size:13px;color:var(--soft);margin:0 0 14px">Colored on positions: 0, 3, 6, 9 …</p>
+          <div class="token-row">
+            <span class="token">i % 2 === 0</span>
+            <span class="token">i % 3 === 0</span>
+            <span class="token">i % 4 === 0</span>
+            <span class="token">i === j</span>
+            <span class="token">i + j even</span>
+          </div>
+          <p style="font-size:12px;color:var(--faint);margin-top:14px">Change the rule → predict → check.</p>
+        </div>
+        <div class="mock-canvas">
+          <svg viewBox="0 0 220 150">
+            <!-- Row of 7 circles with i%3===0 highlighted at 0,3,6 -->
+            <circle cx="20"  cy="75" r="12" fill="#d96a3d" stroke="#1c1a17" stroke-width="1"/>
+            <circle cx="50"  cy="75" r="12" fill="#ece5d6" stroke="#1c1a17" stroke-width="1"/>
+            <circle cx="80"  cy="75" r="12" fill="#ece5d6" stroke="#1c1a17" stroke-width="1"/>
+            <circle cx="110" cy="75" r="12" fill="#d96a3d" stroke="#1c1a17" stroke-width="1"/>
+            <circle cx="140" cy="75" r="12" fill="#ece5d6" stroke="#1c1a17" stroke-width="1"/>
+            <circle cx="170" cy="75" r="12" fill="#ece5d6" stroke="#1c1a17" stroke-width="1"/>
+            <circle cx="200" cy="75" r="12" fill="#d96a3d" stroke="#1c1a17" stroke-width="1"/>
+            <text x="20"  y="100" font-family="monospace" font-size="7" text-anchor="middle" fill="#d96a3d">i=0</text>
+            <text x="50"  y="100" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">i=1</text>
+            <text x="80"  y="100" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">i=2</text>
+            <text x="110" y="100" font-family="monospace" font-size="7" text-anchor="middle" fill="#d96a3d">i=3</text>
+            <text x="140" y="100" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">i=4</text>
+            <text x="170" y="100" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">i=5</text>
+            <text x="200" y="100" font-family="monospace" font-size="7" text-anchor="middle" fill="#d96a3d">i=6</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta">Classroom flow</p>
+      <div class="tool-flow">
+        <div class="tool-step"><div><h2>Pick a rule</h2><p>Start with <code>i % 2 === 0</code> — every even index. Ask students which circles will be colored before anything runs.</p></div></div>
+        <div class="tool-step"><div><h2>Count aloud</h2><p>Go through i = 0, 1, 2, 3 … with students. Say the remainder at each step: "0 remainder 2 is 0 — colored. 1 remainder 2 is 1 — not colored." The repetition is the lesson.</p></div></div>
+        <div class="tool-step"><div><h2>Change the divisor</h2><p>Switch to <code>% 3</code>, then <code>% 4</code>. Ask "which cells are colored now?" before updating the grid. Prediction before verification is the whole discipline.</p></div></div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article class="resource-panel">
+        <h2>Use in class</h2>
+        <p style="font-size:13px">Start with even/odd (<code>% 2</code>) — every student can check the answer by counting. Only move to thirds when the pattern feels obvious, not when the syntax does.</p>
+      </article>
+      <article class="resource-panel">
+        <h2>Discussion question</h2>
+        <p style="font-size:13px">If you change <code>% 3</code> to <code>% 4</code>, how many fewer cells are colored in a row of 12? Ask students to answer without running the code first.</p>
+      </article>
+      <article class="resource-panel">
+        <h2>Extension</h2>
+        <p style="font-size:13px">Nested rules: in a 2D grid loop, try <code>i % 2 === 0 &amp;&amp; j % 2 === 0</code>. Ask students to draw the expected pattern on paper before seeing it on canvas.</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <div class="code-sample">
+        <span class="meta">pattern rule — every third cell</span>
+        <pre>for (let i = 0; i &lt; 8; i++) {
+  let x = 40 + i * 30;
+
+  // rule: color every third position
+  if (i % 3 === 0) fill('#d96a3d');
+  else noFill();
+
+  circle(x, 100, 24);
+}
+
+// change 3 → 2 and predict before running</pre>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="grid cards">
+        <a class="card" href="../../concepts/for-loops-and-grids/index.html">
+          <span class="meta">concept 06</span>
+          <h2>For Loops &amp; Grids</h2>
+          <p>Open the full loop lesson.</p>
+        </a>
+        <a class="card" href="../../concepts/conditionals/index.html">
+          <span class="meta">concept 05</span>
+          <h2>Conditionals</h2>
+          <p>The if-statement that powers every rule.</p>
+        </a>
+        <a class="card" href="../../bridges/pattern-logic/index.html">
+          <span class="meta">bridge</span>
+          <h2>Pattern Logic Bridge</h2>
+          <p>See it, say it, code it — with map() and data.</p>
+        </a>
+        <a class="card" href="../../bridges/modulo-bridge/index.html">
+          <span class="meta">bridge</span>
+          <h2>Modulo Bridge</h2>
+          <p>Why % is the key to every repeating pattern.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

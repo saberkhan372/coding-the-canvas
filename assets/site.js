@@ -115,6 +115,26 @@ ${code}
     });
   });
 
+  // Inject copy button into Processing / Java panels
+  document.querySelectorAll('.processing-code').forEach((pane) => {
+    const pre = pane.querySelector('pre');
+    if (!pre) return;
+    const chrome = document.createElement('div');
+    chrome.className = 'editor-chrome';
+    chrome.innerHTML = '<span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">Processing / Java</span><span class="editor-actions"><button class="editor-btn export" type="button" aria-label="Copy Java code">Copy Java</button></span>';
+    pane.insertBefore(chrome, pane.firstChild);
+    const btn = chrome.querySelector('button');
+    btn.addEventListener('click', async () => {
+      const copied = await copyText(pre.textContent || '');
+      btn.classList.toggle('copied', copied);
+      btn.textContent = copied ? 'Copied!' : 'Copy failed';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.textContent = 'Copy Java';
+      }, 1800);
+    });
+  });
+
   const cardBands = [...document.querySelectorAll('.cards')];
   if (!cardBands.length) return;
 

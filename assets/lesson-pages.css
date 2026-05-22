@@ -8,6 +8,98 @@
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 2px 3px 0 var(--ink);
+  background: #fffdf7;
+}
+
+.code-pane.web-editor {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+}
+
+.editor-chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  border-bottom: 1.5px solid var(--ink);
+  background: #f2eee5;
+}
+
+.editor-dots {
+  display: inline-flex;
+  gap: 5px;
+}
+
+.editor-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(28, 26, 23, .35);
+}
+
+.editor-dots span:nth-child(1) { background: #ff6b60; }
+.editor-dots span:nth-child(2) { background: #ffd45e; }
+.editor-dots span:nth-child(3) { background: #65d887; }
+
+.editor-title {
+  flex: 1;
+  text-align: center;
+  font: 600 11px/1 var(--mono);
+  letter-spacing: .04em;
+  color: var(--soft);
+}
+
+.run-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  padding: 4px 9px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fffdf7;
+  font: 700 10px/1 var(--mono);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.code-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.file-tabs {
+  display: flex;
+  gap: 6px;
+  padding-right: 12px;
+}
+
+.file-tab {
+  font: 600 10px/1 var(--mono);
+  color: var(--faint);
+  padding: 5px 8px;
+  border: 1px solid var(--edge);
+  border-radius: 3px 3px 0 0;
+  background: #fffdf7;
+}
+
+.file-tab.active {
+  color: var(--ink);
+  border-color: var(--ink);
+  border-bottom-color: #fffdf7;
+}
+
+.processing-code .code-label {
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.processing-code pre {
+  background: #24211d;
 }
 
 .code-label {
@@ -15,7 +107,6 @@
   letter-spacing: .08em;
   text-transform: uppercase;
   padding: 8px 16px;
-  border-bottom: 1.5px solid var(--ink);
 }
 
 .code-label.p5 {

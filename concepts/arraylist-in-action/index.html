@@ -43,7 +43,10 @@
     <section class="band">
       <p class="meta" style="margin-bottom:16px">Code - particles in a dynamic list</p>
       <div class="code-panes">
-        <div class="code-pane"><div class="code-label p5">p5.js</div><pre>let particles = [];
+        <article class="code-pane web-editor p5">
+          <div class="editor-chrome"><span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">p5.js Web Editor</span><span class="run-pill">Run</span></div>
+          <div class="code-label-row"><div class="code-label p5">p5.js</div><div class="file-tabs"><span class="file-tab active">sketch.js</span><span class="file-tab">index.html</span></div></div>
+          <pre>let particles = [];
 
 function draw() {
   background(246);
@@ -56,8 +59,12 @@ function draw() {
       particles.splice(i, 1);
     }
   }
-}</pre></div>
-        <div class="code-pane"><div class="code-label canvas-api">Canvas API</div><pre>const particles = [];
+}</pre>
+        </article>
+        <article class="code-pane web-editor canvas-api">
+          <div class="editor-chrome"><span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">Canvas API Sandbox</span><span class="run-pill">Run</span></div>
+          <div class="code-label-row"><div class="code-label canvas-api">Canvas API</div><div class="file-tabs"><span class="file-tab active">script.js</span><span class="file-tab">index.html</span></div></div>
+          <pre>const particles = [];
 
 function frame() {
   particles.push(new Particle(mouse.x, mouse.y));
@@ -67,8 +74,9 @@ function frame() {
     if (particles[i].done()) particles.splice(i, 1);
   }
   requestAnimationFrame(frame);
-}</pre></div>
-        <div class="code-pane"><div class="code-label java">Processing / Java</div><pre>ArrayList&lt;Particle&gt; particles = new ArrayList&lt;Particle&gt;();
+}</pre>
+        </article>
+        <article class="code-pane processing-code"><div class="code-label java">Processing / Java</div><pre>ArrayList&lt;Particle&gt; particles = new ArrayList&lt;Particle&gt;();
 
 void draw() {
   particles.add(new Particle(mouseX, mouseY));
@@ -81,7 +89,7 @@ void draw() {
       particles.remove(i);
     }
   }
-}</pre></div>
+}</pre></article>
       </div>
     </section>
 

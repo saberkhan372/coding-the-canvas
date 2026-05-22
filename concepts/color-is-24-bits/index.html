@@ -43,7 +43,10 @@
     <section class="band">
       <p class="meta" style="margin-bottom:16px">Code - build a color from three numbers</p>
       <div class="code-panes">
-        <div class="code-pane"><div class="code-label p5">p5.js</div><pre>let r = 217;
+        <article class="code-pane web-editor p5">
+          <div class="editor-chrome"><span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">p5.js Web Editor</span><span class="run-pill">Run</span></div>
+          <div class="code-label-row"><div class="code-label p5">p5.js</div><div class="file-tabs"><span class="file-tab active">sketch.js</span><span class="file-tab">index.html</span></div></div>
+          <pre>let r = 217;
 let g = 106;
 let b = 61;
 
@@ -60,8 +63,12 @@ function draw() {
 
   fill(28);
   text('rgb(' + r + ', ' + g + ', ' + b + ')', 120, 210);
-}</pre></div>
-        <div class="code-pane"><div class="code-label canvas-api">Canvas API</div><pre>const ctx = canvas.getContext('2d');
+}</pre>
+        </article>
+        <article class="code-pane web-editor canvas-api">
+          <div class="editor-chrome"><span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">Canvas API Sandbox</span><span class="run-pill">Run</span></div>
+          <div class="code-label-row"><div class="code-label canvas-api">Canvas API</div><div class="file-tabs"><span class="file-tab active">script.js</span><span class="file-tab">index.html</span></div></div>
+          <pre>const ctx = canvas.getContext('2d');
 const r = 217;
 const g = 106;
 const b = 61;
@@ -70,8 +77,9 @@ ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
 ctx.fillRect(80, 60, 240, 120);
 
 ctx.fillStyle = '#1c1a17';
-ctx.fillText('rgb(' + r + ', ' + g + ', ' + b + ')', 120, 210);</pre></div>
-        <div class="code-pane"><div class="code-label java">Processing / Java</div><pre>int r = 217;
+ctx.fillText('rgb(' + r + ', ' + g + ', ' + b + ')', 120, 210);</pre>
+        </article>
+        <article class="code-pane processing-code"><div class="code-label java">Processing / Java</div><pre>int r = 217;
 int g = 106;
 int b = 61;
 
@@ -84,7 +92,7 @@ void draw() {
   fill(r, g, b);
   noStroke();
   rect(80, 60, 240, 120);
-}</pre></div>
+}</pre></article>
       </div>
     </section>
 

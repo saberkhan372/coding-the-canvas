@@ -58,8 +58,9 @@
     <section class="band">
       <p class="meta" style="margin-bottom:16px">Code — a Ball class with move and draw</p>
       <div class="code-panes">
-        <div class="code-pane">
-          <div class="code-label p5">p5.js</div>
+        <article class="code-pane web-editor p5">
+          <div class="editor-chrome"><span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">p5.js Web Editor</span><span class="run-pill">Run</span></div>
+          <div class="code-label-row"><div class="code-label p5">p5.js</div><div class="file-tabs"><span class="file-tab active">sketch.js</span><span class="file-tab">index.html</span></div></div>
           <pre><span class="kw">class</span> Ball {
   <span class="fn">constructor</span>(x, y) {
     <span class="kw">this</span>.x = x;
@@ -97,9 +98,10 @@
     b.<span class="fn">draw</span>();
   }
 }</pre>
-        </div>
-        <div class="code-pane">
-          <div class="code-label canvas-api">Canvas API</div>
+        </article>
+        <article class="code-pane web-editor canvas-api">
+          <div class="editor-chrome"><span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">Canvas API Sandbox</span><span class="run-pill">Run</span></div>
+          <div class="code-label-row"><div class="code-label canvas-api">Canvas API</div><div class="file-tabs"><span class="file-tab active">script.js</span><span class="file-tab">index.html</span></div></div>
           <pre><span class="kw">class</span> Ball {
   <span class="fn">constructor</span>(x, y) {
     <span class="kw">this</span>.x = x; <span class="kw">this</span>.y = y;
@@ -119,10 +121,8 @@
     ctx.<span class="fn">fill</span>();
   }
 }</pre>
-        </div>
-        <div class="code-pane">
-          <div class="code-label java">Processing / Java</div>
-          <pre><span class="kw">class</span> Ball {
+        </article>
+        <article class="code-pane processing-code"><div class="code-label java">Processing / Java</div><pre><span class="kw">class</span> Ball {
   <span class="kw">float</span> x, y, r, vx, vy;
 
   <span class="fn">Ball</span>(<span class="kw">float</span> x, <span class="kw">float</span> y) {
@@ -141,8 +141,7 @@
   <span class="kw">void</span> <span class="fn">draw</span>() {
     <span class="fn">ellipse</span>(x, y, r*<span class="nm">2</span>, r*<span class="nm">2</span>);
   }
-}</pre>
-        </div>
+}</pre></article>
       </div>
     </section>
 

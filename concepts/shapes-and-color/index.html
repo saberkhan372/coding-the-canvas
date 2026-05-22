@@ -63,8 +63,9 @@
     <section class="band">
       <p class="meta" style="margin-bottom:16px">Code — a composition of shapes</p>
       <div class="code-panes">
-        <div class="code-pane">
-          <div class="code-label p5">p5.js</div>
+        <article class="code-pane web-editor p5">
+          <div class="editor-chrome"><span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">p5.js Web Editor</span><span class="run-pill">Run</span></div>
+          <div class="code-label-row"><div class="code-label p5">p5.js</div><div class="file-tabs"><span class="file-tab active">sketch.js</span><span class="file-tab">index.html</span></div></div>
           <pre><span class="kw">function</span> <span class="fn">setup</span>() {
   <span class="fn">createCanvas</span>(<span class="nm">400</span>, <span class="nm">300</span>);
 }
@@ -88,9 +89,10 @@
   <span class="fn">strokeWeight</span>(<span class="nm">2</span>);
   <span class="fn">line</span>(<span class="nm">40</span>, <span class="nm">200</span>, <span class="nm">360</span>, <span class="nm">200</span>);
 }</pre>
-        </div>
-        <div class="code-pane">
-          <div class="code-label canvas-api">Canvas API</div>
+        </article>
+        <article class="code-pane web-editor canvas-api">
+          <div class="editor-chrome"><span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">Canvas API Sandbox</span><span class="run-pill">Run</span></div>
+          <div class="code-label-row"><div class="code-label canvas-api">Canvas API</div><div class="file-tabs"><span class="file-tab active">script.js</span><span class="file-tab">index.html</span></div></div>
           <pre><span class="kw">const</span> ctx = canvas.<span class="fn">getContext</span>(<span class="st">'2d'</span>);
 
 <span class="cm">// dark rectangle</span>
@@ -111,10 +113,8 @@ ctx.<span class="fn">beginPath</span>();
 ctx.<span class="fn">moveTo</span>(<span class="nm">40</span>, <span class="nm">200</span>);
 ctx.<span class="fn">lineTo</span>(<span class="nm">360</span>, <span class="nm">200</span>);
 ctx.<span class="fn">stroke</span>();</pre>
-        </div>
-        <div class="code-pane">
-          <div class="code-label java">Processing / Java</div>
-          <pre><span class="kw">void</span> <span class="fn">setup</span>() { <span class="fn">size</span>(<span class="nm">400</span>, <span class="nm">300</span>); }
+        </article>
+        <article class="code-pane processing-code"><div class="code-label java">Processing / Java</div><pre><span class="kw">void</span> <span class="fn">setup</span>() { <span class="fn">size</span>(<span class="nm">400</span>, <span class="nm">300</span>); }
 
 <span class="kw">void</span> <span class="fn">draw</span>() {
   <span class="fn">background</span>(<span class="nm">240</span>, <span class="nm">237</span>, <span class="nm">228</span>);
@@ -134,8 +134,7 @@ ctx.<span class="fn">stroke</span>();</pre>
   <span class="fn">stroke</span>(<span class="nm">0</span>);
   <span class="fn">strokeWeight</span>(<span class="nm">2</span>);
   <span class="fn">line</span>(<span class="nm">40</span>, <span class="nm">200</span>, <span class="nm">360</span>, <span class="nm">200</span>);
-}</pre>
-        </div>
+}</pre></article>
       </div>
     </section>
 

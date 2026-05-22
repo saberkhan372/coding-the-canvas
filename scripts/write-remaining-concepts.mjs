@@ -689,6 +689,21 @@ function code(value) {
   return esc(value);
 }
 
+function codePane(kind, label, value) {
+  if (kind === 'java') {
+    return `<article class="code-pane processing-code"><div class="code-label java">Processing / Java</div><pre>${code(value)}</pre></article>`;
+  }
+
+  const editorTitle = kind === 'p5' ? 'p5.js Web Editor' : 'Canvas API Sandbox';
+  const filename = kind === 'p5' ? 'sketch.js' : 'script.js';
+
+  return `<article class="code-pane web-editor ${kind}">
+          <div class="editor-chrome"><span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">${editorTitle}</span><span class="run-pill">Run</span></div>
+          <div class="code-label-row"><div class="code-label ${kind}">${label}</div><div class="file-tabs"><span class="file-tab active">${filename}</span><span class="file-tab">index.html</span></div></div>
+          <pre>${code(value)}</pre>
+        </article>`;
+}
+
 function visual(kind) {
   const common = `viewBox="0 0 180 132"`;
   if (kind === 'rgb') return `<svg ${common}>
@@ -809,9 +824,9 @@ function html(page) {
     <section class="band">
       <p class="meta" style="margin-bottom:16px">${esc(page.codeTitle)}</p>
       <div class="code-panes">
-        <div class="code-pane"><div class="code-label p5">p5.js</div><pre>${code(page.p5)}</pre></div>
-        <div class="code-pane"><div class="code-label canvas-api">Canvas API</div><pre>${code(page.canvas)}</pre></div>
-        <div class="code-pane"><div class="code-label java">Processing / Java</div><pre>${code(page.java)}</pre></div>
+        ${codePane('p5', 'p5.js', page.p5)}
+        ${codePane('canvas-api', 'Canvas API', page.canvas)}
+        ${codePane('java', 'Processing / Java', page.java)}
       </div>
     </section>
 

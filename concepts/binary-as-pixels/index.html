@@ -42,7 +42,10 @@
     <section class="band">
       <p class="meta" style="margin-bottom:16px">Code - draw a bitmap from 0s and 1s</p>
       <div class="code-panes">
-        <div class="code-pane"><div class="code-label p5">p5.js</div><pre>let bits = [
+        <article class="code-pane web-editor p5">
+          <div class="editor-chrome"><span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">p5.js Web Editor</span><span class="run-pill">Run</span></div>
+          <div class="code-label-row"><div class="code-label p5">p5.js</div><div class="file-tabs"><span class="file-tab active">sketch.js</span><span class="file-tab">index.html</span></div></div>
+          <pre>let bits = [
   '00111100',
   '01000010',
   '10100101',
@@ -67,8 +70,12 @@ function draw() {
       rect(x * cell, y * cell, cell, cell);
     }
   }
-}</pre></div>
-        <div class="code-pane"><div class="code-label canvas-api">Canvas API</div><pre>const bits = [
+}</pre>
+        </article>
+        <article class="code-pane web-editor canvas-api">
+          <div class="editor-chrome"><span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">Canvas API Sandbox</span><span class="run-pill">Run</span></div>
+          <div class="code-label-row"><div class="code-label canvas-api">Canvas API</div><div class="file-tabs"><span class="file-tab active">script.js</span><span class="file-tab">index.html</span></div></div>
+          <pre>const bits = [
   '00111100', '01000010', '10100101', '10000001',
   '10100101', '10011001', '01000010', '00111100'
 ];
@@ -80,8 +87,9 @@ bits.forEach((row, y) =&gt; {
     ctx.fillStyle = bit === '1' ? '#1c1a17' : '#f6f2ea';
     ctx.fillRect(x * cell, y * cell, cell, cell);
   });
-});</pre></div>
-        <div class="code-pane"><div class="code-label java">Processing / Java</div><pre>String[] bits = {
+});</pre>
+        </article>
+        <article class="code-pane processing-code"><div class="code-label java">Processing / Java</div><pre>String[] bits = {
   &quot;00111100&quot;, &quot;01000010&quot;, &quot;10100101&quot;, &quot;10000001&quot;,
   &quot;10100101&quot;, &quot;10011001&quot;, &quot;01000010&quot;, &quot;00111100&quot;
 };
@@ -99,7 +107,7 @@ void draw() {
       rect(x * cell, y * cell, cell, cell);
     }
   }
-}</pre></div>
+}</pre></article>
       </div>
     </section>
 

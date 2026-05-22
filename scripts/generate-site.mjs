@@ -189,11 +189,12 @@ function shell({ path, title, kicker = 'CS Canvas', description, body, active = 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="${prefix}/assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="${prefix}/assets/styles.css" />
 </head>
 <body data-page="${htmlEscape(active)}">
   <header class="site-header">
-    <a class="brand" href="${prefix}/index.html">CS Canvas</a>
+    <a class="brand" href="${prefix}/index.html">Coding the Canvas</a>
     <nav>${navHtml}</nav>
   </header>
   <main>

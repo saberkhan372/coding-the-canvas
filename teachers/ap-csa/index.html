@@ -4,49 +4,448 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AP CS A Coverage - CS Canvas</title>
-  <meta name="description" content="A Processing Java path that connects visual lessons to AP CSA units, FRQ habits, classes, arrays, and ArrayList." />
+  <meta name="description" content="How CS Canvas covers all 10 AP Computer Science A units through Processing Java — coverage matrix, FRQ connections, and the 2D array killer feature." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/styles.css" />
+  <style>
+    /* ── Coverage matrix ── */
+    .matrix-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .matrix-table{border-collapse:collapse;font-size:11px;min-width:700px;width:100%}
+    .matrix-table th,.matrix-table td{padding:5px 3px;text-align:center;border:1px solid var(--edge)}
+    .matrix-table th{background:var(--paper);font:600 9px/1.2 var(--mono);letter-spacing:.04em;color:var(--soft)}
+    .row-label{text-align:left !important;padding:6px 10px !important;white-space:nowrap;min-width:150px}
+    .section-hdr{background:#e4dfd4 !important;font:700 9px/1 var(--mono) !important;letter-spacing:.05em;text-transform:uppercase;color:var(--ink) !important}
+    .cell-2{background:var(--accent);border-color:var(--accent)}
+    .cell-1{background:#ddd8cc;border-color:#c8c2b4}
+    .cell-0{background:transparent}
+    /* ── Legend ── */
+    .legend{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:14px;font-size:12px;color:var(--soft)}
+    .legend-item{display:flex;align-items:center;gap:6px}
+    .legend-swatch{width:13px;height:13px;border-radius:2px;border:1px solid var(--edge);flex-shrink:0}
+    /* ── Unit badge ── */
+    .unit-badge{display:inline-flex;align-items:center;background:var(--ink);color:var(--paper);font:700 10px/1 var(--mono);padding:3px 8px;border-radius:3px;letter-spacing:.05em;margin-bottom:6px}
+    /* ── Unit cards ── */
+    .unit-card{border:1.5px solid var(--ink);border-radius:4px;padding:14px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink)}
+    .unit-card-title{font-size:13px;font-weight:700;margin-bottom:4px}
+    .unit-card-desc{font-size:12px;color:var(--soft);line-height:1.5}
+    .unit-card-concepts{font:600 10px/1 var(--mono);letter-spacing:.04em;color:var(--faint);margin-top:8px;display:block}
+    /* ── FRQ cards ── */
+    .frq-card{border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink)}
+    .frq-tag{font-family:var(--hand);font-size:20px;color:var(--accent);display:block;margin-bottom:6px}
+    .frq-title{font-size:15px;font-weight:700;margin-bottom:6px}
+    .frq-desc{font-size:13px;color:var(--soft);line-height:1.5;margin-bottom:10px}
+    /* ── FAQ ── */
+    .faq-item{border-bottom:1px solid var(--edge);padding:14px 0}
+    .faq-item:last-child{border-bottom:none}
+    .faq-q{font-weight:700;font-size:14px;margin-bottom:6px}
+    .faq-a{font-size:13px;color:var(--soft);line-height:1.6}
+    /* ── 2D callout ── */
+    .pixel-callout{background:#fff8f5;border:2px solid var(--accent);border-radius:6px;padding:20px 24px}
+  </style>
 </head>
 <body data-page="teachers">
   <header class="site-header">
     <a class="brand" href="../../index.html">CS Canvas</a>
-    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../browse/index.html">Browse</a><a class="active" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a href="../../concepts/index.html">Concepts</a>
+      <a href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a class="active" href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
   </header>
   <main>
+
     <section class="hero">
-      <p class="kicker">teacher resource</p>
+      <p class="kicker">teacher resource · AP CS A</p>
       <h1>AP CS A Coverage</h1>
-      <p class="lede">A Processing Java path that connects visual lessons to AP CSA units, FRQ habits, classes, arrays, and ArrayList.</p>
-    </section>
-    
-    <section class="band split">
-      <div>
-        <h2>Make Java visible.</h2>
-        <p>A Processing Java path that connects visual lessons to AP CSA units, FRQ habits, classes, arrays, and ArrayList.</p>
-        <ul class="checklist"><li>Use sketches to motivate methods and objects.</li><li>Practice loops, arrays, and ArrayList through visual state.</li><li>Connect student sketches to FRQ-style reasoning.</li></ul>
+      <p class="lede">CS Canvas covers all 10 AP CS A units through Processing Java. No structural gap — just a different way in to the same content.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../frq-practice/index.html">FRQ practice</a>
+        <a class="button" href="../../languages/processing-java/index.html">Processing Java track</a>
       </div>
-      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132"><circle cx="36" cy="34" r="5"/><circle cx="72" cy="34" r="8"/><circle cx="108" cy="34" r="5"/><circle cx="144" cy="34" r="8"/><circle cx="36" cy="72" r="8"/><circle cx="72" cy="72" r="5"/><circle cx="108" cy="72" r="8"/><circle cx="144" cy="72" r="5"/></svg></div>
     </section>
-    <section class="band columns">
-      <article><h2>Use it for</h2><p>Use sketches to motivate methods and objects.</p></article><article><h2>Try next</h2><p>Practice loops, arrays, and ArrayList through visual state.</p></article><article><h2>Connect it</h2><p>Connect student sketches to FRQ-style reasoning.</p></article>
+
+    <!-- Stats -->
+    <section class="band">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;max-width:660px">
+        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:14px;background:var(--paper)">
+          <div style="font:600 9px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:4px">Units</div>
+          <div style="font-size:26px;font-weight:800">10 of 10</div>
+        </div>
+        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:14px;background:var(--paper)">
+          <div style="font:600 9px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:4px">Concepts</div>
+          <div style="font-size:26px;font-weight:800">22</div>
+        </div>
+        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:14px;background:var(--paper)">
+          <div style="font:600 9px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:4px">Language</div>
+          <div style="font-size:18px;font-weight:800">Processing<br>Java</div>
+        </div>
+        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:14px;background:var(--paper)">
+          <div style="font:600 9px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:4px">Gap</div>
+          <div style="font-size:26px;font-weight:800">None</div>
+        </div>
+      </div>
     </section>
-    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/index.html">
-    <span class="meta">lessons</span>
-    <h2>Concepts</h2>
-    <p>Return to the numbered lesson sequence.</p>
-  </a><a class="card" href="../../browse/index.html">
-    <span class="meta">index</span>
-    <h2>Browse</h2>
-    <p>Search the full site atlas.</p>
-  </a></div></section>
-  
+
+    <!-- Coverage matrix -->
+    <section class="band">
+      <p class="meta" style="margin-bottom:6px">Coverage matrix — 10 AP CS A units × 22 concepts</p>
+      <div class="legend">
+        <span class="legend-item"><span class="legend-swatch" style="background:var(--accent);border-color:var(--accent)"></span>Strong coverage</span>
+        <span class="legend-item"><span class="legend-swatch" style="background:#ddd8cc;border-color:#c8c2b4"></span>Partial coverage</span>
+        <span class="legend-item"><span class="legend-swatch"></span>Not primary focus</span>
+      </div>
+      <div class="matrix-wrap">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th class="row-label" style="border-color:var(--edge)"></th>
+              <th colspan="2" class="section-hdr">§1 Canvas</th>
+              <th colspan="1" class="section-hdr">§2 Move</th>
+              <th colspan="2" class="section-hdr">§3 Respond</th>
+              <th colspan="5" class="section-hdr">§4 Systems</th>
+              <th colspan="6" class="section-hdr">§5 Data</th>
+              <th colspan="4" class="section-hdr">§6 World</th>
+              <th colspan="2" class="section-hdr">§7 Algo</th>
+            </tr>
+            <tr>
+              <th class="row-label" style="color:var(--faint);font-size:9px">concept →</th>
+              <th>01</th><th>02</th>
+              <th>03</th>
+              <th>04</th><th>05</th>
+              <th>06</th><th>07</th><th>08</th><th>09</th><th>10</th>
+              <th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th>
+              <th>17</th><th>18</th><th>19</th><th>20</th>
+              <th>21</th><th>22</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- U1: [2,2,0,1,0,0,0,0,0,0,1,2,1,0,1,0,0,0,0,0,1,0] -->
+            <tr>
+              <td class="row-label">
+                <span class="unit-badge">U1</span>
+                <span style="display:block;font:400 11px/1.3 Inter,sans-serif;color:var(--soft);margin-top:2px">Primitive Types</span>
+              </td>
+              <td class="cell-2"></td><td class="cell-2"></td>
+              <td class="cell-0"></td>
+              <td class="cell-1"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-1"></td><td class="cell-2"></td><td class="cell-1"></td><td class="cell-0"></td><td class="cell-1"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-1"></td><td class="cell-0"></td>
+            </tr>
+            <!-- U2: [0,1,0,2,0,0,1,1,2,2,1,1,0,0,0,1,0,0,0,0,0,1] -->
+            <tr>
+              <td class="row-label">
+                <span class="unit-badge">U2</span>
+                <span style="display:block;font:400 11px/1.3 Inter,sans-serif;color:var(--soft);margin-top:2px">Using Objects</span>
+              </td>
+              <td class="cell-0"></td><td class="cell-1"></td>
+              <td class="cell-0"></td>
+              <td class="cell-2"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-1"></td><td class="cell-1"></td><td class="cell-2"></td><td class="cell-2"></td>
+              <td class="cell-1"></td><td class="cell-1"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-1"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-1"></td>
+            </tr>
+            <!-- U3: [0,0,0,1,2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0] -->
+            <tr>
+              <td class="row-label">
+                <span class="unit-badge">U3</span>
+                <span style="display:block;font:400 11px/1.3 Inter,sans-serif;color:var(--soft);margin-top:2px">Boolean &amp; if Statements</span>
+              </td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td>
+              <td class="cell-1"></td><td class="cell-2"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-1"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-1"></td><td class="cell-0"></td>
+            </tr>
+            <!-- U4: [0,0,2,1,0,2,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,2] -->
+            <tr>
+              <td class="row-label">
+                <span class="unit-badge">U4</span>
+                <span style="display:block;font:400 11px/1.3 Inter,sans-serif;color:var(--soft);margin-top:2px">Iteration</span>
+              </td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-2"></td>
+              <td class="cell-1"></td><td class="cell-0"></td>
+              <td class="cell-2"></td><td class="cell-1"></td><td class="cell-1"></td><td class="cell-1"></td><td class="cell-1"></td>
+              <td class="cell-1"></td><td class="cell-1"></td><td class="cell-1"></td><td class="cell-1"></td><td class="cell-1"></td><td class="cell-1"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-2"></td>
+            </tr>
+            <!-- U5: [0,0,0,0,0,0,2,1,2,2,0,0,0,0,0,1,1,0,0,0,1,1] -->
+            <tr>
+              <td class="row-label">
+                <span class="unit-badge">U5</span>
+                <span style="display:block;font:400 11px/1.3 Inter,sans-serif;color:var(--soft);margin-top:2px">Writing Classes</span>
+              </td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-2"></td><td class="cell-1"></td><td class="cell-2"></td><td class="cell-2"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-1"></td>
+              <td class="cell-1"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-1"></td><td class="cell-1"></td>
+            </tr>
+            <!-- U6: [0,0,0,0,0,1,1,2,1,0,0,0,0,0,1,0,0,0,0,0,0,1] -->
+            <tr>
+              <td class="row-label">
+                <span class="unit-badge">U6</span>
+                <span style="display:block;font:400 11px/1.3 Inter,sans-serif;color:var(--soft);margin-top:2px">Array</span>
+              </td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-1"></td><td class="cell-1"></td><td class="cell-2"></td><td class="cell-1"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-1"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-1"></td>
+            </tr>
+            <!-- U7: [0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,2] -->
+            <tr>
+              <td class="row-label">
+                <span class="unit-badge">U7</span>
+                <span style="display:block;font:400 11px/1.3 Inter,sans-serif;color:var(--soft);margin-top:2px">ArrayList</span>
+              </td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-1"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-2"></td>
+            </tr>
+            <!-- U8: [0,0,0,0,0,2,0,1,0,0,2,1,2,1,2,1,0,0,0,0,0,0] -->
+            <tr>
+              <td class="row-label">
+                <span class="unit-badge">U8</span>
+                <span style="display:block;font:400 11px/1.3 Inter,sans-serif;color:var(--soft);margin-top:2px">2D Array</span>
+              </td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-2"></td><td class="cell-0"></td><td class="cell-1"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-2"></td><td class="cell-1"></td><td class="cell-2"></td><td class="cell-1"></td><td class="cell-2"></td><td class="cell-1"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+            </tr>
+            <!-- U9: [0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0] -->
+            <tr>
+              <td class="row-label">
+                <span class="unit-badge">U9</span>
+                <span style="display:block;font:400 11px/1.3 Inter,sans-serif;color:var(--soft);margin-top:2px">Inheritance</span>
+              </td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-1"></td><td class="cell-1"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+            </tr>
+            <!-- U10: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0] -->
+            <tr>
+              <td class="row-label">
+                <span class="unit-badge">U10</span>
+                <span style="display:block;font:400 11px/1.3 Inter,sans-serif;color:var(--soft);margin-top:2px">Recursion</span>
+              </td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-2"></td><td class="cell-0"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:11px;color:var(--faint);margin-top:10px">CS Canvas is not a replacement for AP CS A — it's an on-ramp. The canvas gives every abstract unit a concrete, visual entry point.</p>
+    </section>
+
+    <!-- 2D Array killer feature -->
+    <section class="band">
+      <div class="pixel-callout">
+        <p class="meta" style="margin-bottom:10px">The killer feature for AP CS A</p>
+        <h2 style="margin-bottom:12px">U8 (2D Array) is where CS Canvas shines hardest.</h2>
+        <p style="font-size:14px;max-width:700px">A pixel grid is a 2D array of integers. When students manipulate <code style="font-size:12px;background:#fff;padding:2px 6px;border-radius:2px;border:1px solid var(--edge)">int[][] pixels</code> in Processing Java to apply a grayscale filter or find the brightest pixel in each row, they're doing exactly what U8 asks — but the output is a visible image, not an abstract grid. The feedback loop is immediate and intrinsically motivating.</p>
+        <ul class="checklist" style="margin-top:14px">
+          <li>Concept 11 (Pixels / Image Data) maps directly to U8 nested-loop traversal</li>
+          <li>Concept 13 (Binary as Pixels) maps to U8 by showing how binary-encoded values become the integers students read and write in int[][]</li>
+          <li>Concept 15 (Histograms &amp; Sampling) maps to U8 column/row accumulation patterns</li>
+          <li>For-loop grid pattern is the same algorithm shape as AP FRQ type 4</li>
+        </ul>
+        <div style="margin-top:16px">
+          <a class="button primary" href="../../concepts/pixels-image-data/index.html">Concept 11 — Pixels / Image Data</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Unit breakdown -->
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Unit-by-unit breakdown</p>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+        <div class="unit-card">
+          <span class="unit-badge">U1 — Primitive Types</span>
+          <div class="unit-card-title">int, double, boolean, arithmetic, casting</div>
+          <div class="unit-card-desc">Concepts 01 and 02 (shape and coordinates) are pure int/float arithmetic in Processing Java. Every coordinate, every color value, every frame counter is a primitive in action.</div>
+          <span class="unit-card-concepts">Key concepts: 01 Coordinates, 02 Shapes &amp; Color, 11 Pixels / Image Data</span>
+        </div>
+        <div class="unit-card">
+          <span class="unit-badge">U2 — Using Objects</span>
+          <div class="unit-card-title">String, Math, instance creation, method calls</div>
+          <div class="unit-card-desc">Concept 04 (Mouse Input) introduces the first values that change over time — mouseX and mouseY become constructor parameters and field updates, which is exactly the using-objects pattern U2 asks for. Concept 09 (Objects) and 10 (State Machines) are the dense U2 core: creating instances, calling methods with return values, and chaining calls.</div>
+          <span class="unit-card-concepts">Key concepts: 04 Mouse Input, 09 Objects, 10 State Machines</span>
+        </div>
+        <div class="unit-card">
+          <span class="unit-badge">U3 — Boolean &amp; if Statements</span>
+          <div class="unit-card-title">Relational operators, compound conditions, nested if</div>
+          <div class="unit-card-desc">Concept 05 (Conditionals) is the U3 core: if/else chains that control what gets drawn. mouseX &gt; width/2 is a boolean expression. The canvas makes the branch visible — one side vs. the other.</div>
+          <span class="unit-card-concepts">Key concepts: 05 Conditionals, 10 State Machines</span>
+        </div>
+        <div class="unit-card">
+          <span class="unit-badge">U4 — Iteration</span>
+          <div class="unit-card-title">while, for, nested loops, loop patterns</div>
+          <div class="unit-card-desc">Concept 06 (For Loops) is the U4 entry point. The animation loop (draw() runs every frame) gives iteration a time dimension. Nested loops appear in concepts 11–16 (pixel data, histograms, data as material).</div>
+          <span class="unit-card-concepts">Key concepts: 03 Draw Loop / Time, 06 For Loops &amp; Grids, 11–16 §5</span>
+        </div>
+        <div class="unit-card">
+          <span class="unit-badge">U5 — Writing Classes</span>
+          <div class="unit-card-title">Constructors, instance variables, methods, encapsulation</div>
+          <div class="unit-card-desc">Concept 07 (Functions) sets up the method syntax. Concept 09 (Objects) is the dense U5 core: writing a Ball or Particle class with a constructor, fields, and methods that operate on those fields.</div>
+          <span class="unit-card-concepts">Key concepts: 07 Functions, 09 Objects, 10 State</span>
+        </div>
+        <div class="unit-card">
+          <span class="unit-badge">U6 — Array</span>
+          <div class="unit-card-title">1D array traversal, algorithms on arrays, enhanced for</div>
+          <div class="unit-card-desc">Concept 08 (Arrays) introduces int[] and Object[] in Processing Java. A row of circles at computed positions is array traversal made visual. Concept 15 (Histograms &amp; Sampling) applies accumulation algorithms to arrays.</div>
+          <span class="unit-card-concepts">Key concepts: 08 Arrays, 07 Functions, 15 Histograms &amp; Sampling</span>
+        </div>
+        <div class="unit-card">
+          <span class="unit-badge">U7 — ArrayList</span>
+          <div class="unit-card-title">Dynamic lists, add/remove, iterator traversal</div>
+          <div class="unit-card-desc">Concept 22 (ArrayList in Action) is the explicit U7 concept: particles are added with <code style="font-size:11px">add()</code> and removed with <code style="font-size:11px">remove(i)</code> inside the draw loop. Students see exactly how dynamic lists differ from fixed arrays — the list grows on mousePressed and shrinks as particles fade out.</div>
+          <span class="unit-card-concepts">Key concepts: 22 ArrayList in Action, 08 Arrays</span>
+        </div>
+        <div class="unit-card">
+          <span class="unit-badge">U8 — 2D Array</span>
+          <div class="unit-card-title">Nested loops, row/column access, traversal algorithms</div>
+          <div class="unit-card-desc">The killer feature. §5 concepts 11–16 all have a 2D array under the hood — an image is int[][] pixels. Grayscale, inversion, blur, and histogram are all 2D array algorithms with visible output.</div>
+          <span class="unit-card-concepts">Key concepts: 06 For Loops &amp; Grids, 11 Pixels / Image Data, 13 Binary as Pixels, 15 Histograms &amp; Sampling</span>
+        </div>
+        <div class="unit-card">
+          <span class="unit-badge">U9 — Inheritance</span>
+          <div class="unit-card-title">extends, super, override, polymorphism</div>
+          <div class="unit-card-desc">Concept 09 (Objects) sets up the class hierarchy. Concept 10 (State Machines) builds on it. Teachers who want explicit U9 coverage can extend the §4 checkpoint: have students create a BouncingBall that extends Ball.</div>
+          <span class="unit-card-concepts">Key concepts: 09 Objects, 10 State Machines</span>
+        </div>
+        <div class="unit-card">
+          <span class="unit-badge">U10 — Recursion</span>
+          <div class="unit-card-title">Base case, recursive call, trace, recursive algorithms</div>
+          <div class="unit-card-desc">Concept 21 (Recursion) is the dedicated U10 concept: fractal trees, Koch snowflakes, and Sierpiński triangles drawn recursively in Processing Java. The visual output makes base cases and call depth concrete.</div>
+          <span class="unit-card-concepts">Key concepts: 21 Recursion</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FRQ connection -->
+    <section class="band">
+      <p class="meta" style="margin-bottom:8px">FRQ connection</p>
+      <p style="font-size:14px;color:var(--soft);margin-bottom:20px;max-width:680px">Every AP CS A FRQ type has a direct canvas equivalent. Students who can explain their Processing Java sketches can answer FRQ questions — the cognitive transfer is explicit.</p>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">
+        <div class="frq-card">
+          <span class="frq-tag">FRQ 1</span>
+          <div class="frq-title">Method Writing</div>
+          <div class="frq-desc">Write a method that satisfies a specification. The canvas equivalent: write <code style="font-size:11px;background:var(--edge);padding:1px 5px;border-radius:2px">void move(float speed)</code> for a Ball class that translates position and wraps at the canvas edge.</div>
+          <span style="font:600 10px/1 var(--mono);color:var(--faint)">Canvas concepts: 07 Functions · 09 Objects</span>
+        </div>
+        <div class="frq-card">
+          <span class="frq-tag">FRQ 2</span>
+          <div class="frq-title">Class Design</div>
+          <div class="frq-desc">Write a complete class with constructor, fields, and methods. The canvas equivalent: the Tile or Particle class from §4 — constructor sets position, fields track state, methods handle drawing and updating.</div>
+          <span style="font:600 10px/1 var(--mono);color:var(--faint)">Canvas concepts: 09 Objects · 10 State Machines</span>
+        </div>
+        <div class="frq-card">
+          <span class="frq-tag">FRQ 3</span>
+          <div class="frq-title">Array / ArrayList</div>
+          <div class="frq-desc">Traverse or manipulate a list. The canvas equivalent: the particle system from §4 uses an ArrayList to add, remove, and iterate particles each frame — every particle-system method is an array algorithm.</div>
+          <span style="font:600 10px/1 var(--mono);color:var(--faint)">Canvas concepts: 08 Arrays · 22 ArrayList in Action</span>
+        </div>
+        <div class="frq-card">
+          <span class="frq-tag">FRQ 4</span>
+          <div class="frq-title">2D Array</div>
+          <div class="frq-desc">Traverse a 2D structure. The canvas equivalent: the pixel grid in §5 is int[][] — students write nested loops that read and write pixel values to apply grayscale, inversion, or brightness normalization.</div>
+          <span style="font:600 10px/1 var(--mono);color:var(--faint)">Canvas concepts: 11 Pixels / Image Data · 13 Binary as Pixels · 15 Histograms &amp; Sampling</span>
+        </div>
+      </div>
+      <div style="margin-top:20px">
+        <a class="button primary" href="../frq-practice/index.html">FRQ practice page</a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="band">
+      <p class="meta" style="margin-bottom:4px">Teacher FAQ</p>
+      <div class="faq-item">
+        <div class="faq-q">Is CS Canvas a replacement for AP CS A?</div>
+        <div class="faq-a">No — it's an on-ramp and a motivator. CS Canvas gives every abstract AP CS A unit a concrete, visual entry point. You still need to teach the formal syntax, edge cases, and exam-specific conventions. What CS Canvas provides is the intrinsic motivation to push through that work.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What language do AP CS A students use?</div>
+        <div class="faq-a">Processing (Java). Every CS Canvas concept has a Processing Java tab. The syntax is identical to standard Java — Processing adds setup() and draw() as structured entry points, which actually mirror good AP CS A class-design habits.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Which sections map most directly to AP CS A?</div>
+        <div class="faq-a">§4 (Make Systems) is the core — it covers U4 iteration, U5 writing classes, U6 arrays, and touches U2 and U9. §5 (Data as Material) covers U8 (2D arrays) comprehensively through pixel manipulation. §7 (Algorithms) covers U10 recursion through fractal drawing, and U7 ArrayList through a live particle system.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Where does inheritance (U9) fit?</div>
+        <div class="faq-a">Concepts 09 and 10 introduce class design and build the foundation for inheritance. The curriculum doesn't have an explicit inheritance concept — teachers who want explicit U9 coverage should add an extension to the §4 checkpoint: have students create a subclass that extends their Particle or Ball class.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do I use CS Canvas alongside my existing AP CS A curriculum?</div>
+        <div class="faq-a">The most common pattern: use CS Canvas concepts as the introduction for each unit (hook + demo phases), then shift to your primary curriculum's exercises and FRQ practice. The canvas sketch gives students a visual anchor for the abstract concepts they're about to practice on paper.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do students need the Processing IDE installed?</div>
+        <div class="faq-a">Yes — Processing Java sketches run in the desktop Processing IDE (free, cross-platform, no dependencies). The companion resources page links to it. Ensure all AP CS A students have it installed before starting §4. p5.js concepts run in the browser and need no install.</div>
+      </div>
+    </section>
+
+    <!-- Related -->
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related resources</p>
+      <div class="grid cards">
+        <a class="card" href="../frq-practice/index.html">
+          <span class="meta">AP CS A</span>
+          <h2>FRQ Practice</h2>
+          <p>Four FRQ types with Processing Java prompts and canvas connections.</p>
+        </a>
+        <a class="card" href="../pacing-guides/index.html">
+          <span class="meta">planning</span>
+          <h2>Pacing Guides</h2>
+          <p>The 36-week AP CS A year pacing strip across all 10 units.</p>
+        </a>
+        <a class="card" href="../companion-resources/index.html">
+          <span class="meta">tools</span>
+          <h2>Companion Resources</h2>
+          <p>The Processing IDE, Nature of Code, and MDN Canvas API reference.</p>
+        </a>
+      </div>
+    </section>
+
   </main>
   <footer class="site-footer">
-    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
-    <span>p5.js - Canvas API - Processing Java</span>
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="../../assets/site.js"></script>
 </body>

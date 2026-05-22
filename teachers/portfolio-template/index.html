@@ -4,49 +4,163 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Student Portfolio Template - CS Canvas</title>
-  <meta name="description" content="A structure for students to save sketches, code excerpts, screenshots, reflections, and next steps." />
+  <meta name="description" content="A structure for students to document sketches, code excerpts, reflections, and next steps across the CS Canvas curriculum." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/styles.css" />
+  <style>
+    .entry-card{border:1.5px solid var(--ink);border-radius:4px;padding:20px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink);margin-bottom:14px}
+    .entry-label{font:700 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:6px}
+    .entry-field{border-bottom:1px dashed var(--ink);padding:8px 0;font-size:13px;color:var(--soft);margin-bottom:10px;min-height:32px}
+    .entry-placeholder{color:var(--faint);font-style:italic}
+    .section-divider{border:none;border-top:2px solid var(--accent);margin:24px 0;opacity:.4}
+    .prompt-box{background:#fff8f5;border-left:4px solid var(--accent);padding:12px 16px;border-radius:0 4px 4px 0;font-size:13px;margin-top:8px}
+    .portfolio-stat{display:flex;flex-direction:column;gap:4px;padding:16px;border:1.5px solid var(--ink);border-radius:4px;background:var(--paper)}
+    .portfolio-stat-label{font:600 10px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--faint)}
+    .portfolio-stat-val{font-size:22px;font-weight:800;color:var(--ink)}
+  </style>
 </head>
 <body data-page="teachers">
   <header class="site-header">
     <a class="brand" href="../../index.html">CS Canvas</a>
-    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../browse/index.html">Browse</a><a class="active" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a href="../../concepts/index.html">Concepts</a>
+      <a href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a class="active" href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
   </header>
   <main>
+
     <section class="hero">
-      <p class="kicker">teacher resource</p>
+      <p class="kicker">teacher resource · student-facing</p>
       <h1>Student Portfolio Template</h1>
-      <p class="lede">A structure for students to save sketches, code excerpts, screenshots, reflections, and next steps.</p>
+      <p class="lede">One entry per section checkpoint. Each entry pairs a canvas artifact with code, explanation, and reflection — making learning visible over time.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../assessment-rubrics/index.html">Rubric guide</a>
+        <a class="button" href="../lesson-plan-template/index.html">Lesson plan template</a>
+      </div>
     </section>
-    
+
     <section class="band split">
       <div>
+        <p class="meta">Purpose of the portfolio</p>
         <h2>Make learning visible over time.</h2>
-        <p>A structure for students to save sketches, code excerpts, screenshots, reflections, and next steps.</p>
-        <ul class="checklist"><li>Save one artifact per major concept.</li><li>Pair each image with the code that matters.</li><li>Ask students to explain one decision or bug fix.</li></ul>
+        <p>A portfolio isn't a folder of finished products — it's a record of thinking. Each entry captures a moment of understanding: what the student made, what they changed, what they noticed, and what they want to try next.</p>
+        <ul class="checklist">
+          <li>One entry per major checkpoint (7 total for the full arc)</li>
+          <li>Canvas screenshot + code excerpt as the artifact pair</li>
+          <li>Written reflection in student's own words (2–4 sentences)</li>
+          <li>Optional: a question the student still has</li>
+          <li>Teacher reads for evidence of thinking, not perfection</li>
+        </ul>
       </div>
-      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132"><circle cx="36" cy="34" r="5"/><circle cx="72" cy="34" r="8"/><circle cx="108" cy="34" r="5"/><circle cx="144" cy="34" r="8"/><circle cx="36" cy="72" r="8"/><circle cx="72" cy="72" r="5"/><circle cx="108" cy="72" r="8"/><circle cx="144" cy="72" r="5"/></svg></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;min-width:200px">
+        <div class="portfolio-stat"><span class="portfolio-stat-label">Entries</span><span class="portfolio-stat-val">7</span></div>
+        <div class="portfolio-stat"><span class="portfolio-stat-label">Sections</span><span class="portfolio-stat-val">§1–§7</span></div>
+        <div class="portfolio-stat"><span class="portfolio-stat-label">Per entry</span><span class="portfolio-stat-val">~15 min</span></div>
+        <div class="portfolio-stat"><span class="portfolio-stat-label">Evidence</span><span class="portfolio-stat-val">artifact + code + words</span></div>
+      </div>
     </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:4px">Portfolio entry template — one entry per section</p>
+      <p style="font-size:13px;color:var(--soft);margin-bottom:20px">Students fill this out after each section checkpoint. Share as a Google Doc template, Notion page, or printed sheet.</p>
+
+      <div class="entry-card">
+        <span class="entry-label">Portfolio entry header</span>
+        <div class="entry-label">Name</div>
+        <div class="entry-field"><span class="entry-placeholder">Your name</span></div>
+        <div class="entry-label">Section / concept</div>
+        <div class="entry-field"><span class="entry-placeholder">e.g. §4 Make Systems — Concept 09 Objects</span></div>
+        <div class="entry-label">Date</div>
+        <div class="entry-field"><span class="entry-placeholder">Date completed</span></div>
+        <div class="entry-label">Language used</div>
+        <div class="entry-field"><span class="entry-placeholder">p5.js  /  Canvas API  /  Processing (Java)</span></div>
+      </div>
+
+      <div class="entry-card">
+        <span class="entry-label">Part 1 — The artifact</span>
+        <p style="font-size:13px;color:var(--soft);margin-bottom:12px">Paste a screenshot of your canvas output here. It doesn't have to look polished — it should look like yours.</p>
+        <div class="entry-field" style="min-height:120px;border:1.5px dashed var(--edge);display:flex;align-items:center;justify-content:center">
+          <span class="entry-placeholder">[ canvas screenshot ]</span>
+        </div>
+        <div class="entry-label" style="margin-top:14px">Code excerpt</div>
+        <p style="font-size:13px;color:var(--soft);margin-bottom:8px">Paste the most important 5–15 lines — the part that makes the interesting thing happen.</p>
+        <div class="entry-field" style="min-height:80px;font-family:var(--mono);font-size:12px;border:1.5px dashed var(--edge);padding:8px">
+          <span class="entry-placeholder">// paste your key code here</span>
+        </div>
+      </div>
+
+      <div class="entry-card">
+        <span class="entry-label">Part 2 — The explanation</span>
+        <div class="entry-label">What does this code do?</div>
+        <div class="entry-field" style="min-height:48px"><span class="entry-placeholder">Describe what happens on the canvas in plain language. Pretend you're explaining it to someone who can't see your screen.</span></div>
+        <div class="entry-label">What did you change from the example, and why?</div>
+        <div class="entry-field" style="min-height:48px"><span class="entry-placeholder">I changed [X] because I wanted [Y]. The result was [Z].</span></div>
+        <div class="prompt-box">
+          <strong>Struggling to write?</strong> Try: "The canvas shows ___ because line ___ does ___. I changed ___ to make it ___."
+        </div>
+      </div>
+
+      <div class="entry-card">
+        <span class="entry-label">Part 3 — The reflection</span>
+        <div class="entry-label">What was hard about this concept?</div>
+        <div class="entry-field" style="min-height:40px"><span class="entry-placeholder">Something I got stuck on or confused about...</span></div>
+        <div class="entry-label">What did you figure out? (or: what are you still wondering?)</div>
+        <div class="entry-field" style="min-height:40px"><span class="entry-placeholder">Once I understood that [key insight], everything clicked. Or: I still don't understand why...</span></div>
+        <div class="entry-label">What would you try next if you had more time?</div>
+        <div class="entry-field" style="min-height:40px"><span class="entry-placeholder">I'd like to add [feature] because...</span></div>
+      </div>
+    </section>
+
     <section class="band columns">
-      <article><h2>Use it for</h2><p>Save one artifact per major concept.</p></article><article><h2>Try next</h2><p>Pair each image with the code that matters.</p></article><article><h2>Connect it</h2><p>Ask students to explain one decision or bug fix.</p></article>
+      <article>
+        <h2>Teacher instructions</h2>
+        <p style="font-size:13px">Give students 10–15 minutes to complete an entry at the end of a checkpoint session. The screenshot takes 1 minute. The code excerpt takes 2. The writing is the work.</p>
+        <p style="font-size:13px;margin-top:8px">Accept all honest reflections. "I don't understand why this works" is a full-credit response — it shows metacognition.</p>
+      </article>
+      <article>
+        <h2>Grading the portfolio</h2>
+        <p style="font-size:13px">Grade on the rubric from the <a href="../assessment-rubrics/index.html" style="color:var(--accent)">Assessment &amp; Rubrics page</a>: reproduce (1), modify (2), extend (3). The portfolio earns its level based on the explanation quality, not the visual complexity of the sketch.</p>
+        <p style="font-size:13px;margin-top:8px">A student who changed one value and clearly explains why earns a 2. A student with a dazzling sketch who can't explain their code earns a 1.</p>
+      </article>
+      <article>
+        <h2>AP Create PT connection</h2>
+        <p style="font-size:13px">For AP CSP, the §4 portfolio entry is the strongest Create PT seed: it already has a list, a procedure, and an algorithm. Students can expand it into a full CPT submission. See the <a href="../create-performance-task/index.html" style="color:var(--accent)">Create PT support page</a>.</p>
+        <p style="font-size:13px;margin-top:8px">For AP CS A, §4 and §7 entries generate authentic FRQ evidence: class design, array traversal, ArrayList methods.</p>
+      </article>
     </section>
-    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/index.html">
-    <span class="meta">lessons</span>
-    <h2>Concepts</h2>
-    <p>Return to the numbered lesson sequence.</p>
-  </a><a class="card" href="../../browse/index.html">
-    <span class="meta">index</span>
-    <h2>Browse</h2>
-    <p>Search the full site atlas.</p>
-  </a></div></section>
-  
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related resources</p>
+      <div class="grid cards">
+        <a class="card" href="../assessment-rubrics/index.html">
+          <span class="meta">rubrics</span>
+          <h2>Assessment &amp; Rubrics</h2>
+          <p>The reproduce/modify/extend rubric that aligns with each portfolio entry.</p>
+        </a>
+        <a class="card" href="../create-performance-task/index.html">
+          <span class="meta">AP CSP</span>
+          <h2>Create PT Support</h2>
+          <p>How a portfolio entry becomes a Create Performance Task submission.</p>
+        </a>
+        <a class="card" href="../lesson-plan-template/index.html">
+          <span class="meta">planning</span>
+          <h2>Lesson Plan Template</h2>
+          <p>The five-phase session structure that feeds into portfolio checkpoints.</p>
+        </a>
+      </div>
+    </section>
+
   </main>
   <footer class="site-footer">
-    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
-    <span>p5.js - Canvas API - Processing Java</span>
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="../../assets/site.js"></script>
 </body>

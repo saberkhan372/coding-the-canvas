@@ -4,49 +4,207 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Curriculum Guide - CS Canvas</title>
-  <meta name="description" content="A teacher-facing overview of the 22 concepts, seven sections, prerequisites, and suggested sequence." />
+  <meta name="description" content="Scope, sequence, learning objectives, and the seven-section arc for teaching CS Canvas." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/styles.css" />
+  <style>
+    .section-table{width:100%;border-collapse:collapse;font-size:13px}
+    .section-table th,.section-table td{border:1px solid var(--ink);padding:10px 12px;text-align:left;vertical-align:top}
+    .section-table th{background:var(--edge);font:700 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+    .section-table tr:nth-child(even) td{background:#fffbf5}
+    .sec-num{font:700 13px/1.4 var(--mono);color:var(--accent);display:block}
+    .section-table code{font:600 11px/1 var(--mono);background:var(--edge);padding:2px 6px;border-radius:2px;white-space:nowrap;margin:1px;display:inline-block}
+    .prereq-chip{display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono);margin:2px}
+  </style>
 </head>
 <body data-page="teachers">
   <header class="site-header">
     <a class="brand" href="../../index.html">CS Canvas</a>
-    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../browse/index.html">Browse</a><a class="active" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a href="../../concepts/index.html">Concepts</a>
+      <a href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a class="active" href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
   </header>
   <main>
+
     <section class="hero">
       <p class="kicker">teacher resource</p>
       <h1>Curriculum Guide</h1>
-      <p class="lede">A teacher-facing overview of the 22 concepts, seven sections, prerequisites, and suggested sequence.</p>
+      <p class="lede">Scope, sequence, learning objectives, and the seven-section arc — everything you need to plan a CS Canvas unit or full course.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../sections/index.html">Browse sections</a>
+        <a class="button" href="../pacing-guides/index.html">Pacing guides</a>
+      </div>
     </section>
-    
+
     <section class="band split">
       <div>
-        <h2>Plan the whole arc.</h2>
-        <p>A teacher-facing overview of the 22 concepts, seven sections, prerequisites, and suggested sequence.</p>
-        <ul class="checklist"><li>Use sections as units.</li><li>Use concepts as lessons or stations.</li><li>Adjust pacing without losing the conceptual order.</li></ul>
+        <p class="meta">22 concepts · 7 sections</p>
+        <h2>The seven-section arc</h2>
+        <p>CS Canvas is organized as a progressive arc from first drawing to systems thinking. Each section builds on the previous. The canvas is the proof: students see their own learning compound on screen.</p>
+        <ul class="checklist">
+          <li>Sections map to AP Big Ideas and CS A Units</li>
+          <li>Each concept fits one class period (30–50 min)</li>
+          <li>Sections 1–4 form a strong standalone unit (~12 periods)</li>
+          <li>Sections 5–7 extend into data, impact, and algorithms</li>
+          <li>Processing (Java) column throughout for AP CS A</li>
+        </ul>
       </div>
-      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132"><circle cx="36" cy="34" r="5"/><circle cx="72" cy="34" r="8"/><circle cx="108" cy="34" r="5"/><circle cx="144" cy="34" r="8"/><circle cx="36" cy="72" r="8"/><circle cx="72" cy="72" r="5"/><circle cx="108" cy="72" r="8"/><circle cx="144" cy="72" r="5"/></svg></div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <rect x="20" y="14" width="140" height="10" rx="2" fill="currentColor" opacity=".15"/>
+          <rect x="20" y="28" width="80" height="10" rx="2" fill="currentColor" opacity=".2"/>
+          <rect x="20" y="42" width="90" height="10" rx="2" fill="currentColor" opacity=".3"/>
+          <rect x="20" y="56" width="140" height="10" rx="2" fill="#d96a3d" opacity=".55"/>
+          <rect x="20" y="70" width="140" height="10" rx="2" fill="currentColor" opacity=".45"/>
+          <rect x="20" y="84" width="110" height="10" rx="2" fill="currentColor" opacity=".35"/>
+          <rect x="20" y="98" width="70" height="10" rx="2" fill="#d96a3d" opacity=".75"/>
+          <text x="165" y="21" font-family="monospace" font-size="7" text-anchor="end" fill="currentColor">§1</text>
+          <text x="165" y="35" font-family="monospace" font-size="7" text-anchor="end" fill="currentColor">§2</text>
+          <text x="165" y="49" font-family="monospace" font-size="7" text-anchor="end" fill="currentColor">§3</text>
+          <text x="165" y="63" font-family="monospace" font-size="7" text-anchor="end" fill="#d96a3d">§4</text>
+          <text x="165" y="77" font-family="monospace" font-size="7" text-anchor="end" fill="currentColor">§5</text>
+          <text x="165" y="91" font-family="monospace" font-size="7" text-anchor="end" fill="currentColor">§6</text>
+          <text x="165" y="105" font-family="monospace" font-size="7" text-anchor="end" fill="#d96a3d">§7</text>
+        </svg>
+      </div>
     </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Section sequence &amp; learning objectives</p>
+      <div style="overflow-x:auto">
+        <table class="section-table">
+          <thead>
+            <tr>
+              <th>Section</th>
+              <th>Concepts</th>
+              <th>AP alignment</th>
+              <th>Typical time</th>
+              <th>Key learning objectives</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="sec-num">§1</span>Start with the Canvas</td>
+              <td>01 Coordinates<br>02 Shapes &amp; Color</td>
+              <td><code>AAP</code> <code>CRD</code><br>CS A: U1 U2</td>
+              <td>2–3 periods</td>
+              <td>Set up a canvas; place shapes by (x, y) coordinate; apply fill and stroke using numeric color values; understand the canvas coordinate system.</td>
+            </tr>
+            <tr>
+              <td><span class="sec-num">§2</span>Make It Move</td>
+              <td>03 Draw Loop &amp; Time</td>
+              <td><code>AAP</code><br>CS A: U3 U4</td>
+              <td>2 periods</td>
+              <td>Understand the draw loop as an infinite cycle; animate values over time using frame counters and variable increment; distinguish setup from draw.</td>
+            </tr>
+            <tr>
+              <td><span class="sec-num">§3</span>Make It Respond</td>
+              <td>04 Mouse Input<br>05 Conditionals</td>
+              <td><code>AAP</code><br>CS A: U2 U3</td>
+              <td>3–4 periods</td>
+              <td>Read mouseX, mouseY, and click events; write if/else branches; use boolean expressions; build interactive sketches that respond to user input.</td>
+            </tr>
+            <tr>
+              <td><span class="sec-num">§4</span>Make Systems</td>
+              <td>06 For Loops &amp; Grids<br>07 Functions<br>08 Arrays<br>09 Objects<br>10 State Machines</td>
+              <td><code>AAP</code> <code>CRD</code><br>CS A: U1–U5</td>
+              <td>8–10 periods</td>
+              <td>Write for loops to generate patterns; define reusable functions with parameters; store collections in arrays; design classes with fields and methods; manage program state across screens.</td>
+            </tr>
+            <tr>
+              <td><span class="sec-num">§5</span>Data as Material</td>
+              <td>11 Pixels / Image Data<br>12 Color is 24 Bits<br>13 Binary as Pixels<br>14 Compression by Drawing<br>15 Histograms &amp; Sampling<br>16 Data as Material</td>
+              <td><code>DAT</code> <code>AAP</code><br>CS A: U6 U8</td>
+              <td>6–8 periods</td>
+              <td>Access and manipulate pixel arrays; represent color in binary; understand lossless compression; compute brightness histograms; load and visualize tabular datasets on the canvas.</td>
+            </tr>
+            <tr>
+              <td><span class="sec-num">§6</span>Computing in the World</td>
+              <td>17 Bias in a Filter<br>18 Color &amp; Accessibility<br>19 Whose Authorship?<br>20 Energy of a Sketch</td>
+              <td><code>IOC</code> <code>DAT</code><br>CS A: —</td>
+              <td>4–6 periods</td>
+              <td>Identify algorithmic bias in image processing; evaluate design accessibility through contrast ratios; discuss authorship in generative art; estimate computational cost of a sketch.</td>
+            </tr>
+            <tr>
+              <td><span class="sec-num">§7</span>Algorithms</td>
+              <td>21 Recursion as Fractals<br>22 ArrayList in Action</td>
+              <td><code>AAP</code><br>CS A: U7 U10</td>
+              <td>3–4 periods</td>
+              <td>Write recursive functions with a base case and recursive case; visualize call-stack depth through fractals; use ArrayList for dynamic collections with add, remove, and traversal.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <section class="band columns">
-      <article><h2>Use it for</h2><p>Use sections as units.</p></article><article><h2>Try next</h2><p>Use concepts as lessons or stations.</p></article><article><h2>Connect it</h2><p>Adjust pacing without losing the conceptual order.</p></article>
+      <article>
+        <h2>Prerequisite knowledge</h2>
+        <p style="font-size:13px;color:var(--soft);margin-bottom:12px">Students entering §1 should be comfortable with:</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">
+          <span class="prereq-chip">variables</span>
+          <span class="prereq-chip">arithmetic operators</span>
+          <span class="prereq-chip">basic data types</span>
+          <span class="prereq-chip">reading error messages</span>
+        </div>
+        <p style="font-size:13px;color:var(--soft)">No prior graphics experience needed. The canvas is the entry point, not a reward.</p>
+      </article>
+      <article>
+        <h2>Suggested sequences</h2>
+        <ul style="padding-left:18px;margin:0;font-size:13px;line-height:2.1;color:var(--soft)">
+          <li><strong style="color:var(--ink)">Full arc:</strong> §1 → §7 in order (~24 weeks)</li>
+          <li><strong style="color:var(--ink)">Standalone CSP unit:</strong> §1–§4 + §6 (~16 weeks)</li>
+          <li><strong style="color:var(--ink)">CS A supplement:</strong> §1–§5 + §7 (~20 weeks)</li>
+          <li><strong style="color:var(--ink)">Workshop / bootcamp:</strong> §1 + §4 only (~5 days)</li>
+          <li><strong style="color:var(--ink)">Data deep dive:</strong> §1–§2 then §5</li>
+        </ul>
+      </article>
+      <article>
+        <h2>Language paths</h2>
+        <p style="font-size:13px"><strong>p5.js</strong> — browser-based, no install. All interactive editors run in the page. Best for general CS or CSP courses.</p>
+        <p style="font-size:13px;margin-top:8px"><strong>Canvas API</strong> — shows what p5 does under the hood. Best for web fundamentals or "no magic" classes.</p>
+        <p style="font-size:13px;margin-top:8px"><strong>Processing (Java)</strong> — read-and-copy Java that runs in the Processing IDE. Best for AP CS A and Java-centered classrooms.</p>
+      </article>
     </section>
-    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/index.html">
-    <span class="meta">lessons</span>
-    <h2>Concepts</h2>
-    <p>Return to the numbered lesson sequence.</p>
-  </a><a class="card" href="../../browse/index.html">
-    <span class="meta">index</span>
-    <h2>Browse</h2>
-    <p>Search the full site atlas.</p>
-  </a></div></section>
-  
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related resources</p>
+      <div class="grid cards">
+        <a class="card" href="../pacing-guides/index.html">
+          <span class="meta">pacing</span>
+          <h2>Pacing Guides</h2>
+          <p>Full year, semester, and workshop schedules for different course formats.</p>
+        </a>
+        <a class="card" href="../ap-csp/index.html">
+          <span class="meta">AP alignment</span>
+          <h2>AP CSP Coverage</h2>
+          <p>Big Ideas matrix and Create PT starter kits for AP CS Principles.</p>
+        </a>
+        <a class="card" href="../ap-csa/index.html">
+          <span class="meta">AP alignment</span>
+          <h2>AP CS A Coverage</h2>
+          <p>Unit-by-unit map through Processing Java for AP Computer Science A.</p>
+        </a>
+        <a class="card" href="../../sections/index.html">
+          <span class="meta">browse</span>
+          <h2>Sections overview</h2>
+          <p>Each section page lists its concepts, timing, and AP alignment details.</p>
+        </a>
+      </div>
+    </section>
+
   </main>
   <footer class="site-footer">
-    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
-    <span>p5.js - Canvas API - Processing Java</span>
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="../../assets/site.js"></script>
 </body>

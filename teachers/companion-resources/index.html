@@ -4,49 +4,190 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Companion Resources - CS Canvas</title>
-  <meta name="description" content="Suggested companion topics and substitutions for networks, accessibility, data ethics, and broader computing context." />
+  <meta name="description" content="Recommended add-ons and companion units, especially for the CSN gap in AP CSP and broader computing context." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/styles.css" />
+  <style>
+    .resource-card{border:1.5px solid var(--ink);border-radius:4px;padding:16px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink)}
+    .resource-type{font:700 10px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:6px}
+    .resource-title{font-size:16px;font-weight:700;margin-bottom:6px}
+    .resource-why{font-size:13px;color:var(--soft);line-height:1.5}
+    .gap-label{display:inline-flex;align-items:center;background:var(--ink);color:var(--paper);font:700 11px/1 var(--mono);padding:3px 10px;border-radius:3px;margin-bottom:14px;letter-spacing:.05em}
+    .thread-label{display:inline-flex;align-items:center;background:var(--accent);color:#fff;font:700 11px/1 var(--mono);padding:3px 10px;border-radius:3px;margin-bottom:14px;letter-spacing:.05em}
+    .dashed-section{border:1.5px dashed var(--ink);border-radius:4px;padding:20px;background:var(--paper)}
+  </style>
 </head>
 <body data-page="teachers">
   <header class="site-header">
     <a class="brand" href="../../index.html">CS Canvas</a>
-    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../browse/index.html">Browse</a><a class="active" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a href="../../concepts/index.html">Concepts</a>
+      <a href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a class="active" href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
   </header>
   <main>
+
     <section class="hero">
       <p class="kicker">teacher resource</p>
       <h1>Companion Resources</h1>
-      <p class="lede">Suggested companion topics and substitutions for networks, accessibility, data ethics, and broader computing context.</p>
+      <p class="lede">Recommended add-ons for the one real gap (CSN) and optional enrichment for impact, data ethics, and context beyond the canvas.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../ap-csp/index.html">AP CSP gap analysis</a>
+        <a class="button" href="../curriculum-guide/index.html">Curriculum guide</a>
+      </div>
     </section>
-    
+
     <section class="band split">
       <div>
-        <h2>Round out the course.</h2>
-        <p>Suggested companion topics and substitutions for networks, accessibility, data ethics, and broader computing context.</p>
-        <ul class="checklist"><li>Add readings or unplugged work when a topic needs more context.</li><li>Use impact lessons for discussion and reflection.</li><li>Pair outside resources with a canvas-based artifact.</li></ul>
+        <p class="meta">Honest about the gaps</p>
+        <h2>CS Canvas covers 4 of 5 AP CSP Big Ideas.</h2>
+        <p>The one it doesn't cover is <strong>CSN — Computing Systems &amp; Networks</strong> (internet, protocols, fault tolerance, parallel computing). Teaching this through a canvas feels forced — the canvas is the wrong medium for networking concepts. You'll need to bring your own CSN unit. Here's what works well alongside CS Canvas.</p>
+        <ul class="checklist">
+          <li>CSN is ~3 weeks — a manageable add, not a big gap</li>
+          <li>Most AP CSP teachers already have a CSN unit they like</li>
+          <li>Canvas-based lessons exist as enrichment, not replacements</li>
+          <li>Impact and ethics lessons (§6) can be extended with readings</li>
+        </ul>
       </div>
-      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132"><circle cx="36" cy="34" r="5"/><circle cx="72" cy="34" r="8"/><circle cx="108" cy="34" r="5"/><circle cx="144" cy="34" r="8"/><circle cx="36" cy="72" r="8"/><circle cx="72" cy="72" r="5"/><circle cx="108" cy="72" r="8"/><circle cx="144" cy="72" r="5"/></svg></div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- 5 Big Ideas as cells, CSN dashed -->
+          <rect x="16" y="20" width="148" height="20" rx="2" fill="#d96a3d" opacity=".7"/>
+          <rect x="16" y="44" width="148" height="20" rx="2" fill="#d96a3d" opacity=".7"/>
+          <rect x="16" y="68" width="148" height="20" rx="2" fill="#d96a3d" opacity=".7"/>
+          <rect x="16" y="92" width="148" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 2"/>
+          <text x="24" y="33" font-family="monospace" font-size="7" fill="white">AAP — Algorithms &amp; Programming ✓</text>
+          <text x="24" y="57" font-family="monospace" font-size="7" fill="white">DAT — Data ✓</text>
+          <text x="24" y="81" font-family="monospace" font-size="7" fill="white">IOC — Impact of Computing ✓</text>
+          <text x="24" y="105" font-family="monospace" font-size="7" fill="currentColor">CSN — Networks  ← bring your own</text>
+          <text x="24" y="120" font-family="monospace" font-size="6" fill="currentColor" opacity=".6">(CRD threads through all of the above)</text>
+        </svg>
+      </div>
     </section>
+
+    <section class="band">
+      <span class="gap-label">CSN Gap — Computing Systems &amp; Networks</span>
+      <p style="font-size:14px;color:var(--soft);margin-bottom:20px;max-width:700px">The honest recommendation: use what you already have. Most AP CSP teachers have a CSN unit they like. If you don't, here are three that slot in cleanly.</p>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">
+        <div class="resource-card">
+          <span class="resource-type">free · interactive</span>
+          <div class="resource-title">code.org AP CSP — Internet unit</div>
+          <div class="resource-why">The best free CSN unit available. Covers packets, DNS, protocols, encryption, and fault tolerance through unplugged activities and simulations. Usually 2–3 weeks. Works standalone — you don't have to use the rest of code.org's curriculum.</div>
+        </div>
+        <div class="resource-card">
+          <span class="resource-type">video series · flipped</span>
+          <div class="resource-title">How the Internet Works — code.org videos</div>
+          <div class="resource-why">Six 5-minute videos covering IP, TCP, HTTP, encryption, and the web. Best as a flipped or at-home component alongside another CSN activity. Useful for visual learners and as a review before the AP exam.</div>
+        </div>
+        <div class="resource-card">
+          <span class="resource-type">physical · unplugged</span>
+          <div class="resource-title">CS Unplugged — Network Protocols</div>
+          <div class="resource-why">Offline activities that simulate routing and packet loss through physical card games. Great for schools without consistent internet access or for kinesthetic learners. Pairs well with a short reading on TCP/IP.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <span class="thread-label">§6 Enrichment — Impact &amp; Ethics</span>
+      <p style="font-size:14px;color:var(--soft);margin-bottom:20px;max-width:700px">The §6 lessons (Bias, Accessibility, Authorship, Energy) are intentionally short. Add readings, case studies, or discussions to deepen any of them.</p>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">
+        <div class="resource-card">
+          <span class="resource-type">reading · bias</span>
+          <div class="resource-title">"Coded Bias" — documentary + discussion guide</div>
+          <div class="resource-why">Pairs directly with Concept 17 (Bias in a Filter). Shows real-world facial recognition failures. The discussion guide has structured questions for 9–12 students. 90-minute film or use clips. Available on Netflix.</div>
+        </div>
+        <div class="resource-card">
+          <span class="resource-type">tool · accessibility</span>
+          <div class="resource-title">WebAIM Contrast Checker</div>
+          <div class="resource-why">Free browser tool for checking contrast ratios between two colors. Students use it alongside Concept 18 (Color &amp; Accessibility) to evaluate their own palettes. Immediate feedback loop — pairs directly with the canvas output.</div>
+        </div>
+        <div class="resource-card">
+          <span class="resource-type">reading · authorship</span>
+          <div class="resource-title">The Computer as a Creative Partner — Harold Cohen</div>
+          <div class="resource-why">Cohen's AARON program (1970s generative art) is the canonical case for the authorship question in Concept 19. Short accessible essays available online. Ask students: was Cohen the artist, or was AARON?</div>
+        </div>
+        <div class="resource-card">
+          <span class="resource-type">data · energy</span>
+          <div class="resource-title">Our World in Data — Energy &amp; Computing</div>
+          <div class="resource-why">Free charts on data center energy use, global electricity consumption, and computing's environmental footprint. Pairs with Concept 20 (Energy of a Sketch). Students can look up the energy cost of streaming, training a model, or loading a page.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Optional enrichment — for any section</p>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">
+        <div class="resource-card">
+          <span class="resource-type">reference · p5.js</span>
+          <div class="resource-title">p5.js Reference</div>
+          <div class="resource-why">The canonical documentation for p5.js functions. Bookmark it — students should learn to look things up here. Every function used in CS Canvas is in the reference. The examples page shows many of the same visual concepts.</div>
+        </div>
+        <div class="resource-card">
+          <span class="resource-type">book · creative coding</span>
+          <div class="resource-title">The Nature of Code — Daniel Shiffman</div>
+          <div class="resource-why">Free online book that extends §4 (Objects, Arrays) into physics simulation: forces, steering, flocking. Perfect enrichment for students who finish the curriculum early. The p5.js version mirrors CS Canvas's language.</div>
+        </div>
+        <div class="resource-card">
+          <span class="resource-type">reference · canvas api</span>
+          <div class="resource-title">MDN Canvas API Documentation</div>
+          <div class="resource-why">The authoritative reference for the Canvas 2D API. Students using the Canvas API track should bookmark this. The tutorials section includes a pixel manipulation guide that pairs well with §5.</div>
+        </div>
+        <div class="resource-card">
+          <span class="resource-type">tool · Processing Java</span>
+          <div class="resource-title">Processing IDE + Reference</div>
+          <div class="resource-why">The desktop environment where Processing (Java) sketches run. Free, cross-platform, no dependencies. The Reference tab in the IDE is instant documentation — students can right-click any function. AP CS A teachers should ensure all students have this installed before §4.</div>
+        </div>
+      </div>
+    </section>
+
     <section class="band columns">
-      <article><h2>Use it for</h2><p>Add readings or unplugged work when a topic needs more context.</p></article><article><h2>Try next</h2><p>Use impact lessons for discussion and reflection.</p></article><article><h2>Connect it</h2><p>Pair outside resources with a canvas-based artifact.</p></article>
+      <article>
+        <h2>Pairing principle</h2>
+        <p style="font-size:13px">The best companion resources share one trait: they connect back to something visible. If the reading or video can produce a canvas artifact — a chart, a filter, a sketch — use it. If it can't, keep it short (10–15 min) and pair it with a discussion prompt, not a coding exercise.</p>
+      </article>
+      <article>
+        <h2>For AP CSP teachers</h2>
+        <p style="font-size:13px">Your core gap is CSN (~3 weeks). Everything else in AP CSP is covered by CS Canvas. The code.org Internet unit is the path of least resistance. If your district already has a CSN unit you like, use that. See the <a href="../ap-csp/index.html" style="color:var(--accent)">AP CSP coverage page</a> for the full picture.</p>
+      </article>
+      <article>
+        <h2>For AP CS A teachers</h2>
+        <p style="font-size:13px">CS Canvas covers all 10 AP CS A units — there's no structural gap to fill. Companion resources here are enrichment only. The biggest addition that helps CS A students: more FRQ practice beyond the concepts. See the <a href="../frq-practice/index.html" style="color:var(--accent)">FRQ Practice page</a>.</p>
+      </article>
     </section>
-    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/index.html">
-    <span class="meta">lessons</span>
-    <h2>Concepts</h2>
-    <p>Return to the numbered lesson sequence.</p>
-  </a><a class="card" href="../../browse/index.html">
-    <span class="meta">index</span>
-    <h2>Browse</h2>
-    <p>Search the full site atlas.</p>
-  </a></div></section>
-  
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related resources</p>
+      <div class="grid cards">
+        <a class="card" href="../ap-csp/index.html">
+          <span class="meta">AP alignment</span>
+          <h2>AP CSP Coverage</h2>
+          <p>The full Big Ideas map showing exactly what CS Canvas covers and what it doesn't.</p>
+        </a>
+        <a class="card" href="../ap-csa/index.html">
+          <span class="meta">AP alignment</span>
+          <h2>AP CS A Coverage</h2>
+          <p>All 10 CS A units through Processing Java — no structural gaps.</p>
+        </a>
+        <a class="card" href="../frq-practice/index.html">
+          <span class="meta">AP CS A</span>
+          <h2>FRQ Practice</h2>
+          <p>The main companion resource for AP CS A beyond the curriculum.</p>
+        </a>
+      </div>
+    </section>
+
   </main>
   <footer class="site-footer">
-    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
-    <span>p5.js - Canvas API - Processing Java</span>
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="../../assets/site.js"></script>
 </body>

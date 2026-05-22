@@ -4,49 +4,215 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Create Performance Task Support - CS Canvas</title>
-  <meta name="description" content="Milestones and project guidance for turning a canvas sketch into a purposeful AP CSP Create-style project." />
+  <meta name="description" content="How to turn a CS Canvas sketch into a complete AP CSP Create Performance Task submission — milestones, starter kits, and required artifacts." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/styles.css" />
+  <style>
+    .cpt-card{border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink)}
+    .cpt-tag{font-family:var(--hand);font-size:22px;color:var(--accent);display:block;margin-bottom:8px}
+    .cpt-lessons{font:600 10px/1 var(--mono);letter-spacing:.05em;color:var(--faint);margin-top:10px;display:block}
+    .milestone-row{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--edge)}
+    .milestone-num{width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;font:700 14px/1 var(--mono);flex-shrink:0}
+    .milestone-content{flex:1}
+    .milestone-title{font-weight:700;font-size:15px;margin-bottom:4px}
+    .milestone-desc{font-size:13px;color:var(--soft);line-height:1.5}
+    .artifact-badge{display:inline-flex;align-items:center;background:var(--accent);color:#fff;font:700 10px/1 var(--mono);padding:3px 8px;border-radius:2px;margin-left:8px;vertical-align:middle}
+    .required-block{background:#fff8f5;border-left:4px solid var(--accent);padding:12px 16px;border-radius:0 4px 4px 0;font-size:13px}
+  </style>
 </head>
 <body data-page="teachers">
   <header class="site-header">
     <a class="brand" href="../../index.html">CS Canvas</a>
-    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../browse/index.html">Browse</a><a class="active" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a href="../../concepts/index.html">Concepts</a>
+      <a href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a class="active" href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
   </header>
   <main>
+
     <section class="hero">
-      <p class="kicker">teacher resource</p>
+      <p class="kicker">teacher resource · AP CS Principles</p>
       <h1>Create Performance Task Support</h1>
-      <p class="lede">Milestones and project guidance for turning a canvas sketch into a purposeful AP CSP Create-style project.</p>
+      <p class="lede">Every CS Canvas sketch can become a Create PT. Here are three starter recipes, the required artifacts, and a milestone timeline to keep students on track.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../ap-csp/index.html">AP CSP coverage map</a>
+        <a class="button" href="../assessment-rubrics/index.html">Rubric guide</a>
+      </div>
     </section>
-    
+
     <section class="band split">
       <div>
-        <h2>Help students build with intention.</h2>
-        <p>Milestones and project guidance for turning a canvas sketch into a purposeful AP CSP Create-style project.</p>
-        <ul class="checklist"><li>Start from a simple visual idea.</li><li>Add input, data, or abstraction deliberately.</li><li>Collect code excerpts and reflection notes along the way.</li></ul>
+        <p class="meta">What the Create PT requires</p>
+        <h2>A program with a list, a procedure, and an algorithm.</h2>
+        <p>The College Board requires students to submit a program they wrote with specific features: at least one list (or collection), at least one student-developed procedure with a parameter, and an algorithm that includes sequencing, selection, and iteration. CS Canvas teaches all of these — the trick is intentionality.</p>
+        <ul class="checklist">
+          <li>Video: 1 minute of the program running</li>
+          <li>PDF: program code (entire file)</li>
+          <li>Written response: 3 prompts about list, procedure, and algorithm</li>
+          <li>Student-developed means: the student wrote it, not copy-pasted it</li>
+        </ul>
       </div>
-      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132"><circle cx="36" cy="34" r="5"/><circle cx="72" cy="34" r="8"/><circle cx="108" cy="34" r="5"/><circle cx="144" cy="34" r="8"/><circle cx="36" cy="72" r="8"/><circle cx="72" cy="72" r="5"/><circle cx="108" cy="72" r="8"/><circle cx="144" cy="72" r="5"/></svg></div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- Three CPT components as boxes -->
+          <rect x="16" y="16" width="50" height="36" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="41" y="32" font-family="monospace" font-size="7" text-anchor="middle" fill="currentColor">list</text>
+          <text x="41" y="44" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor" opacity=".7">array[0]…</text>
+          <rect x="75" y="16" width="50" height="36" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="100" y="32" font-family="monospace" font-size="7" text-anchor="middle" fill="currentColor">procedure</text>
+          <text x="100" y="44" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor" opacity=".7">fn(param)</text>
+          <rect x="114" y="16" width="50" height="36" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="139" y="32" font-family="monospace" font-size="7" text-anchor="middle" fill="currentColor">algorithm</text>
+          <text x="139" y="44" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor" opacity=".7">seq+sel+iter</text>
+          <!-- Arrow down -->
+          <path d="M90 58 L90 78" stroke="#d96a3d" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <!-- Output box -->
+          <rect x="40" y="82" width="100" height="34" rx="3" fill="#d96a3d" opacity=".15" stroke="#d96a3d" stroke-width="1.5"/>
+          <text x="90" y="102" font-family="monospace" font-size="8" text-anchor="middle" fill="#d96a3d">Create PT ✓</text>
+        </svg>
+      </div>
     </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Three starter recipes — pick one</p>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+        <div class="cpt-card">
+          <span class="cpt-tag">Recipe 1</span>
+          <strong style="font-size:16px">List + procedure</strong>
+          <p style="font-size:13px;color:var(--soft);margin-top:8px">Build a sketch that stores objects in an array and calls a method (procedure with a parameter) to draw or update each one. The for loop that iterates the array is your algorithm.</p>
+          <ul style="font-size:13px;color:var(--soft);padding-left:18px;margin-top:8px;line-height:1.8">
+            <li>List: <code style="font-size:11px;background:var(--edge);padding:1px 5px;border-radius:2px">let particles = []</code></li>
+            <li>Procedure: <code style="font-size:11px;background:var(--edge);padding:1px 5px;border-radius:2px">drawParticle(p, color)</code></li>
+            <li>Algorithm: <code style="font-size:11px;background:var(--edge);padding:1px 5px;border-radius:2px">for loop + if for boundary check</code></li>
+          </ul>
+          <span class="cpt-lessons">Concepts: 08 Arrays · 07 Functions · 09 Objects</span>
+        </div>
+        <div class="cpt-card">
+          <span class="cpt-tag">Recipe 2</span>
+          <strong style="font-size:16px">Iteration + selection</strong>
+          <p style="font-size:13px;color:var(--soft);margin-top:8px">A grid-based visualization where each cell is computed by a function that takes row and column as parameters, with conditional logic to determine what gets drawn.</p>
+          <ul style="font-size:13px;color:var(--soft);padding-left:18px;margin-top:8px;line-height:1.8">
+            <li>List: <code style="font-size:11px;background:var(--edge);padding:1px 5px;border-radius:2px">let grid = []</code> 2D data</li>
+            <li>Procedure: <code style="font-size:11px;background:var(--edge);padding:1px 5px;border-radius:2px">drawCell(r, c, value)</code></li>
+            <li>Algorithm: nested loop + color selection by value</li>
+          </ul>
+          <span class="cpt-lessons">Concepts: 06 For Loops · 05 Conditionals · 15 Histograms</span>
+        </div>
+        <div class="cpt-card">
+          <span class="cpt-tag">Recipe 3</span>
+          <strong style="font-size:16px">Abstraction + algorithm</strong>
+          <p style="font-size:13px;color:var(--soft);margin-top:8px">A state-machine game with three screens. Objects in an array, a student-written update procedure, and conditionals that check game state. The abstraction is the game object hiding its logic.</p>
+          <ul style="font-size:13px;color:var(--soft);padding-left:18px;margin-top:8px;line-height:1.8">
+            <li>List: <code style="font-size:11px;background:var(--edge);padding:1px 5px;border-radius:2px">enemies[]</code> or <code style="font-size:11px;background:var(--edge);padding:1px 5px;border-radius:2px">stars[]</code></li>
+            <li>Procedure: <code style="font-size:11px;background:var(--edge);padding:1px 5px;border-radius:2px">update(speed)</code> on the class</li>
+            <li>Algorithm: state machine + array traversal</li>
+          </ul>
+          <span class="cpt-lessons">Concepts: 09 Objects · 10 State Machines · 08 Arrays</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Milestone timeline — last 6 weeks</p>
+
+      <div class="milestone-row">
+        <div class="milestone-num">1</div>
+        <div class="milestone-content">
+          <div class="milestone-title">Choose a recipe + sketch a plan <span class="artifact-badge">decision doc</span></div>
+          <div class="milestone-desc">Students pick one of the three recipes (or propose their own with teacher approval). They write 3 sentences: what the program does, what the list holds, and what the procedure computes. Teacher approves before any code is written.</div>
+        </div>
+      </div>
+      <div class="milestone-row">
+        <div class="milestone-num">2</div>
+        <div class="milestone-content">
+          <div class="milestone-title">Working prototype — list + basic loop <span class="artifact-badge">code check</span></div>
+          <div class="milestone-desc">Students have a running sketch with the list and a loop over it. It doesn't have to look good — it has to prove the list and iteration are working. Teacher checks: is the list populated? is it iterated with a loop? is it a student-written loop, not a library call?</div>
+        </div>
+      </div>
+      <div class="milestone-row">
+        <div class="milestone-num">3</div>
+        <div class="milestone-content">
+          <div class="milestone-title">Add the procedure with a parameter <span class="artifact-badge">code review</span></div>
+          <div class="milestone-desc">Students extract a block of repeated code into a named procedure with at least one parameter. Teacher checks: does the parameter actually change behavior? Is this student-written? (Library functions like <code style="font-size:11px">circle()</code> don't count.)</div>
+        </div>
+      </div>
+      <div class="milestone-row">
+        <div class="milestone-num">4</div>
+        <div class="milestone-content">
+          <div class="milestone-title">Record the video <span class="artifact-badge">1-min video</span></div>
+          <div class="milestone-desc">Screen recording showing input, the program running, and output. Students narrate or the program visually demonstrates both the list and the procedure in action. Common mistake: recording a static sketch — the program must do something while the video runs.</div>
+        </div>
+      </div>
+      <div class="milestone-row">
+        <div class="milestone-num">5</div>
+        <div class="milestone-content">
+          <div class="milestone-title">Draft written response <span class="artifact-badge">3 prompts</span></div>
+          <div class="milestone-desc">Students answer the three College Board prompts: (2a) describe the list and why it's needed; (2b) describe the procedure and how the parameter affects behavior; (2c) describe the algorithm that includes sequencing, selection, and iteration. Each answer is 200 words maximum.</div>
+        </div>
+      </div>
+      <div class="milestone-row" style="border-bottom:none">
+        <div class="milestone-num">6</div>
+        <div class="milestone-content">
+          <div class="milestone-title">Final submission <span class="artifact-badge">submit</span></div>
+          <div class="milestone-desc">Export the full program as a PDF. Attach the 1-minute video. Submit written responses. Teacher does a final check: does the written response match the actual code? Does the video show the list and procedure in action? Common last-minute issue: code submitted doesn't match what was demoed.</div>
+        </div>
+      </div>
+    </section>
+
     <section class="band columns">
-      <article><h2>Use it for</h2><p>Start from a simple visual idea.</p></article><article><h2>Try next</h2><p>Add input, data, or abstraction deliberately.</p></article><article><h2>Connect it</h2><p>Collect code excerpts and reflection notes along the way.</p></article>
+      <article>
+        <h2>Common pitfalls</h2>
+        <ul style="padding-left:18px;margin:0;font-size:13px;line-height:2;color:var(--soft)">
+          <li>Using a library function as the "procedure"</li>
+          <li>The list holds one item, never iterated</li>
+          <li>The video doesn't show the list or procedure in action</li>
+          <li>Written response describes a different program than the one submitted</li>
+          <li>Submitting code that doesn't run</li>
+        </ul>
+      </article>
+      <article>
+        <h2>The §4 connection</h2>
+        <p style="font-size:13px">The §4 section checkpoint (particle system) is designed to be CPT-ready: it has an array of objects (the list), a class method with a parameter (the procedure), and a for loop with a conditional (the algorithm).</p>
+        <p style="font-size:13px;margin-top:8px">If students expand their §4 checkpoint instead of starting fresh, they usually finish Milestone 3 with time to spare.</p>
+      </article>
+      <article>
+        <h2>Processing Java &amp; CS A</h2>
+        <p style="font-size:13px">AP CS A has no Create PT. If you teach both CSP and CS A sections, you can run the Create PT separately. The CS A parallel is the FRQ — see the <a href="../frq-practice/index.html" style="color:var(--accent)">FRQ Practice page</a> for how the same sketches generate FRQ-aligned assessment.</p>
+      </article>
     </section>
-    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/index.html">
-    <span class="meta">lessons</span>
-    <h2>Concepts</h2>
-    <p>Return to the numbered lesson sequence.</p>
-  </a><a class="card" href="../../browse/index.html">
-    <span class="meta">index</span>
-    <h2>Browse</h2>
-    <p>Search the full site atlas.</p>
-  </a></div></section>
-  
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related resources</p>
+      <div class="grid cards">
+        <a class="card" href="../ap-csp/index.html">
+          <span class="meta">AP alignment</span>
+          <h2>AP CSP Coverage</h2>
+          <p>The full Big Ideas matrix showing where Create PT evidence lives in the curriculum.</p>
+        </a>
+        <a class="card" href="../assessment-rubrics/index.html">
+          <span class="meta">assessment</span>
+          <h2>Assessment &amp; Rubrics</h2>
+          <p>The reproduce/modify/extend rubric that mirrors Create PT scoring criteria.</p>
+        </a>
+        <a class="card" href="../portfolio-template/index.html">
+          <span class="meta">student-facing</span>
+          <h2>Portfolio Template</h2>
+          <p>The checkpoint entries that feed directly into Create PT artifacts.</p>
+        </a>
+      </div>
+    </section>
+
   </main>
   <footer class="site-footer">
-    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
-    <span>p5.js - Canvas API - Processing Java</span>
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="../../assets/site.js"></script>
 </body>

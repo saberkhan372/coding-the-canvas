@@ -4,49 +4,226 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Assessment &amp; Rubrics - CS Canvas</title>
-  <meta name="description" content="Rubric language and checkpoint ideas for assessing code, process, creativity, explanation, and revision." />
+  <meta name="description" content="Reproduce, modify, extend rubrics and checkpoint ideas for assessing CS Canvas sketches." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/styles.css" />
+  <style>
+    .rubric-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:16px}
+    .rubric-table th,.rubric-table td{border:1px solid var(--ink);padding:10px 12px;text-align:left;vertical-align:top}
+    .rubric-table th{background:var(--edge);font:700 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+    .rubric-table .level{font:700 12px/1 var(--mono);color:var(--accent)}
+    .rubric-table tr:nth-child(even) td{background:#fffbf5}
+    .checkpoint-card{border:1.5px solid var(--ink);border-radius:4px;padding:16px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink)}
+    .checkpoint-num{font:700 28px/1 var(--hand);color:var(--accent);display:block;margin-bottom:4px}
+    .dimension-pill{display:inline-flex;align-items:center;background:var(--edge);border:1px solid var(--ink);border-radius:999px;font:600 10px/1 var(--mono);padding:3px 10px;margin:2px}
+  </style>
 </head>
 <body data-page="teachers">
   <header class="site-header">
     <a class="brand" href="../../index.html">CS Canvas</a>
-    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../browse/index.html">Browse</a><a class="active" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a href="../../concepts/index.html">Concepts</a>
+      <a href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a class="active" href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
   </header>
   <main>
+
     <section class="hero">
       <p class="kicker">teacher resource</p>
       <h1>Assessment &amp; Rubrics</h1>
-      <p class="lede">Rubric language and checkpoint ideas for assessing code, process, creativity, explanation, and revision.</p>
+      <p class="lede">Three performance levels — reproduce, modify, extend — that scale from concept exercises to full project checkpoints.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../portfolio-template/index.html">Portfolio template</a>
+        <a class="button" href="../lesson-plan-template/index.html">Lesson plan template</a>
+      </div>
     </section>
-    
+
     <section class="band split">
       <div>
-        <h2>Assess what students can explain and improve.</h2>
-        <p>Rubric language and checkpoint ideas for assessing code, process, creativity, explanation, and revision.</p>
-        <ul class="checklist"><li>Look for working code and intentional choices.</li><li>Use screenshots and code excerpts as evidence.</li><li>Reward debugging notes and thoughtful iteration.</li></ul>
+        <p class="meta">The core rubric framework</p>
+        <h2>Reproduce · Modify · Extend</h2>
+        <p>Every CS Canvas lesson can be assessed on three levels. Reproduce shows comprehension. Modify shows understanding. Extend shows transfer. The canvas output is always the first piece of evidence — does it do what the student claims?</p>
+        <ul class="checklist">
+          <li>Reproduce: student runs the example and explains what each line does</li>
+          <li>Modify: student changes values, layout, or logic with intention</li>
+          <li>Extend: student adds a new idea that requires understanding the concept</li>
+          <li>Evidence: canvas screenshot + relevant code excerpt + written reflection</li>
+        </ul>
       </div>
-      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132"><circle cx="36" cy="34" r="5"/><circle cx="72" cy="34" r="8"/><circle cx="108" cy="34" r="5"/><circle cx="144" cy="34" r="8"/><circle cx="36" cy="72" r="8"/><circle cx="72" cy="72" r="5"/><circle cx="108" cy="72" r="8"/><circle cx="144" cy="72" r="5"/></svg></div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- Three stacked blocks -->
+          <rect x="20" y="90" width="140" height="24" rx="2" fill="currentColor" opacity=".2"/>
+          <rect x="20" y="60" width="140" height="24" rx="2" fill="currentColor" opacity=".45"/>
+          <rect x="20" y="30" width="140" height="24" rx="2" fill="#d96a3d" opacity=".8"/>
+          <text x="90" y="105" font-family="monospace" font-size="8" text-anchor="middle" fill="currentColor">Reproduce</text>
+          <text x="90" y="75" font-family="monospace" font-size="8" text-anchor="middle" fill="currentColor">Modify</text>
+          <text x="90" y="45" font-family="monospace" font-size="8" text-anchor="middle" fill="white">Extend</text>
+        </svg>
+      </div>
     </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:4px">Concept rubric — for single-lesson checkpoints</p>
+      <div style="overflow-x:auto">
+        <table class="rubric-table">
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Code &amp; output</th>
+              <th>Explanation</th>
+              <th>Iteration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="level">3 · Extend</span></td>
+              <td>Sketch runs and adds a new behavior or visual element not in the original example. Code is purposeful — student can justify every addition.</td>
+              <td>Student explains the concept in their own words and describes how their extension uses it.</td>
+              <td>Shows at least one deliberate revision: a bug found and fixed, or a design choice changed with a reason.</td>
+            </tr>
+            <tr>
+              <td><span class="level">2 · Modify</span></td>
+              <td>Sketch runs. Student changed at least two values, names, or logic branches with a clear intention (not random trial and error).</td>
+              <td>Student can point to the key line(s) and describe what changes when they are altered.</td>
+              <td>Shows evidence of trying something that didn't work, even if unexplained.</td>
+            </tr>
+            <tr>
+              <td><span class="level">1 · Reproduce</span></td>
+              <td>Sketch runs using the provided example code. Output matches the expected canvas result.</td>
+              <td>Student can read the code aloud and give a surface-level description of what it does.</td>
+              <td>Little or no revision visible.</td>
+            </tr>
+            <tr>
+              <td><span class="level">0 · Not yet</span></td>
+              <td>Sketch does not run, or output is unrelated to the concept.</td>
+              <td>Student cannot explain any part of the code.</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Section checkpoints — end-of-section project prompts</p>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+        <div class="checkpoint-card">
+          <span class="checkpoint-num">§1–§2</span>
+          <strong style="font-size:14px">Animated scene</strong>
+          <p style="font-size:13px;color:var(--soft);margin-top:8px">Build a scene with at least 5 shapes that includes one moving element. Explain how position is calculated each frame.</p>
+          <div style="margin-top:12px">
+            <span class="dimension-pill">coordinates</span>
+            <span class="dimension-pill">draw loop</span>
+            <span class="dimension-pill">variables</span>
+          </div>
+        </div>
+        <div class="checkpoint-card">
+          <span class="checkpoint-num">§3</span>
+          <strong style="font-size:14px">Interactive toy</strong>
+          <p style="font-size:13px;color:var(--soft);margin-top:8px">Build a sketch that responds to the mouse in at least two distinct ways. At least one must use an if/else branch.</p>
+          <div style="margin-top:12px">
+            <span class="dimension-pill">events</span>
+            <span class="dimension-pill">conditionals</span>
+            <span class="dimension-pill">booleans</span>
+          </div>
+        </div>
+        <div class="checkpoint-card">
+          <span class="checkpoint-num">§4</span>
+          <strong style="font-size:14px">Particle system</strong>
+          <p style="font-size:13px;color:var(--soft);margin-top:8px">An array of at least 20 objects (class with 3+ properties, 2+ methods). Click to add. Optionally: menu and game-over screens.</p>
+          <div style="margin-top:12px">
+            <span class="dimension-pill">classes</span>
+            <span class="dimension-pill">arrays</span>
+            <span class="dimension-pill">state</span>
+          </div>
+        </div>
+        <div class="checkpoint-card">
+          <span class="checkpoint-num">§5</span>
+          <strong style="font-size:14px">Data portrait</strong>
+          <p style="font-size:13px;color:var(--soft);margin-top:8px">Load an image or dataset and generate a visual that reveals something. Explain what the data shows and what was lost or changed.</p>
+          <div style="margin-top:12px">
+            <span class="dimension-pill">pixel arrays</span>
+            <span class="dimension-pill">data loading</span>
+            <span class="dimension-pill">visualization</span>
+          </div>
+        </div>
+        <div class="checkpoint-card">
+          <span class="checkpoint-num">§6</span>
+          <strong style="font-size:14px">Critical filter</strong>
+          <p style="font-size:13px;color:var(--soft);margin-top:8px">Apply a filter or transformation and write a short analysis: who does it help, who might it harm, and what was your design intention?</p>
+          <div style="margin-top:12px">
+            <span class="dimension-pill">bias</span>
+            <span class="dimension-pill">accessibility</span>
+            <span class="dimension-pill">reflection</span>
+          </div>
+        </div>
+        <div class="checkpoint-card">
+          <span class="checkpoint-num">§7</span>
+          <strong style="font-size:14px">Recursive fractal or swarm</strong>
+          <p style="font-size:13px;color:var(--soft);margin-top:8px">Either a recursive fractal (trace the base case) or an ArrayList-driven particle swarm where items join and leave dynamically.</p>
+          <div style="margin-top:12px">
+            <span class="dimension-pill">recursion</span>
+            <span class="dimension-pill">ArrayList</span>
+            <span class="dimension-pill">dynamic lists</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="band columns">
-      <article><h2>Use it for</h2><p>Look for working code and intentional choices.</p></article><article><h2>Try next</h2><p>Use screenshots and code excerpts as evidence.</p></article><article><h2>Connect it</h2><p>Reward debugging notes and thoughtful iteration.</p></article>
+      <article>
+        <h2>Portfolio evidence</h2>
+        <p style="font-size:13px">For each checkpoint, collect: a canvas screenshot, the relevant code excerpt (not the whole file), a 2–3 sentence student reflection explaining one decision, and an optional next-step idea.</p>
+        <p style="font-size:13px;margin-top:8px">See the <a href="../portfolio-template/index.html" style="color:var(--accent)">portfolio template</a> for the student-facing version.</p>
+      </article>
+      <article>
+        <h2>AP CSP alignment</h2>
+        <p style="font-size:13px">The §4 checkpoint (particle system) maps directly to Create Performance Task requirements: a list (array), a procedure with a parameter (class method), and an iteration statement (for loop). Students can use their checkpoint sketch as a CPT starting point.</p>
+      </article>
+      <article>
+        <h2>AP CS A alignment</h2>
+        <p style="font-size:13px">The §4 and §7 checkpoints generate authentic FRQ situations: writing a class with fields and methods, traversing an array, and manipulating an ArrayList. Add a "trace this code" question to any checkpoint to practice FRQ reasoning.</p>
+      </article>
     </section>
-    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/index.html">
-    <span class="meta">lessons</span>
-    <h2>Concepts</h2>
-    <p>Return to the numbered lesson sequence.</p>
-  </a><a class="card" href="../../browse/index.html">
-    <span class="meta">index</span>
-    <h2>Browse</h2>
-    <p>Search the full site atlas.</p>
-  </a></div></section>
-  
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related resources</p>
+      <div class="grid cards">
+        <a class="card" href="../portfolio-template/index.html">
+          <span class="meta">student-facing</span>
+          <h2>Portfolio Template</h2>
+          <p>The structure students use to document each checkpoint artifact.</p>
+        </a>
+        <a class="card" href="../lesson-plan-template/index.html">
+          <span class="meta">planning</span>
+          <h2>Lesson Plan Template</h2>
+          <p>The repeatable session structure that feeds into portfolio checkpoints.</p>
+        </a>
+        <a class="card" href="../create-performance-task/index.html">
+          <span class="meta">AP CSP</span>
+          <h2>Create PT Support</h2>
+          <p>How to evolve a checkpoint sketch into a Create Performance Task.</p>
+        </a>
+        <a class="card" href="../frq-practice/index.html">
+          <span class="meta">AP CS A</span>
+          <h2>FRQ Practice</h2>
+          <p>Free-response practice ideas linked to visual CS Canvas lessons.</p>
+        </a>
+      </div>
+    </section>
+
   </main>
   <footer class="site-footer">
-    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
-    <span>p5.js - Canvas API - Processing Java</span>
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="../../assets/site.js"></script>
 </body>

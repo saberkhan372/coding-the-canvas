@@ -4,49 +4,149 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pacing Guides - CS Canvas</title>
-  <meta name="description" content="Ways to schedule Coding the Canvas as a short workshop, semester unit, AP CSP support path, or AP CSA bridge." />
+  <meta name="description" content="Ways to schedule CS Canvas as a short workshop, semester unit, AP CSP support path, or AP CS A bridge." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/styles.css" />
+  <style>
+    .pacing-strip{display:flex;border:1.5px solid var(--ink);border-radius:4px;overflow:hidden;margin-bottom:8px}
+    .pacing-band{display:flex;flex-direction:column;justify-content:space-between;padding:8px;border-left:1.5px solid var(--ink)}
+    .pacing-band:first-child{border-left:none}
+    .pacing-code{font:700 10px/1.2 var(--mono);white-space:nowrap}
+    .pacing-label{font-size:8px;line-height:1.2;color:inherit;opacity:.85}
+    .pacing-weeks{font:700 9px/1 var(--mono);opacity:.65;margin-top:auto}
+    .pacing-cc{background:var(--accent);color:#fff}
+    .pacing-you{background:var(--paper);color:var(--ink)}
+    .pacing-card{border:1.5px solid var(--ink);border-radius:4px;padding:20px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink)}
+    .pacing-h{font-family:var(--hand);font-size:26px;color:var(--accent);display:block;margin-bottom:6px}
+    .pacing-tag{font:700 10px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+    .week-badge{display:inline-flex;align-items:center;background:var(--ink);color:var(--paper);font:700 11px/1 var(--mono);padding:2px 8px;border-radius:2px;margin-bottom:8px}
+  </style>
 </head>
 <body data-page="teachers">
   <header class="site-header">
     <a class="brand" href="../../index.html">CS Canvas</a>
-    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../browse/index.html">Browse</a><a class="active" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a href="../../concepts/index.html">Concepts</a>
+      <a href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a class="active" href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
   </header>
   <main>
+
     <section class="hero">
       <p class="kicker">teacher resource</p>
       <h1>Pacing Guides</h1>
-      <p class="lede">Ways to schedule Coding the Canvas as a short workshop, semester unit, AP CSP support path, or AP CSA bridge.</p>
-    </section>
-    
-    <section class="band split">
-      <div>
-        <h2>Choose the right calendar.</h2>
-        <p>Ways to schedule Coding the Canvas as a short workshop, semester unit, AP CSP support path, or AP CSA bridge.</p>
-        <ul class="checklist"><li>Short workshops should favor p5.js and visible wins.</li><li>Semester plans can cover all seven sections.</li><li>AP courses can use selected lessons for targeted support.</li></ul>
+      <p class="lede">Four ways to fit CS Canvas into your calendar — from a one-week bootcamp to a full 36-week AP course.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../curriculum-guide/index.html">Curriculum guide</a>
+        <a class="button" href="../ap-csp/index.html">AP CSP alignment</a>
       </div>
-      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132"><circle cx="36" cy="34" r="5"/><circle cx="72" cy="34" r="8"/><circle cx="108" cy="34" r="5"/><circle cx="144" cy="34" r="8"/><circle cx="36" cy="72" r="8"/><circle cx="72" cy="72" r="5"/><circle cx="108" cy="72" r="8"/><circle cx="144" cy="72" r="5"/></svg></div>
     </section>
+
+    <section class="band">
+      <span class="pacing-h" style="margin-bottom:16px">One-week bootcamp</span>
+      <div class="week-badge">5 days · ~25 hours</div>
+      <p style="font-size:14px;color:var(--soft);margin-bottom:16px;max-width:680px">Best for summer intensives, professional development, or a week-long intro to CS. Focus on §1–§2 to get motion on screen, then §4 for functions and arrays as the big idea.</p>
+      <div class="pacing-strip" style="min-height:56px">
+        <div class="pacing-band pacing-cc" style="flex:1"><span class="pacing-code">§1</span><span class="pacing-label">Coords + Color</span><span class="pacing-weeks">day 1</span></div>
+        <div class="pacing-band pacing-cc" style="flex:1"><span class="pacing-code">§2</span><span class="pacing-label">Draw Loop</span><span class="pacing-weeks">day 2</span></div>
+        <div class="pacing-band pacing-cc" style="flex:1"><span class="pacing-code">§3</span><span class="pacing-label">Mouse + if</span><span class="pacing-weeks">day 3</span></div>
+        <div class="pacing-band pacing-cc" style="flex:1.5"><span class="pacing-code">§4 start</span><span class="pacing-label">Loops + Functions</span><span class="pacing-weeks">day 4</span></div>
+        <div class="pacing-band pacing-cc" style="flex:1.5"><span class="pacing-code">§4 end</span><span class="pacing-label">Arrays + Project</span><span class="pacing-weeks">day 5</span></div>
+      </div>
+      <p class="meta">Skips: Objects, State Machines, all data/impact/algorithms sections — return later if course continues.</p>
+    </section>
+
+    <section class="band">
+      <span class="pacing-h" style="margin-bottom:16px">Semester unit · intro CS</span>
+      <div class="week-badge">18 weeks · §1–§5</div>
+      <p style="font-size:14px;color:var(--soft);margin-bottom:16px;max-width:680px">Best for a first semester of a two-semester intro course, or as the programming arc inside a broader computing course. Covers all of AAP and a strong DAT unit.</p>
+      <div class="pacing-strip" style="min-height:56px">
+        <div class="pacing-band pacing-cc" style="flex:2"><span class="pacing-code">§1–§2</span><span class="pacing-label">Canvas + Motion</span><span class="pacing-weeks">wk 1–4</span></div>
+        <div class="pacing-band pacing-cc" style="flex:2"><span class="pacing-code">§3</span><span class="pacing-label">Respond</span><span class="pacing-weeks">wk 5–7</span></div>
+        <div class="pacing-band pacing-cc" style="flex:4"><span class="pacing-code">§4</span><span class="pacing-label">Systems (core)</span><span class="pacing-weeks">wk 8–14</span></div>
+        <div class="pacing-band pacing-cc" style="flex:2.5"><span class="pacing-code">§5</span><span class="pacing-label">Data</span><span class="pacing-weeks">wk 15–18</span></div>
+      </div>
+      <p class="meta">Strong stopping point. Students leave with arrays, objects, and state machines. §6–§7 become semester 2 or elective enrichment.</p>
+    </section>
+
+    <section class="band">
+      <span class="pacing-h" style="margin-bottom:16px">Full year · AP CS Principles</span>
+      <div class="week-badge">36 weeks · all sections + CSN unit you provide</div>
+      <p style="font-size:14px;color:var(--soft);margin-bottom:16px;max-width:680px">CS Canvas covers 4 of 5 Big Ideas (~24 weeks). You add a ~3-week CSN unit (internet/protocols) and Create PT scaffolding. See the <a href="../ap-csp/index.html" style="color:var(--accent)">AP CSP alignment page</a> for details.</p>
+      <div class="pacing-strip" style="min-height:64px">
+        <div class="pacing-band pacing-you" style="flex:2"><span class="pacing-code">CRD intro</span><span class="pacing-label">your materials</span><span class="pacing-weeks">wk 1–3</span></div>
+        <div class="pacing-band pacing-cc" style="flex:3"><span class="pacing-code">§1–§3</span><span class="pacing-label">Canvas + Respond</span><span class="pacing-weeks">wk 4–10</span></div>
+        <div class="pacing-band pacing-cc" style="flex:3.5"><span class="pacing-code">§4</span><span class="pacing-label">Make Systems</span><span class="pacing-weeks">wk 11–15</span></div>
+        <div class="pacing-band pacing-cc" style="flex:3.5"><span class="pacing-code">§5</span><span class="pacing-label">Data</span><span class="pacing-weeks">wk 16–21</span></div>
+        <div class="pacing-band pacing-you" style="flex:2"><span class="pacing-code">CSN</span><span class="pacing-label">your unit</span><span class="pacing-weeks">wk 22–24</span></div>
+        <div class="pacing-band pacing-cc" style="flex:2.5"><span class="pacing-code">§6–§7</span><span class="pacing-label">Impact + Alg.</span><span class="pacing-weeks">wk 25–30</span></div>
+        <div class="pacing-band pacing-you" style="flex:3"><span class="pacing-code">Create PT + review</span><span class="pacing-label">your scaffolding</span><span class="pacing-weeks">wk 31–36</span></div>
+      </div>
+      <p class="meta">Accent = CS Canvas content. White = teacher-supplied content.</p>
+    </section>
+
+    <section class="band">
+      <span class="pacing-h" style="margin-bottom:16px">Full year · AP CS A</span>
+      <div class="week-badge">36 weeks · Processing (Java) primary</div>
+      <p style="font-size:14px;color:var(--soft);margin-bottom:16px;max-width:680px">CS Canvas covers all 10 AP CS A units through Processing (Java). The last stretch is FRQ and MCQ practice. See the <a href="../ap-csa/index.html" style="color:var(--accent)">AP CS A alignment page</a> for unit-by-unit details.</p>
+      <div class="pacing-strip" style="min-height:64px">
+        <div class="pacing-band pacing-cc" style="flex:1.5"><span class="pacing-code">U1–U2</span><span class="pacing-label">§1 Canvas</span><span class="pacing-weeks">wk 1–4</span></div>
+        <div class="pacing-band pacing-cc" style="flex:1.5"><span class="pacing-code">U3–U4</span><span class="pacing-label">§2–§3</span><span class="pacing-weeks">wk 5–9</span></div>
+        <div class="pacing-band pacing-cc" style="flex:3"><span class="pacing-code">U5</span><span class="pacing-label">§4 Systems</span><span class="pacing-weeks">wk 10–14</span></div>
+        <div class="pacing-band pacing-cc" style="flex:2.5"><span class="pacing-code">U6 U8</span><span class="pacing-label">§5 Data</span><span class="pacing-weeks">wk 15–20</span></div>
+        <div class="pacing-band pacing-cc" style="flex:1.5"><span class="pacing-code">U7 U10</span><span class="pacing-label">§7 Algorithms</span><span class="pacing-weeks">wk 21–24</span></div>
+        <div class="pacing-band pacing-you" style="flex:4"><span class="pacing-code">FRQ · MCQ · mock exam</span><span class="pacing-label">practice + review</span><span class="pacing-weeks">wk 25–36</span></div>
+      </div>
+      <p class="meta">U9 Inheritance is light — supplement with 2–3 Shape → Circle examples if needed.</p>
+    </section>
+
     <section class="band columns">
-      <article><h2>Use it for</h2><p>Short workshops should favor p5.js and visible wins.</p></article><article><h2>Try next</h2><p>Semester plans can cover all seven sections.</p></article><article><h2>Connect it</h2><p>AP courses can use selected lessons for targeted support.</p></article>
+      <article>
+        <h2>One period = one concept</h2>
+        <p>Each of the 22 concepts is designed for a single class period of 30–50 minutes: 10 min demo, 20 min practice + remix, 10 min checkpoint. Adjust freely — some teachers split a concept across two shorter sessions.</p>
+      </article>
+      <article>
+        <h2>Where to cut</h2>
+        <p>If time is short, cut in this order: §7 Algorithms last (CS A teachers should keep it), §6 Impact second (can be done as reading + discussion without canvas time), §5 Data sections 14–16 first (least essential of the data block).</p>
+      </article>
+      <article>
+        <h2>Where not to cut</h2>
+        <p>§4 Make Systems is the spine. Loops, functions, arrays, and objects are the heart of every AP exam. Give this section the most time. If you only teach one section in depth, make it §4.</p>
+      </article>
     </section>
-    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/index.html">
-    <span class="meta">lessons</span>
-    <h2>Concepts</h2>
-    <p>Return to the numbered lesson sequence.</p>
-  </a><a class="card" href="../../browse/index.html">
-    <span class="meta">index</span>
-    <h2>Browse</h2>
-    <p>Search the full site atlas.</p>
-  </a></div></section>
-  
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related resources</p>
+      <div class="grid cards">
+        <a class="card" href="../curriculum-guide/index.html">
+          <span class="meta">planning</span>
+          <h2>Curriculum Guide</h2>
+          <p>Full scope and sequence with learning objectives for all 7 sections.</p>
+        </a>
+        <a class="card" href="../ap-csp/index.html">
+          <span class="meta">AP alignment</span>
+          <h2>AP CSP Coverage</h2>
+          <p>Big Ideas matrix, pacing strip, and Create PT starter kits.</p>
+        </a>
+        <a class="card" href="../ap-csa/index.html">
+          <span class="meta">AP alignment</span>
+          <h2>AP CS A Coverage</h2>
+          <p>Unit-by-unit map through Processing Java with FRQ recipes.</p>
+        </a>
+      </div>
+    </section>
+
   </main>
   <footer class="site-footer">
-    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
-    <span>p5.js - Canvas API - Processing Java</span>
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="../../assets/site.js"></script>
 </body>

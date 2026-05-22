@@ -3,50 +3,358 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AP CS Principles Coverage - CS Canvas</title>
-  <meta name="description" content="A map from Coding the Canvas lessons to AP CSP big ideas, practices, and Create performance task support." />
+  <title>AP CSP Coverage - CS Canvas</title>
+  <meta name="description" content="How CS Canvas maps to the AP Computer Science Principles Big Ideas — coverage matrix, pacing, Create PT support, and the one honest gap." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/styles.css" />
+  <style>
+    /* ── Coverage matrix ── */
+    .matrix-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .matrix-table{border-collapse:collapse;font-size:11px;min-width:680px;width:100%}
+    .matrix-table th,.matrix-table td{padding:5px 3px;text-align:center;border:1px solid var(--edge)}
+    .matrix-table th{background:var(--paper);font:600 9px/1.2 var(--mono);letter-spacing:.04em;color:var(--soft)}
+    .row-label{text-align:left !important;padding:6px 10px !important;white-space:nowrap;min-width:130px}
+    .section-hdr{background:#e4dfd4 !important;font:700 9px/1 var(--mono) !important;letter-spacing:.05em;text-transform:uppercase;color:var(--ink) !important}
+    .cell-2{background:var(--accent);border-color:var(--accent)}
+    .cell-1{background:#ddd8cc;border-color:#c8c2b4}
+    .cell-0{background:transparent}
+    .cell-gap{background:#ede8de;border-color:#d8d2c4}
+    /* ── Legend ── */
+    .legend{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:14px;font-size:12px;color:var(--soft)}
+    .legend-item{display:flex;align-items:center;gap:6px}
+    .legend-swatch{width:13px;height:13px;border-radius:2px;border:1px solid var(--edge);flex-shrink:0}
+    /* ── Big Idea badges ── */
+    .bi-badge{display:inline-flex;align-items:center;font:700 10px/1 var(--mono);padding:3px 10px;border-radius:3px;letter-spacing:.06em;color:#fff;margin-bottom:6px}
+    .bi-badge.crd{background:#4a7fc1}
+    .bi-badge.dat{background:#7b5ea7}
+    .bi-badge.aap{background:var(--accent)}
+    .bi-badge.csn{background:#9c9286;color:var(--paper)}
+    .bi-badge.ioc{background:#3a8a6e}
+    /* ── Big Idea cards ── */
+    .bi-card{border:1.5px solid var(--ink);border-radius:4px;padding:16px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink)}
+    .bi-card-title{font-size:14px;font-weight:700;margin-bottom:6px}
+    .bi-card-desc{font-size:13px;color:var(--soft);line-height:1.5}
+    /* ── FAQ ── */
+    .faq-item{border-bottom:1px solid var(--edge);padding:14px 0}
+    .faq-item:last-child{border-bottom:none}
+    .faq-q{font-weight:700;font-size:14px;margin-bottom:6px}
+    .faq-a{font-size:13px;color:var(--soft);line-height:1.6}
+  </style>
 </head>
 <body data-page="teachers">
   <header class="site-header">
     <a class="brand" href="../../index.html">CS Canvas</a>
-    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../browse/index.html">Browse</a><a class="active" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a href="../../concepts/index.html">Concepts</a>
+      <a href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a class="active" href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
   </header>
   <main>
+
     <section class="hero">
-      <p class="kicker">teacher resource</p>
-      <h1>AP CS Principles Coverage</h1>
-      <p class="lede">A map from Coding the Canvas lessons to AP CSP big ideas, practices, and Create performance task support.</p>
+      <p class="kicker">teacher resource · AP CS Principles</p>
+      <h1>AP CSP Coverage</h1>
+      <p class="lede">CS Canvas covers 4 of 5 AP CSP Big Ideas. The one it doesn't cover is CSN — Computing Systems &amp; Networks. Here's the full picture.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../create-performance-task/index.html">Create PT support</a>
+        <a class="button" href="../companion-resources/index.html">CSN companion resources</a>
+      </div>
     </section>
-    
+
+    <!-- Stats -->
+    <section class="band">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;max-width:660px">
+        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:14px;background:var(--paper)">
+          <div style="font:600 9px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:4px">Big Ideas</div>
+          <div style="font-size:26px;font-weight:800">4 of 5</div>
+        </div>
+        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:14px;background:var(--paper)">
+          <div style="font:600 9px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:4px">Concepts</div>
+          <div style="font-size:26px;font-weight:800">22</div>
+        </div>
+        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:14px;background:var(--paper)">
+          <div style="font:600 9px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:4px">Language</div>
+          <div style="font-size:22px;font-weight:800">p5.js</div>
+        </div>
+        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:14px;background:var(--paper)">
+          <div style="font:600 9px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:4px">Gap</div>
+          <div style="font-size:26px;font-weight:800">CSN</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coverage matrix -->
+    <section class="band">
+      <p class="meta" style="margin-bottom:6px">Coverage matrix — 5 Big Ideas × 22 concepts</p>
+      <div class="legend">
+        <span class="legend-item"><span class="legend-swatch" style="background:var(--accent);border-color:var(--accent)"></span>Strong coverage</span>
+        <span class="legend-item"><span class="legend-swatch" style="background:#ddd8cc;border-color:#c8c2b4"></span>Partial coverage</span>
+        <span class="legend-item"><span class="legend-swatch"></span>Not covered</span>
+        <span class="legend-item"><span class="legend-swatch" style="background:#ede8de;border-color:#d8d2c4"></span>Gap row (CSN)</span>
+      </div>
+      <div class="matrix-wrap">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th class="row-label" style="border-color:var(--edge)"></th>
+              <th colspan="2" class="section-hdr">§1 Canvas</th>
+              <th colspan="1" class="section-hdr">§2 Move</th>
+              <th colspan="2" class="section-hdr">§3 Respond</th>
+              <th colspan="5" class="section-hdr">§4 Systems</th>
+              <th colspan="6" class="section-hdr">§5 Data</th>
+              <th colspan="4" class="section-hdr">§6 World</th>
+              <th colspan="2" class="section-hdr">§7 Algo</th>
+            </tr>
+            <tr>
+              <th class="row-label" style="color:var(--faint);font-size:9px">concept →</th>
+              <th>01</th><th>02</th>
+              <th>03</th>
+              <th>04</th><th>05</th>
+              <th>06</th><th>07</th><th>08</th><th>09</th><th>10</th>
+              <th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th>
+              <th>17</th><th>18</th><th>19</th><th>20</th>
+              <th>21</th><th>22</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- CRD: all 2s -->
+            <tr>
+              <td class="row-label">
+                <span class="bi-badge crd">CRD</span>
+                <span style="display:block;font:400 11px/1.3 Inter,sans-serif;color:var(--soft);margin-top:2px">Creative Dev</span>
+              </td>
+              <td class="cell-2"></td><td class="cell-2"></td>
+              <td class="cell-2"></td>
+              <td class="cell-2"></td><td class="cell-2"></td>
+              <td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td>
+              <td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td>
+              <td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td>
+              <td class="cell-2"></td><td class="cell-2"></td>
+            </tr>
+            <!-- DAT: [0,1,0,0,0,0,0,1,0,0,2,2,2,2,2,2,1,1,0,1,0,1] -->
+            <tr>
+              <td class="row-label">
+                <span class="bi-badge dat">DAT</span>
+                <span style="display:block;font:400 11px/1.3 Inter,sans-serif;color:var(--soft);margin-top:2px">Data</span>
+              </td>
+              <td class="cell-0"></td><td class="cell-1"></td>
+              <td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-1"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td>
+              <td class="cell-1"></td><td class="cell-1"></td><td class="cell-0"></td><td class="cell-1"></td>
+              <td class="cell-0"></td><td class="cell-1"></td>
+            </tr>
+            <!-- AAP: [2,2,2,2,2,2,2,2,2,2,1,1,1,2,1,1,1,1,0,0,2,2] -->
+            <tr>
+              <td class="row-label">
+                <span class="bi-badge aap">AAP</span>
+                <span style="display:block;font:400 11px/1.3 Inter,sans-serif;color:var(--soft);margin-top:2px">Algorithms</span>
+              </td>
+              <td class="cell-2"></td><td class="cell-2"></td>
+              <td class="cell-2"></td>
+              <td class="cell-2"></td><td class="cell-2"></td>
+              <td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td>
+              <td class="cell-1"></td><td class="cell-1"></td><td class="cell-1"></td><td class="cell-2"></td><td class="cell-1"></td><td class="cell-1"></td>
+              <td class="cell-1"></td><td class="cell-1"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-2"></td><td class="cell-2"></td>
+            </tr>
+            <!-- CSN: all 0s (gap) -->
+            <tr style="opacity:.6">
+              <td class="row-label">
+                <span class="bi-badge csn">CSN</span>
+                <span style="display:block;font:400 11px/1.3 Inter,sans-serif;color:var(--faint);margin-top:2px">Networks ← gap</span>
+              </td>
+              <td class="cell-gap"></td><td class="cell-gap"></td>
+              <td class="cell-gap"></td>
+              <td class="cell-gap"></td><td class="cell-gap"></td>
+              <td class="cell-gap"></td><td class="cell-gap"></td><td class="cell-gap"></td><td class="cell-gap"></td><td class="cell-gap"></td>
+              <td class="cell-gap"></td><td class="cell-gap"></td><td class="cell-gap"></td><td class="cell-gap"></td><td class="cell-gap"></td><td class="cell-gap"></td>
+              <td class="cell-gap"></td><td class="cell-gap"></td><td class="cell-gap"></td><td class="cell-gap"></td>
+              <td class="cell-gap"></td><td class="cell-gap"></td>
+            </tr>
+            <!-- IOC: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,2,2,2,0,0] -->
+            <tr>
+              <td class="row-label">
+                <span class="bi-badge ioc">IOC</span>
+                <span style="display:block;font:400 11px/1.3 Inter,sans-serif;color:var(--soft);margin-top:2px">Impact</span>
+              </td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td>
+              <td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-0"></td><td class="cell-1"></td>
+              <td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td><td class="cell-2"></td>
+              <td class="cell-0"></td><td class="cell-0"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:11px;color:var(--faint);margin-top:10px">CRD threads through every concept because creative development is built into the canvas-output model — not added as a special unit.</p>
+    </section>
+
+    <!-- Big Idea breakdown -->
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">What CS Canvas covers in each Big Idea</p>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">
+        <div class="bi-card">
+          <span class="bi-badge crd">CRD — Creative Development</span>
+          <div class="bi-card-title">All 22 concepts · strong throughout</div>
+          <div class="bi-card-desc">Every CS Canvas concept asks students to design, prototype, and reflect on a visual artifact. CRD is structural — it's built into the canvas-output model, not layered on top. Every remix and checkpoint is CRD evidence.</div>
+        </div>
+        <div class="bi-card">
+          <span class="bi-badge dat">DAT — Data</span>
+          <div class="bi-card-title">Strong in §5 · partial in §1, §4, §6</div>
+          <div class="bi-card-desc">§5 (Data as Material, concepts 11–16) is the dense data core: images as pixel arrays, histograms, frequency analysis, color data pipelines. Earlier lessons touch data representation lightly; §6 touches data ethics and metadata.</div>
+        </div>
+        <div class="bi-card">
+          <span class="bi-badge aap">AAP — Algorithms &amp; Programming</span>
+          <div class="bi-card-title">Strong in §1–§4 and §7 · partial in §5–§6</div>
+          <div class="bi-card-desc">The programming spine (§1–§4: shape, animation, variables, loops, functions, objects) gives full AAP coverage. §7 adds algorithm analysis — sorting and recursion beyond AP requirements. §5 and §6 use programming as a tool rather than the subject.</div>
+        </div>
+        <div class="bi-card" style="opacity:.75;border-style:dashed">
+          <span class="bi-badge csn">CSN — Computing Systems &amp; Networks</span>
+          <div class="bi-card-title">Not covered — bring your own unit (~3 weeks)</div>
+          <div class="bi-card-desc">Protocols, packets, DNS, fault tolerance, and parallel computing don't fit the canvas model. The canvas is the wrong medium for networking. Most AP CSP teachers already have a CSN unit — if not, the code.org Internet unit slots in cleanly.</div>
+        </div>
+        <div class="bi-card">
+          <span class="bi-badge ioc">IOC — Impact of Computing</span>
+          <div class="bi-card-title">Strong in §6 · partial in §5</div>
+          <div class="bi-card-desc">§6 (Computing in the World, concepts 17–20) is dedicated to impact and ethics: bias in filters, accessibility of color, authorship of generated art, energy cost of computation. Each is grounded in a canvas artifact — the visual makes the impact concrete.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CSN gap -->
     <section class="band split">
       <div>
-        <h2>Connect creative sketches to AP CSP.</h2>
-        <p>A map from Coding the Canvas lessons to AP CSP big ideas, practices, and Create performance task support.</p>
-        <ul class="checklist"><li>Use visual projects for CRD and AAP evidence.</li><li>Use data and image lessons for DAT.</li><li>Use impact lessons for IOC discussion and writing.</li></ul>
+        <p class="meta">The one gap</p>
+        <h2>CSN is ~3 weeks. Everything else is covered.</h2>
+        <p>Computing Systems &amp; Networks covers the internet, protocols, fault tolerance, and parallel computing. Teaching these through a canvas feels forced — the canvas is the wrong medium for networking. You'll need to bring your own CSN unit, but that's a manageable add.</p>
+        <ul class="checklist">
+          <li>CSN is typically 2–3 weeks in an AP CSP year</li>
+          <li>Most AP CSP teachers already have a CSN unit they like</li>
+          <li>The code.org Internet unit is the free, battle-tested option</li>
+          <li>Six 5-minute videos from code.org work well as a flipped component</li>
+        </ul>
+        <div style="margin-top:16px">
+          <a class="button primary" href="../companion-resources/index.html">CSN companion resources</a>
+        </div>
       </div>
-      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132"><circle cx="36" cy="34" r="5"/><circle cx="72" cy="34" r="8"/><circle cx="108" cy="34" r="5"/><circle cx="144" cy="34" r="8"/><circle cx="36" cy="72" r="8"/><circle cx="72" cy="72" r="5"/><circle cx="108" cy="72" r="8"/><circle cx="144" cy="72" r="5"/></svg></div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <rect x="16" y="18" width="148" height="16" rx="2" fill="#4a7fc1" opacity=".75"/>
+          <rect x="16" y="38" width="148" height="16" rx="2" fill="#7b5ea7" opacity=".75"/>
+          <rect x="16" y="58" width="148" height="16" rx="2" fill="#d96a3d" opacity=".85"/>
+          <rect x="16" y="78" width="148" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 2"/>
+          <rect x="16" y="98" width="148" height="16" rx="2" fill="#3a8a6e" opacity=".75"/>
+          <text x="24" y="30" font-family="monospace" font-size="6.5" fill="white">CRD — Creative Development ✓</text>
+          <text x="24" y="50" font-family="monospace" font-size="6.5" fill="white">DAT — Data ✓</text>
+          <text x="24" y="70" font-family="monospace" font-size="6.5" fill="white">AAP — Algorithms &amp; Programming ✓</text>
+          <text x="24" y="90" font-family="monospace" font-size="6.5" fill="currentColor">CSN — Networks  ← bring your own</text>
+          <text x="24" y="110" font-family="monospace" font-size="6.5" fill="white">IOC — Impact of Computing ✓</text>
+        </svg>
+      </div>
     </section>
-    <section class="band columns">
-      <article><h2>Use it for</h2><p>Use visual projects for CRD and AAP evidence.</p></article><article><h2>Try next</h2><p>Use data and image lessons for DAT.</p></article><article><h2>Connect it</h2><p>Use impact lessons for IOC discussion and writing.</p></article>
+
+    <!-- Create PT -->
+    <section class="band split">
+      <div>
+        <p class="meta">AP Create Performance Task</p>
+        <h2>Every sketch can become a Create PT.</h2>
+        <p>The College Board requires a program with a list, a student-written procedure with a parameter, and an algorithm with sequencing, selection, and iteration. CS Canvas teaches all three. The §4 particle system checkpoint is designed to be CPT-ready — it has all three built in.</p>
+        <ul class="checklist">
+          <li>Array of objects = the required list</li>
+          <li>Class method with a parameter = the required procedure</li>
+          <li>For loop + boundary conditional = the required algorithm</li>
+          <li>Three starter recipes on the Create PT page</li>
+        </ul>
+        <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="button primary" href="../create-performance-task/index.html">Create PT guide</a>
+          <a class="button" href="../portfolio-template/index.html">Portfolio template</a>
+        </div>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <rect x="14" y="14" width="46" height="34" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="37" y="29" font-family="monospace" font-size="7" text-anchor="middle" fill="currentColor">list</text>
+          <text x="37" y="41" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor" opacity=".6">particles[]</text>
+          <rect x="67" y="14" width="46" height="34" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="90" y="29" font-family="monospace" font-size="7" text-anchor="middle" fill="currentColor">procedure</text>
+          <text x="90" y="41" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor" opacity=".6">draw(p,col)</text>
+          <rect x="120" y="14" width="46" height="34" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="143" y="29" font-family="monospace" font-size="7" text-anchor="middle" fill="currentColor">algorithm</text>
+          <text x="143" y="41" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor" opacity=".6">for+if+seq</text>
+          <path d="M90 54 L90 72" stroke="#d96a3d" stroke-width="2" stroke-linecap="round"/>
+          <path d="M86 68 L90 74 L94 68" fill="none" stroke="#d96a3d" stroke-width="1.5"/>
+          <rect x="38" y="78" width="104" height="34" rx="3" fill="#d96a3d" opacity=".15" stroke="#d96a3d" stroke-width="1.5"/>
+          <text x="90" y="99" font-family="monospace" font-size="8" text-anchor="middle" fill="#d96a3d">Create PT ✓</text>
+        </svg>
+      </div>
     </section>
-    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/index.html">
-    <span class="meta">lessons</span>
-    <h2>Concepts</h2>
-    <p>Return to the numbered lesson sequence.</p>
-  </a><a class="card" href="../../browse/index.html">
-    <span class="meta">index</span>
-    <h2>Browse</h2>
-    <p>Search the full site atlas.</p>
-  </a></div></section>
-  
+
+    <!-- FAQ -->
+    <section class="band">
+      <p class="meta" style="margin-bottom:4px">Teacher FAQ</p>
+      <div class="faq-item">
+        <div class="faq-q">Do I need to teach every concept for AP CSP alignment?</div>
+        <div class="faq-a">No. §1–§4 covers CRD and AAP fully. Add §5 for DAT. Add §6 for IOC. Add your own CSN unit. §7 (recursion, sorting) exceeds AP requirements — useful enrichment but not required. See the <a href="../pacing-guides/index.html" style="color:var(--accent)">36-week AP CSP pacing guide</a> for the recommended sequence.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What language do AP CSP students use?</div>
+        <div class="faq-a">p5.js. All three CS Canvas languages (p5.js, Canvas API, Processing Java) are offered per concept, but for AP CSP, p5.js is the right choice — it's JavaScript, runs in the browser without install, and the AP exam is language-agnostic.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Where does Create PT evidence come from?</div>
+        <div class="faq-a">The §4 section checkpoint (particle system) is designed to be CPT-ready: array of objects (list), class method with a parameter (procedure), for loop with a conditional (algorithm). Students who expand their §4 sketch instead of starting fresh usually finish Milestone 3 with time to spare. See the <a href="../create-performance-task/index.html" style="color:var(--accent)">Create PT support page</a>.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Does CRD really thread through everything?</div>
+        <div class="faq-a">Yes — intentionally. Every CS Canvas lesson produces a canvas artifact that students design, iterate, and reflect on. CRD isn't retroactively mapped onto programming lessons. The canvas-output model is a creative development process by design.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How does §5 cover data if students are just manipulating images?</div>
+        <div class="faq-a">Image pixels are data. When students read a pixel's RGB values, transform them through a function, and write them back, they're doing exactly what the DAT standard asks: representing data, transforming data, and observing how transformation changes output. The canvas makes the data pipeline visible.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I use CS Canvas for just part of my AP CSP course?</div>
+        <div class="faq-a">Yes. CS Canvas is modular. Many teachers use §1–§4 for the programming and CRD spine, then use a different curriculum for data and CSN. Each section works independently, though the full arc gives the most coherent student experience.</div>
+      </div>
+    </section>
+
+    <!-- Related -->
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related resources</p>
+      <div class="grid cards">
+        <a class="card" href="../create-performance-task/index.html">
+          <span class="meta">AP CSP</span>
+          <h2>Create PT Support</h2>
+          <p>Three starter recipes, milestone timeline, and required artifact checklist.</p>
+        </a>
+        <a class="card" href="../companion-resources/index.html">
+          <span class="meta">CSN gap</span>
+          <h2>Companion Resources</h2>
+          <p>Three CSN units that slot in cleanly alongside CS Canvas.</p>
+        </a>
+        <a class="card" href="../pacing-guides/index.html">
+          <span class="meta">planning</span>
+          <h2>Pacing Guides</h2>
+          <p>The 36-week AP CSP year strip showing where CSN and each section fit.</p>
+        </a>
+      </div>
+    </section>
+
   </main>
   <footer class="site-footer">
-    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
-    <span>p5.js - Canvas API - Processing Java</span>
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="../../assets/site.js"></script>
 </body>

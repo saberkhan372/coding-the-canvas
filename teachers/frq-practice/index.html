@@ -4,49 +4,296 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FRQ Practice - CS Canvas</title>
-  <meta name="description" content="AP CSA free-response practice ideas connected to visual lessons and Processing Java sketches." />
+  <meta name="description" content="AP CS A free-response practice recipes connected to visual CS Canvas lessons — method writing, class design, array/ArrayList, and 2D array." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/styles.css" />
+  <style>
+    .frq-card{border:1.5px solid var(--ink);border-radius:4px;padding:20px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink)}
+    .frq-tag{font-family:var(--hand);font-size:24px;color:var(--accent);display:block;margin-bottom:6px}
+    .frq-type{font:700 10px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;display:inline-flex;align-items:center;background:var(--ink);color:var(--paper);padding:2px 8px;border-radius:2px;margin-bottom:10px}
+    .frq-lessons{font:600 10px/1 var(--mono);color:var(--faint);margin-top:12px;display:block;letter-spacing:.04em}
+    .frq-prompt{background:#1a1916;color:#e8e4dc;font:12px/1.8 var(--mono);padding:14px 16px;border-radius:3px;margin:12px 0;overflow-x:auto;border-left:3px solid var(--accent)}
+    .practice-row{padding:12px 0;border-bottom:1px solid var(--edge)}
+    .practice-row:last-child{border-bottom:none}
+    .practice-q{font:700 13px/1.4 var(--body);margin-bottom:4px}
+    .practice-hint{font:600 11px/1 var(--mono);color:var(--faint)}
+    .skill-chip{display:inline-flex;align-items:center;background:var(--edge);border:1px solid var(--soft);border-radius:999px;font:600 10px/1 var(--mono);padding:2px 8px;margin:2px}
+  </style>
 </head>
 <body data-page="teachers">
   <header class="site-header">
     <a class="brand" href="../../index.html">CS Canvas</a>
-    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../browse/index.html">Browse</a><a class="active" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a href="../../concepts/index.html">Concepts</a>
+      <a href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a class="active" href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
   </header>
   <main>
+
     <section class="hero">
-      <p class="kicker">teacher resource</p>
+      <p class="kicker">teacher resource · AP CS A</p>
       <h1>FRQ Practice</h1>
-      <p class="lede">AP CSA free-response practice ideas connected to visual lessons and Processing Java sketches.</p>
+      <p class="lede">The four AP CS A FRQ types — method writing, class design, array/ArrayList, and 2D array — each connected to the CS Canvas lesson where students first met that concept visually.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../ap-csa/index.html">AP CS A coverage map</a>
+        <a class="button" href="../../concepts/objects/index.html">09 Objects lesson</a>
+      </div>
     </section>
-    
+
     <section class="band split">
       <div>
-        <h2>Practice FRQ thinking with visible state.</h2>
-        <p>AP CSA free-response practice ideas connected to visual lessons and Processing Java sketches.</p>
-        <ul class="checklist"><li>Write methods that draw or update objects.</li><li>Trace loops and list changes through canvas output.</li><li>Use small classes before larger FRQ prompts.</li></ul>
+        <p class="meta">Why visual context helps FRQs</p>
+        <h2>The canvas makes the state visible.</h2>
+        <p>FRQ questions often feel abstract because students can't see what the code is doing. A canvas sketch is the opposite: every variable has a visible location, every loop has a visible repetition, every list item has a visible position on screen. Use the sketches as FRQ setup context — then take the canvas away and ask students to write the method.</p>
+        <ul class="checklist">
+          <li>Method writing FRQ → functions/methods that update canvas objects</li>
+          <li>Class design FRQ → the Ball, Particle, or Tile class from §4</li>
+          <li>Array/ArrayList FRQ → the particle array or dynamic swarm from §4/§7</li>
+          <li>2D Array FRQ → the pixel grid from §5 (image data)</li>
+        </ul>
       </div>
-      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132"><circle cx="36" cy="34" r="5"/><circle cx="72" cy="34" r="8"/><circle cx="108" cy="34" r="5"/><circle cx="144" cy="34" r="8"/><circle cx="36" cy="72" r="8"/><circle cx="72" cy="72" r="5"/><circle cx="108" cy="72" r="8"/><circle cx="144" cy="72" r="5"/></svg></div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- 2D grid of pixels for FRQ context -->
+          <rect x="16" y="16" width="20" height="20" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="1"/>
+          <rect x="36" y="16" width="20" height="20" fill="#d96a3d" opacity=".7" stroke="currentColor" stroke-width="1"/>
+          <rect x="56" y="16" width="20" height="20" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="1"/>
+          <rect x="76" y="16" width="20" height="20" fill="currentColor" opacity=".5" stroke="currentColor" stroke-width="1"/>
+          <rect x="16" y="36" width="20" height="20" fill="currentColor" opacity=".5" stroke="currentColor" stroke-width="1"/>
+          <rect x="36" y="36" width="20" height="20" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="1"/>
+          <rect x="56" y="36" width="20" height="20" fill="#d96a3d" opacity=".7" stroke="currentColor" stroke-width="1"/>
+          <rect x="76" y="36" width="20" height="20" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="1"/>
+          <text x="104" y="30" font-family="monospace" font-size="8" fill="currentColor">pixels[r][c]</text>
+          <text x="104" y="44" font-family="monospace" font-size="7" fill="#d96a3d">← 2D array FRQ</text>
+          <!-- Ball class box -->
+          <rect x="16" y="74" width="80" height="44" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="56" y="89" font-family="monospace" font-size="7" text-anchor="middle" fill="currentColor" opacity=".6">Ball</text>
+          <text x="56" y="101" font-family="monospace" font-size="7" text-anchor="middle" fill="currentColor">x, y, r</text>
+          <text x="56" y="112" font-family="monospace" font-size="7" text-anchor="middle" fill="#d96a3d">move()</text>
+          <text x="120" y="95" font-family="monospace" font-size="7" fill="currentColor">class design</text>
+          <text x="120" y="108" font-family="monospace" font-size="7" fill="#d96a3d">↖ FRQ</text>
+        </svg>
+      </div>
     </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">FRQ type 1 — Method writing</p>
+      <div class="frq-card">
+        <span class="frq-tag">Method writing</span>
+        <span class="frq-type">FRQ type 1 · Part A</span>
+        <p style="font-size:13px;color:var(--soft);margin-bottom:12px"><strong>Canvas connection:</strong> Concept 07 Functions and Concept 09 Objects. Students who have written <code style="font-size:11px;background:var(--edge);padding:1px 4px;border-radius:2px">move()</code> and <code style="font-size:11px;background:var(--edge);padding:1px 4px;border-radius:2px">draw()</code> methods on a Ball class are directly prepared for this type.</p>
+        <div class="frq-prompt">// Given this partial class from the CS Canvas objects lesson:
+class Ball {
+  float x, y, r, vx, vy;
+  Ball(float x, float y) { ... }
+  void draw() { ellipse(x, y, r*2, r*2); }
+
+  // TODO: write the move() method.
+  // It should update x and y by vx and vy.
+  // If x goes out of bounds (0..width), reverse vx.
+  // If y goes out of bounds (0..height), reverse vy.
+  void move() {
+    // your code here
+  }
+}</div>
+        <p style="font-size:13px;color:var(--soft);margin-bottom:12px"><strong>FRQ skills practiced:</strong></p>
+        <div>
+          <span class="skill-chip">increment/decrement</span>
+          <span class="skill-chip">conditional boundary check</span>
+          <span class="skill-chip">negation of velocity</span>
+          <span class="skill-chip">this. reference</span>
+        </div>
+        <div style="margin-top:16px">
+          <p class="meta" style="margin-bottom:8px">Practice set — progressively harder</p>
+          <div class="practice-row">
+            <div class="practice-q">Write a <code style="font-size:11px;background:var(--edge);padding:1px 4px;border-radius:2px">grow(float amount)</code> method that increases <code style="font-size:11px;background:var(--edge);padding:1px 4px;border-radius:2px">r</code> by <code style="font-size:11px;background:var(--edge);padding:1px 4px;border-radius:2px">amount</code>, capped at 50.</div>
+            <div class="practice-hint">→ arithmetic + conditional max</div>
+          </div>
+          <div class="practice-row">
+            <div class="practice-q">Write a <code style="font-size:11px;background:var(--edge);padding:1px 4px;border-radius:2px">boolean isOffscreen(int w, int h)</code> method that returns true if the ball center is outside the canvas.</div>
+            <div class="practice-hint">→ compound boolean expression</div>
+          </div>
+          <div class="practice-row">
+            <div class="practice-q">Write a <code style="font-size:11px;background:var(--edge);padding:1px 4px;border-radius:2px">float distanceTo(Ball other)</code> method returning the Euclidean distance between centers.</div>
+            <div class="practice-hint">→ Math.sqrt + parameter access</div>
+          </div>
+        </div>
+        <span class="frq-lessons">Connected lessons: 07 Functions · 09 Objects · 10 State Machines</span>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">FRQ type 2 — Class design</p>
+      <div class="frq-card">
+        <span class="frq-tag">Class design</span>
+        <span class="frq-type">FRQ type 2 · Writing a full class</span>
+        <p style="font-size:13px;color:var(--soft);margin-bottom:12px"><strong>Canvas connection:</strong> Concept 09 Objects is exactly this FRQ type. Students have already written a Ball class with fields, a constructor, and methods. The FRQ asks them to do that same thing for a different domain.</p>
+        <div class="frq-prompt">// Design a Tile class for a grid visualization sketch.
+// A Tile has: a column (int col), a row (int row),
+// a brightness value (float, 0.0 to 1.0),
+// and a boolean "active" flag.
+//
+// Write: the complete class declaration including
+// all fields, one constructor, and these methods:
+// - void draw() — draws the tile at (col*size, row*size)
+// - void darken(float amount) — decreases brightness by amount, min 0
+// - boolean isActive() — returns the active flag
+// - void toggle() — flips the active flag</div>
+        <div>
+          <span class="skill-chip">field declaration</span>
+          <span class="skill-chip">constructor assignment</span>
+          <span class="skill-chip">method signatures</span>
+          <span class="skill-chip">boolean toggle</span>
+          <span class="skill-chip">Math.max for clamping</span>
+        </div>
+        <div style="margin-top:16px">
+          <p class="meta" style="margin-bottom:8px">Practice set</p>
+          <div class="practice-row">
+            <div class="practice-q">Design a <code style="font-size:11px;background:var(--edge);padding:1px 4px;border-radius:2px">Star</code> class for a night-sky sketch. Fields: x, y, radius, twinkleSpeed. Methods: draw(), twinkle() that oscillates radius.</div>
+            <div class="practice-hint">→ sin/cos for oscillation</div>
+          </div>
+          <div class="practice-row">
+            <div class="practice-q">Design a <code style="font-size:11px;background:var(--edge);padding:1px 4px;border-radius:2px">DataPoint</code> class for a scatter plot. Fields: value (float), label (String), highlighted (boolean). Methods: draw(float scaleX, float scaleY), setHighlighted(boolean b).</div>
+            <div class="practice-hint">→ parameter-scaled drawing</div>
+          </div>
+        </div>
+        <span class="frq-lessons">Connected lessons: 09 Objects · 07 Functions · 10 State Machines</span>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">FRQ type 3 — Array / ArrayList</p>
+      <div class="frq-card">
+        <span class="frq-tag">Array &amp; ArrayList</span>
+        <span class="frq-type">FRQ type 3 · Traversal &amp; manipulation</span>
+        <p style="font-size:13px;color:var(--soft);margin-bottom:12px"><strong>Canvas connection:</strong> Concept 08 Arrays (fixed-size traversal) and Concept 22 ArrayList in Action (dynamic add/remove). The particle swarm that grows and shrinks is the canonical ArrayList FRQ context.</p>
+        <div class="frq-prompt">// Given an ArrayList of Ball objects:
+// ArrayList&lt;Ball&gt; particles = new ArrayList&lt;Ball&gt;();
+
+// Part A: Write addParticle(float x, float y)
+//   that creates and adds a new Ball at (x, y).
+
+// Part B: Write removeSmall()
+//   that removes all Balls with r < 5 from the list.
+//   Must use correct iterator-safe traversal.
+
+// Part C: Write int countFast()
+//   that returns how many Balls have speed > 3.
+//   Assume Ball has getSpeed() method.</div>
+        <div>
+          <span class="skill-chip">ArrayList.add()</span>
+          <span class="skill-chip">Iterator remove pattern</span>
+          <span class="skill-chip">for loop vs for-each</span>
+          <span class="skill-chip">accumulator count</span>
+          <span class="skill-chip">ConcurrentModificationException trap</span>
+        </div>
+        <div style="margin-top:16px">
+          <p class="meta" style="margin-bottom:8px">Practice set</p>
+          <div class="practice-row">
+            <div class="practice-q">Write <code style="font-size:11px;background:var(--edge);padding:1px 4px;border-radius:2px">Ball findLargest(ArrayList&lt;Ball&gt; list)</code> that returns the Ball with the greatest radius, or null if the list is empty.</div>
+            <div class="practice-hint">→ running max + null guard</div>
+          </div>
+          <div class="practice-row">
+            <div class="practice-q">Write <code style="font-size:11px;background:var(--edge);padding:1px 4px;border-radius:2px">void keepTop(ArrayList&lt;Ball&gt; list, int n)</code> that removes all but the n largest balls.</div>
+            <div class="practice-hint">→ sort + subList.clear() pattern</div>
+          </div>
+        </div>
+        <span class="frq-lessons">Connected lessons: 08 Arrays · 22 ArrayList in Action · 09 Objects</span>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">FRQ type 4 — 2D Array</p>
+      <div class="frq-card">
+        <span class="frq-tag">2D Array</span>
+        <span class="frq-type">FRQ type 4 · The killer canvas demo</span>
+        <p style="font-size:13px;color:var(--soft);margin-bottom:12px"><strong>Canvas connection:</strong> Concepts 11, 13, and 15 — Pixels, Binary as Pixels, and Histograms. Image pixel data is a <code style="font-size:11px;background:var(--edge);padding:1px 4px;border-radius:2px">color[][]</code> (or <code style="font-size:11px;background:var(--edge);padding:1px 4px;border-radius:2px">int[][]</code>) array. Students who have read and written pixel loops are directly prepared for nested-loop FRQs.</p>
+        <div class="frq-prompt">// A grayscale image is represented as int[][] pixels
+// where pixels[r][c] is brightness 0..255.
+
+// Part A: Write int brightest(int[][] pixels)
+//   returning the maximum brightness value in the image.
+
+// Part B: Write int[][] invert(int[][] pixels)
+//   returning a new array where each value is 255 - original.
+
+// Part C: Write int[][] blur(int[][] pixels)
+//   returning a new array where each pixel is the average
+//   of itself and its four cardinal neighbors.
+//   Pixels at the border keep their original value.</div>
+        <div>
+          <span class="skill-chip">nested for loop</span>
+          <span class="skill-chip">row/column indexing</span>
+          <span class="skill-chip">boundary condition</span>
+          <span class="skill-chip">new array allocation</span>
+          <span class="skill-chip">accumulator average</span>
+        </div>
+        <div style="margin-top:16px">
+          <p class="meta" style="margin-bottom:8px">Why this one matters</p>
+          <p style="font-size:13px;color:var(--soft)">The 2D array FRQ is consistently the hardest for students who've only seen abstract grid examples. When students have literally moved through <code style="font-size:11px;background:var(--edge);padding:1px 4px;border-radius:2px">pixels[r][c]</code> in a Processing sketch and watched the canvas change, "row" and "column" stop being abstract. The border-condition error (accessing <code style="font-size:11px;background:var(--edge);padding:1px 4px;border-radius:2px">pixels[-1][c]</code>) is visible as a runtime crash in the sketch — students learn to guard against it naturally.</p>
+        </div>
+        <span class="frq-lessons">Connected lessons: 11 Pixels / Image Data · 13 Binary as Pixels · 15 Histograms &amp; Sampling</span>
+      </div>
+    </section>
+
     <section class="band columns">
-      <article><h2>Use it for</h2><p>Write methods that draw or update objects.</p></article><article><h2>Try next</h2><p>Trace loops and list changes through canvas output.</p></article><article><h2>Connect it</h2><p>Use small classes before larger FRQ prompts.</p></article>
+      <article>
+        <h2>FRQ timing practice</h2>
+        <p style="font-size:13px">The AP CS A exam gives students about 25 minutes per FRQ. For each recipe above, run a timed practice: give students the setup code and prompt, 25 minutes, no notes. Debrief with the canvas visual before reviewing the solution.</p>
+      </article>
+      <article>
+        <h2>Trace-first strategy</h2>
+        <p style="font-size:13px">Before writing code, train students to trace: draw a small example by hand and trace through it mentally. For 2D array FRQs, this means drawing a 3×3 grid and labeling the expected output cell by cell. Students who trace first write fewer bugs.</p>
+      </article>
+      <article>
+        <h2>Common FRQ mistakes</h2>
+        <ul style="padding-left:18px;margin:0;font-size:13px;line-height:2;color:var(--soft)">
+          <li>Missing <code style="font-size:11px">return</code> on non-void methods</li>
+          <li>Modifying the original array in "return new array" problems</li>
+          <li>Off-by-one in loop bounds (<code style="font-size:11px">&lt;=</code> vs <code style="font-size:11px">&lt;</code>)</li>
+          <li>Removing from ArrayList while iterating forward</li>
+          <li>Forgetting to check for empty list before returning</li>
+        </ul>
+      </article>
     </section>
-    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/index.html">
-    <span class="meta">lessons</span>
-    <h2>Concepts</h2>
-    <p>Return to the numbered lesson sequence.</p>
-  </a><a class="card" href="../../browse/index.html">
-    <span class="meta">index</span>
-    <h2>Browse</h2>
-    <p>Search the full site atlas.</p>
-  </a></div></section>
-  
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related resources</p>
+      <div class="grid cards">
+        <a class="card" href="../ap-csa/index.html">
+          <span class="meta">AP alignment</span>
+          <h2>AP CS A Coverage</h2>
+          <p>Full unit-by-unit map showing which lessons connect to each CS A unit.</p>
+        </a>
+        <a class="card" href="../../concepts/objects/index.html">
+          <span class="meta">concept</span>
+          <h2>09 Objects</h2>
+          <p>The Ball class lesson — the starting point for method and class design FRQs.</p>
+        </a>
+        <a class="card" href="../../concepts/pixels-image-data/index.html">
+          <span class="meta">concept</span>
+          <h2>11 Pixels / Image Data</h2>
+          <p>The pixel array lesson — the starting point for 2D array FRQs.</p>
+        </a>
+        <a class="card" href="../../concepts/arraylist-in-action/index.html">
+          <span class="meta">concept</span>
+          <h2>22 ArrayList in Action</h2>
+          <p>Dynamic swarm lesson — the starting point for ArrayList traversal FRQs.</p>
+        </a>
+      </div>
+    </section>
+
   </main>
   <footer class="site-footer">
-    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
-    <span>p5.js - Canvas API - Processing Java</span>
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="../../assets/site.js"></script>
 </body>

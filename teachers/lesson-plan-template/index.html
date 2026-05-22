@@ -4,49 +4,165 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lesson Plan Template - CS Canvas</title>
-  <meta name="description" content="A repeatable class-session structure for demo, practice, remix, checkpoint, and reflection." />
+  <meta name="description" content="A repeatable five-phase class session structure for CS Canvas lessons: hook, demo, practice, remix, checkpoint." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/styles.css" />
+  <style>
+    .phase-strip{display:flex;border:1.5px solid var(--ink);border-radius:4px;overflow:hidden;margin:16px 0 8px}
+    .phase{display:flex;flex-direction:column;padding:12px;border-left:1.5px solid var(--ink);background:var(--paper)}
+    .phase:first-child{border-left:none}
+    .phase.highlight{background:var(--accent);color:#fff}
+    .phase-num{font:700 9px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;opacity:.75;margin-bottom:4px}
+    .phase-name{font:700 14px/1.2 var(--hand)}
+    .phase-time{font:700 9px/1 var(--mono);opacity:.6;margin-top:auto;padding-top:6px}
+    .lesson-block{border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink);margin-bottom:14px}
+    .lesson-block h3{margin:0 0 8px;font-size:18px}
+    .lesson-block p{font-size:13px;color:var(--soft);margin:0}
+    .tip-box{background:#fff8f5;border-left:4px solid var(--accent);padding:12px 16px;border-radius:0 4px 4px 0;font-size:13px;margin-top:10px}
+    .time-chip{display:inline-flex;align-items:center;background:var(--ink);color:var(--paper);font:700 10px/1 var(--mono);padding:2px 8px;border-radius:2px;margin-left:8px;vertical-align:middle}
+  </style>
 </head>
 <body data-page="teachers">
   <header class="site-header">
     <a class="brand" href="../../index.html">CS Canvas</a>
-    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../browse/index.html">Browse</a><a class="active" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a href="../../concepts/index.html">Concepts</a>
+      <a href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a class="active" href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
   </header>
   <main>
+
     <section class="hero">
       <p class="kicker">teacher resource</p>
       <h1>Lesson Plan Template</h1>
-      <p class="lede">A repeatable class-session structure for demo, practice, remix, checkpoint, and reflection.</p>
+      <p class="lede">A five-phase rhythm for every CS Canvas class session: hook, demo, practice, remix, checkpoint.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../concepts/index.html">Browse concepts</a>
+        <a class="button" href="../assessment-rubrics/index.html">Assessment rubrics</a>
+      </div>
     </section>
-    
+
     <section class="band split">
       <div>
-        <h2>Give each lesson a reliable rhythm.</h2>
-        <p>A repeatable class-session structure for demo, practice, remix, checkpoint, and reflection.</p>
-        <ul class="checklist"><li>Start with a visible demo.</li><li>Let students make one controlled change.</li><li>End with a checkpoint students can explain.</li></ul>
+        <p class="meta">The repeatable rhythm</p>
+        <h2>Give every lesson the same reliable shape.</h2>
+        <p>Students learn faster when the class session has a predictable rhythm. The five-phase structure below works for any concept in the curriculum — adjust the timing for 30-minute and 50-minute periods.</p>
+        <ul class="checklist">
+          <li>Hook: visual question before syntax</li>
+          <li>Demo: teacher codes live, students watch</li>
+          <li>Practice: students run and trace the example</li>
+          <li>Remix: students change something with intention</li>
+          <li>Checkpoint: students explain one thing they made</li>
+        </ul>
       </div>
-      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132"><circle cx="36" cy="34" r="5"/><circle cx="72" cy="34" r="8"/><circle cx="108" cy="34" r="5"/><circle cx="144" cy="34" r="8"/><circle cx="36" cy="72" r="8"/><circle cx="72" cy="72" r="5"/><circle cx="108" cy="72" r="8"/><circle cx="144" cy="72" r="5"/></svg></div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- Timeline bar -->
+          <rect x="16" y="56" width="148" height="18" rx="2" fill="currentColor" opacity=".1" stroke="currentColor" stroke-width="1"/>
+          <!-- Phases -->
+          <rect x="16" y="56" width="18" height="18" rx="1" fill="currentColor" opacity=".3"/>
+          <rect x="36" y="56" width="28" height="18" rx="1" fill="currentColor" opacity=".5"/>
+          <rect x="66" y="56" width="28" height="18" rx="1" fill="currentColor" opacity=".4"/>
+          <rect x="96" y="56" width="38" height="18" rx="1" fill="#d96a3d" opacity=".8"/>
+          <rect x="136" y="56" width="28" height="18" rx="1" fill="currentColor" opacity=".6"/>
+          <!-- Labels -->
+          <text x="25" y="88" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">hook</text>
+          <text x="50" y="88" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">demo</text>
+          <text x="80" y="88" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">practice</text>
+          <text x="115" y="88" font-family="monospace" font-size="6" text-anchor="middle" fill="#d96a3d">remix</text>
+          <text x="150" y="88" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">check</text>
+        </svg>
+      </div>
     </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:4px">The five phases in detail</p>
+      <div class="phase-strip">
+        <div class="phase" style="flex:1"><span class="phase-num">phase 1</span><span class="phase-name">Hook</span><span class="phase-time">5 min</span></div>
+        <div class="phase" style="flex:1.5"><span class="phase-num">phase 2</span><span class="phase-name">Live Demo</span><span class="phase-time">10 min</span></div>
+        <div class="phase" style="flex:1.5"><span class="phase-num">phase 3</span><span class="phase-name">Practice</span><span class="phase-time">10 min</span></div>
+        <div class="phase highlight" style="flex:2"><span class="phase-num">phase 4</span><span class="phase-name">Remix</span><span class="phase-time">15 min</span></div>
+        <div class="phase" style="flex:1.5"><span class="phase-num">phase 5</span><span class="phase-name">Checkpoint</span><span class="phase-time">10 min</span></div>
+      </div>
+
+      <div class="lesson-block">
+        <h3>Phase 1 — Hook <span class="time-chip">5 min</span></h3>
+        <p>Show a visual question before any code. Project the canvas output of the day's concept and ask: "What do you think is making this happen?" or "How would you build this?" Let students guess. The wrong answers are fine — the hook is to create a question the demo will answer.</p>
+        <div class="tip-box"><strong>Teacher tip:</strong> Don't narrate the output — ask about it. Silence is okay. The hook works when students feel curious, not when they feel lectured.</div>
+      </div>
+
+      <div class="lesson-block">
+        <h3>Phase 2 — Live Demo <span class="time-chip">10 min</span></h3>
+        <p>Code live with students watching (or walk through the concept page side by side). Narrate your thinking: "I'm using mouseX here because it updates every frame…" Start minimal — one shape, one rule — then build up. Make one deliberate mistake and fix it visibly. Students should see debugging as part of coding, not a sign of failure.</p>
+        <div class="tip-box"><strong>Teacher tip:</strong> Project the concept page alongside your code editor. The mini-canvas SVG gives students a visual reference while you type.</div>
+      </div>
+
+      <div class="lesson-block">
+        <h3>Phase 3 — Practice <span class="time-chip">10 min</span></h3>
+        <p>Students open the concept page and run the example code. Their first goal is just to get it working. Ask them to read through each line and annotate with a comment: "// this draws a circle at the mouse position." Reading + annotating beats passive copying.</p>
+        <div class="tip-box"><strong>Teacher tip:</strong> Circulate and ask "what does this line do?" rather than answering questions directly. Redirection to the canvas output ("try changing that number and see what happens") is often more powerful than explanation.</div>
+      </div>
+
+      <div class="lesson-block">
+        <h3>Phase 4 — Remix <span class="time-chip">15 min · the core</span></h3>
+        <p>Give a prompt: "Make it your own in one way. Change something with a reason." This is the heart of the lesson. Students who finish early get a harder prompt: "Add a second behavior" or "Make it respond to a keyboard key." The canvas is the immediate feedback loop — if the output changes, something happened.</p>
+        <div class="tip-box"><strong>Teacher tip:</strong> Write the remix prompt on the board before the lesson starts. Having it visible means you don't have to stop the class to issue it — students can move into remix naturally when they're ready.</div>
+      </div>
+
+      <div class="lesson-block">
+        <h3>Phase 5 — Checkpoint <span class="time-chip">10 min</span></h3>
+        <p>Students take a canvas screenshot and write one sentence: "I changed [X] because [reason], and the result was [Y]." Collect it or add it to the portfolio. End with one volunteer sharing their remix. This closes the loop: demo → your version → explained to someone else.</p>
+        <div class="tip-box"><strong>Teacher tip:</strong> The checkpoint is not graded for correctness — it's graded for presence. "I tried X and it didn't work because Y" is a full-credit checkpoint response. What matters is that students engaged with the concept.</div>
+      </div>
+    </section>
+
     <section class="band columns">
-      <article><h2>Use it for</h2><p>Start with a visible demo.</p></article><article><h2>Try next</h2><p>Let students make one controlled change.</p></article><article><h2>Connect it</h2><p>End with a checkpoint students can explain.</p></article>
+      <article>
+        <h2>30-minute period</h2>
+        <p style="font-size:13px">Compress: combine hook + demo (8 min), skip written annotations during practice (5 min), shorten remix (12 min), skip whole-class share during checkpoint (5 min). The remix phase is protected — don't cut it.</p>
+      </article>
+      <article>
+        <h2>Two-period lessons</h2>
+        <p style="font-size:13px">Concepts 07 (Functions), 09 (Objects), and 21 (Recursion) benefit from two periods. Day 1 = phases 1–3. Day 2 = open with a short recap, then extended remix (20–25 min) followed by checkpoint + gallery walk.</p>
+      </article>
+      <article>
+        <h2>Differentiation</h2>
+        <p style="font-size:13px">Early finishers get extension prompts from the concept page's Teacher Notes. Students who struggle stay in Phase 3 (practice/annotate) — don't push them to remix until the example runs. Keep a "minimum viable remix" prompt (change one number) for students who need it.</p>
+      </article>
     </section>
-    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/index.html">
-    <span class="meta">lessons</span>
-    <h2>Concepts</h2>
-    <p>Return to the numbered lesson sequence.</p>
-  </a><a class="card" href="../../browse/index.html">
-    <span class="meta">index</span>
-    <h2>Browse</h2>
-    <p>Search the full site atlas.</p>
-  </a></div></section>
-  
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related resources</p>
+      <div class="grid cards">
+        <a class="card" href="../assessment-rubrics/index.html">
+          <span class="meta">assessment</span>
+          <h2>Assessment &amp; Rubrics</h2>
+          <p>The reproduce/modify/extend rubric that matches each checkpoint phase.</p>
+        </a>
+        <a class="card" href="../portfolio-template/index.html">
+          <span class="meta">student-facing</span>
+          <h2>Portfolio Template</h2>
+          <p>Where checkpoint artifacts go — the student-facing documentation structure.</p>
+        </a>
+        <a class="card" href="../curriculum-guide/index.html">
+          <span class="meta">planning</span>
+          <h2>Curriculum Guide</h2>
+          <p>Scope, sequence, and timing for all 22 concepts across 7 sections.</p>
+        </a>
+      </div>
+    </section>
+
   </main>
   <footer class="site-footer">
-    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
-    <span>p5.js - Canvas API - Processing Java</span>
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="../../assets/site.js"></script>
 </body>

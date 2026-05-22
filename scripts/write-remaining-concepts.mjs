@@ -696,10 +696,12 @@ function codePane(kind, label, value) {
 
   const editorTitle = kind === 'p5' ? 'p5.js Web Editor' : 'Canvas API Sandbox';
   const filename = kind === 'p5' ? 'sketch.js' : 'script.js';
+  const exportLabel = kind === 'p5' ? 'Export to p5.js' : 'Export to CodePen';
 
   return `<article class="code-pane web-editor ${kind}">
-          <div class="editor-chrome"><span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">${editorTitle}</span><span class="run-pill">Run</span></div>
+          <div class="editor-chrome"><span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">${editorTitle}</span><span class="editor-actions"><button class="editor-btn play" type="button" data-editor-play aria-label="Play snippet">Play</button><button class="editor-btn stop" type="button" data-editor-stop aria-label="Stop snippet">Stop</button><button class="editor-btn export" type="button" data-editor-export aria-label="${exportLabel}">${exportLabel}</button></span></div>
           <div class="code-label-row"><div class="code-label ${kind}">${label}</div><div class="file-tabs"><span class="file-tab active">${filename}</span><span class="file-tab">index.html</span></div></div>
+          <div class="editor-preview" aria-live="polite"><span>Preview paused</span></div>
           <pre>${code(value)}</pre>
         </article>`;
 }

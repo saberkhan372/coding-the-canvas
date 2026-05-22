@@ -50,19 +50,49 @@
   color: var(--soft);
 }
 
-.run-pill {
+.editor-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.editor-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px;
+  min-height: 24px;
   padding: 4px 9px;
   border: 1px solid var(--ink);
   border-radius: 999px;
-  background: var(--accent);
-  color: #fffdf7;
+  background: #fffdf7;
+  color: var(--ink);
   font: 700 10px/1 var(--mono);
   letter-spacing: .06em;
   text-transform: uppercase;
+  cursor: pointer;
+}
+
+.editor-btn:hover,
+.editor-btn:focus {
+  background: var(--edge);
+  outline: none;
+}
+
+.editor-btn.play,
+.editor-btn.export {
+  background: var(--accent);
+  color: #fffdf7;
+}
+
+.editor-btn.stop {
+  color: var(--soft);
+}
+
+.editor-btn.copied {
+  background: #2d5a2d;
+  color: #fffdf7;
 }
 
 .code-label-row {
@@ -92,6 +122,32 @@
   color: var(--ink);
   border-color: var(--ink);
   border-bottom-color: #fffdf7;
+}
+
+.editor-preview {
+  min-height: 58px;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  background: #fffdf7;
+  border-bottom: 1.5px solid var(--ink);
+  color: var(--soft);
+  font: 600 11px/1.4 var(--mono);
+  letter-spacing: .03em;
+}
+
+.editor-preview.is-running {
+  color: var(--ink);
+  background:
+    linear-gradient(90deg, rgba(217, 106, 61, .16) 0 25%, transparent 25% 50%, rgba(217, 106, 61, .16) 50% 75%, transparent 75%),
+    #fffdf7;
+  background-size: 48px 48px;
+  animation: preview-slide 1.2s linear infinite;
+}
+
+@keyframes preview-slide {
+  from { background-position: 0 0; }
+  to { background-position: 48px 0; }
 }
 
 .processing-code .code-label {

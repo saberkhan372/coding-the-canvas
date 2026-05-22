@@ -73,8 +73,9 @@
       <p class="meta" style="margin-bottom:16px">Code — color zones on the canvas</p>
       <div class="code-panes">
         <article class="code-pane web-editor p5">
-          <div class="editor-chrome"><span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">p5.js Web Editor</span><span class="run-pill">Run</span></div>
+          <div class="editor-chrome"><span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">p5.js Web Editor</span><span class="editor-actions"><button class="editor-btn play" type="button" data-editor-play aria-label="Play snippet">Play</button><button class="editor-btn stop" type="button" data-editor-stop aria-label="Stop snippet">Stop</button><button class="editor-btn export" type="button" data-editor-export aria-label="Export to p5.js">Export to p5.js</button></span></div>
           <div class="code-label-row"><div class="code-label p5">p5.js</div><div class="file-tabs"><span class="file-tab active">sketch.js</span><span class="file-tab">index.html</span></div></div>
+          <div class="editor-preview" aria-live="polite"><span>Preview paused</span></div>
           <pre><span class="kw">function</span> <span class="fn">setup</span>() {
   <span class="fn">createCanvas</span>(<span class="nm">400</span>, <span class="nm">300</span>);
 }
@@ -96,8 +97,9 @@
 }</pre>
         </article>
         <article class="code-pane web-editor canvas-api">
-          <div class="editor-chrome"><span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">Canvas API Sandbox</span><span class="run-pill">Run</span></div>
+          <div class="editor-chrome"><span class="editor-dots"><span></span><span></span><span></span></span><span class="editor-title">Canvas API Sandbox</span><span class="editor-actions"><button class="editor-btn play" type="button" data-editor-play aria-label="Play snippet">Play</button><button class="editor-btn stop" type="button" data-editor-stop aria-label="Stop snippet">Stop</button><button class="editor-btn export" type="button" data-editor-export aria-label="Export to CodePen">Export to CodePen</button></span></div>
           <div class="code-label-row"><div class="code-label canvas-api">Canvas API</div><div class="file-tabs"><span class="file-tab active">script.js</span><span class="file-tab">index.html</span></div></div>
+          <div class="editor-preview" aria-live="polite"><span>Preview paused</span></div>
           <pre>canvas.<span class="fn">addEventListener</span>(<span class="st">'mousemove'</span>, e =&gt; {
   <span class="kw">const</span> x = e.offsetX;
   <span class="kw">const</span> w = canvas.width;

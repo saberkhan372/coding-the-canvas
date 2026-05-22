@@ -10,6 +10,80 @@
     }
   });
 
+  const webEditors = [...document.querySelectorAll('.web-editor')];
+
+  const copyText = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'fixed';
+      textarea.style.left = '-9999px';
+      document.body.append(textarea);
+      textarea.select();
+      const ok = document.execCommand('copy');
+      textarea.remove();
+      return ok;
+    }
+  };
+
+  const canvasShell = (code) => {
+    const hasCanvasDeclaration = /\b(const|let|var)\s+canvas\b/.test(code);
+    return `<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    body { margin: 0; display: grid; min-height: 100vh; place-items: center; background: #f6f2ea; }
+    canvas { width: 400px; height: 260px; border: 1px solid #1c1a17; background: white; }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="400" height="260"></canvas>
+  <script>
+${hasCanvasDeclaration ? '' : "const canvas = document.getElementById('canvas');"}
+${code}
+  <\/script>
+</body>
+</html>`;
+  };
+
+  webEditors.forEach((editor) => {
+    const preview = editor.querySelector('.editor-preview');
+    const codeBlock = editor.querySelector('pre');
+    const play = editor.querySelector('[data-editor-play]');
+    const stop = editor.querySelector('[data-editor-stop]');
+    const exportButton = editor.querySelector('[data-editor-export]');
+    const editorName = editor.classList.contains('p5') ? 'p5.js Web Editor' : 'CodePen';
+
+    play?.addEventListener('click', () => {
+      preview?.classList.add('is-running');
+      if (preview) preview.innerHTML = '<span>Preview running - copy/export to edit live</span>';
+    });
+
+    stop?.addEventListener('click', () => {
+      preview?.classList.remove('is-running');
+      if (preview) preview.innerHTML = '<span>Preview paused</span>';
+    });
+
+    exportButton?.addEventListener('click', async () => {
+      const rawCode = codeBlock?.textContent || '';
+      const isP5 = editor.classList.contains('p5');
+      const copied = await copyText(isP5 ? rawCode : canvasShell(rawCode));
+      exportButton.classList.toggle('copied', copied);
+      exportButton.textContent = copied ? 'Copied' : 'Copy failed';
+      setTimeout(() => {
+        exportButton.classList.remove('copied');
+        exportButton.textContent = isP5 ? 'Export to p5.js' : 'Export to CodePen';
+      }, 1800);
+      window.open(isP5 ? 'https://editor.p5js.org/' : 'https://codepen.io/pen/', '_blank', 'noopener,noreferrer');
+      if (preview) preview.innerHTML = `<span>Copied code and opened ${editorName}</span>`;
+    });
+  });
+
   const cardBands = [...document.querySelectorAll('.cards')];
   if (!cardBands.length) return;
 

@@ -10,7 +10,7 @@ Last updated: May 22, 2026
 
 ## Current State
 
-Coding the Canvas is a static GitHub Pages site for the CS Canvas / CC Fest curriculum. The site has a root homepage, concept pages, section pages, language pages, bridge pages, tool pages, teacher resources, search/browse pages, and a wireframe preview.
+Coding the Canvas is a static GitHub Pages site for the Coding the Canvas / CC Fest curriculum. The site has a root homepage, concept pages, section pages, language pages, bridge pages, tool pages, teacher resources, search/browse pages, and a wireframe preview.
 
 The working tree currently has 65 HTML files with local links verified clean. `main` is aligned with `origin/main`; the teacher pages, project docs, site branding, and favicon work have been committed and pushed.
 

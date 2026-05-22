@@ -1,4 +1,4 @@
-# CS Canvas — Project Onboarding
+# Coding the Canvas — Project Onboarding
 
 **What this is:** A static GitHub Pages site teaching computer science through creative coding. Every concept produces a visible canvas artifact. Three languages throughout: p5.js, Canvas API, Processing (Java).
 
@@ -247,7 +247,7 @@ ab8d101  Add split canvas preview to code editors
 2097813  Add editor controls for code snippets
 74f75e0  Standardize concept code editor sections
 37309d6  Replace scaffold copy with public site content
-2b001b4  Publish CS Canvas static site
+2b001b4  Publish Coding the Canvas static site
 ```
 
 **Uncommitted at time of writing:** all 10 teacher resource pages + ap-csa concept reference fixes

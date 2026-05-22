@@ -96,9 +96,9 @@ const languages = [
 ];
 
 const teacherPages = [
-  ['index', 'Teacher Overview', 'The teacher front door for using CS Canvas in classrooms.', ['Course fit', 'What materials exist', 'AP CSP and AP CSA entry points', 'Download/resource CTA']],
+  ['index', 'Teacher Overview', 'The teacher front door for using Coding the Canvas in classrooms.', ['Course fit', 'What materials exist', 'AP CSP and AP CSA entry points', 'Download/resource CTA']],
   ['curriculum-guide', 'Curriculum Guide', 'Scope, sequence, learning objectives, and the 7-section arc.', ['22 lesson map', 'Objectives by lesson', 'Prerequisites', 'Suggested order']],
-  ['lesson-plan-template', 'Lesson Plan Template', 'The repeatable structure for a CS Canvas class session.', ['Warm-up', 'Demo', 'Student task', 'Checkpoint and extension']],
+  ['lesson-plan-template', 'Lesson Plan Template', 'The repeatable structure for a Coding the Canvas class session.', ['Warm-up', 'Demo', 'Student task', 'Checkpoint and extension']],
   ['pacing-guides', 'Pacing Guides', 'Multiple ways to schedule the curriculum.', ['6-week option', 'Semester option', '24-week AP CSP option', 'Full-year AP CSA option']],
   ['ap-csp', 'AP CS Principles Coverage', 'Detailed map to AP CSP Big Ideas and practices.', ['AAP/DAT/IOC/CRD map', 'CSN gap note', 'Create PT support links', 'Teacher caveats']],
   ['ap-csa', 'AP CS A Coverage', 'Detailed map to all ten AP CSA units through Processing Java.', ['Units 1-10 map', 'FRQ type map', 'Processing Java notes', 'Exam-prep stretch']],
@@ -123,7 +123,7 @@ const tools = [
 ];
 
 const corePages = [
-  ['about/index.html', 'About CS Canvas', 'Why canvas-based creative coding is a powerful way to learn computer science.', ['Project philosophy', 'Audience', 'Language philosophy', 'Credits and contribution links']],
+  ['about/index.html', 'About Coding the Canvas', 'Why canvas-based creative coding is a powerful way to learn computer science.', ['Project philosophy', 'Audience', 'Language philosophy', 'Credits and contribution links']],
   ['cc-fest/index.html', 'Born From CC Fest', 'The origin story and workshop lineage behind the curriculum.', ['Origin story', 'Community context', 'Student/workshop artifacts', 'How the project grew']],
   ['start/index.html', 'Start Here', 'A chooser for new coders, JavaScript learners, teachers, AP CSA students, and artists.', ['Learner-type picker', 'Recommended first path', 'Language choice', 'Begin at lesson 01']],
   ['search/index.html', 'Search Results', 'A search surface that groups concepts, tools, bridges, and teacher resources.', ['Search box', 'Grouped results', 'Filter chips', 'No-results state']],
@@ -173,7 +173,7 @@ function miniCanvas(kind = 'grid') {
   return `<div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">${guts}</svg></div>`;
 }
 
-function shell({ path, title, kicker = 'CS Canvas', description, body, active = '' }) {
+function shell({ path, title, kicker = 'Coding the Canvas', description, body, active = '' }) {
   const prefix = relPrefix(path);
   const navHtml = nav.map(([label, href]) => {
     const isActive = active === label.toLowerCase();
@@ -436,4 +436,4 @@ writeBrowse();
 writeCorePages();
 writeImpactAlias();
 
-console.log('Generated CS Canvas static pages.');
+console.log('Generated Coding the Canvas static pages.');

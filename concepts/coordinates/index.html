@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coordinates - CS Canvas</title>
+  <meta name="description" content="Every pixel on the canvas has an (x, y) address. Learn how the coordinate system works — origin top-left, y increases downward." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a class="active" href="../../concepts/index.html">Concepts</a>
+      <a href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
+  </header>
+  <main>
+
+    <section class="hero">
+      <p class="kicker">Concept 01 / 22 &nbsp;·&nbsp; §1 Start with the Canvas</p>
+      <h1>Coordinates</h1>
+      <p class="lede">Every pixel on the canvas has an address: two numbers, x and y. Learn how to find any point — and why y increases downward.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/start-with-the-canvas/index.html">§1 Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 01 / 22</p>
+        <h2>The big idea</h2>
+        <p>A canvas is a grid of pixels. Every pixel sits at an intersection of a column (x) and a row (y). The origin — position (0, 0) — is the top-left corner. x increases to the right. y increases <em>downward</em> — the opposite of the math classroom, and the first thing that surprises every student.</p>
+        <ul class="checklist">
+          <li>Origin (0, 0) is top-left, not bottom-left</li>
+          <li>x moves right, y moves down</li>
+          <li>Canvas width and height set the boundary</li>
+          <li>Pixel positions are integers — no fractions needed</li>
+          <li>Shapes are placed by their top-left corner or center depending on the function</li>
+        </ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <line x1="10" y1="10" x2="10" y2="122" stroke="currentColor" stroke-width="1.5" opacity=".5"/>
+          <line x1="10" y1="10" x2="170" y2="10" stroke="currentColor" stroke-width="1.5" opacity=".5"/>
+          <!-- Grid -->
+          <line x1="46" y1="10" x2="46" y2="122" stroke="currentColor" stroke-width=".5" opacity=".15"/>
+          <line x1="82" y1="10" x2="82" y2="122" stroke="currentColor" stroke-width=".5" opacity=".15"/>
+          <line x1="118" y1="10" x2="118" y2="122" stroke="currentColor" stroke-width=".5" opacity=".15"/>
+          <line x1="154" y1="10" x2="154" y2="122" stroke="currentColor" stroke-width=".5" opacity=".15"/>
+          <line x1="10" y1="46" x2="170" y2="46" stroke="currentColor" stroke-width=".5" opacity=".15"/>
+          <line x1="10" y1="82" x2="170" y2="82" stroke="currentColor" stroke-width=".5" opacity=".15"/>
+          <line x1="10" y1="118" x2="170" y2="118" stroke="currentColor" stroke-width=".5" opacity=".15"/>
+          <!-- Axes labels -->
+          <text x="6" y="9" font-family="monospace" font-size="7" fill="#8c857a">(0,0)</text>
+          <text x="155" y="22" font-family="monospace" font-size="7" fill="#8c857a">x→</text>
+          <text x="12" y="120" font-family="monospace" font-size="7" fill="#8c857a">y↓</text>
+          <!-- Point -->
+          <circle cx="118" cy="82" r="5" fill="#d96a3d"/>
+          <line x1="10" y1="82" x2="118" y2="82" stroke="#d96a3d" stroke-width="1" stroke-dasharray="4 3"/>
+          <line x1="118" y1="10" x2="118" y2="82" stroke="#d96a3d" stroke-width="1" stroke-dasharray="4 3"/>
+          <text x="120" y="78" font-family="monospace" font-size="7" fill="#d96a3d">(120,80)</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code — place a circle at (120, 80)</p>
+      <div class="code-panes">
+        <div class="code-pane">
+          <div class="code-label p5">p5.js</div>
+          <pre><span class="kw">function</span> <span class="fn">setup</span>() {
+  <span class="fn">createCanvas</span>(<span class="nm">400</span>, <span class="nm">300</span>);
+}
+
+<span class="kw">function</span> <span class="fn">draw</span>() {
+  <span class="fn">background</span>(<span class="nm">240</span>);
+
+  <span class="cm">// circle(x, y, diameter)</span>
+  <span class="fn">circle</span>(<span class="nm">120</span>, <span class="nm">80</span>, <span class="nm">40</span>);
+
+  <span class="cm">// origin dot</span>
+  <span class="fn">fill</span>(<span class="nm">255</span>, <span class="nm">100</span>, <span class="nm">50</span>);
+  <span class="fn">circle</span>(<span class="nm">0</span>, <span class="nm">0</span>, <span class="nm">10</span>);
+}</pre>
+        </div>
+        <div class="code-pane">
+          <div class="code-label canvas-api">Canvas API</div>
+          <pre><span class="kw">const</span> canvas = document.<span class="fn">querySelector</span>(<span class="st">'canvas'</span>);
+<span class="kw">const</span> ctx = canvas.<span class="fn">getContext</span>(<span class="st">'2d'</span>);
+
+<span class="cm">// arc(x, y, radius, startAngle, endAngle)</span>
+ctx.<span class="fn">beginPath</span>();
+ctx.<span class="fn">arc</span>(<span class="nm">120</span>, <span class="nm">80</span>, <span class="nm">20</span>, <span class="nm">0</span>, Math.PI * <span class="nm">2</span>);
+ctx.<span class="fn">fill</span>();
+
+<span class="cm">// origin dot</span>
+ctx.fillStyle = <span class="st">'rgb(255,100,50)'</span>;
+ctx.<span class="fn">beginPath</span>();
+ctx.<span class="fn">arc</span>(<span class="nm">0</span>, <span class="nm">0</span>, <span class="nm">5</span>, <span class="nm">0</span>, Math.PI * <span class="nm">2</span>);
+ctx.<span class="fn">fill</span>();</pre>
+        </div>
+        <div class="code-pane">
+          <div class="code-label java">Processing / Java</div>
+          <pre><span class="kw">void</span> <span class="fn">setup</span>() {
+  <span class="fn">size</span>(<span class="nm">400</span>, <span class="nm">300</span>);
+}
+
+<span class="kw">void</span> <span class="fn">draw</span>() {
+  <span class="fn">background</span>(<span class="nm">240</span>);
+
+  <span class="cm">// ellipse(x, y, w, h) — center-based</span>
+  <span class="fn">ellipse</span>(<span class="nm">120</span>, <span class="nm">80</span>, <span class="nm">40</span>, <span class="nm">40</span>);
+
+  <span class="cm">// origin dot</span>
+  <span class="fn">fill</span>(<span class="nm">255</span>, <span class="nm">100</span>, <span class="nm">50</span>);
+  <span class="fn">ellipse</span>(<span class="nm">0</span>, <span class="nm">0</span>, <span class="nm">10</span>, <span class="nm">10</span>);
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>The canvas idea</h2>
+        <p>Start by showing a blank rectangle and asking "where is the center?" Students instinctively point — and then you can show them how to describe that point with two numbers.</p>
+        <p style="margin-top:8px">Run <code>circle(mouseX, mouseY, 20)</code> first. Students can see coordinates update in real time before any explanation is needed.</p>
+      </article>
+      <article>
+        <h2>Key vocabulary</h2>
+        <ul style="padding-left:18px;margin:0;line-height:1.9;font-size:14px">
+          <li><strong>x</strong> — horizontal distance from the left edge</li>
+          <li><strong>y</strong> — vertical distance from the top edge</li>
+          <li><strong>origin</strong> — the (0, 0) point, top-left corner</li>
+          <li><strong>pixel</strong> — the smallest addressable unit on screen</li>
+          <li><strong>canvas size</strong> — width × height in pixels</li>
+        </ul>
+      </article>
+      <article>
+        <h2>Teacher notes</h2>
+        <p><strong>Timing:</strong> 1–2 periods. This concept is brief but the y-axis misconception is sticky — plan to revisit it in §2 and §3.</p>
+        <p style="margin-top:8px"><strong>Checkpoint:</strong> Students place three circles at exact positions they specify in advance on paper, then verify in code.</p>
+        <p style="margin-top:8px"><strong>AP CSP:</strong> Introduces abstraction (a position = two numbers) and procedural notation.</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <div class="misconception">
+        <strong>Common misconception:</strong> "y=0 is at the bottom." In math class, y increases upward. On screen, row 0 is the top row. Show both axes side by side. Ask students to predict where a shape will appear before running the code.
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">CRD</span><span class="ap-badge partial">AAP</span></div>
+      <div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge partial">MOD</span></div>
+      <p style="margin:8px 0 0;font-size:13px;color:var(--soft)">Introduces procedural abstraction (coordinate system) and the concept that software represents information numerically.</p>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards">
+        <a class="card" href="../shapes-and-color/index.html"><span class="meta">next</span><h2>02 – Shapes &amp; Color</h2><p>fill, stroke, palette</p></a>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="concept-nav">
+        <span></span>
+        <a class="nav-btn next" href="../shapes-and-color/index.html">
+          <span class="nav-dir">Next concept →</span>
+          <span class="nav-title">02 – Shapes &amp; Color</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Functions - CS Canvas</title>
+  <meta name="description" content="A function is a named, reusable drawing command. Parameters make it flexible. return sends a value back." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav><a href="../../index.html">Home</a><a class="active" href="../../concepts/index.html">Concepts</a><a href="../../sections/index.html">Sections</a><a href="../../languages/index.html">Languages</a><a href="../../browse/index.html">Browse</a><a href="../../teachers/index.html">Teachers</a><a href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kicker">Concept 07 / 22 &nbsp;·&nbsp; §4 Make Systems</p>
+      <h1>Functions</h1>
+      <p class="lede">A function is a named drawing command. Write it once, call it anywhere. Parameters let the same function draw different things each time.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/make-systems/index.html">§4 Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 07 / 22</p>
+        <h2>The big idea</h2>
+        <p>Repeated drawing code is the smell that a function is needed. Once you name the operation — <code>drawFlower(x, y, size)</code> — you can place dozens of flowers in a loop with one line each. Parameters make the function flexible; return values let it compute something back.</p>
+        <ul class="checklist">
+          <li>function name(param1, param2) { } — definition</li>
+          <li>name(arg1, arg2) — calling (invoking) the function</li>
+          <li>Parameters are local variables — they only exist inside the function</li>
+          <li>return sends a value back to the caller</li>
+          <li>A function that draws something doesn't need to return</li>
+          <li>DRY: Don't Repeat Yourself — the motivation for functions</li>
+        </ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- Function box -->
+          <rect x="10" y="48" width="80" height="36" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="50" y="69" font-family="monospace" font-size="8" text-anchor="middle" fill="currentColor">drawFlower</text>
+          <text x="50" y="80" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">(x, y, size)</text>
+          <!-- Arrow -->
+          <path d="M90 66 L108 66" stroke="currentColor" stroke-width="1.5"/>
+          <polygon points="108,62 116,66 108,70" fill="currentColor"/>
+          <!-- Flower output -->
+          <circle cx="134" cy="66" r="16" fill="#d96a3d" opacity=".25"/>
+          <circle cx="134" cy="66" r="8" fill="#d96a3d"/>
+          <circle cx="120" cy="66" r="6" fill="#d96a3d" opacity=".6"/>
+          <circle cx="148" cy="66" r="6" fill="#d96a3d" opacity=".6"/>
+          <circle cx="134" cy="52" r="6" fill="#d96a3d" opacity=".6"/>
+          <circle cx="134" cy="80" r="6" fill="#d96a3d" opacity=".6"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code — a reusable house-drawing function</p>
+      <div class="code-panes">
+        <div class="code-pane">
+          <div class="code-label p5">p5.js</div>
+          <pre><span class="cm">// define once</span>
+<span class="kw">function</span> <span class="fn">drawHouse</span>(x, y, size) {
+  <span class="cm">// walls</span>
+  <span class="fn">rect</span>(x, y, size, size * <span class="nm">0.8</span>);
+  <span class="cm">// roof triangle</span>
+  <span class="fn">triangle</span>(
+    x,            y,
+    x + size,     y,
+    x + size/<span class="nm">2</span>,  y - size * <span class="nm">0.5</span>
+  );
+  <span class="cm">// door</span>
+  <span class="fn">rect</span>(x + size*<span class="nm">0.35</span>, y + size*<span class="nm">0.4</span>,
+       size*<span class="nm">0.3</span>, size*<span class="nm">0.4</span>);
+}
+
+<span class="kw">function</span> <span class="fn">draw</span>() {
+  <span class="fn">background</span>(<span class="nm">240</span>);
+  <span class="cm">// call three times — different positions &amp; sizes</span>
+  <span class="fn">drawHouse</span>(<span class="nm">40</span>,  <span class="nm">180</span>, <span class="nm">80</span>);
+  <span class="fn">drawHouse</span>(<span class="nm">180</span>, <span class="nm">200</span>, <span class="nm">60</span>);
+  <span class="fn">drawHouse</span>(<span class="nm">290</span>, <span class="nm">160</span>, <span class="nm">100</span>);
+}</pre>
+        </div>
+        <div class="code-pane">
+          <div class="code-label canvas-api">Canvas API</div>
+          <pre><span class="kw">function</span> <span class="fn">drawHouse</span>(ctx, x, y, size) {
+  ctx.<span class="fn">fillRect</span>(x, y, size, size * <span class="nm">0.8</span>);
+  ctx.<span class="fn">beginPath</span>();
+  ctx.<span class="fn">moveTo</span>(x, y);
+  ctx.<span class="fn">lineTo</span>(x + size, y);
+  ctx.<span class="fn">lineTo</span>(x + size/<span class="nm">2</span>, y - size * <span class="nm">0.5</span>);
+  ctx.<span class="fn">closePath</span>();
+  ctx.<span class="fn">fill</span>();
+}
+
+<span class="kw">const</span> ctx = canvas.<span class="fn">getContext</span>(<span class="st">'2d'</span>);
+<span class="fn">drawHouse</span>(ctx, <span class="nm">40</span>,  <span class="nm">180</span>, <span class="nm">80</span>);
+<span class="fn">drawHouse</span>(ctx, <span class="nm">180</span>, <span class="nm">200</span>, <span class="nm">60</span>);
+<span class="fn">drawHouse</span>(ctx, <span class="nm">290</span>, <span class="nm">160</span>, <span class="nm">100</span>);</pre>
+        </div>
+        <div class="code-pane">
+          <div class="code-label java">Processing / Java</div>
+          <pre><span class="kw">void</span> <span class="fn">setup</span>() { <span class="fn">size</span>(<span class="nm">400</span>, <span class="nm">300</span>); }
+
+<span class="kw">void</span> <span class="fn">draw</span>() {
+  <span class="fn">background</span>(<span class="nm">240</span>);
+  <span class="fn">drawHouse</span>(<span class="nm">40</span>,  <span class="nm">180</span>, <span class="nm">80</span>);
+  <span class="fn">drawHouse</span>(<span class="nm">180</span>, <span class="nm">200</span>, <span class="nm">60</span>);
+  <span class="fn">drawHouse</span>(<span class="nm">290</span>, <span class="nm">160</span>, <span class="nm">100</span>);
+}
+
+<span class="kw">void</span> <span class="fn">drawHouse</span>(<span class="kw">float</span> x, <span class="kw">float</span> y, <span class="kw">float</span> size) {
+  <span class="fn">rect</span>(x, y, size, size * <span class="nm">0.8</span>);
+  <span class="fn">triangle</span>(
+    x,           y,
+    x + size,    y,
+    x + size/<span class="nm">2</span>, y - size * <span class="nm">0.5</span>
+  );
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>The canvas idea</h2>
+        <p>Start with a sketch that draws the same shape in three places using copy-pasted code. Ask: "what if I want to change the color of every copy?" They'd have to edit three places. A function fixes that — edit once, update everywhere.</p>
+        <p style="margin-top:8px">Then put the function call inside a for loop: <code>for (let i = 0; i &lt; 10; i++) drawHouse(i*80, 200, 60)</code> — instant row of houses.</p>
+      </article>
+      <article>
+        <h2>Function anatomy</h2>
+        <pre style="background:#1a1916;color:#e8e4dc;font:12px/1.9 var(--mono);padding:14px;border-radius:4px;overflow-x:auto"><span class="kw">function</span> <span class="fn">drawFlower</span>(
+  x,     <span class="cm">// parameter 1</span>
+  y,     <span class="cm">// parameter 2</span>
+  size   <span class="cm">// parameter 3</span>
+) {
+  <span class="cm">// body: runs when called</span>
+  <span class="fn">circle</span>(x, y, size);
+}</pre>
+      </article>
+      <article>
+        <h2>Teacher notes</h2>
+        <p><strong>Timing:</strong> 2 periods. "Refactor" a repetitive sketch into a function — the motivation is built in.</p>
+        <p style="margin-top:8px"><strong>Key distinction:</strong> A function <em>definition</em> is a recipe. A function <em>call</em> is cooking from the recipe. Defining it doesn't run any code.</p>
+        <p style="margin-top:8px"><strong>AP CSA:</strong> Methods, parameters, and return types are core to Unit 2. The canvas makes the call/return cycle visible.</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">AAP</span><span class="ap-badge partial">CRD</span></div>
+      <div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge strong">MOD</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards">
+        <a class="card" href="../for-loops-and-grids/index.html"><span class="meta">previous</span><h2>06 – For Loops &amp; Grids</h2><p>i, nesting, patterns</p></a>
+        <a class="card" href="../arrays/index.html"><span class="meta">next</span><h2>08 – Arrays</h2><p>lists, index, loops</p></a>
+        <a class="card" href="../objects/index.html"><span class="meta">related</span><h2>09 – Objects</h2><p>data + behavior</p></a>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="concept-nav">
+        <a class="nav-btn" href="../for-loops-and-grids/index.html"><span class="nav-dir">← Previous concept</span><span class="nav-title">06 – For Loops &amp; Grids</span></a>
+        <a class="nav-btn next" href="../arrays/index.html"><span class="nav-dir">Next concept →</span><span class="nav-title">08 – Arrays</span></a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

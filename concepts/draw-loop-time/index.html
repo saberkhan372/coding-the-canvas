@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Draw Loop / Time - CS Canvas</title>
+  <meta name="description" content="setup() runs once. draw() runs forever. frameCount is the heartbeat of every animation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a class="active" href="../../concepts/index.html">Concepts</a>
+      <a href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
+  </header>
+  <main>
+
+    <section class="hero">
+      <p class="kicker">Concept 03 / 22 &nbsp;·&nbsp; §2 Make It Move</p>
+      <h1>Draw Loop / Time</h1>
+      <p class="lede">setup() runs once. draw() runs 60 times a second — forever. Change a variable inside draw() and that change becomes motion.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/make-it-move/index.html">§2 Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 03 / 22</p>
+        <h2>The big idea</h2>
+        <p>A static sketch draws once. An animated sketch draws the same scene over and over, changing a value by a small amount each time. The difference between a painting and a movie is just: run draw() again with different numbers.</p>
+        <ul class="checklist">
+          <li>setup() — runs once at start; set canvas size here</li>
+          <li>draw() — runs in a loop, ~60 times per second</li>
+          <li>background() at the start of draw() clears the previous frame</li>
+          <li>Omit background() to get trails — each frame stacks on the last</li>
+          <li>frameCount — a built-in counter that increments every frame</li>
+          <li>frameRate(n) — control loop speed (default 60)</li>
+        </ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- setup box -->
+          <rect x="10" y="50" width="64" height="36" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="42" y="72" font-family="monospace" font-size="9" text-anchor="middle" fill="currentColor">setup()</text>
+          <text x="42" y="84" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">runs once</text>
+          <!-- arrow -->
+          <path d="M74 68 L92 68" stroke="currentColor" stroke-width="1.5"/>
+          <polygon points="92,64 100,68 92,72" fill="currentColor"/>
+          <!-- draw box -->
+          <rect x="100" y="40" width="68" height="52" rx="3" fill="#fff8f5" stroke="#d96a3d" stroke-width="1.5"/>
+          <text x="134" y="66" font-family="monospace" font-size="9" text-anchor="middle" fill="#d96a3d">draw()</text>
+          <text x="134" y="80" font-family="monospace" font-size="7" text-anchor="middle" fill="#d96a3d">60× / sec</text>
+          <!-- loop arrow -->
+          <path d="M168 54 Q178 30 134 28 Q90 26 90 40" stroke="#d96a3d" stroke-width="1.2" fill="none" stroke-dasharray="4 3"/>
+          <polygon points="90,36 86,44 94,44" fill="#d96a3d"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code — a bouncing ball</p>
+      <div class="code-panes">
+        <div class="code-pane">
+          <div class="code-label p5">p5.js</div>
+          <pre><span class="kw">let</span> x = <span class="nm">0</span>;
+<span class="kw">let</span> speed = <span class="nm">3</span>;
+
+<span class="kw">function</span> <span class="fn">setup</span>() {
+  <span class="fn">createCanvas</span>(<span class="nm">400</span>, <span class="nm">200</span>);
+}
+
+<span class="kw">function</span> <span class="fn">draw</span>() {
+  <span class="fn">background</span>(<span class="nm">240</span>);
+
+  x += speed;                    <span class="cm">// move right every frame</span>
+  <span class="kw">if</span> (x &gt; width || x &lt; <span class="nm">0</span>) {
+    speed *= -<span class="nm">1</span>;               <span class="cm">// reverse direction at edges</span>
+  }
+
+  <span class="fn">circle</span>(x, height / <span class="nm">2</span>, <span class="nm">40</span>);
+}</pre>
+        </div>
+        <div class="code-pane">
+          <div class="code-label canvas-api">Canvas API</div>
+          <pre><span class="kw">let</span> x = <span class="nm">0</span>, speed = <span class="nm">3</span>;
+<span class="kw">const</span> ctx = canvas.<span class="fn">getContext</span>(<span class="st">'2d'</span>);
+
+<span class="kw">function</span> <span class="fn">loop</span>() {
+  ctx.<span class="fn">clearRect</span>(<span class="nm">0</span>, <span class="nm">0</span>, canvas.width, canvas.height);
+
+  x += speed;
+  <span class="kw">if</span> (x &gt; canvas.width || x &lt; <span class="nm">0</span>) speed *= -<span class="nm">1</span>;
+
+  ctx.<span class="fn">beginPath</span>();
+  ctx.<span class="fn">arc</span>(x, canvas.height / <span class="nm">2</span>, <span class="nm">20</span>, <span class="nm">0</span>, Math.PI * <span class="nm">2</span>);
+  ctx.<span class="fn">fill</span>();
+
+  <span class="fn">requestAnimationFrame</span>(loop); <span class="cm">// ~60fps</span>
+}
+<span class="fn">loop</span>();</pre>
+        </div>
+        <div class="code-pane">
+          <div class="code-label java">Processing / Java</div>
+          <pre><span class="kw">float</span> x = <span class="nm">0</span>;
+<span class="kw">float</span> speed = <span class="nm">3</span>;
+
+<span class="kw">void</span> <span class="fn">setup</span>() {
+  <span class="fn">size</span>(<span class="nm">400</span>, <span class="nm">200</span>);
+}
+
+<span class="kw">void</span> <span class="fn">draw</span>() {
+  <span class="fn">background</span>(<span class="nm">240</span>);
+
+  x += speed;
+  <span class="kw">if</span> (x &gt; width || x &lt; <span class="nm">0</span>) {
+    speed *= -<span class="nm">1</span>;
+  }
+
+  <span class="fn">ellipse</span>(x, height / <span class="nm">2</span>, <span class="nm">40</span>, <span class="nm">40</span>);
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>The canvas idea</h2>
+        <p>Remove <code>background()</code> from draw() and run it. The trail that appears shows that the canvas doesn't erase itself — you have to erase it. This is the "aha" that makes the loop model tangible.</p>
+        <p style="margin-top:8px">Then use <code>frameCount</code> directly: <code>circle(frameCount % width, 100, 20)</code> — no extra variables needed.</p>
+      </article>
+      <article>
+        <h2>Key variables</h2>
+        <ul style="padding-left:18px;margin:0;line-height:2;font-size:13px">
+          <li><code>frameCount</code> — frames elapsed since start</li>
+          <li><code>frameRate()</code> — get current FPS</li>
+          <li><code>millis()</code> — milliseconds since start</li>
+          <li><code>width</code>, <code>height</code> — canvas dimensions</li>
+          <li><code>noLoop()</code> — pause the draw loop</li>
+          <li><code>loop()</code> — resume the draw loop</li>
+        </ul>
+      </article>
+      <article>
+        <h2>Teacher notes</h2>
+        <p><strong>Timing:</strong> 2 periods. Spend the first on the setup/draw model with the trail demo. Spend the second on state variables and the bouncing ball.</p>
+        <p style="margin-top:8px"><strong>Checkpoint:</strong> Students animate a shape using a variable that updates every frame, and can explain verbally why <code>background()</code> goes inside draw().</p>
+        <p style="margin-top:8px"><strong>AP CSA:</strong> Connects to infinite loops — but intentional ones.</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">AAP</span><span class="ap-badge partial">CRD</span></div>
+      <div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge strong">CON</span><span class="ap-badge partial">MOD</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards">
+        <a class="card" href="../shapes-and-color/index.html"><span class="meta">previous</span><h2>02 – Shapes &amp; Color</h2><p>fill, stroke, palette</p></a>
+        <a class="card" href="../mouse-input/index.html"><span class="meta">next</span><h2>04 – Mouse Input</h2><p>mouseX, mousePressed</p></a>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="concept-nav">
+        <a class="nav-btn" href="../shapes-and-color/index.html">
+          <span class="nav-dir">← Previous concept</span>
+          <span class="nav-title">02 – Shapes &amp; Color</span>
+        </a>
+        <a class="nav-btn next" href="../mouse-input/index.html">
+          <span class="nav-dir">Next concept →</span>
+          <span class="nav-title">04 – Mouse Input</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

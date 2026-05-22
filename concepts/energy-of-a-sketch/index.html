@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Energy of a Sketch - CS Canvas</title>
+  <meta name="description" content="Every frame costs work. Loops, pixels, and animation can make a sketch feel smooth or wasteful." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav><a href="../../index.html">Home</a><a class="active" href="../../concepts/index.html">Concepts</a><a href="../../sections/index.html">Sections</a><a href="../../languages/index.html">Languages</a><a href="../../browse/index.html">Browse</a><a href="../../teachers/index.html">Teachers</a><a href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kicker">Concept 20 / 22 &nbsp;·&nbsp; §6 Computing in the World</p>
+      <h1>Energy of a Sketch</h1>
+      <p class="lede">Every frame costs work. Loops, pixels, and animation can make a sketch feel smooth or wasteful.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/computing-in-the-world/index.html">Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 20 / 22</p>
+        <h2>The big idea</h2>
+        <p>Students measure how much work a sketch does each frame. Drawing 50 circles is different from touching 500,000 pixels 60 times per second. Performance becomes an ethical and practical design question.</p>
+        <ul class="checklist"><li>Count operations per frame</li><li>Compare noLoop() and draw()</li><li>Measure frameRate()</li><li>Reduce unnecessary work</li><li>Discuss energy and device access</li></ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+    <path d="M20 100 L46 48 L70 82 L94 24 L120 92 L146 40 L164 74" fill="none" stroke="#d96a3d" stroke-width="4"/>
+    <rect x="20" y="106" width="130" height="10" fill="none" stroke="#1c1a17"/><rect x="20" y="106" width="92" height="10" fill="#1c1a17"/><text x="90" y="126" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">work / frame</text>
+  </svg></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code - count work per frame</p>
+      <div class="code-panes">
+        <div class="code-pane"><div class="code-label p5">p5.js</div><pre>let work = 0;
+
+function draw() {
+  background(246);
+  work = 0;
+
+  for (let i = 0; i &lt; 1000; i++) {
+    circle(random(width), random(height), 4);
+    work++;
+  }
+
+  text('work this frame: ' + work, 20, 30);
+  text('fps: ' + round(frameRate()), 20, 50);
+}</pre></div>
+        <div class="code-pane"><div class="code-label canvas-api">Canvas API</div><pre>let work = 0;
+
+function frame() {
+  work = 0;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let i = 0; i &lt; 1000; i++) {
+    ctx.fillRect(Math.random()*canvas.width, Math.random()*canvas.height, 4, 4);
+    work++;
+  }
+  requestAnimationFrame(frame);
+}</pre></div>
+        <div class="code-pane"><div class="code-label java">Processing / Java</div><pre>int work = 0;
+
+void draw() {
+  background(246);
+  work = 0;
+  for (int i = 0; i &lt; 1000; i++) {
+    ellipse(random(width), random(height), 4, 4);
+    work++;
+  }
+  text(&quot;work: &quot; + work, 20, 30);
+}</pre></div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article><h2>The canvas idea</h2><p>Create a work meter. Let students raise the number of shapes until the frame rate drops, then optimize the sketch.</p></article>
+      <article><h2>Patterns to notice</h2><ul style="padding-left:18px;margin:0;line-height:2;font-size:13px"><li>Frame rate</li><li>operation count</li><li>pixel cost</li><li>optimization</li><li>noLoop()</li></ul></article>
+      <article><h2>Teacher notes</h2><p>Tie this to access: heavy sketches punish older devices first. Efficient code is also inclusive code.</p></article>
+    </section>
+
+    <section class="band"><div class="callout"><strong>Common misconception:</strong> If a sketch looks simple, students assume it is cheap. Pixel loops and hidden repeated work can be expensive.</div></section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">IOC</span><span class="ap-badge partial">AAP</span></div><div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge strong">U4</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards"><a class="card" href="../whose-authorship/index.html"><span class="meta">previous</span><h2>19 - Whose Authorship?</h2><p>Review the previous concept.</p></a><a class="card" href="../recursion-as-fractals/index.html"><span class="meta">next</span><h2>21 - Recursion as Fractals</h2><p>Continue the sequence.</p></a><a class="card" href="../../sections/computing-in-the-world/index.html"><span class="meta">section</span><h2>§6 Computing in the World</h2><p>See the movement overview.</p></a></div>
+    </section>
+
+    <section class="band"><div class="concept-nav">
+    <a class="nav-btn" href="../whose-authorship/index.html"><span class="nav-dir">Previous concept</span><span class="nav-title">19 - Whose Authorship?</span></a>
+    <a class="nav-btn next" href="../recursion-as-fractals/index.html"><span class="nav-dir">Next concept</span><span class="nav-title">21 - Recursion as Fractals</span></a>
+  </div></section>
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js - Canvas API - Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

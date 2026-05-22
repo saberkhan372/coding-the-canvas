@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Make Systems - CS Canvas</title>
+  <meta name="description" content="Loops, functions, arrays, objects, and modes that let a sketch become a system." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="sections">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a href="../../concepts/index.html">Concepts</a>
+      <a class="active" href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
+  </header>
+  <main>
+
+    <section class="hero">
+      <p class="kicker">Section 04 of 07</p>
+      <span class="section-num">§4</span>
+      <h1>Make Systems</h1>
+      <p class="lede">Loops, functions, arrays, objects — the building blocks that turn a single sketch into a whole system.</p>
+      <div class="actions" style="margin-top:24px">
+        <a class="button primary" href="../../concepts/for-loops-and-grids/index.html">Start Concept 06</a>
+        <a class="button" href="../../tools/for-loop-stepper/index.html">For Loop Stepper</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concepts 06 – 10 &nbsp;·&nbsp; The core CS arc</p>
+        <h2>What this section covers</h2>
+        <p>This is the longest and most consequential section — five concepts that together constitute the heart of programming. Loops eliminate repetition. Functions create reusable verbs. Arrays hold collections. Objects bundle data with behavior. State machines let a sketch have modes. Each concept builds directly on the last.</p>
+        <ul class="checklist">
+          <li>For loops with visual output (grids, patterns)</li>
+          <li>Functions as named, reusable drawing operations</li>
+          <li>Arrays as ordered lists of values or objects</li>
+          <li>Objects: grouping data and methods together</li>
+          <li>State machines: screens, modes, game phases</li>
+        </ul>
+        <div class="stat-row">
+          <div class="stat"><span class="stat-label">Concepts</span><span class="stat-val">5</span></div>
+          <div class="stat"><span class="stat-label">Typical time</span><span class="stat-val">8–10 periods</span></div>
+          <div class="stat"><span class="stat-label">Difficulty</span><span class="stat-val"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip empty"></span><span class="pip empty"></span></span></div>
+          <div class="stat"><span class="stat-label">Prerequisite</span><span class="stat-val">§3 Conditionals</span></div>
+        </div>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- 4x3 dot grid from a for loop -->
+          <circle cx="28" cy="28" r="6" fill="currentColor" opacity=".7"/>
+          <circle cx="60" cy="28" r="6" fill="currentColor" opacity=".7"/>
+          <circle cx="92" cy="28" r="6" fill="currentColor" opacity=".7"/>
+          <circle cx="124" cy="28" r="6" fill="currentColor" opacity=".7"/>
+          <circle cx="28" cy="60" r="6" fill="currentColor" opacity=".7"/>
+          <circle cx="60" cy="60" r="6" fill="#d96a3d" opacity=".9"/>
+          <circle cx="92" cy="60" r="6" fill="currentColor" opacity=".7"/>
+          <circle cx="124" cy="60" r="6" fill="currentColor" opacity=".7"/>
+          <circle cx="28" cy="92" r="6" fill="currentColor" opacity=".7"/>
+          <circle cx="60" cy="92" r="6" fill="currentColor" opacity=".7"/>
+          <circle cx="92" cy="92" r="6" fill="currentColor" opacity=".7"/>
+          <circle cx="124" cy="92" r="6" fill="currentColor" opacity=".7"/>
+          <!-- i label -->
+          <text x="150" y="64" font-family="monospace" font-size="9" fill="#d96a3d">i=5</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Concepts in this section</p>
+      <div class="concept-grid">
+
+        <a class="concept-card" href="../../concepts/for-loops-and-grids/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <circle cx="28" cy="32" r="7" fill="#1c1a17" opacity=".8"/>
+              <circle cx="60" cy="32" r="7" fill="#1c1a17" opacity=".8"/>
+              <circle cx="92" cy="32" r="7" fill="#1c1a17" opacity=".8"/>
+              <circle cx="124" cy="32" r="7" fill="#1c1a17" opacity=".8"/>
+              <circle cx="156" cy="32" r="7" fill="#1c1a17" opacity=".8"/>
+              <circle cx="28" cy="64" r="7" fill="#1c1a17" opacity=".8"/>
+              <circle cx="60" cy="64" r="7" fill="#d96a3d"/>
+              <circle cx="92" cy="64" r="7" fill="#1c1a17" opacity=".8"/>
+              <circle cx="124" cy="64" r="7" fill="#1c1a17" opacity=".8"/>
+              <circle cx="156" cy="64" r="7" fill="#1c1a17" opacity=".8"/>
+              <text x="55" y="88" font-family="monospace" font-size="8" fill="#d96a3d">for (let i=0; i&lt;10; i++)</text>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 06</p>
+            <h3>For Loops &amp; Grids</h3>
+            <p>i, nesting, patterns — repetition made visible as grids and dot arrays</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+              <span class="lang-chip java">Processing</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="concept-card" href="../../concepts/functions/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <rect x="10" y="35" width="80" height="30" rx="4" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+              <text x="50" y="55" font-family="monospace" font-size="9" text-anchor="middle" fill="#1c1a17">drawFlower(x,y)</text>
+              <path d="M90 50 L110 50" stroke="#1c1a17" stroke-width="1.5" marker-end="url(#arr)"/>
+              <!-- flower output -->
+              <circle cx="140" cy="50" r="14" fill="#d96a3d" opacity=".3"/>
+              <circle cx="140" cy="50" r="7" fill="#d96a3d"/>
+              <circle cx="126" cy="50" r="5" fill="#d96a3d" opacity=".6"/>
+              <circle cx="154" cy="50" r="5" fill="#d96a3d" opacity=".6"/>
+              <circle cx="140" cy="36" r="5" fill="#d96a3d" opacity=".6"/>
+              <circle cx="140" cy="64" r="5" fill="#d96a3d" opacity=".6"/>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 07</p>
+            <h3>Functions</h3>
+            <p>parameters, return — wrapping behavior into reusable, named operations</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+              <span class="lang-chip java">Processing</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="concept-card" href="../../concepts/arrays/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <!-- Array boxes -->
+              <rect x="10" y="35" width="30" height="30" rx="2" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+              <rect x="40" y="35" width="30" height="30" rx="2" fill="#d96a3d" stroke="#d96a3d" stroke-width="1.5"/>
+              <rect x="70" y="35" width="30" height="30" rx="2" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+              <rect x="100" y="35" width="30" height="30" rx="2" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+              <rect x="130" y="35" width="30" height="30" rx="2" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+              <text x="25" y="56" font-family="monospace" font-size="10" text-anchor="middle" fill="#1c1a17">12</text>
+              <text x="55" y="56" font-family="monospace" font-size="10" text-anchor="middle" fill="white">47</text>
+              <text x="85" y="56" font-family="monospace" font-size="10" text-anchor="middle" fill="#1c1a17">8</text>
+              <text x="115" y="56" font-family="monospace" font-size="10" text-anchor="middle" fill="#1c1a17">93</text>
+              <text x="145" y="56" font-family="monospace" font-size="10" text-anchor="middle" fill="#1c1a17">3</text>
+              <!-- index labels -->
+              <text x="25" y="78" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">[0]</text>
+              <text x="55" y="78" font-family="monospace" font-size="7" text-anchor="middle" fill="#d96a3d">[1]</text>
+              <text x="85" y="78" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">[2]</text>
+              <text x="115" y="78" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">[3]</text>
+              <text x="145" y="78" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">[4]</text>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 08</p>
+            <h3>Arrays</h3>
+            <p>lists, index, loops — storing collections and iterating over them</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+              <span class="lang-chip java">Processing</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="concept-card" href="../../concepts/objects/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <rect x="20" y="15" width="160" height="70" rx="4" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+              <text x="100" y="30" font-family="monospace" font-size="9" text-anchor="middle" fill="#8c857a">Ball</text>
+              <line x1="20" y1="35" x2="180" y2="35" stroke="#1c1a17" stroke-width="1" opacity=".4"/>
+              <text x="36" y="50" font-family="monospace" font-size="8" fill="#1c1a17">x, y, r, speed</text>
+              <line x1="20" y1="58" x2="180" y2="58" stroke="#1c1a17" stroke-width="1" opacity=".4"/>
+              <text x="36" y="73" font-family="monospace" font-size="8" fill="#d96a3d">move(), draw()</text>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 09</p>
+            <h3>Objects</h3>
+            <p>data + behavior — grouping related values and methods into one unit</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+              <span class="lang-chip java">Processing</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="concept-card" href="../../concepts/state-machines/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <!-- States -->
+              <circle cx="50" cy="50" r="22" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+              <text x="50" y="54" font-family="monospace" font-size="8" text-anchor="middle" fill="#1c1a17">MENU</text>
+              <circle cx="150" cy="50" r="22" fill="#d96a3d" opacity=".2" stroke="#d96a3d" stroke-width="1.5"/>
+              <text x="150" y="54" font-family="monospace" font-size="8" text-anchor="middle" fill="#d96a3d">PLAY</text>
+              <!-- Arrows -->
+              <path d="M72 42 Q100 24 128 42" stroke="#1c1a17" stroke-width="1.2" fill="none" marker-end="url(#arr)"/>
+              <path d="M128 58 Q100 76 72 58" stroke="#d96a3d" stroke-width="1.2" fill="none" marker-end="url(#arr2)"/>
+              <text x="100" y="22" font-family="monospace" font-size="7" text-anchor="middle" fill="#1c1a17">click</text>
+              <text x="100" y="82" font-family="monospace" font-size="7" text-anchor="middle" fill="#d96a3d">game over</text>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 10</p>
+            <h3>State Machines</h3>
+            <p>modes, screens — managing which phase of a program is currently active</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+              <span class="lang-chip java">Processing</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">AP alignment</p>
+      <div class="ap-strip">
+        <div class="ap-row">
+          <span class="ap-label">CSP</span>
+          <span class="ap-badge strong">AAP</span>
+          <span class="ap-badge partial">CRD</span>
+        </div>
+        <div class="ap-row">
+          <span class="ap-label">CSA</span>
+          <span class="ap-badge strong">CON</span>
+          <span class="ap-badge strong">MOD</span>
+          <span class="ap-badge partial">ARR</span>
+        </div>
+        <p style="margin:0;font-size:13px;color:var(--soft);max-width:600px">This section covers more AP CS A Units (1–5) than any other. Loops (CON), methods (MOD), and arrays (ARR) are tested directly in the AP CSA exam FRQs.</p>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>Teacher framing</h2>
+        <p><strong>Arc advice:</strong> Spend at least 2 periods on loops before introducing functions. The grid-making power of a nested for loop is motivating on its own — don't rush to abstraction.</p>
+        <p style="margin-top:8px"><strong>Milestone project:</strong> A particle system (array of objects, each with draw/update methods) is the natural capstone for this section and directly previews AP CSA FRQ style.</p>
+      </article>
+      <article>
+        <h2>Learner framing</h2>
+        <p>A loop draws 100 dots in 3 lines instead of 300. A function lets you say "draw a flower here" without repeating 20 lines. An object is just a dot that knows its own position and how to move itself.</p>
+        <p style="margin-top:8px">By the end of this section you can build a game with a title screen, a play screen, and a game-over screen — all in one sketch.</p>
+      </article>
+      <article>
+        <h2>Common misconceptions</h2>
+        <ul style="padding-left:18px;margin:0;color:var(--soft);font-size:14px;line-height:1.8">
+          <li>Loop variable <code>i</code> is local — it doesn't persist after the loop</li>
+          <li>A function definition doesn't run the code, calling it does</li>
+          <li>Array index starts at 0, not 1</li>
+          <li>Objects must be created with <code>new</code> before use (in Java)</li>
+          <li>State string comparison needs <code>===</code> not <code>==</code></li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="band">
+      <div class="section-nav">
+        <a class="nav-btn" href="../make-it-respond/index.html">
+          <span class="nav-dir">← Previous section</span>
+          <span class="nav-title">§3 Make It Respond</span>
+        </a>
+        <a class="nav-btn next" href="../data-as-material/index.html">
+          <span class="nav-dir">Next section →</span>
+          <span class="nav-title">§5 Data as Material</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

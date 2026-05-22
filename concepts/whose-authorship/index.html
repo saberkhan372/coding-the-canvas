@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Whose Authorship? - CS Canvas</title>
+  <meta name="description" content="Generative art is made by a person and an algorithm. This page asks where choice, credit, and responsibility live." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav><a href="../../index.html">Home</a><a class="active" href="../../concepts/index.html">Concepts</a><a href="../../sections/index.html">Sections</a><a href="../../languages/index.html">Languages</a><a href="../../browse/index.html">Browse</a><a href="../../teachers/index.html">Teachers</a><a href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kicker">Concept 19 / 22 &nbsp;·&nbsp; §6 Computing in the World</p>
+      <h1>Whose Authorship?</h1>
+      <p class="lede">Generative art is made by a person and an algorithm. This page asks where choice, credit, and responsibility live.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/computing-in-the-world/index.html">Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 19 / 22</p>
+        <h2>The big idea</h2>
+        <p>A generative sketch contains human decisions: the rules, the randomness, the constraints, the dataset, and the act of curation. Students trace which parts of the output came from code and which came from the person who wrote or selected it.</p>
+        <ul class="checklist"><li>Identify human choices in a generative sketch</li><li>Identify algorithmic choices</li><li>Distinguish randomness from authorship</li><li>Write an attribution statement</li><li>Discuss remix and credit</li></ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+    <circle cx="18" cy="18" r="3" fill="#d96a3d" opacity=".65"/><circle cx="55" cy="71" r="4" fill="#1c1a17" opacity=".65"/><circle cx="92" cy="28" r="5" fill="#1c1a17" opacity=".65"/><circle cx="129" cy="81" r="6" fill="#1c1a17" opacity=".65"/><circle cx="22" cy="38" r="7" fill="#d96a3d" opacity=".65"/><circle cx="59" cy="91" r="3" fill="#1c1a17" opacity=".65"/><circle cx="96" cy="48" r="4" fill="#1c1a17" opacity=".65"/><circle cx="133" cy="101" r="5" fill="#1c1a17" opacity=".65"/><circle cx="26" cy="58" r="6" fill="#d96a3d" opacity=".65"/><circle cx="63" cy="111" r="7" fill="#1c1a17" opacity=".65"/><circle cx="100" cy="68" r="3" fill="#1c1a17" opacity=".65"/><circle cx="137" cy="25" r="4" fill="#1c1a17" opacity=".65"/><circle cx="30" cy="78" r="5" fill="#d96a3d" opacity=".65"/><circle cx="67" cy="35" r="6" fill="#1c1a17" opacity=".65"/><circle cx="104" cy="88" r="7" fill="#1c1a17" opacity=".65"/><circle cx="141" cy="45" r="3" fill="#1c1a17" opacity=".65"/><circle cx="34" cy="98" r="4" fill="#d96a3d" opacity=".65"/><circle cx="71" cy="55" r="5" fill="#1c1a17" opacity=".65"/><circle cx="108" cy="108" r="6" fill="#1c1a17" opacity=".65"/><circle cx="145" cy="65" r="7" fill="#1c1a17" opacity=".65"/><circle cx="38" cy="22" r="3" fill="#d96a3d" opacity=".65"/><circle cx="75" cy="75" r="4" fill="#1c1a17" opacity=".65"/><circle cx="112" cy="32" r="5" fill="#1c1a17" opacity=".65"/><circle cx="149" cy="85" r="6" fill="#1c1a17" opacity=".65"/>
+    <text x="90" y="124" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">seed 42 · chosen output</text>
+  </svg></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code - controlled randomness</p>
+      <div class="code-panes">
+        <div class="code-pane"><div class="code-label p5">p5.js</div><pre>let seed = 42;
+
+function setup() {
+  createCanvas(400, 260);
+  randomSeed(seed);
+  noLoop();
+}
+
+function draw() {
+  background(246);
+  for (let i = 0; i &lt; 60; i++) {
+    fill(random(255), 100, 80, 160);
+    circle(random(width), random(height), random(8, 40));
+  }
+}</pre></div>
+        <div class="code-pane"><div class="code-label canvas-api">Canvas API</div><pre>let seed = 42; // repeatable choice
+
+for (let i = 0; i &lt; 60; i++) {
+  const x = Math.random() * canvas.width;
+  const y = Math.random() * canvas.height;
+  const r = Math.random() * 20 + 4;
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, Math.PI * 2);
+  ctx.fill();
+}</pre></div>
+        <div class="code-pane"><div class="code-label java">Processing / Java</div><pre>int seed = 42;
+
+void setup() {
+  size(400, 260);
+  randomSeed(seed);
+  noLoop();
+}
+
+void draw() {
+  for (int i = 0; i &lt; 60; i++) {
+    ellipse(random(width), random(height), random(8, 40), random(8, 40));
+  }
+}</pre></div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article><h2>The canvas idea</h2><p>Run the same rule with three seeds. Ask: what did the programmer choose, what did the computer choose, and what did the artist choose by selecting one output?</p></article>
+      <article><h2>Patterns to notice</h2><ul style="padding-left:18px;margin:0;line-height:2;font-size:13px"><li>Seed</li><li>randomness</li><li>curation</li><li>attribution</li><li>remix</li></ul></article>
+      <article><h2>Teacher notes</h2><p>This works well as a short writing prompt after a generative sketch project. Students can write an authorship note for their own work.</p></article>
+    </section>
+
+    <section class="band"><div class="callout"><strong>Common misconception:</strong> Random does not mean authorless. Someone chose the rules, ranges, colors, and stopping point.</div></section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">IOC</span><span class="ap-badge partial">CRD</span></div><div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge strong">U4</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards"><a class="card" href="../color-and-accessibility/index.html"><span class="meta">previous</span><h2>18 - Color &amp; Accessibility</h2><p>Review the previous concept.</p></a><a class="card" href="../energy-of-a-sketch/index.html"><span class="meta">next</span><h2>20 - Energy of a Sketch</h2><p>Continue the sequence.</p></a><a class="card" href="../../sections/computing-in-the-world/index.html"><span class="meta">section</span><h2>§6 Computing in the World</h2><p>See the movement overview.</p></a></div>
+    </section>
+
+    <section class="band"><div class="concept-nav">
+    <a class="nav-btn" href="../color-and-accessibility/index.html"><span class="nav-dir">Previous concept</span><span class="nav-title">18 - Color &amp; Accessibility</span></a>
+    <a class="nav-btn next" href="../energy-of-a-sketch/index.html"><span class="nav-dir">Next concept</span><span class="nav-title">20 - Energy of a Sketch</span></a>
+  </div></section>
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js - Canvas API - Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

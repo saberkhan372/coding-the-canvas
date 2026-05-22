@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Binary as Pixels - CS Canvas</title>
+  <meta name="description" content="A bitmap turns bits into visible marks. One bit can choose black or white; more bits create richer images." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav><a href="../../index.html">Home</a><a class="active" href="../../concepts/index.html">Concepts</a><a href="../../sections/index.html">Sections</a><a href="../../languages/index.html">Languages</a><a href="../../browse/index.html">Browse</a><a href="../../teachers/index.html">Teachers</a><a href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kicker">Concept 13 / 22 &nbsp;·&nbsp; §5 Data as Material</p>
+      <h1>Binary as Pixels</h1>
+      <p class="lede">A bitmap turns bits into visible marks. One bit can choose black or white; more bits create richer images.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/data-as-material/index.html">Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 13 / 22</p>
+        <h2>The big idea</h2>
+        <p>A bitmap is a grid where each cell stores data for a pixel. In the simplest version, 0 means white and 1 means black. Students can draw with bits, then decode the same grid back into an image.</p>
+        <ul class="checklist"><li>A bit has two states: 0 or 1</li><li>A bitmap maps bits to pixels</li><li>Rows and columns are data structure and image at the same time</li><li>Resolution is grid size</li><li>More bits per pixel means more possible colors</li></ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+    <rect x="22" y="12" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="36" y="12" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="50" y="12" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="64" y="12" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="78" y="12" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="92" y="12" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="106" y="12" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="120" y="12" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="22" y="26" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="36" y="26" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="50" y="26" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="64" y="26" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="78" y="26" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="92" y="26" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="106" y="26" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="120" y="26" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="22" y="40" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="36" y="40" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="50" y="40" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="64" y="40" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="78" y="40" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="92" y="40" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="106" y="40" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="120" y="40" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="22" y="54" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="36" y="54" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="50" y="54" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="64" y="54" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="78" y="54" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="92" y="54" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="106" y="54" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="120" y="54" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="22" y="68" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="36" y="68" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="50" y="68" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="64" y="68" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="78" y="68" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="92" y="68" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="106" y="68" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="120" y="68" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="22" y="82" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="36" y="82" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="50" y="82" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="64" y="82" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="78" y="82" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="92" y="82" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="106" y="82" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="120" y="82" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="22" y="96" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="36" y="96" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="50" y="96" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="64" y="96" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="78" y="96" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="92" y="96" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="106" y="96" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="120" y="96" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="22" y="110" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="36" y="110" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="50" y="110" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="64" y="110" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="78" y="110" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="92" y="110" width="13" height="13" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="106" y="110" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="120" y="110" width="13" height="13" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/>
+  </svg></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code - draw a bitmap from 0s and 1s</p>
+      <div class="code-panes">
+        <div class="code-pane"><div class="code-label p5">p5.js</div><pre>let bits = [
+  '00111100',
+  '01000010',
+  '10100101',
+  '10000001',
+  '10100101',
+  '10011001',
+  '01000010',
+  '00111100'
+];
+
+function setup() {
+  createCanvas(320, 320);
+  noLoop();
+}
+
+function draw() {
+  background(255);
+  let cell = width / 8;
+  for (let y = 0; y &lt; bits.length; y++) {
+    for (let x = 0; x &lt; bits[y].length; x++) {
+      fill(bits[y][x] === '1' ? 28 : 246);
+      rect(x * cell, y * cell, cell, cell);
+    }
+  }
+}</pre></div>
+        <div class="code-pane"><div class="code-label canvas-api">Canvas API</div><pre>const bits = [
+  '00111100', '01000010', '10100101', '10000001',
+  '10100101', '10011001', '01000010', '00111100'
+];
+const ctx = canvas.getContext('2d');
+const cell = canvas.width / 8;
+
+bits.forEach((row, y) =&gt; {
+  [...row].forEach((bit, x) =&gt; {
+    ctx.fillStyle = bit === '1' ? '#1c1a17' : '#f6f2ea';
+    ctx.fillRect(x * cell, y * cell, cell, cell);
+  });
+});</pre></div>
+        <div class="code-pane"><div class="code-label java">Processing / Java</div><pre>String[] bits = {
+  &quot;00111100&quot;, &quot;01000010&quot;, &quot;10100101&quot;, &quot;10000001&quot;,
+  &quot;10100101&quot;, &quot;10011001&quot;, &quot;01000010&quot;, &quot;00111100&quot;
+};
+
+void setup() {
+  size(320, 320);
+  noLoop();
+}
+
+void draw() {
+  int cell = width / 8;
+  for (int y = 0; y &lt; bits.length; y++) {
+    for (int x = 0; x &lt; bits[y].length(); x++) {
+      fill(bits[y].charAt(x) == '1' ? 28 : 246);
+      rect(x * cell, y * cell, cell, cell);
+    }
+  }
+}</pre></div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article><h2>The canvas idea</h2><p>Let students edit the 0s and 1s directly, then immediately redraw the image. The data and the picture should feel like two views of the same object.</p></article>
+      <article><h2>Patterns to notice</h2><ul style="padding-left:18px;margin:0;line-height:2;font-size:13px"><li>0/1 bitmap</li><li>row strings as data</li><li>nested loops over rows and columns</li><li>resolution as number of cells</li><li>bit depth as choices per pixel</li></ul></article>
+      <article><h2>Teacher notes</h2><p>Use this before compression. Once students see long runs of repeated 0s and 1s, run-length encoding feels motivated.</p></article>
+    </section>
+
+    <section class="band"><div class="callout"><strong>Common misconception:</strong> Students may say the 1s are the image. The actual image is the interpretation rule: 1 means black, 0 means white. Change the rule and the same data can draw differently.</div></section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">DAT</span><span class="ap-badge partial">AAP</span></div><div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge strong">U8</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards"><a class="card" href="../color-is-24-bits/index.html"><span class="meta">previous</span><h2>12 - Color is 24 Bits</h2><p>Review the previous concept.</p></a><a class="card" href="../compression-by-drawing/index.html"><span class="meta">next</span><h2>14 - Compression by Drawing</h2><p>Continue the sequence.</p></a><a class="card" href="../../sections/data-as-material/index.html"><span class="meta">section</span><h2>§5 Data as Material</h2><p>See the movement overview.</p></a></div>
+    </section>
+
+    <section class="band"><div class="concept-nav">
+    <a class="nav-btn" href="../color-is-24-bits/index.html"><span class="nav-dir">Previous concept</span><span class="nav-title">12 - Color is 24 Bits</span></a>
+    <a class="nav-btn next" href="../compression-by-drawing/index.html"><span class="nav-dir">Next concept</span><span class="nav-title">14 - Compression by Drawing</span></a>
+  </div></section>
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js - Canvas API - Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

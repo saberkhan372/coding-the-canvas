@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bias in a Filter - CS Canvas</title>
+  <meta name="description" content="A filter is an algorithm with assumptions. When those assumptions fail, the failure becomes visible on the canvas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav><a href="../../index.html">Home</a><a class="active" href="../../concepts/index.html">Concepts</a><a href="../../sections/index.html">Sections</a><a href="../../languages/index.html">Languages</a><a href="../../browse/index.html">Browse</a><a href="../../teachers/index.html">Teachers</a><a href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kicker">Concept 17 / 22 &nbsp;·&nbsp; §6 Computing in the World</p>
+      <h1>Bias in a Filter</h1>
+      <p class="lede">A filter is an algorithm with assumptions. When those assumptions fail, the failure becomes visible on the canvas.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/computing-in-the-world/index.html">Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 17 / 22</p>
+        <h2>The big idea</h2>
+        <p>Students build a simple image filter, then test it on different images. The same rule can work well for one case and fail badly for another. Bias becomes concrete: not intention, but uneven performance across examples.</p>
+        <ul class="checklist"><li>Build a threshold or color-detection filter</li><li>Test on multiple images</li><li>Record where it works and fails</li><li>Name assumptions in the rule</li><li>Propose a better test set</li></ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+    <rect x="16" y="22" width="64" height="76" fill="#ddd"/><rect x="100" y="22" width="64" height="76" fill="#ddd"/>
+    <circle cx="48" cy="58" r="20" fill="#e2a074"/><circle cx="132" cy="58" r="20" fill="#6f4630"/>
+    <path d="M30 104 h36" stroke="#1f8a5b" stroke-width="4"/><path d="M114 104 h36" stroke="#d96a3d" stroke-width="4"/><text x="48" y="116" font-family="monospace" font-size="7" text-anchor="middle" fill="#1f8a5b">works</text><text x="132" y="116" font-family="monospace" font-size="7" text-anchor="middle" fill="#d96a3d">fails</text>
+  </svg></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code - a threshold filter with visible failure</p>
+      <div class="code-panes">
+        <div class="code-pane"><div class="code-label p5">p5.js</div><pre>function isLightEnough(r, g, b) {
+  let brightness = (r + g + b) / 3;
+  return brightness &gt; 140;
+}
+
+// Use this rule across many images.
+// Which images does it fail on?
+if (isLightEnough(redValue, greenValue, blueValue)) {
+  fill(255);
+} else {
+  fill(0);
+}</pre></div>
+        <div class="code-pane"><div class="code-label canvas-api">Canvas API</div><pre>function isLightEnough(r, g, b) {
+  const brightness = (r + g + b) / 3;
+  return brightness &gt; 140;
+}
+
+const passes = isLightEnough(pixel[0], pixel[1], pixel[2]);
+ctx.fillStyle = passes ? 'white' : 'black';</pre></div>
+        <div class="code-pane"><div class="code-label java">Processing / Java</div><pre>boolean isLightEnough(float r, float g, float b) {
+  float brightness = (r + g + b) / 3;
+  return brightness &gt; 140;
+}
+
+boolean passes = isLightEnough(red(c), green(c), blue(c));</pre></div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article><h2>The canvas idea</h2><p>Show four test images side by side and run the same threshold. The discussion starts when students can point to the specific failures.</p></article>
+      <article><h2>Patterns to notice</h2><ul style="padding-left:18px;margin:0;line-height:2;font-size:13px"><li>Assumption</li><li>test set</li><li>false positive</li><li>false negative</li><li>threshold</li></ul></article>
+      <article><h2>Teacher notes</h2><p>Frame this carefully: bias can appear even without malicious intent. The lesson is about testing, evidence, and who is included in the design process.</p></article>
+    </section>
+
+    <section class="band"><div class="callout"><strong>Common misconception:</strong> Students may think bias means the programmer wanted harm. Emphasize that biased outcomes can come from incomplete data, narrow tests, or simplistic rules.</div></section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">IOC</span><span class="ap-badge partial">DAT</span></div><div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge strong">U3</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards"><a class="card" href="../data-as-material/index.html"><span class="meta">previous</span><h2>16 - Data as Material</h2><p>Review the previous concept.</p></a><a class="card" href="../color-and-accessibility/index.html"><span class="meta">next</span><h2>18 - Color &amp; Accessibility</h2><p>Continue the sequence.</p></a><a class="card" href="../../sections/computing-in-the-world/index.html"><span class="meta">section</span><h2>§6 Computing in the World</h2><p>See the movement overview.</p></a></div>
+    </section>
+
+    <section class="band"><div class="concept-nav">
+    <a class="nav-btn" href="../data-as-material/index.html"><span class="nav-dir">Previous concept</span><span class="nav-title">16 - Data as Material</span></a>
+    <a class="nav-btn next" href="../color-and-accessibility/index.html"><span class="nav-dir">Next concept</span><span class="nav-title">18 - Color &amp; Accessibility</span></a>
+  </div></section>
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js - Canvas API - Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

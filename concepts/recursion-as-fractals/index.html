@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recursion as Fractals - CS Canvas</title>
+  <meta name="description" content="Recursion is a function that calls itself with a smaller problem. Fractals make the call stack visible." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav><a href="../../index.html">Home</a><a class="active" href="../../concepts/index.html">Concepts</a><a href="../../sections/index.html">Sections</a><a href="../../languages/index.html">Languages</a><a href="../../browse/index.html">Browse</a><a href="../../teachers/index.html">Teachers</a><a href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kicker">Concept 21 / 22 &nbsp;·&nbsp; §7 Algorithms</p>
+      <h1>Recursion as Fractals</h1>
+      <p class="lede">Recursion is a function that calls itself with a smaller problem. Fractals make the call stack visible.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/algorithms/index.html">Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 21 / 22</p>
+        <h2>The big idea</h2>
+        <p>A recursive drawing has two parts: a base case that stops, and a recursive case that draws smaller copies. The canvas lets students see each call as a visible branch.</p>
+        <ul class="checklist"><li>Name the base case</li><li>Name the recursive case</li><li>Decrease size or depth each call</li><li>Trace one branch before the whole tree</li><li>Connect depth to call stack</li></ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+    <path d="M90 120 V76 M90 76 L62 48 M90 76 L118 48 M62 48 L44 28 M62 48 L72 24 M118 48 L108 24 M118 48 L138 28" fill="none" stroke="#1c1a17" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="90" cy="76" r="4" fill="#d96a3d"/><text x="90" y="14" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">base case stops</text>
+  </svg></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code - recursive tree</p>
+      <div class="code-panes">
+        <div class="code-pane"><div class="code-label p5">p5.js</div><pre>function setup() {
+  createCanvas(400, 320);
+}
+
+function draw() {
+  background(246);
+  translate(width / 2, height - 20);
+  branch(80);
+}
+
+function branch(len) {
+  if (len &lt; 8) return; // base case
+  line(0, 0, 0, -len);
+  translate(0, -len);
+
+  push();
+  rotate(PI / 6);
+  branch(len * 0.68);
+  pop();
+
+  push();
+  rotate(-PI / 6);
+  branch(len * 0.68);
+  pop();
+}</pre></div>
+        <div class="code-pane"><div class="code-label canvas-api">Canvas API</div><pre>function branch(ctx, len) {
+  if (len &lt; 8) return;
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.lineTo(0, -len);
+  ctx.stroke();
+  ctx.translate(0, -len);
+
+  ctx.save(); ctx.rotate(Math.PI / 6); branch(ctx, len * 0.68); ctx.restore();
+  ctx.save(); ctx.rotate(-Math.PI / 6); branch(ctx, len * 0.68); ctx.restore();
+}</pre></div>
+        <div class="code-pane"><div class="code-label java">Processing / Java</div><pre>void branch(float len) {
+  if (len &lt; 8) return;
+  line(0, 0, 0, -len);
+  translate(0, -len);
+
+  pushMatrix();
+  rotate(PI / 6);
+  branch(len * 0.68);
+  popMatrix();
+
+  pushMatrix();
+  rotate(-PI / 6);
+  branch(len * 0.68);
+  popMatrix();
+}</pre></div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article><h2>The canvas idea</h2><p>Start with one trunk, then one branch, then one branch that branches. Students should see the repeated structure before seeing the word recursion.</p></article>
+      <article><h2>Patterns to notice</h2><ul style="padding-left:18px;margin:0;line-height:2;font-size:13px"><li>Base case</li><li>recursive case</li><li>depth</li><li>call stack</li><li>self-similarity</li></ul></article>
+      <article><h2>Teacher notes</h2><p>This is a high-ceiling lesson. Let students adjust angle and shrink factor before asking them to trace every call.</p></article>
+    </section>
+
+    <section class="band"><div class="callout"><strong>Common misconception:</strong> Students often look for a loop. Recursion repeats through function calls, not through a for loop.</div></section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">AAP</span></div><div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge strong">U10</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards"><a class="card" href="../energy-of-a-sketch/index.html"><span class="meta">previous</span><h2>20 - Energy of a Sketch</h2><p>Review the previous concept.</p></a><a class="card" href="../arraylist-in-action/index.html"><span class="meta">next</span><h2>22 - ArrayList in Action</h2><p>Continue the sequence.</p></a><a class="card" href="../../sections/algorithms/index.html"><span class="meta">section</span><h2>§7 Algorithms</h2><p>See the movement overview.</p></a></div>
+    </section>
+
+    <section class="band"><div class="concept-nav">
+    <a class="nav-btn" href="../energy-of-a-sketch/index.html"><span class="nav-dir">Previous concept</span><span class="nav-title">20 - Energy of a Sketch</span></a>
+    <a class="nav-btn next" href="../arraylist-in-action/index.html"><span class="nav-dir">Next concept</span><span class="nav-title">22 - ArrayList in Action</span></a>
+  </div></section>
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js - Canvas API - Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

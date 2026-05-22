@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shapes &amp; Color - CS Canvas</title>
+  <meta name="description" content="rect, ellipse, line, fill, stroke — the primitive drawing vocabulary of the canvas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a class="active" href="../../concepts/index.html">Concepts</a>
+      <a href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
+  </header>
+  <main>
+
+    <section class="hero">
+      <p class="kicker">Concept 02 / 22 &nbsp;·&nbsp; §1 Start with the Canvas</p>
+      <h1>Shapes &amp; Color</h1>
+      <p class="lede">rect, ellipse, line — the primitive vocabulary. fill and stroke let you paint each shape any color in the 16-million-color RGB space.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/start-with-the-canvas/index.html">§1 Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 02 / 22</p>
+        <h2>The big idea</h2>
+        <p>Every mark on the canvas is made with a primitive shape function. You set a fill color and a stroke color before drawing — everything drawn after inherits those colors until you change them. This "paint state" model is how most graphics systems work.</p>
+        <ul class="checklist">
+          <li>rect(x, y, width, height) — rectangle from top-left</li>
+          <li>ellipse / circle — placed at center by default in p5</li>
+          <li>line(x1, y1, x2, y2) — straight line between two points</li>
+          <li>fill(r, g, b) — sets the interior color</li>
+          <li>stroke(r, g, b) — sets the border color</li>
+          <li>noFill() / noStroke() — removes fill or border entirely</li>
+        </ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <rect x="16" y="16" width="54" height="40" fill="#1c1a17" rx="2" opacity=".85"/>
+          <circle cx="120" cy="50" r="30" fill="#d96a3d" opacity=".7"/>
+          <line x1="16" y1="90" x2="164" y2="90" stroke="#1c1a17" stroke-width="3"/>
+          <rect x="50" y="98" width="80" height="24" fill="none" stroke="#d96a3d" stroke-width="2" rx="2"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code — a composition of shapes</p>
+      <div class="code-panes">
+        <div class="code-pane">
+          <div class="code-label p5">p5.js</div>
+          <pre><span class="kw">function</span> <span class="fn">setup</span>() {
+  <span class="fn">createCanvas</span>(<span class="nm">400</span>, <span class="nm">300</span>);
+}
+
+<span class="kw">function</span> <span class="fn">draw</span>() {
+  <span class="fn">background</span>(<span class="nm">240</span>, <span class="nm">237</span>, <span class="nm">228</span>);
+
+  <span class="cm">// dark rectangle</span>
+  <span class="fn">fill</span>(<span class="nm">28</span>, <span class="nm">26</span>, <span class="nm">23</span>);
+  <span class="fn">noStroke</span>();
+  <span class="fn">rect</span>(<span class="nm">40</span>, <span class="nm">40</span>, <span class="nm">120</span>, <span class="nm">80</span>);
+
+  <span class="cm">// orange circle — no fill, just stroke</span>
+  <span class="fn">noFill</span>();
+  <span class="fn">stroke</span>(<span class="nm">217</span>, <span class="nm">106</span>, <span class="nm">61</span>);
+  <span class="fn">strokeWeight</span>(<span class="nm">4</span>);
+  <span class="fn">circle</span>(<span class="nm">280</span>, <span class="nm">150</span>, <span class="nm">120</span>);
+
+  <span class="cm">// line</span>
+  <span class="fn">stroke</span>(<span class="nm">0</span>);
+  <span class="fn">strokeWeight</span>(<span class="nm">2</span>);
+  <span class="fn">line</span>(<span class="nm">40</span>, <span class="nm">200</span>, <span class="nm">360</span>, <span class="nm">200</span>);
+}</pre>
+        </div>
+        <div class="code-pane">
+          <div class="code-label canvas-api">Canvas API</div>
+          <pre><span class="kw">const</span> ctx = canvas.<span class="fn">getContext</span>(<span class="st">'2d'</span>);
+
+<span class="cm">// dark rectangle</span>
+ctx.fillStyle = <span class="st">'rgb(28,26,23)'</span>;
+ctx.<span class="fn">fillRect</span>(<span class="nm">40</span>, <span class="nm">40</span>, <span class="nm">120</span>, <span class="nm">80</span>);
+
+<span class="cm">// orange circle — stroke only</span>
+ctx.strokeStyle = <span class="st">'rgb(217,106,61)'</span>;
+ctx.lineWidth = <span class="nm">4</span>;
+ctx.<span class="fn">beginPath</span>();
+ctx.<span class="fn">arc</span>(<span class="nm">280</span>, <span class="nm">150</span>, <span class="nm">60</span>, <span class="nm">0</span>, Math.PI * <span class="nm">2</span>);
+ctx.<span class="fn">stroke</span>();
+
+<span class="cm">// line</span>
+ctx.strokeStyle = <span class="st">'black'</span>;
+ctx.lineWidth = <span class="nm">2</span>;
+ctx.<span class="fn">beginPath</span>();
+ctx.<span class="fn">moveTo</span>(<span class="nm">40</span>, <span class="nm">200</span>);
+ctx.<span class="fn">lineTo</span>(<span class="nm">360</span>, <span class="nm">200</span>);
+ctx.<span class="fn">stroke</span>();</pre>
+        </div>
+        <div class="code-pane">
+          <div class="code-label java">Processing / Java</div>
+          <pre><span class="kw">void</span> <span class="fn">setup</span>() { <span class="fn">size</span>(<span class="nm">400</span>, <span class="nm">300</span>); }
+
+<span class="kw">void</span> <span class="fn">draw</span>() {
+  <span class="fn">background</span>(<span class="nm">240</span>, <span class="nm">237</span>, <span class="nm">228</span>);
+
+  <span class="cm">// dark rectangle</span>
+  <span class="fn">fill</span>(<span class="nm">28</span>, <span class="nm">26</span>, <span class="nm">23</span>);
+  <span class="fn">noStroke</span>();
+  <span class="fn">rect</span>(<span class="nm">40</span>, <span class="nm">40</span>, <span class="nm">120</span>, <span class="nm">80</span>);
+
+  <span class="cm">// orange circle — stroke only</span>
+  <span class="fn">noFill</span>();
+  <span class="fn">stroke</span>(<span class="nm">217</span>, <span class="nm">106</span>, <span class="nm">61</span>);
+  <span class="fn">strokeWeight</span>(<span class="nm">4</span>);
+  <span class="fn">ellipse</span>(<span class="nm">280</span>, <span class="nm">150</span>, <span class="nm">120</span>, <span class="nm">120</span>);
+
+  <span class="cm">// line</span>
+  <span class="fn">stroke</span>(<span class="nm">0</span>);
+  <span class="fn">strokeWeight</span>(<span class="nm">2</span>);
+  <span class="fn">line</span>(<span class="nm">40</span>, <span class="nm">200</span>, <span class="nm">360</span>, <span class="nm">200</span>);
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>The canvas idea</h2>
+        <p>Start with: "how would you describe a blue square to someone who can't see your screen?" The answer is always coordinates, size, and color — exactly what these functions encode.</p>
+        <p style="margin-top:8px">Key demo: change fill color between two rect() calls to show that color is "paint in the brush," not a property of the shape.</p>
+      </article>
+      <article>
+        <h2>Shape reference</h2>
+        <ul style="padding-left:18px;margin:0;line-height:2;font-size:13px">
+          <li><code>rect(x, y, w, h)</code> — top-left corner</li>
+          <li><code>circle(x, y, d)</code> — center, diameter</li>
+          <li><code>ellipse(x, y, w, h)</code> — center</li>
+          <li><code>line(x1, y1, x2, y2)</code></li>
+          <li><code>triangle(x1,y1, x2,y2, x3,y3)</code></li>
+          <li><code>point(x, y)</code> — single pixel</li>
+        </ul>
+      </article>
+      <article>
+        <h2>Teacher notes</h2>
+        <p><strong>Timing:</strong> 1–2 periods. Combine with Concept 01 into a single "first sketch" lesson.</p>
+        <p style="margin-top:8px"><strong>Checkpoint:</strong> Students reproduce a given target image (provided as a screenshot) using at least 4 different shape types with intentional colors.</p>
+        <p style="margin-top:8px"><strong>Extension:</strong> Introduce <code>colorMode(HSB)</code> in p5 for students who want more intuitive color control.</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">CRD</span><span class="ap-badge partial">AAP</span></div>
+      <div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge partial">MOD</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards">
+        <a class="card" href="../coordinates/index.html"><span class="meta">previous</span><h2>01 – Coordinates</h2><p>pixels, x/y, origin</p></a>
+        <a class="card" href="../draw-loop-time/index.html"><span class="meta">next</span><h2>03 – Draw Loop / Time</h2><p>setup, draw, frameCount</p></a>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="concept-nav">
+        <a class="nav-btn" href="../coordinates/index.html">
+          <span class="nav-dir">← Previous concept</span>
+          <span class="nav-title">01 – Coordinates</span>
+        </a>
+        <a class="nav-btn next" href="../draw-loop-time/index.html">
+          <span class="nav-dir">Next concept →</span>
+          <span class="nav-title">03 – Draw Loop / Time</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

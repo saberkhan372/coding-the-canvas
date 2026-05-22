@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Coding the Canvas — Wireframes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Architects+Daughter&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #f6f2ea;
+    --paper-edge: #ece5d6;
+    --ink: #1c1a17;
+    --ink-soft: #4a4640;
+    --ink-faint: #8c857a;
+    --accent: #d96a3d;       /* warm clay — overridable via tweaks */
+    --rule: #1c1a17;
+    --hand: 'Caveat', 'Architects Daughter', cursive;
+    --body: 'Inter', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  html, body { margin: 0; background: #efe9dc; color: var(--ink); font-family: var(--body); }
+  #root { width: 100vw; height: 100vh; }
+  /* sketchy primitives */
+  .wf { background: var(--paper); color: var(--ink); width: 100%; height: 100%; box-sizing: border-box;
+        font-family: var(--body); position: relative; overflow: hidden; }
+  .wf .hand { font-family: var(--hand); }
+  .wf .mono { font-family: var(--mono); }
+  .wf .rule { background: var(--ink); }
+  .wf .box { border: 1.5px solid var(--ink); border-radius: 3px; background: var(--paper); }
+  .wf .box-dashed { border: 1.5px dashed var(--ink); border-radius: 3px; background: transparent; }
+  .wf .box-rough { border: 1.5px solid var(--ink); border-radius: 6px; background: var(--paper);
+                   box-shadow: 2px 3px 0 var(--ink); }
+  .wf .pill { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px;
+              border: 1.2px solid var(--ink); border-radius: 999px; font-size: 11px; background: var(--paper); }
+  .wf .pill.solid { background: var(--ink); color: var(--paper); }
+  .wf .pill.accent { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .wf .chip { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px;
+              border: 1.2px solid var(--ink); font-size: 10px; background: var(--paper); border-radius: 2px; }
+  .wf .lbl { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+  .wf .scribble { height: 8px; background: linear-gradient(transparent 45%, var(--ink) 45%, var(--ink) 55%, transparent 55%);
+                  border-radius: 2px; opacity: .82; }
+  .wf .scribble.short { width: 50%; }
+  .wf .scribble.tiny { width: 30%; height: 6px; }
+  .wf .scribble.thick { height: 12px; }
+  .wf .swatch { display: inline-block; width: 12px; height: 12px; border: 1px solid var(--ink); border-radius: 50%; }
+  .wf .canvas-stage { background: #fff; border: 1.5px solid var(--ink); position: relative; overflow: hidden; }
+  .wf .canvas-stage::after {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(28,26,23,.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(28,26,23,.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+  .wf .corner-mark { position: absolute; top: 10px; right: 12px;
+                     font-family: var(--hand); color: var(--ink-faint); font-size: 18px; }
+  .wf .annot { font-family: var(--hand); font-size: 18px; color: var(--accent); line-height: 1; }
+  .wf .annot.muted { color: var(--ink-soft); }
+  .wf .arrow { stroke: var(--accent); fill: none; stroke-width: 1.5; }
+  .wf .nav-link { font-size: 12px; color: var(--ink-soft); }
+  .wf h1.title { font-family: var(--body); font-weight: 800; letter-spacing: -0.02em; margin: 0; }
+  .wf h2.section-title { font-family: var(--body); font-weight: 700; letter-spacing: -0.01em; margin: 0; }
+  .wf .num-circle { display: inline-flex; align-items: center; justify-content: center;
+                    width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--ink);
+                    font-family: var(--hand); font-weight: 600; font-size: 18px; background: var(--paper); }
+  .wf .num-circle.solid { background: var(--ink); color: var(--paper); }
+  .wf .num-circle.accent { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .wf .code-line { height: 8px; background: var(--ink); opacity: .75; border-radius: 1px; }
+  .wf .code-line.kw { background: var(--accent); opacity: .9; }
+  .wf .code-line.dim { opacity: .35; }
+  .wf .tab { padding: 6px 14px; border: 1.5px solid var(--ink); background: var(--paper);
+             font-size: 12px; font-weight: 600; border-bottom: none; cursor: default; }
+  .wf .tab.active { background: var(--ink); color: var(--paper); }
+  .wf .tab.dim { opacity: .35; }
+  .wf .compact-hide { display: block; }
+  .wf.compact .compact-hide { display: none; }
+  .wf.compact .compact-tight { padding: 8px !important; gap: 8px !important; }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="wireframes-shared.jsx"></script>
+<script type="text/babel" src="wireframes-home.jsx"></script>
+<script type="text/babel" src="wireframes-concept.jsx"></script>
+<script type="text/babel" src="wireframes-languages.jsx"></script>
+<script type="text/babel" src="wireframes-sections.jsx"></script>
+<script type="text/babel" src="wireframes-browse.jsx"></script>
+<script type="text/babel" src="wireframes-ap.jsx"></script>
+<script type="text/babel" src="wireframes-apcsa.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+</html>

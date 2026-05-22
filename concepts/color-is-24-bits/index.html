@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Color is 24 Bits - CS Canvas</title>
+  <meta name="description" content="Every screen color is three 8-bit numbers: red, green, and blue. 24 bits gives you more than 16 million possible colors." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav><a href="../../index.html">Home</a><a class="active" href="../../concepts/index.html">Concepts</a><a href="../../sections/index.html">Sections</a><a href="../../languages/index.html">Languages</a><a href="../../browse/index.html">Browse</a><a href="../../teachers/index.html">Teachers</a><a href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kicker">Concept 12 / 22 &nbsp;·&nbsp; §5 Data as Material</p>
+      <h1>Color is 24 Bits</h1>
+      <p class="lede">Every screen color is three 8-bit numbers: red, green, and blue. 24 bits gives you more than 16 million possible colors.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/data-as-material/index.html">Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 12 / 22</p>
+        <h2>The big idea</h2>
+        <p>A color is not magic or paint. It is data: 8 bits for red, 8 bits for green, and 8 bits for blue. Each channel stores a number from 0 to 255. Put three channels together and you get a 24-bit color.</p>
+        <ul class="checklist"><li>RGB channels: red, green, blue</li><li>8 bits per channel means 0-255</li><li>24 bits total means 16,777,216 colors</li><li>Hex color pairs are the same numbers in base 16</li><li>Changing one channel changes the feeling of the image</li></ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+    <rect x="18" y="24" width="42" height="84" fill="#d94b3d"/><rect x="68" y="24" width="42" height="84" fill="#3d9b5f"/><rect x="118" y="24" width="42" height="84" fill="#3d62d9"/>
+    <circle cx="90" cy="66" r="32" fill="#d96a3d" opacity=".9"/><text x="90" y="116" font-family="monospace" font-size="8" text-anchor="middle" fill="#8c857a">R 217 · G 106 · B 61</text>
+  </svg></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code - build a color from three numbers</p>
+      <div class="code-panes">
+        <div class="code-pane"><div class="code-label p5">p5.js</div><pre>let r = 217;
+let g = 106;
+let b = 61;
+
+function setup() {
+  createCanvas(400, 260);
+}
+
+function draw() {
+  background(246, 242, 234);
+
+  fill(r, g, b);
+  noStroke();
+  rect(80, 60, 240, 120);
+
+  fill(28);
+  text('rgb(' + r + ', ' + g + ', ' + b + ')', 120, 210);
+}</pre></div>
+        <div class="code-pane"><div class="code-label canvas-api">Canvas API</div><pre>const ctx = canvas.getContext('2d');
+const r = 217;
+const g = 106;
+const b = 61;
+
+ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
+ctx.fillRect(80, 60, 240, 120);
+
+ctx.fillStyle = '#1c1a17';
+ctx.fillText('rgb(' + r + ', ' + g + ', ' + b + ')', 120, 210);</pre></div>
+        <div class="code-pane"><div class="code-label java">Processing / Java</div><pre>int r = 217;
+int g = 106;
+int b = 61;
+
+void setup() {
+  size(400, 260);
+}
+
+void draw() {
+  background(246, 242, 234);
+  fill(r, g, b);
+  noStroke();
+  rect(80, 60, 240, 120);
+}</pre></div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article><h2>The canvas idea</h2><p>Make three sliders for red, green, and blue. Ask students to predict which direction the color will move before they drag. The goal is to see color as a tuple of numbers.</p></article>
+      <article><h2>Patterns to notice</h2><ul style="padding-left:18px;margin:0;line-height:2;font-size:13px"><li>0 means none of that channel</li><li>255 means full channel strength</li><li>#d96a3d equals rgb(217, 106, 61)</li><li>White is rgb(255,255,255)</li><li>Black is rgb(0,0,0)</li></ul></article>
+      <article><h2>Teacher notes</h2><p>This page is the bridge between visual design and binary representation. Keep the slider interaction visible while naming the bit depth.</p></article>
+    </section>
+
+    <section class="band"><div class="callout"><strong>Common misconception:</strong> Students often think 24-bit color means 24 colors. It means 24 binary decisions, or 2^24 possible combinations.</div></section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">DAT</span><span class="ap-badge partial">AAP</span></div><div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge strong">U1</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards"><a class="card" href="../pixels-image-data/index.html"><span class="meta">previous</span><h2>11 - Pixels / Image Data</h2><p>Review the previous concept.</p></a><a class="card" href="../binary-as-pixels/index.html"><span class="meta">next</span><h2>13 - Binary as Pixels</h2><p>Continue the sequence.</p></a><a class="card" href="../../sections/data-as-material/index.html"><span class="meta">section</span><h2>§5 Data as Material</h2><p>See the movement overview.</p></a></div>
+    </section>
+
+    <section class="band"><div class="concept-nav">
+    <a class="nav-btn" href="../pixels-image-data/index.html"><span class="nav-dir">Previous concept</span><span class="nav-title">11 - Pixels / Image Data</span></a>
+    <a class="nav-btn next" href="../binary-as-pixels/index.html"><span class="nav-dir">Next concept</span><span class="nav-title">13 - Binary as Pixels</span></a>
+  </div></section>
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js - Canvas API - Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

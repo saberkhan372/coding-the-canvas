@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ArrayList in Action - CS Canvas</title>
+  <meta name="description" content="Dynamic lists let a sketch grow and shrink while it runs. Particles are the perfect visual model." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav><a href="../../index.html">Home</a><a class="active" href="../../concepts/index.html">Concepts</a><a href="../../sections/index.html">Sections</a><a href="../../languages/index.html">Languages</a><a href="../../browse/index.html">Browse</a><a href="../../teachers/index.html">Teachers</a><a href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kicker">Concept 22 / 22 &nbsp;·&nbsp; §7 Algorithms</p>
+      <h1>ArrayList in Action</h1>
+      <p class="lede">Dynamic lists let a sketch grow and shrink while it runs. Particles are the perfect visual model.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/algorithms/index.html">Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 22 / 22</p>
+        <h2>The big idea</h2>
+        <p>An ArrayList is a collection whose size can change. In a particle system, new particles are added, old particles are removed, and every particle updates each frame. Students see dynamic data structures as motion.</p>
+        <ul class="checklist"><li>Add particles over time</li><li>Loop backward when removing</li><li>Give each particle update and draw behavior</li><li>Compare fixed arrays to dynamic lists</li><li>Connect to AP CSA ArrayList FRQs</li></ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+    <circle cx="15" cy="16" r="4" fill="#d96a3d" opacity="0.35"/><circle cx="44" cy="63" r="5" fill="#1c1a17" opacity="0.47"/><circle cx="73" cy="110" r="6" fill="#1c1a17" opacity="0.59"/><circle cx="102" cy="61" r="7" fill="#1c1a17" opacity="0.71"/><circle cx="131" cy="108" r="4" fill="#1c1a17" opacity="0.83"/><circle cx="160" cy="59" r="5" fill="#d96a3d" opacity="0.35"/><circle cx="39" cy="106" r="6" fill="#1c1a17" opacity="0.47"/><circle cx="68" cy="57" r="7" fill="#1c1a17" opacity="0.59"/><circle cx="97" cy="104" r="4" fill="#1c1a17" opacity="0.71"/><circle cx="126" cy="55" r="5" fill="#1c1a17" opacity="0.83"/><circle cx="155" cy="102" r="6" fill="#d96a3d" opacity="0.35"/><circle cx="34" cy="53" r="7" fill="#1c1a17" opacity="0.47"/><circle cx="63" cy="100" r="4" fill="#1c1a17" opacity="0.59"/><circle cx="92" cy="51" r="5" fill="#1c1a17" opacity="0.71"/><circle cx="121" cy="98" r="6" fill="#1c1a17" opacity="0.83"/><circle cx="150" cy="49" r="7" fill="#d96a3d" opacity="0.35"/><circle cx="29" cy="96" r="4" fill="#1c1a17" opacity="0.47"/><circle cx="58" cy="47" r="5" fill="#1c1a17" opacity="0.59"/><circle cx="87" cy="94" r="6" fill="#1c1a17" opacity="0.71"/><circle cx="116" cy="45" r="7" fill="#1c1a17" opacity="0.83"/><circle cx="145" cy="92" r="4" fill="#d96a3d" opacity="0.35"/><circle cx="24" cy="43" r="5" fill="#1c1a17" opacity="0.47"/><circle cx="53" cy="90" r="6" fill="#1c1a17" opacity="0.59"/><circle cx="82" cy="41" r="7" fill="#1c1a17" opacity="0.71"/><circle cx="111" cy="88" r="4" fill="#1c1a17" opacity="0.83"/><circle cx="140" cy="39" r="5" fill="#d96a3d" opacity="0.35"/>
+    <text x="90" y="124" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">particles.length changes</text>
+  </svg></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code - particles in a dynamic list</p>
+      <div class="code-panes">
+        <div class="code-pane"><div class="code-label p5">p5.js</div><pre>let particles = [];
+
+function draw() {
+  background(246);
+  particles.push(new Particle(mouseX, mouseY));
+
+  for (let i = particles.length - 1; i &gt;= 0; i--) {
+    particles[i].update();
+    particles[i].draw();
+    if (particles[i].done()) {
+      particles.splice(i, 1);
+    }
+  }
+}</pre></div>
+        <div class="code-pane"><div class="code-label canvas-api">Canvas API</div><pre>const particles = [];
+
+function frame() {
+  particles.push(new Particle(mouse.x, mouse.y));
+  for (let i = particles.length - 1; i &gt;= 0; i--) {
+    particles[i].update();
+    particles[i].draw(ctx);
+    if (particles[i].done()) particles.splice(i, 1);
+  }
+  requestAnimationFrame(frame);
+}</pre></div>
+        <div class="code-pane"><div class="code-label java">Processing / Java</div><pre>ArrayList&lt;Particle&gt; particles = new ArrayList&lt;Particle&gt;();
+
+void draw() {
+  particles.add(new Particle(mouseX, mouseY));
+
+  for (int i = particles.size() - 1; i &gt;= 0; i--) {
+    Particle p = particles.get(i);
+    p.update();
+    p.display();
+    if (p.done()) {
+      particles.remove(i);
+    }
+  }
+}</pre></div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article><h2>The canvas idea</h2><p>Use particles because the list size is visible. Add particles with the mouse, remove them when they fade, and show the current length on screen.</p></article>
+      <article><h2>Patterns to notice</h2><ul style="padding-left:18px;margin:0;line-height:2;font-size:13px"><li>ArrayList</li><li>add</li><li>get</li><li>remove</li><li>backward removal loop</li></ul></article>
+      <article><h2>Teacher notes</h2><p>This is the AP CSA payoff. Students already know arrays and objects; ArrayList feels natural when the sketch needs a collection that changes size.</p></article>
+    </section>
+
+    <section class="band"><div class="callout"><strong>Common misconception:</strong> Removing while looping forward skips items. Loop backward or adjust the index after removal.</div></section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">AAP</span></div><div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge strong">U7</span><span class="ap-badge partial">U5</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards"><a class="card" href="../recursion-as-fractals/index.html"><span class="meta">previous</span><h2>21 - Recursion as Fractals</h2><p>Review the previous concept.</p></a><a class="card" href="../../sections/algorithms/index.html"><span class="meta">section</span><h2>§7 Algorithms</h2><p>See the movement overview.</p></a></div>
+    </section>
+
+    <section class="band"><div class="concept-nav">
+    <a class="nav-btn" href="../recursion-as-fractals/index.html"><span class="nav-dir">Previous concept</span><span class="nav-title">21 - Recursion as Fractals</span></a>
+    <a class="nav-btn next" href="../../browse/index.html"><span class="nav-dir">Finished</span><span class="nav-title">Browse all 22</span></a>
+  </div></section>
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js - Canvas API - Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

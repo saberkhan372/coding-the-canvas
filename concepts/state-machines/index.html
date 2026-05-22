@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>State Machines - CS Canvas</title>
+  <meta name="description" content="A state variable tracks which mode is active. Conditionals in draw() show a different screen for each state." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav><a href="../../index.html">Home</a><a class="active" href="../../concepts/index.html">Concepts</a><a href="../../sections/index.html">Sections</a><a href="../../languages/index.html">Languages</a><a href="../../browse/index.html">Browse</a><a href="../../teachers/index.html">Teachers</a><a href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kicker">Concept 10 / 22 &nbsp;·&nbsp; §4 Make Systems</p>
+      <h1>State Machines</h1>
+      <p class="lede">One variable tracks which mode is active. draw() checks it every frame. Click a button — the state changes — and the entire screen changes with it.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/make-systems/index.html">§4 Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 10 / 22</p>
+        <h2>The big idea</h2>
+        <p>Every interactive program has modes: a title screen, a play screen, a pause screen, a game-over screen. A state machine tracks which mode is active using a single variable. draw() checks that variable and renders the right screen. Transitions happen when events change the state.</p>
+        <ul class="checklist">
+          <li>State variable: let state = "menu"</li>
+          <li>draw() branches on state — renders one screen at a time</li>
+          <li>Transitions: events change state value (click → "playing")</li>
+          <li>Each state can have its own logic in draw()</li>
+          <li>Common states: "menu", "playing", "paused", "gameover"</li>
+          <li>State diagrams: circles with arrows showing valid transitions</li>
+        </ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <circle cx="44" cy="66" r="26" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="44" y="70" font-family="monospace" font-size="8" text-anchor="middle" fill="currentColor">MENU</text>
+          <circle cx="136" cy="66" r="26" fill="#fff8f5" stroke="#d96a3d" stroke-width="1.5"/>
+          <text x="136" y="70" font-family="monospace" font-size="8" text-anchor="middle" fill="#d96a3d">PLAY</text>
+          <!-- arrows -->
+          <path d="M70 54 Q90 34 112 54" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <polygon points="112,50 118,56 110,58" fill="currentColor"/>
+          <path d="M110 78 Q90 98 68 78" stroke="#d96a3d" stroke-width="1.2" fill="none"/>
+          <polygon points="68,82 62,76 70,74" fill="#d96a3d"/>
+          <text x="90" y="36" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">click</text>
+          <text x="90" y="106" font-family="monospace" font-size="7" text-anchor="middle" fill="#d96a3d">game over</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code — a three-screen sketch</p>
+      <div class="code-panes">
+        <div class="code-pane">
+          <div class="code-label p5">p5.js</div>
+          <pre><span class="kw">let</span> state = <span class="st">"menu"</span>;
+<span class="kw">let</span> score = <span class="nm">0</span>;
+
+<span class="kw">function</span> <span class="fn">setup</span>() { <span class="fn">createCanvas</span>(<span class="nm">400</span>, <span class="nm">300</span>); }
+
+<span class="kw">function</span> <span class="fn">draw</span>() {
+  <span class="kw">if</span> (state === <span class="st">"menu"</span>) {
+    <span class="fn">drawMenu</span>();
+  } <span class="kw">else if</span> (state === <span class="st">"playing"</span>) {
+    <span class="fn">drawGame</span>();
+  } <span class="kw">else if</span> (state === <span class="st">"gameover"</span>) {
+    <span class="fn">drawGameOver</span>();
+  }
+}
+
+<span class="kw">function</span> <span class="fn">drawMenu</span>() {
+  <span class="fn">background</span>(<span class="nm">40</span>);
+  <span class="fn">fill</span>(<span class="nm">255</span>);
+  <span class="fn">textSize</span>(<span class="nm">32</span>); <span class="fn">textAlign</span>(CENTER);
+  <span class="fn">text</span>(<span class="st">"Click to Start"</span>, width/<span class="nm">2</span>, height/<span class="nm">2</span>);
+}
+
+<span class="kw">function</span> <span class="fn">drawGame</span>() {
+  <span class="fn">background</span>(<span class="nm">240</span>);
+  score++;  <span class="cm">// game logic here</span>
+  <span class="fn">text</span>(<span class="st">"Score: "</span> + score, <span class="nm">20</span>, <span class="nm">30</span>);
+  <span class="kw">if</span> (score &gt; <span class="nm">300</span>) state = <span class="st">"gameover"</span>;
+}
+
+<span class="kw">function</span> <span class="fn">mousePressed</span>() {
+  <span class="kw">if</span> (state === <span class="st">"menu"</span>)     state = <span class="st">"playing"</span>;
+  <span class="kw">if</span> (state === <span class="st">"gameover"</span>) { state = <span class="st">"menu"</span>; score = <span class="nm">0</span>; }
+}</pre>
+        </div>
+        <div class="code-pane">
+          <div class="code-label canvas-api">Canvas API</div>
+          <pre><span class="kw">let</span> state = <span class="st">'menu'</span>;
+<span class="kw">const</span> ctx = canvas.<span class="fn">getContext</span>(<span class="st">'2d'</span>);
+
+<span class="kw">function</span> <span class="fn">loop</span>() {
+  ctx.<span class="fn">clearRect</span>(<span class="nm">0</span>, <span class="nm">0</span>, canvas.width, canvas.height);
+
+  <span class="kw">if</span> (state === <span class="st">'menu'</span>) {
+    ctx.fillStyle = <span class="st">'#282828'</span>;
+    ctx.<span class="fn">fillRect</span>(<span class="nm">0</span>, <span class="nm">0</span>, canvas.width, canvas.height);
+    ctx.fillStyle = <span class="st">'white'</span>;
+    ctx.font = <span class="st">'24px sans-serif'</span>;
+    ctx.textAlign = <span class="st">'center'</span>;
+    ctx.<span class="fn">fillText</span>(<span class="st">'Click to Start'</span>, canvas.width/<span class="nm">2</span>, canvas.height/<span class="nm">2</span>);
+  } <span class="kw">else if</span> (state === <span class="st">'playing'</span>) {
+    <span class="cm">// game rendering...</span>
+  }
+  <span class="fn">requestAnimationFrame</span>(loop);
+}
+
+canvas.<span class="fn">addEventListener</span>(<span class="st">'click'</span>, () =&gt; {
+  <span class="kw">if</span> (state === <span class="st">'menu'</span>) state = <span class="st">'playing'</span>;
+});
+<span class="fn">loop</span>();</pre>
+        </div>
+        <div class="code-pane">
+          <div class="code-label java">Processing / Java</div>
+          <pre>String state = <span class="st">"menu"</span>;
+<span class="kw">int</span> score = <span class="nm">0</span>;
+
+<span class="kw">void</span> <span class="fn">setup</span>() { <span class="fn">size</span>(<span class="nm">400</span>, <span class="nm">300</span>); }
+
+<span class="kw">void</span> <span class="fn">draw</span>() {
+  <span class="kw">if</span> (state.<span class="fn">equals</span>(<span class="st">"menu"</span>)) {
+    <span class="fn">background</span>(<span class="nm">40</span>);
+    <span class="fn">fill</span>(<span class="nm">255</span>);
+    <span class="fn">textSize</span>(<span class="nm">28</span>);
+    <span class="fn">text</span>(<span class="st">"Click to Start"</span>, <span class="nm">120</span>, <span class="nm">160</span>);
+  } <span class="kw">else if</span> (state.<span class="fn">equals</span>(<span class="st">"playing"</span>)) {
+    <span class="fn">background</span>(<span class="nm">240</span>);
+    score++;
+    <span class="kw">if</span> (score &gt; <span class="nm">300</span>) state = <span class="st">"gameover"</span>;
+  }
+}
+
+<span class="kw">void</span> <span class="fn">mousePressed</span>() {
+  <span class="kw">if</span> (state.<span class="fn">equals</span>(<span class="st">"menu"</span>)) state = <span class="st">"playing"</span>;
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>The canvas idea</h2>
+        <p>Ask: "how does a game know to show the title screen vs. the game screen?" Students often think it's complicated. Show them it's just one string variable and an if/else chain in draw().</p>
+        <p style="margin-top:8px">Draw the state diagram on the board first. Every circle is a state, every arrow is a transition event. Then translate directly to code.</p>
+      </article>
+      <article>
+        <h2>State diagram template</h2>
+        <ul style="padding-left:18px;margin:0;line-height:2;font-size:13px">
+          <li>"menu" → click → "playing"</li>
+          <li>"playing" → score &gt; limit → "gameover"</li>
+          <li>"playing" → keypress → "paused"</li>
+          <li>"paused" → keypress → "playing"</li>
+          <li>"gameover" → click → "menu"</li>
+        </ul>
+      </article>
+      <article>
+        <h2>Teacher notes</h2>
+        <p><strong>Timing:</strong> 2 periods. Pairs with Objects (09) as a capstone for §4.</p>
+        <p style="margin-top:8px"><strong>Java gotcha:</strong> String comparison in Java requires <code>.equals()</code>, not <code>==</code>. This is a great moment to introduce the difference between reference equality and value equality.</p>
+        <p style="margin-top:8px"><strong>Checkpoint:</strong> Students build a sketch with at least 3 states (menu, play, gameover) that transitions correctly on user events.</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">AAP</span><span class="ap-badge partial">CRD</span></div>
+      <div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge strong">CON</span><span class="ap-badge partial">MOD</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards">
+        <a class="card" href="../objects/index.html"><span class="meta">previous</span><h2>09 – Objects</h2><p>data + behavior</p></a>
+        <a class="card" href="../pixels-image-data/index.html"><span class="meta">next</span><h2>11 – Pixels / Image Data</h2><p>pictures as numbers</p></a>
+        <a class="card" href="../conditionals/index.html"><span class="meta">related</span><h2>05 – Conditionals</h2><p>if / else / boolean</p></a>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="concept-nav">
+        <a class="nav-btn" href="../objects/index.html"><span class="nav-dir">← Previous concept</span><span class="nav-title">09 – Objects</span></a>
+        <a class="nav-btn next" href="../pixels-image-data/index.html"><span class="nav-dir">Next concept →</span><span class="nav-title">11 – Pixels / Image Data</span></a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

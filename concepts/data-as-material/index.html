@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data as Material - CS Canvas</title>
+  <meta name="description" content="Data can become marks on a canvas. CSV and JSON are not just files to parse; they are raw material for visual stories." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav><a href="../../index.html">Home</a><a class="active" href="../../concepts/index.html">Concepts</a><a href="../../sections/index.html">Sections</a><a href="../../languages/index.html">Languages</a><a href="../../browse/index.html">Browse</a><a href="../../teachers/index.html">Teachers</a><a href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kicker">Concept 16 / 22 &nbsp;·&nbsp; §5 Data as Material</p>
+      <h1>Data as Material</h1>
+      <p class="lede">Data can become marks on a canvas. CSV and JSON are not just files to parse; they are raw material for visual stories.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/data-as-material/index.html">Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 16 / 22</p>
+        <h2>The big idea</h2>
+        <p>A dataset is a list of records. Each record can become a shape, position, color, or motion. The creative decision is the mapping: which data field controls which visual property?</p>
+        <ul class="checklist"><li>Load CSV or JSON</li><li>Preview rows and fields</li><li>Map values to x, y, size, color, or opacity</li><li>Normalize with map()</li><li>Ask what the visualization reveals and hides</li></ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+    <circle cx="32" cy="86" r="6" fill="#1c1a17" opacity=".8"/><line x1="32" y1="116" x2="32" y2="86" stroke="#1c1a17" stroke-width="1" opacity=".35"/><circle cx="60" cy="28" r="7" fill="#1c1a17" opacity=".8"/><line x1="60" y1="116" x2="60" y2="28" stroke="#1c1a17" stroke-width="1" opacity=".35"/><circle cx="88" cy="62" r="8" fill="#1c1a17" opacity=".8"/><line x1="88" y1="116" x2="88" y2="62" stroke="#1c1a17" stroke-width="1" opacity=".35"/><circle cx="116" cy="6" r="9" fill="#d96a3d" opacity=".8"/><line x1="116" y1="116" x2="116" y2="6" stroke="#1c1a17" stroke-width="1" opacity=".35"/><circle cx="144" cy="44" r="10" fill="#1c1a17" opacity=".8"/><line x1="144" y1="116" x2="144" y2="44" stroke="#1c1a17" stroke-width="1" opacity=".35"/>
+    <text x="90" y="126" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">rows → marks</text>
+  </svg></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code - map rows to marks</p>
+      <div class="code-panes">
+        <div class="code-pane"><div class="code-label p5">p5.js</div><pre>let rows = [
+  {name: 'A', value: 12},
+  {name: 'B', value: 34},
+  {name: 'C', value: 21},
+  {name: 'D', value: 45}
+];
+
+function setup() {
+  createCanvas(420, 260);
+}
+
+function draw() {
+  background(246);
+  for (let i = 0; i &lt; rows.length; i++) {
+    let x = 70 + i * 80;
+    let h = rows[i].value * 4;
+    rect(x, height - 40 - h, 44, h);
+    text(rows[i].name, x + 14, height - 18);
+  }
+}</pre></div>
+        <div class="code-pane"><div class="code-label canvas-api">Canvas API</div><pre>const rows = [{name:'A', value:12}, {name:'B', value:34}, {name:'C', value:21}];
+const ctx = canvas.getContext('2d');
+
+rows.forEach((row, i) =&gt; {
+  const x = 70 + i * 80;
+  const h = row.value * 4;
+  ctx.fillRect(x, canvas.height - 40 - h, 44, h);
+  ctx.fillText(row.name, x + 14, canvas.height - 18);
+});</pre></div>
+        <div class="code-pane"><div class="code-label java">Processing / Java</div><pre>String[] names = {&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;};
+int[] values = {12, 34, 21, 45};
+
+void setup() {
+  size(420, 260);
+}
+
+void draw() {
+  background(246);
+  for (int i = 0; i &lt; values.length; i++) {
+    int x = 70 + i * 80;
+    int h = values[i] * 4;
+    rect(x, height - 40 - h, 44, h);
+    text(names[i], x + 14, height - 18);
+  }
+}</pre></div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article><h2>The canvas idea</h2><p>Start with a tiny hand-written dataset before loading a file. Students should understand the mapping before they worry about parsing.</p></article>
+      <article><h2>Patterns to notice</h2><ul style="padding-left:18px;margin:0;line-height:2;font-size:13px"><li>Record</li><li>field</li><li>mapping</li><li>normalization</li><li>visual encoding</li></ul></article>
+      <article><h2>Teacher notes</h2><p>This is an ideal Create Task seed: students can choose a dataset, build a visual, and explain an algorithmic transformation.</p></article>
+    </section>
+
+    <section class="band"><div class="callout"><strong>Common misconception:</strong> A data visualization is not neutral. Every mapping emphasizes some features and hides others.</div></section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">DAT</span><span class="ap-badge partial">CRD</span><span class="ap-badge partial">AAP</span></div><div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge strong">U6</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards"><a class="card" href="../histograms-and-sampling/index.html"><span class="meta">previous</span><h2>15 - Histograms &amp; Sampling</h2><p>Review the previous concept.</p></a><a class="card" href="../bias-in-a-filter/index.html"><span class="meta">next</span><h2>17 - Bias in a Filter</h2><p>Continue the sequence.</p></a><a class="card" href="../../sections/data-as-material/index.html"><span class="meta">section</span><h2>§5 Data as Material</h2><p>See the movement overview.</p></a></div>
+    </section>
+
+    <section class="band"><div class="concept-nav">
+    <a class="nav-btn" href="../histograms-and-sampling/index.html"><span class="nav-dir">Previous concept</span><span class="nav-title">15 - Histograms &amp; Sampling</span></a>
+    <a class="nav-btn next" href="../bias-in-a-filter/index.html"><span class="nav-dir">Next concept</span><span class="nav-title">17 - Bias in a Filter</span></a>
+  </div></section>
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js - Canvas API - Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

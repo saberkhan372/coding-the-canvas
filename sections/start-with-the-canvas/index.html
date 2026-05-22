@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Start with the Canvas - CS Canvas</title>
+  <meta name="description" content="Coordinates, shapes, color, and the first feeling that code can make a visible mark." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="sections">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a href="../../concepts/index.html">Concepts</a>
+      <a class="active" href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
+  </header>
+  <main>
+
+    <section class="hero">
+      <p class="kicker">Section 01 of 07</p>
+      <span class="section-num">§1</span>
+      <h1>Start with the Canvas</h1>
+      <p class="lede">Coordinates, shapes, color — the first feeling that code can make a visible mark on a screen.</p>
+      <div class="actions" style="margin-top:24px">
+        <a class="button primary" href="../../concepts/coordinates/index.html">Start Concept 01</a>
+        <a class="button" href="../../tools/sketch-playground/index.html">Open Playground</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concepts 01 – 02 &nbsp;·&nbsp; Entry section</p>
+        <h2>What this section covers</h2>
+        <p>Students start with a blank rectangle and learn that every pixel has an address. The canvas coordinate system (origin top-left, y-down) is the first "gotcha" — and the first productive misconception to resolve. By the end of §1 students can write a sketch that places shapes anywhere on screen with intentional color.</p>
+        <ul class="checklist">
+          <li>Pixel addresses: every point has an (x, y) pair</li>
+          <li>Origin top-left, y increases downward</li>
+          <li>Canvas size vs. shape size vocabulary</li>
+          <li>fill, stroke, RGB color model</li>
+          <li>First complete sketch: intentional composition</li>
+        </ul>
+        <div class="stat-row">
+          <div class="stat"><span class="stat-label">Concepts</span><span class="stat-val">2</span></div>
+          <div class="stat"><span class="stat-label">Typical time</span><span class="stat-val">3–4 periods</span></div>
+          <div class="stat"><span class="stat-label">Difficulty</span><span class="stat-val"><span class="difficulty-pips"><span class="pip"></span><span class="pip empty"></span><span class="pip empty"></span><span class="pip empty"></span><span class="pip empty"></span></span></span></div>
+          <div class="stat"><span class="stat-label">Prior code needed</span><span class="stat-val">None</span></div>
+        </div>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- Coordinate grid lines -->
+          <line x1="10" y1="10" x2="10" y2="122" stroke="currentColor" stroke-width="1" opacity=".18"/>
+          <line x1="46" y1="10" x2="46" y2="122" stroke="currentColor" stroke-width="1" opacity=".18"/>
+          <line x1="82" y1="10" x2="82" y2="122" stroke="currentColor" stroke-width="1" opacity=".18"/>
+          <line x1="118" y1="10" x2="118" y2="122" stroke="currentColor" stroke-width="1" opacity=".18"/>
+          <line x1="154" y1="10" x2="154" y2="122" stroke="currentColor" stroke-width="1" opacity=".18"/>
+          <line x1="10" y1="10" x2="170" y2="10" stroke="currentColor" stroke-width="1" opacity=".18"/>
+          <line x1="10" y1="46" x2="170" y2="46" stroke="currentColor" stroke-width="1" opacity=".18"/>
+          <line x1="10" y1="82" x2="170" y2="82" stroke="currentColor" stroke-width="1" opacity=".18"/>
+          <line x1="10" y1="118" x2="170" y2="118" stroke="currentColor" stroke-width="1" opacity=".18"/>
+          <!-- Shapes -->
+          <rect x="28" y="28" width="40" height="40" fill="currentColor" opacity=".8" rx="2"/>
+          <circle cx="130" cy="68" r="28" fill="currentColor" opacity=".4"/>
+          <rect x="60" y="76" width="60" height="30" fill="#d96a3d" opacity=".7" rx="2"/>
+          <!-- Origin dot -->
+          <circle cx="10" cy="10" r="3" fill="#d96a3d"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Concepts in this section</p>
+      <div class="concept-grid">
+
+        <a class="concept-card" href="../../concepts/coordinates/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <line x1="10" y1="10" x2="10" y2="90" stroke="#1c1a17" stroke-width="1.5"/>
+              <line x1="10" y1="10" x2="190" y2="10" stroke="#1c1a17" stroke-width="1.5"/>
+              <circle cx="120" cy="60" r="6" fill="#d96a3d"/>
+              <line x1="10" y1="60" x2="120" y2="60" stroke="#d96a3d" stroke-width="1" stroke-dasharray="4 3"/>
+              <line x1="120" y1="10" x2="120" y2="60" stroke="#d96a3d" stroke-width="1" stroke-dasharray="4 3"/>
+              <text x="125" y="65" font-family="monospace" font-size="9" fill="#d96a3d">(120, 60)</text>
+              <text x="6" y="9" font-family="monospace" font-size="8" fill="#8c857a">(0,0)</text>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 01</p>
+            <h3>Coordinates</h3>
+            <p>pixels, x/y, origin — every point on the canvas has an address</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+              <span class="lang-chip java">Processing</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="concept-card" href="../../concepts/shapes-and-color/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <rect x="20" y="20" width="50" height="50" fill="#1c1a17" rx="2"/>
+              <circle cx="130" cy="50" r="28" fill="#d96a3d" opacity=".8"/>
+              <ellipse cx="80" cy="75" rx="45" ry="12" fill="#4a4640" opacity=".5"/>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 02</p>
+            <h3>Shapes &amp; Color</h3>
+            <p>fill, stroke, palette — building a visual vocabulary with primitives</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+              <span class="lang-chip java">Processing</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">AP alignment</p>
+      <div class="ap-strip">
+        <div class="ap-row">
+          <span class="ap-label">CSP</span>
+          <span class="ap-badge strong">CRD</span>
+          <span class="ap-badge partial">AAP</span>
+        </div>
+        <div class="ap-row">
+          <span class="ap-label">CSA</span>
+          <span class="ap-badge partial">MOD</span>
+        </div>
+        <p style="margin:0;font-size:13px;color:var(--soft);max-width:600px">Covers Creative Development (CRD 1.1, 1.2) and lays ground for Algorithms &amp; Programming through spatial reasoning and procedural sequence.</p>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>Teacher framing</h2>
+        <p><strong>Prerequisites:</strong> None — this is the true starting point. Students who have never typed code can enter here.</p>
+        <p style="margin-top:8px"><strong>Discussion move:</strong> Ask "where is the top-left corner of your phone screen?" before touching code. Students almost always place it wrong — that surprise is the hook.</p>
+        <p style="margin-top:8px"><strong>Checkpoint:</strong> Students can place three shapes of their choosing at exact pixel positions and explain why y increases downward.</p>
+      </article>
+      <article>
+        <h2>Learner framing</h2>
+        <p>Think of the canvas as a grid of tiny lights. Every light has a column number (x) and a row number (y). Your code is the instruction sheet that tells each light what color to glow.</p>
+        <p style="margin-top:8px">By the end of this section you'll write a program that draws something — really draws it, not just prints text — and you'll understand exactly why every number in that program means what it means.</p>
+      </article>
+      <article>
+        <h2>Common misconceptions</h2>
+        <ul style="padding-left:18px;margin:0;color:var(--soft);font-size:14px;line-height:1.8">
+          <li>y=0 is at the <em>top</em>, not the bottom</li>
+          <li>width/height of a shape ≠ its position</li>
+          <li><code>stroke()</code> sets the border color, not text</li>
+          <li>RGB values go 0–255, not 0–100</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="band">
+      <div class="section-nav">
+        <span></span>
+        <a class="nav-btn next" href="../make-it-move/index.html">
+          <span class="nav-dir">Next section →</span>
+          <span class="nav-title">§2 Make It Move</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Computing in the World - CS Canvas</title>
+  <meta name="description" content="Bias, accessibility, authorship, and energy as visible consequences of computation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="sections">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a href="../../concepts/index.html">Concepts</a>
+      <a class="active" href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
+  </header>
+  <main>
+
+    <section class="hero">
+      <p class="kicker">Section 06 of 07</p>
+      <span class="section-num">§6</span>
+      <h1>Computing in the World</h1>
+      <p class="lede">Bias, accessibility, authorship, and energy — the visible consequences that computation leaves in the world.</p>
+      <div class="actions" style="margin-top:24px">
+        <a class="button primary" href="../../concepts/bias-in-a-filter/index.html">Start Concept 17</a>
+        <a class="button" href="../../teachers/index.html">Teacher guide</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concepts 17 – 20 &nbsp;·&nbsp; AP CSP IOC core</p>
+        <h2>What this section covers</h2>
+        <p>Code has consequences. This section uses the canvas as a lens to examine four of them: how algorithmic filters can fail certain users, how color choices affect who can read your work, who gets credit when an algorithm makes something, and how much energy computation actually uses. Each concept is taught through a visible demo, not a lecture.</p>
+        <ul class="checklist">
+          <li>Bias: a skin-tone filter applied to different inputs side by side</li>
+          <li>Accessibility: WCAG contrast ratios shown as colored rectangles</li>
+          <li>Authorship: a generated pattern vs. a hand-coded one — what differs?</li>
+          <li>Energy: frame budget, GPU load, and what "efficient code" means visually</li>
+          <li>Discussion scaffolds and facilitation notes for each concept</li>
+        </ul>
+        <div class="stat-row">
+          <div class="stat"><span class="stat-label">Concepts</span><span class="stat-val">4</span></div>
+          <div class="stat"><span class="stat-label">Typical time</span><span class="stat-val">6–8 periods</span></div>
+          <div class="stat"><span class="stat-label">Difficulty</span><span class="stat-val"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip empty"></span><span class="pip empty"></span></span></div>
+          <div class="stat"><span class="stat-label">Prerequisite</span><span class="stat-val">§5 Data + §3 Cond.</span></div>
+        </div>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- Two images side by side: original and filtered -->
+          <rect x="10" y="20" width="68" height="68" rx="2" fill="currentColor" opacity=".15" stroke="currentColor" stroke-width="1"/>
+          <circle cx="44" cy="54" r="20" fill="currentColor" opacity=".5"/>
+          <text x="44" y="98" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">original</text>
+          <rect x="102" y="20" width="68" height="68" rx="2" fill="#d96a3d" opacity=".08" stroke="#d96a3d" stroke-width="1.5"/>
+          <circle cx="136" cy="54" r="20" fill="#d96a3d" opacity=".3"/>
+          <line x1="120" y1="38" x2="152" y2="70" stroke="#d96a3d" stroke-width="2"/>
+          <line x1="152" y1="38" x2="120" y2="70" stroke="#d96a3d" stroke-width="2"/>
+          <text x="136" y="98" font-family="monospace" font-size="7" text-anchor="middle" fill="#d96a3d">filter fails</text>
+          <!-- Arrow -->
+          <path d="M80 54 L100 54" stroke="#1c1a17" stroke-width="1.5" stroke-dasharray="4 3"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band ethics-note">
+      <strong>A note on facilitation:</strong> These concepts work best as structured discussions, not lectures. Each concept page includes facilitation prompts, sentence starters, and a suggested discussion arc. The goal is for students to notice consequences themselves — not to be told what to think about them.
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Concepts in this section</p>
+      <div class="concept-grid">
+
+        <a class="concept-card" href="../../concepts/bias-in-a-filter/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <!-- Before/after comparison columns -->
+              <rect x="10" y="15" width="70" height="70" rx="2" fill="none" stroke="#ccc" stroke-width="1"/>
+              <circle cx="45" cy="50" r="22" fill="#1c1a17" opacity=".3"/>
+              <text x="45" y="95" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">input A</text>
+              <rect x="90" y="15" width="70" height="70" rx="2" fill="none" stroke="#d96a3d" stroke-width="1.5"/>
+              <circle cx="125" cy="50" r="22" fill="#1c1a17" opacity=".1"/>
+              <line x1="108" y1="33" x2="142" y2="67" stroke="#d96a3d" stroke-width="2"/>
+              <line x1="142" y1="33" x2="108" y2="67" stroke="#d96a3d" stroke-width="2"/>
+              <text x="125" y="95" font-family="monospace" font-size="7" text-anchor="middle" fill="#d96a3d">input B → fail</text>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 17</p>
+            <h3>Bias in a Filter</h3>
+            <p>visible failure — running the same algorithm on different inputs to expose uneven outcomes</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="concept-card" href="../../concepts/color-and-accessibility/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <!-- Contrast comparison swatches -->
+              <rect x="10" y="20" width="80" height="35" rx="2" fill="#f5f5f5"/>
+              <text x="50" y="42" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#cccccc">Low contrast</text>
+              <rect x="110" y="20" width="80" height="35" rx="2" fill="#1c1a17"/>
+              <text x="150" y="42" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#ffffff">High contrast</text>
+              <!-- WCAG badge -->
+              <rect x="120" y="64" width="60" height="16" rx="2" fill="#d96a3d"/>
+              <text x="150" y="76" font-family="monospace" font-size="8" text-anchor="middle" fill="white">WCAG AA ✓</text>
+              <rect x="20" y="64" width="60" height="16" rx="2" fill="#ccc"/>
+              <text x="50" y="76" font-family="monospace" font-size="8" text-anchor="middle" fill="#8c857a">ratio: 1.4:1</text>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 18</p>
+            <h3>Color &amp; Accessibility</h3>
+            <p>palette, contrast, simulate — designing for the full range of vision, not just your own</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="concept-card" href="../../concepts/whose-authorship/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <!-- Two patterns: hand vs generated -->
+              <rect x="10" y="10" width="80" height="80" rx="2" fill="none" stroke="#ccc" stroke-width="1"/>
+              <!-- Hand-drawn-ish pattern -->
+              <path d="M20 50 Q30 30 40 50 Q50 70 60 50 Q70 30 80 50" stroke="#1c1a17" stroke-width="2" fill="none"/>
+              <text x="50" y="98" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">human?</text>
+              <rect x="110" y="10" width="80" height="80" rx="2" fill="none" stroke="#ccc" stroke-width="1"/>
+              <!-- Generated geometric pattern -->
+              <circle cx="150" cy="50" r="28" fill="none" stroke="#d96a3d" stroke-width="1.5"/>
+              <circle cx="150" cy="50" r="18" fill="none" stroke="#d96a3d" stroke-width="1.5"/>
+              <circle cx="150" cy="50" r="8" fill="#d96a3d" opacity=".5"/>
+              <text x="150" y="98" font-family="monospace" font-size="7" text-anchor="middle" fill="#d96a3d">algorithm?</text>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 19</p>
+            <h3>Whose Authorship?</h3>
+            <p>human vs algorithm — examining what it means to create when code does the generating</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="concept-card" href="../../concepts/energy-of-a-sketch/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <!-- Frame budget bar -->
+              <rect x="10" y="20" width="180" height="20" rx="2" fill="#ece5d6"/>
+              <rect x="10" y="20" width="140" height="20" rx="2" fill="#d96a3d" opacity=".7"/>
+              <text x="100" y="35" font-family="monospace" font-size="8" text-anchor="middle" fill="white">draw(): 14ms used</text>
+              <rect x="10" y="50" width="180" height="20" rx="2" fill="#ece5d6"/>
+              <rect x="10" y="50" width="50" height="20" rx="2" fill="#5a9e5a" opacity=".8"/>
+              <text x="100" y="65" font-family="monospace" font-size="8" text-anchor="middle" fill="#1c1a17">draw(): 5ms used</text>
+              <text x="10" y="90" font-family="monospace" font-size="7" fill="#8c857a">budget per frame at 60fps: 16.7ms</text>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 20</p>
+            <h3>Energy of a Sketch</h3>
+            <p>compute and sustainability — measuring what code costs to run and why it matters</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">AP alignment</p>
+      <div class="ap-strip">
+        <div class="ap-row">
+          <span class="ap-label">CSP</span>
+          <span class="ap-badge strong">IOC</span>
+          <span class="ap-badge partial">DAT</span>
+          <span class="ap-badge partial">CRD</span>
+        </div>
+        <p style="margin:0;font-size:13px;color:var(--soft);max-width:600px">This section directly covers AP CSP Big Idea 5 (Impact of Computing). Bias, privacy, accessibility, and digital citizenship questions appear on every AP CSP exam. The canvas demos give students concrete examples to reference in written responses.</p>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>Teacher framing</h2>
+        <p><strong>Facilitation stance:</strong> Your job is to hold the space, not supply the answer. Ask "what do you notice?" before "what does this mean?" Students who arrive at ethical conclusions through observation retain them differently than students who are told.</p>
+        <p style="margin-top:8px"><strong>AP connection:</strong> Have students practice writing IOC evidence paragraphs using the canvas demos as their example systems.</p>
+      </article>
+      <article>
+        <h2>Learner framing</h2>
+        <p>Every choice you make when writing code — which colors, which algorithm, how much CPU you use — affects real people. Some of those effects are obvious. Many aren't.</p>
+        <p style="margin-top:8px">This section doesn't tell you what to think. It shows you what's happening, and then asks you to think.</p>
+      </article>
+      <article>
+        <h2>Discussion moves</h2>
+        <ul style="padding-left:18px;margin:0;color:var(--soft);font-size:14px;line-height:1.8">
+          <li>"Who is this designed for?"</li>
+          <li>"Who is left out by this choice?"</li>
+          <li>"Could the code be changed? What would it take?"</li>
+          <li>"Is this a technical problem or a human one?"</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="band">
+      <div class="section-nav">
+        <a class="nav-btn" href="../data-as-material/index.html">
+          <span class="nav-dir">← Previous section</span>
+          <span class="nav-title">§5 Data as Material</span>
+        </a>
+        <a class="nav-btn next" href="../algorithms/index.html">
+          <span class="nav-dir">Next section →</span>
+          <span class="nav-title">§7 Algorithms</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

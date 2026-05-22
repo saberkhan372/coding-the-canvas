@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Algorithms - CS Canvas</title>
+  <meta name="description" content="Recursion, dynamic lists, particles, and advanced ideas made visual." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="sections">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a href="../../concepts/index.html">Concepts</a>
+      <a class="active" href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
+  </header>
+  <main>
+
+    <section class="hero">
+      <p class="kicker">Section 07 of 07</p>
+      <span class="section-num">§7</span>
+      <h1>Algorithms</h1>
+      <p class="lede">Recursion, dynamic lists, and advanced ideas — where code folds back on itself and collections grow without bound.</p>
+      <div class="actions" style="margin-top:24px">
+        <a class="button primary" href="../../concepts/recursion-as-fractals/index.html">Start Concept 21</a>
+        <a class="button" href="../../tools/sketch-playground/index.html">Open Playground</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concepts 21 – 22 &nbsp;·&nbsp; Capstone section</p>
+        <div class="capstone-badge">Final section</div>
+        <h2>What this section covers</h2>
+        <p>The final section reaches for two of the most visually powerful ideas in CS: recursion and dynamic collections. Recursion is taught through fractals — students see the call stack become a branching tree on screen. ArrayList is taught through a particle system — objects that spawn, move, and die in real time. Both concepts are AP CSA exam targets.</p>
+        <ul class="checklist">
+          <li>Recursion: base case and recursive case as a drawing rule</li>
+          <li>The call stack shown as nested visual structure</li>
+          <li>ArrayList: adding/removing objects while iterating</li>
+          <li>Particle system as capstone project scaffold</li>
+          <li>AP CSA FRQ patterns in both concepts</li>
+        </ul>
+        <div class="stat-row">
+          <div class="stat"><span class="stat-label">Concepts</span><span class="stat-val">2</span></div>
+          <div class="stat"><span class="stat-label">Typical time</span><span class="stat-val">3–4 periods</span></div>
+          <div class="stat"><span class="stat-label">Difficulty</span><span class="stat-val"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip empty"></span></span></div>
+          <div class="stat"><span class="stat-label">Prerequisite</span><span class="stat-val">§4 Objects + Arrays</span></div>
+        </div>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- Fractal tree branches -->
+          <line x1="90" y1="122" x2="90" y2="86" stroke="currentColor" stroke-width="2.5" opacity=".9"/>
+          <line x1="90" y1="86" x2="66" y2="62" stroke="currentColor" stroke-width="2" opacity=".8"/>
+          <line x1="90" y1="86" x2="114" y2="62" stroke="currentColor" stroke-width="2" opacity=".8"/>
+          <line x1="66" y1="62" x2="50" y2="44" stroke="currentColor" stroke-width="1.5" opacity=".7"/>
+          <line x1="66" y1="62" x2="78" y2="44" stroke="currentColor" stroke-width="1.5" opacity=".7"/>
+          <line x1="114" y1="62" x2="102" y2="44" stroke="currentColor" stroke-width="1.5" opacity=".7"/>
+          <line x1="114" y1="62" x2="130" y2="44" stroke="currentColor" stroke-width="1.5" opacity=".7"/>
+          <line x1="50" y1="44" x2="40" y2="30" stroke="currentColor" stroke-width="1" opacity=".5"/>
+          <line x1="50" y1="44" x2="58" y2="30" stroke="currentColor" stroke-width="1" opacity=".5"/>
+          <line x1="78" y1="44" x2="70" y2="30" stroke="currentColor" stroke-width="1" opacity=".5"/>
+          <line x1="78" y1="44" x2="86" y2="30" stroke="currentColor" stroke-width="1" opacity=".5"/>
+          <line x1="102" y1="44" x2="94" y2="30" stroke="currentColor" stroke-width="1" opacity=".5"/>
+          <line x1="102" y1="44" x2="110" y2="30" stroke="currentColor" stroke-width="1" opacity=".5"/>
+          <line x1="130" y1="44" x2="122" y2="30" stroke="currentColor" stroke-width="1" opacity=".5"/>
+          <line x1="130" y1="44" x2="138" y2="30" stroke="currentColor" stroke-width="1" opacity=".5"/>
+          <!-- Accent leaf dots -->
+          <circle cx="40" cy="28" r="3" fill="#d96a3d" opacity=".8"/>
+          <circle cx="58" cy="28" r="3" fill="#d96a3d" opacity=".8"/>
+          <circle cx="70" cy="28" r="3" fill="#d96a3d" opacity=".8"/>
+          <circle cx="86" cy="28" r="3" fill="#d96a3d" opacity=".8"/>
+          <circle cx="94" cy="28" r="3" fill="#d96a3d" opacity=".8"/>
+          <circle cx="110" cy="28" r="3" fill="#d96a3d" opacity=".8"/>
+          <circle cx="122" cy="28" r="3" fill="#d96a3d" opacity=".8"/>
+          <circle cx="138" cy="28" r="3" fill="#d96a3d" opacity=".8"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Concepts in this section</p>
+      <div class="concept-grid">
+
+        <a class="concept-card" href="../../concepts/recursion-as-fractals/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 110">
+              <!-- Small fractal tree -->
+              <line x1="100" y1="105" x2="100" y2="75" stroke="#1c1a17" stroke-width="2.5"/>
+              <line x1="100" y1="75" x2="76" y2="54" stroke="#1c1a17" stroke-width="2"/>
+              <line x1="100" y1="75" x2="124" y2="54" stroke="#1c1a17" stroke-width="2"/>
+              <line x1="76" y1="54" x2="60" y2="38" stroke="#1c1a17" stroke-width="1.5"/>
+              <line x1="76" y1="54" x2="88" y2="38" stroke="#1c1a17" stroke-width="1.5"/>
+              <line x1="124" y1="54" x2="112" y2="38" stroke="#1c1a17" stroke-width="1.5"/>
+              <line x1="124" y1="54" x2="140" y2="38" stroke="#1c1a17" stroke-width="1.5"/>
+              <line x1="60" y1="38" x2="50" y2="25" stroke="#1c1a17" stroke-width="1"/>
+              <line x1="60" y1="38" x2="68" y2="25" stroke="#1c1a17" stroke-width="1"/>
+              <line x1="88" y1="38" x2="80" y2="25" stroke="#1c1a17" stroke-width="1"/>
+              <line x1="88" y1="38" x2="96" y2="25" stroke="#1c1a17" stroke-width="1"/>
+              <line x1="112" y1="38" x2="104" y2="25" stroke="#1c1a17" stroke-width="1"/>
+              <line x1="112" y1="38" x2="120" y2="25" stroke="#1c1a17" stroke-width="1"/>
+              <line x1="140" y1="38" x2="132" y2="25" stroke="#1c1a17" stroke-width="1"/>
+              <line x1="140" y1="38" x2="148" y2="25" stroke="#1c1a17" stroke-width="1"/>
+              <circle cx="50" cy="22" r="3" fill="#d96a3d"/>
+              <circle cx="68" cy="22" r="3" fill="#d96a3d"/>
+              <circle cx="80" cy="22" r="3" fill="#d96a3d"/>
+              <circle cx="96" cy="22" r="3" fill="#d96a3d"/>
+              <circle cx="104" cy="22" r="3" fill="#d96a3d"/>
+              <circle cx="120" cy="22" r="3" fill="#d96a3d"/>
+              <circle cx="132" cy="22" r="3" fill="#d96a3d"/>
+              <circle cx="148" cy="22" r="3" fill="#d96a3d"/>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 21</p>
+            <h3>Recursion as Fractals</h3>
+            <p>base case, recursive case — a function that calls itself becomes a tree on screen</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+              <span class="lang-chip java">Processing</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="concept-card" href="../../concepts/arraylist-in-action/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 110">
+              <!-- Particles at various positions/sizes -->
+              <circle cx="40" cy="30" r="8" fill="#1c1a17" opacity=".7"/>
+              <circle cx="80" cy="70" r="5" fill="#1c1a17" opacity=".5"/>
+              <circle cx="120" cy="40" r="10" fill="#d96a3d" opacity=".8"/>
+              <circle cx="160" cy="60" r="6" fill="#1c1a17" opacity=".6"/>
+              <circle cx="55" cy="80" r="4" fill="#1c1a17" opacity=".4"/>
+              <circle cx="140" cy="85" r="7" fill="#d96a3d" opacity=".5"/>
+              <circle cx="100" cy="20" r="3" fill="#1c1a17" opacity=".3"/>
+              <!-- ArrayList annotation -->
+              <text x="10" y="105" font-family="monospace" font-size="7" fill="#8c857a">particles.add(new Particle(mouseX, mouseY))</text>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 22</p>
+            <h3>ArrayList in Action</h3>
+            <p>dynamic lists, particles — collections that grow and shrink as objects are born and die</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip java">Processing</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">AP alignment</p>
+      <div class="ap-strip">
+        <div class="ap-row">
+          <span class="ap-label">CSP</span>
+          <span class="ap-badge strong">AAP</span>
+          <span class="ap-badge partial">CRD</span>
+        </div>
+        <div class="ap-row">
+          <span class="ap-label">CSA</span>
+          <span class="ap-badge strong">CON</span>
+          <span class="ap-badge strong">ARR</span>
+          <span class="ap-badge partial">MOD</span>
+        </div>
+        <p style="margin:0;font-size:13px;color:var(--soft);max-width:600px">Recursion (CON-2) and ArrayList (ARR-3) appear in the AP CSA free-response section every year. The fractal and particle demos give students a visual mental model to draw on during the exam.</p>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>Teacher framing</h2>
+        <p><strong>On recursion:</strong> Students often freeze on the "stack overflow" mental model before they have an intuition for the base case. Start with the visual — draw the tree first, then trace the code backward. Let the picture teach the concept.</p>
+        <p style="margin-top:8px"><strong>On ArrayList:</strong> The key moment is realizing you can't use a regular for loop to remove items while iterating. Show the off-by-one bug live, then introduce the backwards loop or iterator pattern.</p>
+      </article>
+      <article>
+        <h2>Learner framing</h2>
+        <p>Recursion is just a function that calls itself — with a safety exit. Every branch of a fractal tree is drawn by the same rule applied at smaller and smaller scales.</p>
+        <p style="margin-top:8px">ArrayList lets your sketch have a crowd — a list of objects that can grow when something is born and shrink when something dies, all managed automatically.</p>
+      </article>
+      <article>
+        <h2>Common misconceptions</h2>
+        <ul style="padding-left:18px;margin:0;color:var(--soft);font-size:14px;line-height:1.8">
+          <li>Recursion without a base case → stack overflow</li>
+          <li>The base case is what <em>stops</em> the recursion, not what starts it</li>
+          <li>Can't remove from an ArrayList while iterating forward</li>
+          <li>ArrayList index shifts after removal — backwards loop avoids this</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="band" style="text-align:center;padding:40px 28px">
+      <p class="kicker">You've reached the end</p>
+      <h2 style="margin:8px 0 12px">All 22 concepts complete</h2>
+      <p style="color:var(--soft);max-width:480px;margin:0 auto 24px">From the first pixel to a recursive fractal — that's the full arc. Where do you go from here?</p>
+      <div class="actions" style="justify-content:center">
+        <a class="button primary" href="../../browse/index.html">Browse all 22 concepts</a>
+        <a class="button" href="../../tools/sketch-playground/index.html">Keep sketching</a>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="section-nav">
+        <a class="nav-btn" href="../computing-in-the-world/index.html">
+          <span class="nav-dir">← Previous section</span>
+          <span class="nav-title">§6 Computing in the World</span>
+        </a>
+        <a class="nav-btn next" href="../../sections/index.html">
+          <span class="nav-dir">All sections →</span>
+          <span class="nav-title">Section index</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

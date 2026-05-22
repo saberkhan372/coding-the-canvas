@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mouse Input - CS Canvas</title>
+  <meta name="description" content="mouseX, mouseY, mousePressed — reading live pointer position and click state to make a sketch interactive." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a class="active" href="../../concepts/index.html">Concepts</a>
+      <a href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
+  </header>
+  <main>
+
+    <section class="hero">
+      <p class="kicker">Concept 04 / 22 &nbsp;·&nbsp; §3 Make It Respond</p>
+      <h1>Mouse Input</h1>
+      <p class="lede">mouseX and mouseY are live variables — they hold the cursor's current position every single frame. Read them like any other number.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/make-it-respond/index.html">§3 Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 04 / 22</p>
+        <h2>The big idea</h2>
+        <p>The mouse is just two numbers: the column and row where the cursor currently sits. Those numbers update 60 times a second inside draw(). Pass them to circle() and you instantly have a sketch that follows your cursor — no event handlers, no callbacks.</p>
+        <ul class="checklist">
+          <li>mouseX — current cursor x position in pixels</li>
+          <li>mouseY — current cursor y position in pixels</li>
+          <li>mouseIsPressed — true while any button is held down</li>
+          <li>mousePressed() — function called once per click</li>
+          <li>pmouseX / pmouseY — previous frame's position (for trails)</li>
+          <li>dist(x1,y1,x2,y2) — distance between two points (hit detection)</li>
+        </ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- cursor icon -->
+          <path d="M90 20 L90 90 L104 76 L112 96 L120 92 L112 72 L130 72 Z" fill="currentColor" opacity=".75"/>
+          <!-- ripple circles -->
+          <circle cx="90" cy="55" r="18" fill="none" stroke="#d96a3d" stroke-width="1.5" opacity=".8"/>
+          <circle cx="90" cy="55" r="30" fill="none" stroke="#d96a3d" stroke-width="1" opacity=".4"/>
+          <circle cx="90" cy="55" r="42" fill="none" stroke="#d96a3d" stroke-width=".7" opacity=".2"/>
+          <!-- coordinate labels -->
+          <text x="10" y="20" font-family="monospace" font-size="8" fill="#d96a3d">mouseX: 90</text>
+          <text x="10" y="32" font-family="monospace" font-size="8" fill="#d96a3d">mouseY: 55</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code — a brush that follows the mouse</p>
+      <div class="code-panes">
+        <div class="code-pane">
+          <div class="code-label p5">p5.js</div>
+          <pre><span class="kw">function</span> <span class="fn">setup</span>() {
+  <span class="fn">createCanvas</span>(<span class="nm">400</span>, <span class="nm">300</span>);
+  <span class="fn">background</span>(<span class="nm">240</span>);
+}
+
+<span class="kw">function</span> <span class="fn">draw</span>() {
+  <span class="cm">// draw a line from previous to current position</span>
+  <span class="fn">strokeWeight</span>(<span class="nm">4</span>);
+  <span class="fn">line</span>(pmouseX, pmouseY, mouseX, mouseY);
+
+  <span class="cm">// change color while pressed</span>
+  <span class="kw">if</span> (mouseIsPressed) {
+    <span class="fn">stroke</span>(<span class="nm">217</span>, <span class="nm">106</span>, <span class="nm">61</span>);
+  } <span class="kw">else</span> {
+    <span class="fn">stroke</span>(<span class="nm">28</span>, <span class="nm">26</span>, <span class="nm">23</span>);
+  }
+}
+
+<span class="kw">function</span> <span class="fn">mousePressed</span>() {
+  <span class="fn">background</span>(<span class="nm">240</span>); <span class="cm">// clear on click</span>
+}</pre>
+        </div>
+        <div class="code-pane">
+          <div class="code-label canvas-api">Canvas API</div>
+          <pre><span class="kw">let</span> mx = <span class="nm">0</span>, my = <span class="nm">0</span>, px = <span class="nm">0</span>, py = <span class="nm">0</span>;
+<span class="kw">let</span> pressed = <span class="kw">false</span>;
+<span class="kw">const</span> ctx = canvas.<span class="fn">getContext</span>(<span class="st">'2d'</span>);
+
+canvas.<span class="fn">addEventListener</span>(<span class="st">'mousemove'</span>, e =&gt; {
+  px = mx; py = my;
+  mx = e.offsetX; my = e.offsetY;
+  ctx.strokeStyle = pressed
+    ? <span class="st">'rgb(217,106,61)'</span>
+    : <span class="st">'rgb(28,26,23)'</span>;
+  ctx.lineWidth = <span class="nm">4</span>;
+  ctx.<span class="fn">beginPath</span>();
+  ctx.<span class="fn">moveTo</span>(px, py);
+  ctx.<span class="fn">lineTo</span>(mx, my);
+  ctx.<span class="fn">stroke</span>();
+});
+canvas.<span class="fn">addEventListener</span>(<span class="st">'mousedown'</span>, () =&gt; pressed = <span class="kw">true</span>);
+canvas.<span class="fn">addEventListener</span>(<span class="st">'mouseup'</span>, () =&gt; pressed = <span class="kw">false</span>);
+canvas.<span class="fn">addEventListener</span>(<span class="st">'click'</span>, () =&gt;
+  ctx.<span class="fn">clearRect</span>(<span class="nm">0</span>, <span class="nm">0</span>, canvas.width, canvas.height));</pre>
+        </div>
+        <div class="code-pane">
+          <div class="code-label java">Processing / Java</div>
+          <pre><span class="kw">void</span> <span class="fn">setup</span>() {
+  <span class="fn">size</span>(<span class="nm">400</span>, <span class="nm">300</span>);
+  <span class="fn">background</span>(<span class="nm">240</span>);
+}
+
+<span class="kw">void</span> <span class="fn">draw</span>() {
+  <span class="fn">strokeWeight</span>(<span class="nm">4</span>);
+  <span class="kw">if</span> (mousePressed) {
+    <span class="fn">stroke</span>(<span class="nm">217</span>, <span class="nm">106</span>, <span class="nm">61</span>);
+  } <span class="kw">else</span> {
+    <span class="fn">stroke</span>(<span class="nm">28</span>, <span class="nm">26</span>, <span class="nm">23</span>);
+  }
+  <span class="fn">line</span>(pmouseX, pmouseY, mouseX, mouseY);
+}
+
+<span class="kw">void</span> <span class="fn">mouseClicked</span>() {
+  <span class="fn">background</span>(<span class="nm">240</span>);
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>The canvas idea</h2>
+        <p>Start with just <code>circle(mouseX, mouseY, 20)</code> inside draw() — no setup needed. The circle follows the cursor instantly, no explanation required. Then ask: "what do you think mouseX is right now?"</p>
+        <p style="margin-top:8px">Print the values: <code>text(mouseX + ", " + mouseY, 10, 20)</code> — students can see the coordinate pair update live.</p>
+      </article>
+      <article>
+        <h2>Input reference</h2>
+        <ul style="padding-left:18px;margin:0;line-height:2;font-size:13px">
+          <li><code>mouseX, mouseY</code> — current position</li>
+          <li><code>pmouseX, pmouseY</code> — last frame's position</li>
+          <li><code>mouseIsPressed</code> — boolean (variable)</li>
+          <li><code>mousePressed()</code> — called once per click</li>
+          <li><code>mouseReleased()</code> — called on button up</li>
+          <li><code>keyIsPressed</code>, <code>key</code> — keyboard equivalents</li>
+        </ul>
+      </article>
+      <article>
+        <h2>Teacher notes</h2>
+        <p><strong>Timing:</strong> 1–2 periods. This pairs well with Concept 05 (Conditionals) — they're natural together.</p>
+        <p style="margin-top:8px"><strong>Key distinction:</strong> <code>mouseIsPressed</code> (a variable, true/false every frame) vs <code>mousePressed()</code> (a function called once per click). Students confuse these.</p>
+        <p style="margin-top:8px"><strong>Checkpoint:</strong> Students build a "paint" app where holding the mouse draws and releasing stops.</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">AAP</span><span class="ap-badge partial">CRD</span></div>
+      <div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge partial">CON</span><span class="ap-badge partial">MOD</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards">
+        <a class="card" href="../draw-loop-time/index.html"><span class="meta">previous</span><h2>03 – Draw Loop / Time</h2><p>setup, draw, frameCount</p></a>
+        <a class="card" href="../conditionals/index.html"><span class="meta">next</span><h2>05 – Conditionals</h2><p>if / else / boolean</p></a>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="concept-nav">
+        <a class="nav-btn" href="../draw-loop-time/index.html">
+          <span class="nav-dir">← Previous concept</span>
+          <span class="nav-title">03 – Draw Loop / Time</span>
+        </a>
+        <a class="nav-btn next" href="../conditionals/index.html">
+          <span class="nav-dir">Next concept →</span>
+          <span class="nav-title">05 – Conditionals</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

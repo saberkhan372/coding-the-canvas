@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Compression by Drawing - CS Canvas</title>
+  <meta name="description" content="Compression replaces repeated data with shorter instructions. A picture can be redrawn from a recipe instead of stored pixel by pixel." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav><a href="../../index.html">Home</a><a class="active" href="../../concepts/index.html">Concepts</a><a href="../../sections/index.html">Sections</a><a href="../../languages/index.html">Languages</a><a href="../../browse/index.html">Browse</a><a href="../../teachers/index.html">Teachers</a><a href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kicker">Concept 14 / 22 &nbsp;·&nbsp; §5 Data as Material</p>
+      <h1>Compression by Drawing</h1>
+      <p class="lede">Compression replaces repeated data with shorter instructions. A picture can be redrawn from a recipe instead of stored pixel by pixel.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/data-as-material/index.html">Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 14 / 22</p>
+        <h2>The big idea</h2>
+        <p>If a bitmap has a long run of repeated pixels, you do not need to write every pixel down. You can store the value and the count. That is the heart of run-length encoding: data becomes drawing instructions.</p>
+        <ul class="checklist"><li>Identify repeated runs</li><li>Encode as value + count</li><li>Decode by drawing the run back out</li><li>Compare original length to compressed length</li><li>Name the tradeoff: compression works best when data has patterns</li></ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+    <text x="12" y="24" font-family="monospace" font-size="8" fill="#8c857a">white×3 black×5 white×2...</text>
+    <rect x="12" y="52" width="8" height="28" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="20" y="52" width="8" height="28" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="28" y="52" width="8" height="28" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="36" y="52" width="8" height="28" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="44" y="52" width="8" height="28" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="52" y="52" width="8" height="28" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="60" y="52" width="8" height="28" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="68" y="52" width="8" height="28" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="76" y="52" width="8" height="28" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="84" y="52" width="8" height="28" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="92" y="52" width="8" height="28" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="100" y="52" width="8" height="28" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="108" y="52" width="8" height="28" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="116" y="52" width="8" height="28" fill="#1c1a17" stroke="#1c1a17" stroke-width=".5"/><rect x="124" y="52" width="8" height="28" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="132" y="52" width="8" height="28" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="140" y="52" width="8" height="28" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/><rect x="148" y="52" width="8" height="28" fill="#f6f2ea" stroke="#1c1a17" stroke-width=".5"/>
+    <path d="M40 36 C58 24 80 24 96 42" fill="none" stroke="#d96a3d" stroke-width="2"/><text x="100" y="42" font-family="monospace" font-size="8" fill="#d96a3d">decode</text>
+  </svg></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code - decode run-length drawing instructions</p>
+      <div class="code-panes">
+        <div class="code-pane"><div class="code-label p5">p5.js</div><pre>let runs = [
+  ['white', 3], ['black', 5],
+  ['white', 2], ['black', 2], ['white', 4],
+  ['black', 8]
+];
+
+function setup() {
+  createCanvas(400, 120);
+  noLoop();
+}
+
+function draw() {
+  let x = 0;
+  let cell = 20;
+  for (let [value, count] of runs) {
+    fill(value === 'black' ? 28 : 246);
+    for (let i = 0; i &lt; count; i++) {
+      rect(x * cell, 40, cell, cell);
+      x++;
+    }
+  }
+}</pre></div>
+        <div class="code-pane"><div class="code-label canvas-api">Canvas API</div><pre>const runs = [['white', 3], ['black', 5], ['white', 2], ['black', 2], ['white', 4]];
+const ctx = canvas.getContext('2d');
+const cell = 20;
+let x = 0;
+
+for (const [value, count] of runs) {
+  ctx.fillStyle = value === 'black' ? '#1c1a17' : '#f6f2ea';
+  for (let i = 0; i &lt; count; i++) {
+    ctx.fillRect(x * cell, 40, cell, cell);
+    x++;
+  }
+}</pre></div>
+        <div class="code-pane"><div class="code-label java">Processing / Java</div><pre>String[] values = {&quot;white&quot;, &quot;black&quot;, &quot;white&quot;, &quot;black&quot;, &quot;white&quot;};
+int[] counts = {3, 5, 2, 2, 4};
+
+void setup() {
+  size(400, 120);
+  noLoop();
+}
+
+void draw() {
+  int x = 0;
+  int cell = 20;
+  for (int r = 0; r &lt; values.length; r++) {
+    fill(values[r].equals(&quot;black&quot;) ? 28 : 246);
+    for (int i = 0; i &lt; counts[r]; i++) {
+      rect(x * cell, 40, cell, cell);
+      x++;
+    }
+  }
+}</pre></div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article><h2>The canvas idea</h2><p>Have students draw a stripe pattern, write the full pixel string, then write the compressed recipe. The saved characters become visible.</p></article>
+      <article><h2>Patterns to notice</h2><ul style="padding-left:18px;margin:0;line-height:2;font-size:13px"><li>Run-length encoding</li><li>lossless compression</li><li>decode loop</li><li>file size estimate</li><li>patterns compress better than noise</li></ul></article>
+      <article><h2>Teacher notes</h2><p>Do a bad example too: random pixels often get larger after RLE. That makes compression honest instead of magical.</p></article>
+    </section>
+
+    <section class="band"><div class="callout"><strong>Common misconception:</strong> Students often think compression always makes a file smaller. It only helps when the encoded pattern costs less than the original.</div></section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">DAT</span><span class="ap-badge partial">AAP</span></div><div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge strong">U4</span><span class="ap-badge partial">U6</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards"><a class="card" href="../binary-as-pixels/index.html"><span class="meta">previous</span><h2>13 - Binary as Pixels</h2><p>Review the previous concept.</p></a><a class="card" href="../histograms-and-sampling/index.html"><span class="meta">next</span><h2>15 - Histograms &amp; Sampling</h2><p>Continue the sequence.</p></a><a class="card" href="../../sections/data-as-material/index.html"><span class="meta">section</span><h2>§5 Data as Material</h2><p>See the movement overview.</p></a></div>
+    </section>
+
+    <section class="band"><div class="concept-nav">
+    <a class="nav-btn" href="../binary-as-pixels/index.html"><span class="nav-dir">Previous concept</span><span class="nav-title">13 - Binary as Pixels</span></a>
+    <a class="nav-btn next" href="../histograms-and-sampling/index.html"><span class="nav-dir">Next concept</span><span class="nav-title">15 - Histograms &amp; Sampling</span></a>
+  </div></section>
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js - Canvas API - Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

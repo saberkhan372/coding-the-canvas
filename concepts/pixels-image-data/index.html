@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pixels / Image Data - CS Canvas</title>
+  <meta name="description" content="Every image is a flat array of RGBA values. loadPixels() exposes that array — read it, modify it, write it back." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav><a href="../../index.html">Home</a><a class="active" href="../../concepts/index.html">Concepts</a><a href="../../sections/index.html">Sections</a><a href="../../languages/index.html">Languages</a><a href="../../browse/index.html">Browse</a><a href="../../teachers/index.html">Teachers</a><a href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kicker">Concept 11 / 22 &nbsp;·&nbsp; §5 Data as Material</p>
+      <h1>Pixels / Image Data</h1>
+      <p class="lede">Every image is a flat array of numbers — 4 values per pixel: R, G, B, A. loadPixels() opens that array. You can read it, filter it, transform it, write it back.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/data-as-material/index.html">§5 Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 11 / 22</p>
+        <h2>The big idea</h2>
+        <p>A 400×300 canvas has 120,000 pixels. Each pixel is stored as 4 consecutive numbers (RGBA) in a flat array — meaning 480,000 values total. The index of pixel (x, y) is: <code>(y * width + x) * 4</code>. Once you can calculate that index, you can read or change any pixel.</p>
+        <ul class="checklist">
+          <li>loadPixels() / updatePixels() — open and close the pixel array</li>
+          <li>pixels[] — the flat RGBA array (4 values per pixel)</li>
+          <li>Index formula: (y * width + x) * 4</li>
+          <li>R is at index i, G at i+1, B at i+2, A at i+3</li>
+          <li>Grayscale: set R = G = B to the same value</li>
+          <li>Invert: set R = 255 - R, G = 255 - G, B = 255 - B</li>
+        </ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <rect x="10" y="10" width="22" height="22" fill="#1c1a17"/>
+          <rect x="32" y="10" width="22" height="22" fill="#1c1a17" opacity=".6"/>
+          <rect x="54" y="10" width="22" height="22" fill="#d96a3d"/>
+          <rect x="76" y="10" width="22" height="22" fill="#1c1a17" opacity=".3"/>
+          <rect x="10" y="32" width="22" height="22" fill="#1c1a17" opacity=".5"/>
+          <rect x="32" y="32" width="22" height="22" fill="#d96a3d" opacity=".5"/>
+          <rect x="54" y="32" width="22" height="22" fill="#1c1a17" opacity=".8"/>
+          <rect x="76" y="32" width="22" height="22" fill="#1c1a17" opacity=".2"/>
+          <!-- pixel selected -->
+          <rect x="54" y="10" width="22" height="22" fill="none" stroke="#d96a3d" stroke-width="2"/>
+          <!-- readout -->
+          <text x="106" y="22" font-family="monospace" font-size="7" fill="#d96a3d">pixel(2, 0)</text>
+          <text x="106" y="34" font-family="monospace" font-size="7" fill="#8c857a">R: 217</text>
+          <text x="106" y="46" font-family="monospace" font-size="7" fill="#8c857a">G: 106</text>
+          <text x="106" y="58" font-family="monospace" font-size="7" fill="#8c857a">B:  61</text>
+          <text x="106" y="70" font-family="monospace" font-size="7" fill="#8c857a">A: 255</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">The index formula</p>
+      <div class="pixel-formula">
+<span class="cm">// pixel at column x, row y in a canvas of given width</span>
+<span class="kw">let</span> index = (y * width + x) * <span class="nm">4</span>;
+
+pixels[index]     <span class="cm">// Red   (0–255)</span>
+pixels[index + <span class="nm">1</span>] <span class="cm">// Green (0–255)</span>
+pixels[index + <span class="nm">2</span>] <span class="cm">// Blue  (0–255)</span>
+pixels[index + <span class="nm">3</span>] <span class="cm">// Alpha (0–255, 255 = fully opaque)</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code — invert every pixel</p>
+      <div class="code-panes">
+        <div class="code-pane">
+          <div class="code-label p5">p5.js</div>
+          <pre><span class="kw">function</span> <span class="fn">setup</span>() {
+  <span class="fn">createCanvas</span>(<span class="nm">400</span>, <span class="nm">300</span>);
+}
+
+<span class="kw">function</span> <span class="fn">draw</span>() {
+  <span class="cm">// draw something first</span>
+  <span class="fn">background</span>(<span class="nm">120</span>);
+  <span class="fn">fill</span>(<span class="nm">217</span>, <span class="nm">106</span>, <span class="nm">61</span>);
+  <span class="fn">circle</span>(<span class="nm">200</span>, <span class="nm">150</span>, <span class="nm">120</span>);
+
+  <span class="cm">// now manipulate the pixel array</span>
+  <span class="fn">loadPixels</span>();
+
+  <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; pixels.length; i += <span class="nm">4</span>) {
+    pixels[i]     = <span class="nm">255</span> - pixels[i];     <span class="cm">// R</span>
+    pixels[i + <span class="nm">1</span>] = <span class="nm">255</span> - pixels[i + <span class="nm">1</span>]; <span class="cm">// G</span>
+    pixels[i + <span class="nm">2</span>] = <span class="nm">255</span> - pixels[i + <span class="nm">2</span>]; <span class="cm">// B</span>
+    <span class="cm">// leave alpha (i+3) alone</span>
+  }
+
+  <span class="fn">updatePixels</span>();
+}</pre>
+        </div>
+        <div class="code-pane">
+          <div class="code-label canvas-api">Canvas API</div>
+          <pre><span class="kw">const</span> ctx = canvas.<span class="fn">getContext</span>(<span class="st">'2d'</span>);
+
+<span class="cm">// draw a shape</span>
+ctx.fillStyle = <span class="st">'rgb(120,120,120)'</span>;
+ctx.<span class="fn">fillRect</span>(<span class="nm">0</span>, <span class="nm">0</span>, canvas.width, canvas.height);
+ctx.fillStyle = <span class="st">'rgb(217,106,61)'</span>;
+ctx.<span class="fn">beginPath</span>();
+ctx.<span class="fn">arc</span>(<span class="nm">200</span>, <span class="nm">150</span>, <span class="nm">60</span>, <span class="nm">0</span>, Math.PI * <span class="nm">2</span>);
+ctx.<span class="fn">fill</span>();
+
+<span class="cm">// read and modify pixel data</span>
+<span class="kw">const</span> img = ctx.<span class="fn">getImageData</span>(<span class="nm">0</span>, <span class="nm">0</span>, canvas.width, canvas.height);
+<span class="kw">const</span> data = img.data;
+
+<span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; data.length; i += <span class="nm">4</span>) {
+  data[i]     = <span class="nm">255</span> - data[i];
+  data[i + <span class="nm">1</span>] = <span class="nm">255</span> - data[i + <span class="nm">1</span>];
+  data[i + <span class="nm">2</span>] = <span class="nm">255</span> - data[i + <span class="nm">2</span>];
+}
+
+ctx.<span class="fn">putImageData</span>(img, <span class="nm">0</span>, <span class="nm">0</span>);</pre>
+        </div>
+        <div class="code-pane">
+          <div class="code-label java">Processing / Java</div>
+          <pre><span class="cm">// Processing: use get() / set() for single pixels</span>
+<span class="kw">void</span> <span class="fn">setup</span>() { <span class="fn">size</span>(<span class="nm">400</span>, <span class="nm">300</span>); }
+
+<span class="kw">void</span> <span class="fn">draw</span>() {
+  <span class="fn">background</span>(<span class="nm">120</span>);
+  <span class="fn">fill</span>(<span class="nm">217</span>, <span class="nm">106</span>, <span class="nm">61</span>);
+  <span class="fn">ellipse</span>(<span class="nm">200</span>, <span class="nm">150</span>, <span class="nm">120</span>, <span class="nm">120</span>);
+
+  <span class="fn">loadPixels</span>();
+  <span class="kw">for</span> (<span class="kw">int</span> i = <span class="nm">0</span>; i &lt; pixels.length; i++) {
+    <span class="kw">color</span> c = pixels[i];
+    pixels[i] = <span class="fn">color</span>(
+      <span class="nm">255</span> - <span class="fn">red</span>(c),
+      <span class="nm">255</span> - <span class="fn">green</span>(c),
+      <span class="nm">255</span> - <span class="fn">blue</span>(c)
+    );
+  }
+  <span class="fn">updatePixels</span>();
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>The canvas idea</h2>
+        <p>Draw a simple shape, then run the invert filter. The result is immediate and striking — and students can see that every visual change was produced by arithmetic on numbers.</p>
+        <p style="margin-top:8px">Next: grayscale — replace R, G, B with their average: <code>(R+G+B)/3</code>. Students often try to set just one channel; seeing why that doesn't work (red tint) teaches how color channels work.</p>
+      </article>
+      <article>
+        <h2>Common filters</h2>
+        <ul style="padding-left:18px;margin:0;line-height:2;font-size:13px">
+          <li><strong>Invert:</strong> 255 - each channel</li>
+          <li><strong>Grayscale:</strong> R=G=B=(R+G+B)/3</li>
+          <li><strong>Threshold:</strong> if brightness &gt; 128, white; else black</li>
+          <li><strong>Red channel only:</strong> set G=0, B=0</li>
+          <li><strong>Brightness:</strong> multiply each channel by a factor</li>
+        </ul>
+      </article>
+      <article>
+        <h2>Teacher notes</h2>
+        <p><strong>Timing:</strong> 2 periods. The index formula (y*width+x)*4 deserves its own whiteboard moment.</p>
+        <p style="margin-top:8px"><strong>AP CSP:</strong> Pixel data is a concrete example of how images are represented as binary data (DAT-1.A). This is tested on the AP exam.</p>
+        <p style="margin-top:8px"><strong>Performance note:</strong> Pixel manipulation is slow if done every frame. Explain why — and introduce <code>noLoop()</code> for one-shot filters.</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">DAT</span><span class="ap-badge partial">AAP</span></div>
+      <div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge partial">ARR</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards">
+        <a class="card" href="../state-machines/index.html"><span class="meta">previous</span><h2>10 – State Machines</h2><p>modes, screens</p></a>
+        <a class="card" href="../color-is-24-bits/index.html"><span class="meta">next</span><h2>12 – Color is 24 Bits</h2><p>RGB and binary</p></a>
+        <a class="card" href="../binary-as-pixels/index.html"><span class="meta">related</span><h2>13 – Binary as Pixels</h2><p>bits to bitmap</p></a>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="concept-nav">
+        <a class="nav-btn" href="../state-machines/index.html"><span class="nav-dir">← Previous concept</span><span class="nav-title">10 – State Machines</span></a>
+        <a class="nav-btn next" href="../color-is-24-bits/index.html"><span class="nav-dir">Next concept →</span><span class="nav-title">12 – Color is 24 Bits</span></a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

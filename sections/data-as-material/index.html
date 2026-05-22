@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data as Material - CS Canvas</title>
+  <meta name="description" content="Images, pixels, binary color, compression, histograms, and datasets as drawing material." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="sections">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a href="../../concepts/index.html">Concepts</a>
+      <a class="active" href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
+  </header>
+  <main>
+
+    <section class="hero">
+      <p class="kicker">Section 05 of 07</p>
+      <span class="section-num">§5</span>
+      <h1>Data as Material</h1>
+      <p class="lede">Images, pixels, binary color, compression, histograms — treating information itself as the raw material of a sketch.</p>
+      <div class="actions" style="margin-top:24px">
+        <a class="button primary" href="../../concepts/pixels-image-data/index.html">Start Concept 11</a>
+        <a class="button" href="../../tools/sketch-playground/index.html">Open Playground</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concepts 11 – 16 &nbsp;·&nbsp; AP CSP data core</p>
+        <h2>What this section covers</h2>
+        <p>Every image is a grid of numbers. Every color is 24 bits. Every file on disk is a compressed sequence of patterns. This section makes those invisible facts visible — students inspect pixels, build binary images from scratch, and draw charts from CSV data. The canvas becomes a microscope for how computers store and manipulate information.</p>
+        <ul class="checklist">
+          <li>getPixels() / loadPixels() — reading image data</li>
+          <li>RGB as three 8-bit numbers (0–255 each)</li>
+          <li>Binary: 0s and 1s as black and white pixels</li>
+          <li>Run-length encoding demonstrated on canvas</li>
+          <li>Histograms and sampling from real datasets</li>
+          <li>Loading CSV/JSON and drawing from it</li>
+        </ul>
+        <div class="stat-row">
+          <div class="stat"><span class="stat-label">Concepts</span><span class="stat-val">6</span></div>
+          <div class="stat"><span class="stat-label">Typical time</span><span class="stat-val">10–12 periods</span></div>
+          <div class="stat"><span class="stat-label">Difficulty</span><span class="stat-val"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip empty"></span></span></div>
+          <div class="stat"><span class="stat-label">Prerequisite</span><span class="stat-val">§4 Arrays</span></div>
+        </div>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- Pixel grid with values -->
+          <rect x="10" y="10" width="24" height="24" fill="currentColor" opacity=".9"/>
+          <rect x="34" y="10" width="24" height="24" fill="currentColor" opacity=".15"/>
+          <rect x="58" y="10" width="24" height="24" fill="currentColor" opacity=".9"/>
+          <rect x="82" y="10" width="24" height="24" fill="currentColor" opacity=".5"/>
+          <rect x="10" y="34" width="24" height="24" fill="currentColor" opacity=".15"/>
+          <rect x="34" y="34" width="24" height="24" fill="#d96a3d" opacity=".9"/>
+          <rect x="58" y="34" width="24" height="24" fill="currentColor" opacity=".15"/>
+          <rect x="82" y="34" width="24" height="24" fill="currentColor" opacity=".9"/>
+          <rect x="10" y="58" width="24" height="24" fill="currentColor" opacity=".5"/>
+          <rect x="34" y="58" width="24" height="24" fill="currentColor" opacity=".9"/>
+          <rect x="58" y="58" width="24" height="24" fill="currentColor" opacity=".15"/>
+          <rect x="82" y="58" width="24" height="24" fill="currentColor" opacity=".5"/>
+          <!-- Labels -->
+          <text x="120" y="28" font-family="monospace" font-size="7" fill="#8c857a">230</text>
+          <text x="120" y="50" font-family="monospace" font-size="7" fill="#d96a3d">R:217</text>
+          <text x="120" y="62" font-family="monospace" font-size="7" fill="#d96a3d">G:106</text>
+          <text x="120" y="74" font-family="monospace" font-size="7" fill="#d96a3d">B:61</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Concepts in this section</p>
+      <div class="concept-grid">
+
+        <a class="concept-card" href="../../concepts/pixels-image-data/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <rect x="10" y="10" width="80" height="80" fill="none" stroke="#1c1a17" stroke-width="1"/>
+              <!-- 4x4 pixel grid -->
+              <rect x="10" y="10" width="20" height="20" fill="#1c1a17" opacity=".9"/>
+              <rect x="30" y="10" width="20" height="20" fill="#1c1a17" opacity=".2"/>
+              <rect x="50" y="10" width="20" height="20" fill="#1c1a17" opacity=".6"/>
+              <rect x="70" y="10" width="20" height="20" fill="#1c1a17" opacity=".9"/>
+              <rect x="10" y="30" width="20" height="20" fill="#1c1a17" opacity=".2"/>
+              <rect x="30" y="30" width="20" height="20" fill="#d96a3d"/>
+              <rect x="50" y="30" width="20" height="20" fill="#1c1a17" opacity=".2"/>
+              <rect x="70" y="30" width="20" height="20" fill="#1c1a17" opacity=".6"/>
+              <rect x="10" y="50" width="20" height="20" fill="#1c1a17" opacity=".6"/>
+              <rect x="30" y="50" width="20" height="20" fill="#1c1a17" opacity=".9"/>
+              <rect x="50" y="50" width="20" height="20" fill="#1c1a17" opacity=".2"/>
+              <rect x="70" y="50" width="20" height="20" fill="#1c1a17" opacity=".6"/>
+              <rect x="10" y="70" width="20" height="20" fill="#1c1a17" opacity=".2"/>
+              <rect x="30" y="70" width="20" height="20" fill="#1c1a17" opacity=".6"/>
+              <rect x="50" y="70" width="20" height="20" fill="#1c1a17" opacity=".9"/>
+              <rect x="70" y="70" width="20" height="20" fill="#1c1a17" opacity=".2"/>
+              <!-- Arrow -->
+              <path d="M95 50 L110 50" stroke="#1c1a17" stroke-width="1.5"/>
+              <text x="115" y="40" font-family="monospace" font-size="7" fill="#d96a3d">[230, 42,</text>
+              <text x="115" y="52" font-family="monospace" font-size="7" fill="#d96a3d"> 156, 217,</text>
+              <text x="115" y="64" font-family="monospace" font-size="7" fill="#d96a3d"> 106, ...]</text>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 11</p>
+            <h3>Pixels / Image Data</h3>
+            <p>pictures as numbers — reading and writing the pixel array of an image</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="concept-card" href="../../concepts/color-is-24-bits/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <!-- R bar -->
+              <rect x="20" y="20" width="52" height="18" rx="2" fill="#d96a3d"/>
+              <text x="76" y="33" font-family="monospace" font-size="8" fill="#8c857a">R: 217 = 11011001</text>
+              <!-- G bar -->
+              <rect x="20" y="44" width="26" height="18" rx="2" fill="#5a9e5a"/>
+              <text x="76" y="57" font-family="monospace" font-size="8" fill="#8c857a">G: 106 = 01101010</text>
+              <!-- B bar -->
+              <rect x="20" y="68" width="15" height="18" rx="2" fill="#5a5a9e"/>
+              <text x="76" y="81" font-family="monospace" font-size="8" fill="#8c857a">B:  61 = 00111101</text>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 12</p>
+            <h3>Color is 24 Bits</h3>
+            <p>RGB and binary — how three 8-bit numbers define every color a screen can show</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+              <span class="lang-chip java">Processing</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="concept-card" href="../../concepts/binary-as-pixels/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <!-- Binary grid -->
+              <rect x="20" y="15" width="14" height="14" fill="#1c1a17"/>
+              <rect x="34" y="15" width="14" height="14" fill="none" stroke="#ccc" stroke-width="1"/>
+              <rect x="48" y="15" width="14" height="14" fill="#1c1a17"/>
+              <rect x="62" y="15" width="14" height="14" fill="#1c1a17"/>
+              <rect x="76" y="15" width="14" height="14" fill="none" stroke="#ccc" stroke-width="1"/>
+              <rect x="90" y="15" width="14" height="14" fill="#1c1a17"/>
+              <rect x="20" y="29" width="14" height="14" fill="none" stroke="#ccc" stroke-width="1"/>
+              <rect x="34" y="29" width="14" height="14" fill="#1c1a17"/>
+              <rect x="48" y="29" width="14" height="14" fill="none" stroke="#ccc" stroke-width="1"/>
+              <rect x="62" y="29" width="14" height="14" fill="none" stroke="#ccc" stroke-width="1"/>
+              <rect x="76" y="29" width="14" height="14" fill="#1c1a17"/>
+              <rect x="90" y="29" width="14" height="14" fill="none" stroke="#ccc" stroke-width="1"/>
+              <rect x="20" y="43" width="14" height="14" fill="#1c1a17"/>
+              <rect x="34" y="43" width="14" height="14" fill="#1c1a17"/>
+              <rect x="48" y="43" width="14" height="14" fill="#1c1a17"/>
+              <rect x="62" y="43" width="14" height="14" fill="none" stroke="#ccc" stroke-width="1"/>
+              <rect x="76" y="43" width="14" height="14" fill="none" stroke="#ccc" stroke-width="1"/>
+              <rect x="90" y="43" width="14" height="14" fill="#1c1a17"/>
+              <!-- Label -->
+              <text x="115" y="42" font-family="monospace" font-size="9" fill="#d96a3d">1 = ■</text>
+              <text x="115" y="56" font-family="monospace" font-size="9" fill="#8c857a">0 = □</text>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 13</p>
+            <h3>Binary as Pixels</h3>
+            <p>bits to bitmap — encoding and decoding 1s and 0s as black and white images</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="concept-card" href="../../concepts/compression-by-drawing/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <!-- Long run -->
+              <rect x="10" y="20" width="100" height="20" rx="2" fill="#1c1a17" opacity=".8"/>
+              <text x="115" y="35" font-family="monospace" font-size="8" fill="#8c857a">→ (10, black)</text>
+              <!-- Gap -->
+              <rect x="10" y="50" width="30" height="20" rx="2" fill="none" stroke="#ccc" stroke-width="1"/>
+              <text x="115" y="65" font-family="monospace" font-size="8" fill="#8c857a">→ (3, white)</text>
+              <!-- Short run -->
+              <rect x="10" y="80" width="52" height="14" rx="2" fill="#1c1a17" opacity=".5"/>
+              <text x="115" y="92" font-family="monospace" font-size="8" fill="#8c857a">→ (5, gray)</text>
+              <text x="14" y="35" font-family="monospace" font-size="7" fill="white">10×</text>
+              <text x="14" y="65" font-family="monospace" font-size="7" fill="#8c857a">3×</text>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 14</p>
+            <h3>Compression by Drawing</h3>
+            <p>RLE, lossless, lossy — visualizing how files shrink without losing what matters</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="concept-card" href="../../concepts/histograms-and-sampling/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <!-- Histogram bars -->
+              <rect x="18" y="70" width="14" height="20" fill="#1c1a17" opacity=".4"/>
+              <rect x="34" y="50" width="14" height="40" fill="#1c1a17" opacity=".6"/>
+              <rect x="50" y="30" width="14" height="60" fill="#d96a3d"/>
+              <rect x="66" y="40" width="14" height="50" fill="#1c1a17" opacity=".7"/>
+              <rect x="82" y="55" width="14" height="35" fill="#1c1a17" opacity=".5"/>
+              <rect x="98" y="68" width="14" height="22" fill="#1c1a17" opacity=".35"/>
+              <rect x="114" y="78" width="14" height="12" fill="#1c1a17" opacity=".2"/>
+              <!-- Baseline -->
+              <line x1="10" y1="90" x2="170" y2="90" stroke="#1c1a17" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 15</p>
+            <h3>Histograms &amp; Sampling</h3>
+            <p>extract info — drawing charts from data arrays to reveal hidden distributions</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="concept-card" href="../../concepts/data-as-material/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <!-- CSV rows -->
+              <text x="10" y="22" font-family="monospace" font-size="8" fill="#8c857a">name, value, lat, lon</text>
+              <text x="10" y="34" font-family="monospace" font-size="8" fill="#1c1a17">SF, 42, 37.7, -122.4</text>
+              <text x="10" y="46" font-family="monospace" font-size="8" fill="#1c1a17">NY, 87, 40.7,  -74.0</text>
+              <text x="10" y="58" font-family="monospace" font-size="8" fill="#d96a3d">LA, 31, 34.0, -118.2</text>
+              <!-- Arrow to dots -->
+              <path d="M148 50 L162 50" stroke="#1c1a17" stroke-width="1.5"/>
+              <circle cx="175" cy="35" r="5" fill="#1c1a17" opacity=".7"/>
+              <circle cx="168" cy="55" r="8" fill="#1c1a17" opacity=".7"/>
+              <circle cx="178" cy="68" r="4" fill="#d96a3d" opacity=".9"/>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 16</p>
+            <h3>Data as Material</h3>
+            <p>CSV, JSON, drawing — loading external data and turning rows into visual marks</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">AP alignment</p>
+      <div class="ap-strip">
+        <div class="ap-row">
+          <span class="ap-label">CSP</span>
+          <span class="ap-badge strong">DAT</span>
+          <span class="ap-badge strong">AAP</span>
+          <span class="ap-badge partial">IOC</span>
+        </div>
+        <div class="ap-row">
+          <span class="ap-label">CSA</span>
+          <span class="ap-badge partial">ARR</span>
+          <span class="ap-badge partial">MOD</span>
+        </div>
+        <p style="margin:0;font-size:13px;color:var(--soft);max-width:600px">This section is the spine of AP CSP's Data unit (DAT-1 through DAT-2). Binary, compression, and metadata questions appear consistently on the AP exam. Loading and transforming datasets ties directly to Create Task expectations.</p>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>Teacher framing</h2>
+        <p><strong>Entry point:</strong> Start with pixel inspection on a 10×10 image students draw themselves. The moment they realize their drawing is just 300 numbers is the key "aha."</p>
+        <p style="margin-top:8px"><strong>AP anchor:</strong> Concepts 12 and 13 (24-bit color, binary pixels) directly prepare students for DAT-1 multiple choice. Keep the canvas connection — it makes abstract bit-counting concrete.</p>
+      </article>
+      <article>
+        <h2>Learner framing</h2>
+        <p>Every photo on your phone is just numbers. Every emoji is a grid of colored dots. Every file you've ever saved is a long sequence of 0s and 1s that a program knows how to read.</p>
+        <p style="margin-top:8px">In this section you'll write the programs that decode that data — and you'll see it appear on screen as you go.</p>
+      </article>
+      <article>
+        <h2>Common misconceptions</h2>
+        <ul style="padding-left:18px;margin:0;color:var(--soft);font-size:14px;line-height:1.8">
+          <li>Pixels() array stores RGBA, not just RGB (4 values each)</li>
+          <li>White is 255,255,255 — not 1,1,1</li>
+          <li>Compression doesn't always make files smaller</li>
+          <li>loadTable() is async — data isn't ready until preload()</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="band">
+      <div class="section-nav">
+        <a class="nav-btn" href="../make-systems/index.html">
+          <span class="nav-dir">← Previous section</span>
+          <span class="nav-title">§4 Make Systems</span>
+        </a>
+        <a class="nav-btn next" href="../computing-in-the-world/index.html">
+          <span class="nav-dir">Next section →</span>
+          <span class="nav-title">§6 Computing in the World</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

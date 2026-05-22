@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Histograms &amp; Sampling - CS Canvas</title>
+  <meta name="description" content="A histogram summarizes many values into a shape. Sampling lets you estimate a whole image or dataset from a smaller part." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav><a href="../../index.html">Home</a><a class="active" href="../../concepts/index.html">Concepts</a><a href="../../sections/index.html">Sections</a><a href="../../languages/index.html">Languages</a><a href="../../browse/index.html">Browse</a><a href="../../teachers/index.html">Teachers</a><a href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kicker">Concept 15 / 22 &nbsp;·&nbsp; §5 Data as Material</p>
+      <h1>Histograms &amp; Sampling</h1>
+      <p class="lede">A histogram summarizes many values into a shape. Sampling lets you estimate a whole image or dataset from a smaller part.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/data-as-material/index.html">Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 15 / 22</p>
+        <h2>The big idea</h2>
+        <p>A histogram is a drawing of counts. Instead of looking at every pixel individually, count how often each brightness or color value appears. Sampling asks a related question: can a smaller set of values represent the whole?</p>
+        <ul class="checklist"><li>Extract brightness from pixels</li><li>Count values into buckets</li><li>Draw bars from counts</li><li>Change sample size and compare the result</li><li>Discuss what gets missed by sampling</li></ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+    <rect x="18" y="84" width="13" height="32" fill="#1c1a17" opacity=".75"/><rect x="37" y="50" width="13" height="66" fill="#1c1a17" opacity=".75"/><rect x="56" y="72" width="13" height="44" fill="#1c1a17" opacity=".75"/><rect x="75" y="26" width="13" height="90" fill="#1c1a17" opacity=".75"/><rect x="94" y="44" width="13" height="72" fill="#1c1a17" opacity=".75"/><rect x="113" y="66" width="13" height="50" fill="#1c1a17" opacity=".75"/><rect x="132" y="12" width="13" height="104" fill="#d96a3d" opacity=".75"/><rect x="151" y="78" width="13" height="38" fill="#1c1a17" opacity=".75"/>
+    <line x1="12" y1="116" x2="168" y2="116" stroke="#1c1a17" stroke-width="1.5"/><text x="90" y="128" font-family="monospace" font-size="7" text-anchor="middle" fill="#8c857a">brightness buckets</text>
+  </svg></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code - count brightness buckets</p>
+      <div class="code-panes">
+        <div class="code-pane"><div class="code-label p5">p5.js</div><pre>let buckets = new Array(8).fill(0);
+
+function setup() {
+  createCanvas(400, 260);
+  noLoop();
+}
+
+function draw() {
+  background(246);
+  for (let i = 0; i &lt; 500; i++) {
+    let brightness = random(255);
+    let bucket = floor(map(brightness, 0, 256, 0, 8));
+    buckets[bucket]++;
+  }
+
+  for (let b = 0; b &lt; buckets.length; b++) {
+    let h = buckets[b] * 2;
+    rect(40 + b * 40, height - 30 - h, 28, h);
+  }
+}</pre></div>
+        <div class="code-pane"><div class="code-label canvas-api">Canvas API</div><pre>const buckets = new Array(8).fill(0);
+for (let i = 0; i &lt; 500; i++) {
+  const brightness = Math.random() * 255;
+  const bucket = Math.floor(brightness / 32);
+  buckets[bucket]++;
+}
+
+const ctx = canvas.getContext('2d');
+buckets.forEach((count, b) =&gt; {
+  const h = count * 2;
+  ctx.fillRect(40 + b * 40, canvas.height - 30 - h, 28, h);
+});</pre></div>
+        <div class="code-pane"><div class="code-label java">Processing / Java</div><pre>int[] buckets = new int[8];
+
+void setup() {
+  size(400, 260);
+  noLoop();
+}
+
+void draw() {
+  for (int i = 0; i &lt; 500; i++) {
+    float brightness = random(255);
+    int bucket = int(brightness / 32);
+    buckets[bucket]++;
+  }
+  for (int b = 0; b &lt; buckets.length; b++) {
+    int h = buckets[b] * 2;
+    rect(40 + b * 40, height - 30 - h, 28, h);
+  }
+}</pre></div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article><h2>The canvas idea</h2><p>Turn an image into a bar chart. Students see that a histogram is not a separate math object; it is a drawing made from counts.</p></article>
+      <article><h2>Patterns to notice</h2><ul style="padding-left:18px;margin:0;line-height:2;font-size:13px"><li>Buckets</li><li>counts</li><li>brightness extraction</li><li>sample size</li><li>summary vs raw data</li></ul></article>
+      <article><h2>Teacher notes</h2><p>Let students compare histograms from very different images. Then show two different images with similar histograms to discuss what summaries hide.</p></article>
+    </section>
+
+    <section class="band"><div class="callout"><strong>Common misconception:</strong> A histogram does not show where pixels are. It shows how many of each kind exist. Spatial arrangement is lost.</div></section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">DAT</span></div><div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge strong">U6</span><span class="ap-badge partial">U8</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards"><a class="card" href="../compression-by-drawing/index.html"><span class="meta">previous</span><h2>14 - Compression by Drawing</h2><p>Review the previous concept.</p></a><a class="card" href="../data-as-material/index.html"><span class="meta">next</span><h2>16 - Data as Material</h2><p>Continue the sequence.</p></a><a class="card" href="../../sections/data-as-material/index.html"><span class="meta">section</span><h2>§5 Data as Material</h2><p>See the movement overview.</p></a></div>
+    </section>
+
+    <section class="band"><div class="concept-nav">
+    <a class="nav-btn" href="../compression-by-drawing/index.html"><span class="nav-dir">Previous concept</span><span class="nav-title">14 - Compression by Drawing</span></a>
+    <a class="nav-btn next" href="../data-as-material/index.html"><span class="nav-dir">Next concept</span><span class="nav-title">16 - Data as Material</span></a>
+  </div></section>
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js - Canvas API - Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

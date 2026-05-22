@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Conditionals - CS Canvas</title>
+  <meta name="description" content="if / else / boolean — branching logic that makes the canvas respond differently depending on position, state, or input." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="concepts">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a class="active" href="../../concepts/index.html">Concepts</a>
+      <a href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
+  </header>
+  <main>
+
+    <section class="hero">
+      <p class="kicker">Concept 05 / 22 &nbsp;·&nbsp; §3 Make It Respond</p>
+      <h1>Conditionals</h1>
+      <p class="lede">if / else — the canvas asks a yes/no question every frame. The answer decides which branch of code runs. Boolean is just another word for yes or no.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="button primary" href="../../tools/sketch-playground/index.html">Try it in the Playground</a>
+        <a class="button" href="../../sections/make-it-respond/index.html">§3 Section overview</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concept 05 / 22</p>
+        <h2>The big idea</h2>
+        <p>A conditional is a fork in the road. The program checks a condition — a question with a yes/no answer — and takes one of two paths. On the canvas, those two paths produce visually different results, making the logic immediate and testable.</p>
+        <ul class="checklist">
+          <li>Boolean: a value that is either true or false</li>
+          <li>if (condition) { ... } — runs block if condition is true</li>
+          <li>else { ... } — runs if condition is false</li>
+          <li>else if — chains multiple conditions</li>
+          <li>Comparison operators: ==, !=, &lt;, &gt;, &lt;=, &gt;=</li>
+          <li>Logical operators: &amp;&amp; (and), || (or), ! (not)</li>
+        </ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- Diamond -->
+          <polygon points="90,12 148,50 90,88 32,50" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="90" y="54" font-family="monospace" font-size="8" text-anchor="middle" fill="currentColor">x &gt; 90?</text>
+          <!-- yes path right -->
+          <path d="M148 50 L165 50 L165 100" stroke="#d96a3d" stroke-width="1.5" fill="none"/>
+          <rect x="145" y="100" width="40" height="20" rx="2" fill="#d96a3d"/>
+          <text x="165" y="114" font-family="monospace" font-size="7" text-anchor="middle" fill="white">red</text>
+          <text x="154" y="46" font-family="monospace" font-size="7" fill="#d96a3d">true</text>
+          <!-- no path left -->
+          <path d="M32 50 L15 50 L15 100" stroke="currentColor" stroke-width="1.5" fill="none" opacity=".5"/>
+          <rect x="0" y="100" width="40" height="20" rx="2" fill="currentColor" opacity=".5"/>
+          <text x="20" y="114" font-family="monospace" font-size="7" text-anchor="middle" fill="white">blue</text>
+          <text x="18" y="46" font-family="monospace" font-size="7" fill="#8c857a">false</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Code — color zones on the canvas</p>
+      <div class="code-panes">
+        <div class="code-pane">
+          <div class="code-label p5">p5.js</div>
+          <pre><span class="kw">function</span> <span class="fn">setup</span>() {
+  <span class="fn">createCanvas</span>(<span class="nm">400</span>, <span class="nm">300</span>);
+}
+
+<span class="kw">function</span> <span class="fn">draw</span>() {
+  <span class="fn">background</span>(<span class="nm">240</span>);
+
+  <span class="cm">// which zone is the mouse in?</span>
+  <span class="kw">if</span> (mouseX &lt; width / <span class="nm">3</span>) {
+    <span class="fn">fill</span>(<span class="nm">100</span>, <span class="nm">150</span>, <span class="nm">220</span>);        <span class="cm">// left: blue</span>
+  } <span class="kw">else if</span> (mouseX &lt; (width / <span class="nm">3</span>) * <span class="nm">2</span>) {
+    <span class="fn">fill</span>(<span class="nm">100</span>, <span class="nm">200</span>, <span class="nm">100</span>);        <span class="cm">// middle: green</span>
+  } <span class="kw">else</span> {
+    <span class="fn">fill</span>(<span class="nm">217</span>, <span class="nm">106</span>, <span class="nm">61</span>);         <span class="cm">// right: orange</span>
+  }
+
+  <span class="fn">noStroke</span>();
+  <span class="fn">circle</span>(mouseX, mouseY, <span class="nm">60</span>);
+}</pre>
+        </div>
+        <div class="code-pane">
+          <div class="code-label canvas-api">Canvas API</div>
+          <pre>canvas.<span class="fn">addEventListener</span>(<span class="st">'mousemove'</span>, e =&gt; {
+  <span class="kw">const</span> x = e.offsetX;
+  <span class="kw">const</span> w = canvas.width;
+
+  ctx.<span class="fn">clearRect</span>(<span class="nm">0</span>, <span class="nm">0</span>, w, canvas.height);
+
+  <span class="kw">if</span> (x &lt; w / <span class="nm">3</span>) {
+    ctx.fillStyle = <span class="st">'rgb(100,150,220)'</span>;
+  } <span class="kw">else if</span> (x &lt; (w / <span class="nm">3</span>) * <span class="nm">2</span>) {
+    ctx.fillStyle = <span class="st">'rgb(100,200,100)'</span>;
+  } <span class="kw">else</span> {
+    ctx.fillStyle = <span class="st">'rgb(217,106,61)'</span>;
+  }
+
+  ctx.<span class="fn">beginPath</span>();
+  ctx.<span class="fn">arc</span>(x, e.offsetY, <span class="nm">30</span>, <span class="nm">0</span>, Math.PI * <span class="nm">2</span>);
+  ctx.<span class="fn">fill</span>();
+});</pre>
+        </div>
+        <div class="code-pane">
+          <div class="code-label java">Processing / Java</div>
+          <pre><span class="kw">void</span> <span class="fn">setup</span>() { <span class="fn">size</span>(<span class="nm">400</span>, <span class="nm">300</span>); }
+
+<span class="kw">void</span> <span class="fn">draw</span>() {
+  <span class="fn">background</span>(<span class="nm">240</span>);
+
+  <span class="kw">if</span> (mouseX &lt; width / <span class="nm">3</span>) {
+    <span class="fn">fill</span>(<span class="nm">100</span>, <span class="nm">150</span>, <span class="nm">220</span>);
+  } <span class="kw">else if</span> (mouseX &lt; (width / <span class="nm">3</span>) * <span class="nm">2</span>) {
+    <span class="fn">fill</span>(<span class="nm">100</span>, <span class="nm">200</span>, <span class="nm">100</span>);
+  } <span class="kw">else</span> {
+    <span class="fn">fill</span>(<span class="nm">217</span>, <span class="nm">106</span>, <span class="nm">61</span>);
+  }
+
+  <span class="fn">noStroke</span>();
+  <span class="fn">ellipse</span>(mouseX, mouseY, <span class="nm">60</span>, <span class="nm">60</span>);
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>The canvas idea</h2>
+        <p>Divide the canvas into two colored halves. A circle drawn at mouseX shows which half the cursor is in. Change the fill based on position — the divide is immediately visible.</p>
+        <p style="margin-top:8px">Then ask: "what would happen if the circle turned red when you click?" That question naturally leads to <code>mouseIsPressed</code> combined with a boolean condition.</p>
+      </article>
+      <article>
+        <h2>Boolean expressions</h2>
+        <table class="truth-table">
+          <thead><tr><th>Expression</th><th>Result</th></tr></thead>
+          <tbody>
+            <tr><td>5 &gt; 3</td><td class="t">true</td></tr>
+            <tr><td>10 == 10</td><td class="t">true</td></tr>
+            <tr><td>mouseX &lt; 200</td><td>depends</td></tr>
+            <tr><td>!false</td><td class="t">true</td></tr>
+            <tr><td>true &amp;&amp; false</td><td class="f">false</td></tr>
+            <tr><td>true || false</td><td class="t">true</td></tr>
+          </tbody>
+        </table>
+      </article>
+      <article>
+        <h2>Teacher notes</h2>
+        <p><strong>Timing:</strong> 2 periods. Teach alongside Concept 04 (Mouse Input) — they pair naturally into a single interaction-and-logic lesson.</p>
+        <p style="margin-top:8px"><strong>Checkpoint:</strong> Students create a sketch with a clickable button — a rectangle that changes color when the cursor is inside it and a mouse button is pressed (hit detection + boolean).</p>
+        <p style="margin-top:8px"><strong>AP alignment:</strong> AAP-2 — "selection" is one of the three required control structures (sequence, selection, iteration).</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:12px">AP alignment</p>
+      <div class="ap-row"><span class="ap-label">CSP</span><span class="ap-badge strong">AAP</span></div>
+      <div class="ap-row"><span class="ap-label">CSA</span><span class="ap-badge strong">CON</span></div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">Related concepts</p>
+      <div class="grid cards">
+        <a class="card" href="../mouse-input/index.html"><span class="meta">previous</span><h2>04 – Mouse Input</h2><p>mouseX, mousePressed</p></a>
+        <a class="card" href="../for-loops-and-grids/index.html"><span class="meta">next</span><h2>06 – For Loops &amp; Grids</h2><p>i, nesting, patterns</p></a>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="concept-nav">
+        <a class="nav-btn" href="../mouse-input/index.html">
+          <span class="nav-dir">← Previous concept</span>
+          <span class="nav-title">04 – Mouse Input</span>
+        </a>
+        <a class="nav-btn next" href="../for-loops-and-grids/index.html">
+          <span class="nav-dir">Next concept →</span>
+          <span class="nav-title">06 – For Loops &amp; Grids</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

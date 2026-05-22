@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Make It Respond - CS Canvas</title>
+  <meta name="description" content="Mouse input, events, booleans, and conditional choices." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/lesson-pages.css" />
+</head>
+<body data-page="sections">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">CS Canvas</a>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a href="../../concepts/index.html">Concepts</a>
+      <a class="active" href="../../sections/index.html">Sections</a>
+      <a href="../../languages/index.html">Languages</a>
+      <a href="../../browse/index.html">Browse</a>
+      <a href="../../teachers/index.html">Teachers</a>
+      <a href="../../about/index.html">About</a>
+    </nav>
+  </header>
+  <main>
+
+    <section class="hero">
+      <p class="kicker">Section 03 of 07</p>
+      <span class="section-num">§3</span>
+      <h1>Make It Respond</h1>
+      <p class="lede">Mouse input, keyboard events, booleans, and the moment a sketch stops running and starts listening.</p>
+      <div class="actions" style="margin-top:24px">
+        <a class="button primary" href="../../concepts/mouse-input/index.html">Start Concept 04</a>
+        <a class="button" href="../../tools/sketch-playground/index.html">Open Playground</a>
+      </div>
+    </section>
+
+    <section class="band split">
+      <div>
+        <p class="meta">Concepts 04 – 05 &nbsp;·&nbsp; Interaction &amp; logic</p>
+        <h2>What this section covers</h2>
+        <p>A sketch that responds to the user feels alive in a way that pure animation doesn't. Students learn to read <code>mouseX</code>/<code>mouseY</code>, detect clicks and key presses, and then branch: "if the user is over here, do this — otherwise do that." Boolean logic arrives through the canvas, not through abstract truth tables.</p>
+        <ul class="checklist">
+          <li>mouseX, mouseY as live variables</li>
+          <li>mousePressed, keyPressed event functions</li>
+          <li>Boolean values: true / false as the two states of the world</li>
+          <li>if / else branching tied to visible outcomes</li>
+          <li>Hit detection: is the pointer inside a shape?</li>
+        </ul>
+        <div class="stat-row">
+          <div class="stat"><span class="stat-label">Concepts</span><span class="stat-val">2</span></div>
+          <div class="stat"><span class="stat-label">Typical time</span><span class="stat-val">3–4 periods</span></div>
+          <div class="stat"><span class="stat-label">Difficulty</span><span class="stat-val"><span class="pip"></span><span class="pip"></span><span class="pip empty"></span><span class="pip empty"></span><span class="pip empty"></span></span></div>
+          <div class="stat"><span class="stat-label">Prerequisite</span><span class="stat-val">§2 Draw Loop</span></div>
+        </div>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- Cursor -->
+          <path d="M90 30 L90 102 L104 88 L112 108 L118 105 L110 85 L128 85 Z" fill="currentColor" opacity=".7"/>
+          <!-- Ripple circles from cursor -->
+          <circle cx="90" cy="66" r="16" fill="none" stroke="#d96a3d" stroke-width="1.5" opacity=".8"/>
+          <circle cx="90" cy="66" r="28" fill="none" stroke="#d96a3d" stroke-width="1" opacity=".45"/>
+          <circle cx="90" cy="66" r="40" fill="none" stroke="#d96a3d" stroke-width=".8" opacity=".2"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Concepts in this section</p>
+      <div class="concept-grid">
+
+        <a class="concept-card" href="../../concepts/mouse-input/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <!-- Cursor icon -->
+              <path d="M70 20 L70 80 L84 66 L92 84 L100 80 L92 62 L108 62 Z" fill="#1c1a17" opacity=".8"/>
+              <!-- x/y labels -->
+              <text x="118" y="45" font-family="monospace" font-size="10" fill="#d96a3d">mouseX: 70</text>
+              <text x="118" y="60" font-family="monospace" font-size="10" fill="#d96a3d">mouseY: 50</text>
+              <!-- dashed lines to cursor -->
+              <line x1="70" y1="50" x2="118" y2="50" stroke="#d96a3d" stroke-width="1" stroke-dasharray="3 3"/>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 04</p>
+            <h3>Mouse Input</h3>
+            <p>mouseX, mouseY, mousePressed — reading live pointer state to drive a sketch</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+              <span class="lang-chip java">Processing</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="concept-card" href="../../concepts/conditionals/index.html">
+          <div class="concept-canvas">
+            <svg viewBox="0 0 200 100">
+              <!-- Diamond decision shape -->
+              <polygon points="100,15 155,50 100,85 45,50" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+              <text x="100" y="54" font-family="monospace" font-size="8" text-anchor="middle" fill="#1c1a17">x &gt; 100?</text>
+              <!-- yes path -->
+              <path d="M155 50 L175 50 L175 85 L150 85" stroke="#d96a3d" stroke-width="1.5" fill="none"/>
+              <rect x="110" y="76" width="40" height="18" rx="2" fill="#d96a3d" opacity=".8"/>
+              <text x="130" y="89" font-family="monospace" font-size="7" text-anchor="middle" fill="white">red</text>
+              <!-- no path -->
+              <path d="M100 85 L100 100" stroke="#4a4640" stroke-width="1.5" fill="none"/>
+              <rect x="74" y="88" width="52" height="18" rx="2" fill="#4a4640" opacity=".5"/>
+              <text x="100" y="101" font-family="monospace" font-size="7" text-anchor="middle" fill="white">blue</text>
+              <text x="160" y="47" font-family="monospace" font-size="7" fill="#d96a3d">yes</text>
+              <text x="104" y="97" font-family="monospace" font-size="7" fill="#4a4640">no</text>
+            </svg>
+          </div>
+          <div class="concept-body">
+            <p class="meta">Concept 05</p>
+            <h3>Conditionals</h3>
+            <p>if / else / boolean — branching logic that changes what the canvas draws</p>
+            <div class="lang-chips">
+              <span class="lang-chip p5">p5.js</span>
+              <span class="lang-chip canvas-api">Canvas API</span>
+              <span class="lang-chip java">Processing</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:14px">AP alignment</p>
+      <div class="ap-strip">
+        <div class="ap-row">
+          <span class="ap-label">CSP</span>
+          <span class="ap-badge strong">AAP</span>
+          <span class="ap-badge partial">CRD</span>
+        </div>
+        <div class="ap-row">
+          <span class="ap-label">CSA</span>
+          <span class="ap-badge strong">CON</span>
+          <span class="ap-badge partial">MOD</span>
+        </div>
+        <p style="margin:0;font-size:13px;color:var(--soft);max-width:600px">Conditionals map directly to AAP-2 (writing programs with selection) and CSA Unit 3. Boolean logic introduced here is prerequisite for AP Exam FRQ patterns.</p>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>Teacher framing</h2>
+        <p><strong>Key demo:</strong> Draw a circle that follows the mouse before introducing any boolean. Then ask: "what would happen if the circle turned red only when mouseX is past center?" That natural question motivates <code>if</code> without a lecture.</p>
+        <p style="margin-top:8px"><strong>Checkpoint:</strong> Students build a sketch where clicking toggles between two visual states (e.g. day/night, open/closed), using a boolean variable to track state.</p>
+      </article>
+      <article>
+        <h2>Learner framing</h2>
+        <p>Your sketch can now ask questions. "Is the mouse on the left side?" is a yes/no question — and yes/no is exactly what <code>true</code> and <code>false</code> mean in code.</p>
+        <p style="margin-top:8px">Every interactive thing you've ever used — games, apps, websites — is built from millions of these tiny questions running every second.</p>
+      </article>
+      <article>
+        <h2>Common misconceptions</h2>
+        <ul style="padding-left:18px;margin:0;color:var(--soft);font-size:14px;line-height:1.8">
+          <li><code>mousePressed</code> (variable) vs <code>mousePressed()</code> (function) differ</li>
+          <li><code>if/else if/else</code> only one branch runs per frame</li>
+          <li>Boolean variables should be named as yes/no questions</li>
+          <li>Hit detection needs all four boundary checks</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="band">
+      <div class="section-nav">
+        <a class="nav-btn" href="../make-it-move/index.html">
+          <span class="nav-dir">← Previous section</span>
+          <span class="nav-title">§2 Make It Move</span>
+        </a>
+        <a class="nav-btn next" href="../make-systems/index.html">
+          <span class="nav-dir">Next section →</span>
+          <span class="nav-title">§4 Make Systems</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <span>CS Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

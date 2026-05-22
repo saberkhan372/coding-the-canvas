@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/resource-pages.css" />
 </head>
 <body data-page="">
   <header class="site-header">
@@ -25,22 +26,43 @@
     <section class="band split">
       <div>
         <h2>Move from one object to a collection.</h2>
-        <p>A bridge from single variables to indexed collections of related values.</p>
-        <ul class="checklist"><li>Compare one ball with a list of balls.</li><li>Use indexes to name positions in memory.</li><li>Loop through the list to update and draw each item.</li></ul>
+        <p>Students understand one ball before they understand fifty. This bridge makes the shift explicit: the same properties still exist, but now they live in a list and a loop visits each one.</p>
+        <ul class="checklist"><li>Start with one visible object and name its properties.</li><li>Replace repeated variables with indexed positions.</li><li>Use a loop to update and draw every item.</li></ul>
       </div>
-      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132"><path d="M8 72 C36 24 62 24 90 72 S144 120 172 72" fill="none" stroke="currentColor" stroke-width="4"/></svg></div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+    <path d="M10 72 C34 28 62 28 90 72 S146 116 170 72" fill="none" stroke="currentColor" stroke-width="4"/>
+    <circle cx="38" cy="48" r="7" class="accent-fill"/><circle cx="90" cy="72" r="7"/><circle cx="142" cy="96" r="7" class="accent-fill"/>
+  </svg></div>
+    </section>
+    <section class="band">
+      <p class="meta">Bridge moves</p>
+      <div class="bridge-map"><div class="bridge-step"><div><h2>One thing</h2><p>Draw one circle with x, y, and speed. Ask what changes if the sketch needs ten circles.</p></div></div><div class="bridge-step"><div><h2>Many values</h2><p>Collect related x values in one array so index 0, 1, and 2 become visible handles.</p></div></div><div class="bridge-step"><div><h2>One rule</h2><p>Use a loop so every item follows the same update-and-draw rule.</p></div></div></div>
     </section>
     <section class="band columns">
-      <article><h2>Use it for</h2><p>Compare one ball with a list of balls.</p></article><article><h2>Try next</h2><p>Use indexes to name positions in memory.</p></article><article><h2>Connect it</h2><p>Loop through the list to update and draw each item.</p></article>
+      <article class="resource-panel"><h2>Teacher move</h2><p>Let students try x1, x2, x3 first. The awkwardness creates the need for arrays.</p></article><article class="resource-panel"><h2>Common snag</h2><p>Students often mix up the index and the value stored at that index. Point to both on the canvas.</p></article><article class="resource-panel"><h2>AP connection</h2><p>This bridge supports list traversal, parallel arrays, ArrayList, and object collections.</p></article>
     </section>
-    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/index.html">
-    <span class="meta">lessons</span>
-    <h2>Concepts</h2>
-    <p>Return to the numbered lesson sequence.</p>
-  </a><a class="card" href="../../browse/index.html">
-    <span class="meta">index</span>
-    <h2>Browse</h2>
-    <p>Search the full site atlas.</p>
+    <section class="band"><div class="code-sample"><span class="meta">p5.js pattern</span><pre>let xs = [40, 90, 140];
+let ys = [80, 60, 100];
+
+function draw() {
+  background(246);
+  for (let i = 0; i &lt; xs.length; i++) {
+    circle(xs[i], ys[i], 24);
+    xs[i] += 1;
+  }
+}</pre></div></section>
+    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/arrays/index.html">
+    <span class="meta">concept 08</span>
+    <h2>Arrays</h2>
+    <p>Open the full array lesson.</p>
+  </a><a class="card" href="../../concepts/arraylist-in-action/index.html">
+    <span class="meta">concept 22</span>
+    <h2>ArrayList in Action</h2>
+    <p>Continue toward dynamic Java lists.</p>
+  </a><a class="card" href="../../concepts/objects/index.html">
+    <span class="meta">concept 09</span>
+    <h2>Objects</h2>
+    <p>Group each item into a data-and-behavior unit.</p>
   </a></div></section>
   
   </main>

@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/resource-pages.css" />
 </head>
 <body data-page="">
   <header class="site-header">
@@ -25,22 +26,41 @@
     <section class="band split">
       <div>
         <h2>Turn a pattern into a rule.</h2>
-        <p>A bridge for turning visual rules into loops, conditionals, and reusable drawing recipes.</p>
-        <ul class="checklist"><li>Name the rule you can see.</li><li>Translate that rule into loop variables and conditions.</li><li>Remix the rule by changing spacing, color, or repetition.</li></ul>
+        <p>Pattern logic asks students to describe what they see before coding it. Once the visual rule is named, loops, conditions, and functions become tools for expressing it.</p>
+        <ul class="checklist"><li>Notice repetition, alternation, symmetry, and variation.</li><li>Translate each visual decision into a rule.</li><li>Remix one rule at a time so cause and effect stay clear.</li></ul>
       </div>
-      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132"><path d="M8 72 C36 24 62 24 90 72 S144 120 172 72" fill="none" stroke="currentColor" stroke-width="4"/></svg></div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+    <path d="M10 72 C34 28 62 28 90 72 S146 116 170 72" fill="none" stroke="currentColor" stroke-width="4"/>
+    <circle cx="38" cy="48" r="7" class="accent-fill"/><circle cx="90" cy="72" r="7"/><circle cx="142" cy="96" r="7" class="accent-fill"/>
+  </svg></div>
+    </section>
+    <section class="band">
+      <p class="meta">Bridge moves</p>
+      <div class="bridge-map"><div class="bridge-step"><div><h2>See it</h2><p>Ask students to circle what repeats and underline what changes.</p></div></div><div class="bridge-step"><div><h2>Say it</h2><p>Turn the observation into a sentence: every even column is orange.</p></div></div><div class="bridge-step"><div><h2>Code it</h2><p>Translate the sentence with a loop variable and a condition.</p></div></div></div>
     </section>
     <section class="band columns">
-      <article><h2>Use it for</h2><p>Name the rule you can see.</p></article><article><h2>Try next</h2><p>Translate that rule into loop variables and conditions.</p></article><article><h2>Connect it</h2><p>Remix the rule by changing spacing, color, or repetition.</p></article>
+      <article class="resource-panel"><h2>Teacher move</h2><p>Keep the first rule simple, then invite controlled remixing.</p></article><article class="resource-panel"><h2>Common snag</h2><p>Students often change too many variables at once. Slow the remix down.</p></article><article class="resource-panel"><h2>AP connection</h2><p>Pattern logic supports algorithms, abstraction, conditionals, and procedural decomposition.</p></article>
     </section>
-    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/index.html">
-    <span class="meta">lessons</span>
-    <h2>Concepts</h2>
-    <p>Return to the numbered lesson sequence.</p>
-  </a><a class="card" href="../../browse/index.html">
-    <span class="meta">index</span>
-    <h2>Browse</h2>
-    <p>Search the full site atlas.</p>
+    <section class="band"><div class="code-sample"><span class="meta">visual rule</span><pre>for (let col = 0; col &lt; 8; col++) {
+  if (col % 2 === 0) {
+    fill(217, 106, 61);
+  } else {
+    fill(28);
+  }
+  circle(40 + col * 36, 100, 24);
+}</pre></div></section>
+    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/for-loops-and-grids/index.html">
+    <span class="meta">concept 06</span>
+    <h2>For Loops &amp; Grids</h2>
+    <p>Build patterns from counters.</p>
+  </a><a class="card" href="../../concepts/conditionals/index.html">
+    <span class="meta">concept 05</span>
+    <h2>Conditionals</h2>
+    <p>Make a pattern choose between cases.</p>
+  </a><a class="card" href="../../concepts/functions/index.html">
+    <span class="meta">concept 07</span>
+    <h2>Functions</h2>
+    <p>Name repeated drawing recipes.</p>
   </a></div></section>
   
   </main>

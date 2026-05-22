@@ -2,6 +2,15 @@ import { writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
 const root = process.cwd();
+const authoredResourcePages = new Set([
+  'bridges/arrays-one-thing-to-many-things/index.html',
+  'bridges/modulo-bridge/index.html',
+  'bridges/pattern-logic/index.html',
+  'cc-fest/index.html',
+  'tools/for-loop-stepper/index.html',
+  'tools/share-export/index.html',
+  'tools/sketch-playground/index.html',
+]);
 
 const navItems = [
   ['Home', 'index.html', 'home'],
@@ -113,6 +122,7 @@ function detailBody({ intro, points, columns, cards, art = 'grid' }) {
 }
 
 function writePage(filePath, config) {
+  if (authoredResourcePages.has(filePath)) return;
   writeFileSync(join(root, filePath), shell({ filePath, ...config }));
 }
 

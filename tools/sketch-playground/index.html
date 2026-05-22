@@ -4,11 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sketch Playground - CS Canvas</title>
-  <meta name="description" content="A space for remixing examples, testing small changes, and seeing code affect the canvas." />
+  <meta name="description" content="A classroom workflow for remixing examples, testing small changes, and seeing code affect the canvas." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/resource-pages.css" />
 </head>
 <body data-page="">
   <header class="site-header">
@@ -17,30 +18,47 @@
   </header>
   <main>
     <section class="hero">
-      <p class="kicker">tool</p>
+      <p class="kicker">classroom tool</p>
       <h1>Sketch Playground</h1>
-      <p class="lede">A space for remixing examples, testing small changes, and seeing code affect the canvas.</p>
+      <p class="lede">A classroom workflow for remixing examples, testing small changes, and seeing code affect the canvas.</p>
     </section>
     
     <section class="band split">
       <div>
-        <h2>Experiment without ceremony.</h2>
-        <p>A space for remixing examples, testing small changes, and seeing code affect the canvas.</p>
-        <ul class="checklist"><li>Change one value and rerun.</li><li>Keep working examples small enough to understand.</li><li>Use the canvas result as immediate feedback.</li></ul>
+        <h2>Edit, run, notice, remix.</h2>
+        <p>The playground is the default habit for a visual CS lesson: start from working code, make one intentional change, run it, and explain what changed on the canvas.</p>
+        <ul class="checklist"><li>Keep examples short enough to scan.</li><li>Change one variable or line at a time.</li><li>Use the canvas output as the first debugging signal.</li></ul>
       </div>
-      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132"><circle cx="36" cy="34" r="5"/><circle cx="72" cy="34" r="8"/><circle cx="108" cy="34" r="5"/><circle cx="144" cy="34" r="8"/><circle cx="36" cy="72" r="8"/><circle cx="72" cy="72" r="5"/><circle cx="108" cy="72" r="8"/><circle cx="144" cy="72" r="5"/></svg></div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+    <circle cx="34" cy="28" r="8" class="accent-fill"/><circle cx="62" cy="28" r="5" /><circle cx="90" cy="28" r="8" /><circle cx="118" cy="28" r="5" /><circle cx="146" cy="28" r="8" /><circle cx="34" cy="52" r="5" /><circle cx="62" cy="52" r="8" class="accent-fill"/><circle cx="90" cy="52" r="5" /><circle cx="118" cy="52" r="8" /><circle cx="146" cy="52" r="5" /><circle cx="34" cy="76" r="8" /><circle cx="62" cy="76" r="5" /><circle cx="90" cy="76" r="8" class="accent-fill"/><circle cx="118" cy="76" r="5" /><circle cx="146" cy="76" r="8" /><circle cx="34" cy="100" r="5" /><circle cx="62" cy="100" r="8" /><circle cx="90" cy="100" r="5" /><circle cx="118" cy="100" r="8" class="accent-fill"/><circle cx="146" cy="100" r="5" />
+  </svg></div>
+    </section>
+    <section class="band"><div class="mock-tool"><div class="mock-tool-pane"><p class="meta">Playground loop</p><h2>Edit, run, notice, remix</h2><p>Keep the code small enough that students can connect each change to a visible result.</p><div class="token-row"><span class="token">code</span><span class="token">canvas</span><span class="token">console</span></div></div><div class="mock-canvas"><svg viewBox="0 0 220 150"><rect x="38" y="24" width="144" height="98" rx="4" fill="#fffdf7" stroke="#1c1a17" stroke-width="3"/><circle cx="88" cy="74" r="20" fill="#d96a3d"/><rect x="118" y="54" width="32" height="40" fill="#1c1a17"/></svg></div></div></section>
+    <section class="band">
+      <p class="meta">Classroom flow</p>
+      <div class="tool-flow"><div class="tool-step"><div><h2>Start from a known-good sketch</h2><p>Students should begin with code that already draws something visible.</p></div></div><div class="tool-step"><div><h2>Make one change</h2><p>Change a number, color, condition, or loop bound and predict the result.</p></div></div><div class="tool-step"><div><h2>Run and explain</h2><p>The canvas becomes evidence. Ask students to point to the line that caused the change.</p></div></div></div>
     </section>
     <section class="band columns">
-      <article><h2>Use it for</h2><p>Change one value and rerun.</p></article><article><h2>Try next</h2><p>Keep working examples small enough to understand.</p></article><article><h2>Connect it</h2><p>Use the canvas result as immediate feedback.</p></article>
+      <article class="resource-panel"><h2>Use in class</h2><p>Open a concept page, copy a snippet, then run it in p5.js or CodePen from the export controls.</p></article><article class="resource-panel"><h2>Debug habit</h2><p>If nothing appears, check canvas size, background, fill, and whether draw/setup are running.</p></article><article class="resource-panel"><h2>Portfolio habit</h2><p>Save a screenshot plus the line that made the most important change.</p></article>
     </section>
-    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/index.html">
-    <span class="meta">lessons</span>
-    <h2>Concepts</h2>
-    <p>Return to the numbered lesson sequence.</p>
-  </a><a class="card" href="../../browse/index.html">
-    <span class="meta">index</span>
-    <h2>Browse</h2>
-    <p>Search the full site atlas.</p>
+    <section class="band"><div class="code-sample"><span class="meta">starter remix prompt</span><pre>Change exactly one thing:
+
+1. Move the circle.
+2. Change its color.
+3. Add a second shape.
+4. Explain which line caused the visible change.</pre></div></section>
+    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/coordinates/index.html">
+    <span class="meta">concept 01</span>
+    <h2>Coordinates</h2>
+    <p>Start with the first visible mark.</p>
+  </a><a class="card" href="../../concepts/shapes-and-color/index.html">
+    <span class="meta">concept 02</span>
+    <h2>Shapes &amp; Color</h2>
+    <p>Remix color and composition.</p>
+  </a><a class="card" href="../share-export/index.html">
+    <span class="meta">tool</span>
+    <h2>Share &amp; Export</h2>
+    <p>Save the result as evidence.</p>
   </a></div></section>
   
   </main>

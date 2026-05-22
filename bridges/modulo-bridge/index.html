@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/resource-pages.css" />
 </head>
 <body data-page="">
   <header class="site-header">
@@ -25,22 +26,40 @@
     <section class="band split">
       <div>
         <h2>Use remainders to make patterns loop.</h2>
-        <p>A visual bridge for cycles, wrapping, repeated patterns, and clock-like logic.</p>
-        <ul class="checklist"><li>Wrap positions back onto a canvas.</li><li>Alternate colors or shapes by index.</li><li>Build repeating rhythms without long condition chains.</li></ul>
+        <p>Modulo is easiest to feel when something wraps: a dot leaves the right side and returns on the left, colors repeat every third item, or a clock resets after 12.</p>
+        <ul class="checklist"><li>Use % to keep values inside a range.</li><li>Alternate choices without long if/else chains.</li><li>Name the pattern before naming the operator.</li></ul>
       </div>
-      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132"><path d="M8 72 C36 24 62 24 90 72 S144 120 172 72" fill="none" stroke="currentColor" stroke-width="4"/></svg></div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+    <path d="M10 72 C34 28 62 28 90 72 S146 116 170 72" fill="none" stroke="currentColor" stroke-width="4"/>
+    <circle cx="38" cy="48" r="7" class="accent-fill"/><circle cx="90" cy="72" r="7"/><circle cx="142" cy="96" r="7" class="accent-fill"/>
+  </svg></div>
+    </section>
+    <section class="band">
+      <p class="meta">Bridge moves</p>
+      <div class="bridge-map"><div class="bridge-step"><div><h2>Wrap position</h2><p>Use x = (x + speed) % width so motion stays on the canvas.</p></div></div><div class="bridge-step"><div><h2>Cycle style</h2><p>Use i % 3 to choose a color, shape, or rhythm.</p></div></div><div class="bridge-step"><div><h2>Debug the remainder</h2><p>Print i and i % n side by side until the repeating sequence is visible.</p></div></div></div>
     </section>
     <section class="band columns">
-      <article><h2>Use it for</h2><p>Wrap positions back onto a canvas.</p></article><article><h2>Try next</h2><p>Alternate colors or shapes by index.</p></article><article><h2>Connect it</h2><p>Build repeating rhythms without long condition chains.</p></article>
+      <article class="resource-panel"><h2>Teacher move</h2><p>Draw a number line that bends into a loop. Remainders become locations around the loop.</p></article><article class="resource-panel"><h2>Common snag</h2><p>Students may read % as percent. Say “remainder after division” every time at first.</p></article><article class="resource-panel"><h2>AP connection</h2><p>Modulo supports loop patterns, bounds logic, simulations, and algorithmic thinking.</p></article>
     </section>
-    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/index.html">
-    <span class="meta">lessons</span>
-    <h2>Concepts</h2>
-    <p>Return to the numbered lesson sequence.</p>
-  </a><a class="card" href="../../browse/index.html">
-    <span class="meta">index</span>
-    <h2>Browse</h2>
-    <p>Search the full site atlas.</p>
+    <section class="band"><div class="code-sample"><span class="meta">wrapping motion</span><pre>let x = 0;
+
+function draw() {
+  background(246);
+  x = (x + 3) % width;
+  circle(x, height / 2, 30);
+}</pre></div></section>
+    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/draw-loop-time/index.html">
+    <span class="meta">concept 03</span>
+    <h2>Draw Loop / Time</h2>
+    <p>Use modulo with frameCount and motion.</p>
+  </a><a class="card" href="../../concepts/for-loops-and-grids/index.html">
+    <span class="meta">concept 06</span>
+    <h2>For Loops &amp; Grids</h2>
+    <p>Use remainders for every-nth patterns.</p>
+  </a><a class="card" href="../pattern-logic/index.html">
+    <span class="meta">bridge</span>
+    <h2>Pattern Logic</h2>
+    <p>Turn cycles into visual rules.</p>
   </a></div></section>
   
   </main>

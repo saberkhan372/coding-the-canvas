@@ -1,0 +1,138 @@
+.resource-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.resource-panel {
+  border: 1.5px solid var(--ink);
+  background: #fffdf7;
+  box-shadow: 2px 3px 0 var(--ink);
+  border-radius: 4px;
+  padding: 18px;
+}
+
+.resource-panel h2,
+.resource-panel h3 {
+  margin-top: 0;
+}
+
+.bridge-map,
+.tool-flow,
+.timeline {
+  display: grid;
+  gap: 12px;
+  counter-reset: step;
+}
+
+.bridge-step,
+.tool-step,
+.timeline-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 14px;
+  border: 1.5px solid var(--ink);
+  background: #fffdf7;
+  box-shadow: 2px 2px 0 var(--ink);
+  border-radius: 4px;
+}
+
+.bridge-step:before,
+.tool-step:before,
+.timeline-step:before {
+  counter-increment: step;
+  content: counter(step);
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fffdf7;
+  font: 700 18px/1 var(--hand);
+}
+
+.code-sample {
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 2px 3px 0 var(--ink);
+}
+
+.code-sample .meta {
+  display: block;
+  padding: 9px 14px;
+  border-bottom: 1.5px solid var(--ink);
+  background: #f2eee5;
+}
+
+.code-sample pre {
+  margin: 0;
+  padding: 18px;
+  overflow-x: auto;
+  background: #1a1916;
+  color: #e8e4dc;
+  font: 13px/1.7 var(--mono);
+}
+
+.mock-tool {
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(240px, 1fr);
+  border: 1.5px solid var(--ink);
+  box-shadow: 2px 3px 0 var(--ink);
+  background: #fffdf7;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.mock-tool-pane {
+  padding: 18px;
+  border-right: 1.5px solid var(--ink);
+}
+
+.mock-canvas {
+  min-height: 240px;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(rgba(28, 26, 23, .06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 26, 23, .06) 1px, transparent 1px),
+    #fff;
+  background-size: 24px 24px;
+}
+
+.mock-canvas svg {
+  width: 100%;
+  height: 100%;
+  padding: 22px;
+}
+
+.token-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.token {
+  border: 1px solid var(--edge);
+  background: var(--edge);
+  border-radius: 999px;
+  padding: 4px 9px;
+  color: var(--soft);
+  font: 600 11px/1.4 var(--mono);
+}
+
+@media (max-width: 760px) {
+  .mock-tool {
+    grid-template-columns: 1fr;
+  }
+
+  .mock-tool-pane {
+    border-right: 0;
+    border-bottom: 1.5px solid var(--ink);
+  }
+}

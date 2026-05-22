@@ -12,7 +12,7 @@ Last updated: May 22, 2026
 
 Coding the Canvas is a static GitHub Pages site for the CS Canvas / CC Fest curriculum. The site has a root homepage, concept pages, section pages, language pages, bridge pages, tool pages, teacher resources, search/browse pages, and a wireframe preview.
 
-The working tree currently has 65 HTML files with local links verified clean. `main` is aligned with `origin/main`, but there are uncommitted local changes: Claude's expanded teacher resource pages, bridge/tool/footer cleanup, the bridge/tool generator patch, and handoff docs.
+The working tree currently has 65 HTML files with local links verified clean. `main` is aligned with `origin/main`; the teacher pages, project docs, site branding, and favicon work have been committed and pushed.
 
 Current local counts:
 
@@ -103,7 +103,7 @@ Current local counts:
   - `cc-fest/`
 - Each page currently has a consistent generated structure: short explanation, workflow/flow steps, teacher notes or classroom notes, one code sample, mock visual/tool panel where relevant, and related page cards.
 - These pages are useful placeholders with real content, but they are still thin compared with the larger teacher resource pages and should be treated as a first pass.
-- Local footer consistency has been fixed on bridge/tool/CC Fest pages: em dash in the site tagline and middle dots between language names.
+- Local footer consistency has been fixed across the site: em dash in the site tagline and middle dots between language names.
 - Bridge/tool pages now use `data-page="browse"` because they sit most naturally under Browse.
 - Added `assets/resource-pages.css`.
 - Added and patched `scripts/write-bridge-tool-pages.mjs` so regenerated bridge/tool pages preserve the footer and Browse active-state fixes.
@@ -122,11 +122,10 @@ Current local counts:
   - `companion-resources/` — CSN resources, §6 enrichment, optional enrichment
   - `frq-practice/` — 4 FRQ types with Processing Java code prompts
 - Language pages exist for: p5.js, Canvas API, Processing Java, Hello Canvas, Setup guides
-- AP CSA broken `pixel-grid` link has been fixed locally to `concepts/pixels-image-data/`.
-- AP CSA stale labels were mostly updated to the current 22-concept map. Remaining minor cleanup:
-  - `12–15 §5` should become `11–16 §5`.
-  - `Histograms` should consistently become `Histograms & Sampling`.
-  - The `Binary as Pixels` U8 description may still read like the old Filters wording.
+- AP CSA's former `pixel-grid` link was fixed to `concepts/pixels-image-data/`.
+- AP CSA stale labels were updated to the current 22-concept map.
+- Sitewide header brand now reads `Coding the Canvas`.
+- `assets/favicon.svg` is linked from all 65 HTML pages.
 
 ## Validation Performed
 
@@ -134,7 +133,8 @@ Current local counts:
 - Local DOM checks were run against selected local pages while a local server was available.
 - GitHub Pages build status was checked through the GitHub API during deployment work.
 - Teacher-page link checks currently pass.
-- AP CSA teacher page concept references were mostly cleaned up; minor terminology cleanup remains.
+- AP CSA teacher page concept references are aligned with the current concept map.
+- All 65 HTML pages currently include the favicon link.
 
 ## Important Scripts
 
@@ -160,23 +160,20 @@ Current local counts:
 - `2097813` Add editor controls for code snippets
 - `ab8d101` Add split canvas preview to code editors
 - `5988aef` Build out bridge and tool resource pages (ChatGPT)
-- (uncommitted) All 10 teacher resource pages + AP CSA concept reference cleanup
-- (uncommitted) Bridge/tool/CC Fest footer and `data-page` cleanup
-- (uncommitted) `PROJECT_PROGRESS.md` and `ONBOARDING.md` handoff docs
+- `19093e4` Build out all 10 teacher resource pages
+- `8e7c517` Fix bridge/tool footer punctuation and add project docs
+- `c6f988d` Update site branding and favicon
 
 ## Remaining / Suggested Next Work
 
 ### Immediate
-- **Commit** the current local work once reviewed:
-  - Claude's 10 expanded teacher pages
-  - AP CSA concept reference cleanup
-  - bridge/tool/footer and `data-page` cleanup
-  - `scripts/write-bridge-tool-pages.mjs` patch
-  - `PROJECT_PROGRESS.md` and/or `ONBOARDING.md`
-- Finish minor AP CSA terminology cleanup:
-  - `12–15 §5` → `11–16 §5`
-  - `Histograms` → `Histograms & Sampling`
-  - refine the `Binary as Pixels` U8 mapping sentence if needed
+- Run a visual smoke test of core page types after each broad markup change:
+  - Homepage
+  - Concept page
+  - Section page
+  - Teacher resource page
+  - Browse page
+  - Bridge/tool page
 
 ### Near-term
 - Add copy buttons to Processing / Java code panels (p5.js and Canvas API already have them).

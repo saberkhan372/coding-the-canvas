@@ -789,7 +789,7 @@ function html(page) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>${esc(page.title)} - CS Canvas</title>
+  <title>${esc(page.title)} - Coding the Canvas</title>
   <meta name="description" content="${esc(page.lede)}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -854,8 +854,8 @@ function html(page) {
     <section class="band">${nav(page)}</section>
   </main>
   <footer class="site-footer">
-    <span>CS Canvas - learn computer science by seeing code act on a canvas.</span>
-    <span>p5.js - Canvas API - Processing Java</span>
+    <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="../../assets/site.js"></script>
 </body>

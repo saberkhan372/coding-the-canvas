@@ -51,6 +51,38 @@ ${code}
 </html>`;
   };
 
+  const p5Shell = (code) => `<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    body { margin: 0; display: grid; min-height: 100vh; place-items: center; background: #f6f2ea; }
+    canvas { border: 1px solid #1c1a17; background: white; max-width: 100%; height: auto !important; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"><\/script>
+</head>
+<body>
+  <script>
+${code}
+  <\/script>
+</body>
+</html>`;
+
+  const resetPreview = (preview, message = 'Preview paused') => {
+    if (!preview) return;
+    preview.classList.remove('is-running');
+    preview.innerHTML = `<div class="preview-label"><span>${message}</span></div><iframe class="preview-frame" title="Canvas output preview"></iframe>`;
+  };
+
+  const runPreview = (editor, preview, code) => {
+    if (!preview) return;
+    const isP5 = editor.classList.contains('p5');
+    preview.classList.add('is-running');
+    preview.innerHTML = '<div class="preview-label"><span>Preview running</span></div><iframe class="preview-frame" title="Canvas output preview" sandbox="allow-scripts"></iframe>';
+    const frame = preview.querySelector('iframe');
+    frame.srcdoc = isP5 ? p5Shell(code) : canvasShell(code);
+  };
+
   webEditors.forEach((editor) => {
     const preview = editor.querySelector('.editor-preview');
     const codeBlock = editor.querySelector('pre');
@@ -58,15 +90,14 @@ ${code}
     const stop = editor.querySelector('[data-editor-stop]');
     const exportButton = editor.querySelector('[data-editor-export]');
     const editorName = editor.classList.contains('p5') ? 'p5.js Web Editor' : 'CodePen';
+    resetPreview(preview);
 
     play?.addEventListener('click', () => {
-      preview?.classList.add('is-running');
-      if (preview) preview.innerHTML = '<span>Preview running - copy/export to edit live</span>';
+      runPreview(editor, preview, codeBlock?.textContent || '');
     });
 
     stop?.addEventListener('click', () => {
-      preview?.classList.remove('is-running');
-      if (preview) preview.innerHTML = '<span>Preview paused</span>';
+      resetPreview(preview);
     });
 
     exportButton?.addEventListener('click', async () => {
@@ -80,7 +111,7 @@ ${code}
         exportButton.textContent = isP5 ? 'Export to p5.js' : 'Export to CodePen';
       }, 1800);
       window.open(isP5 ? 'https://editor.p5js.org/' : 'https://codepen.io/pen/', '_blank', 'noopener,noreferrer');
-      if (preview) preview.innerHTML = `<span>Copied code and opened ${editorName}</span>`;
+      resetPreview(preview, `Copied code and opened ${editorName}`);
     });
   });
 

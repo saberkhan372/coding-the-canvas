@@ -13,10 +13,15 @@
 
 .code-pane.web-editor {
   display: grid;
-  grid-template-rows: auto auto 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, .9fr);
+  grid-template-areas:
+    "chrome chrome"
+    "tabs tabs"
+    "code preview";
 }
 
 .editor-chrome {
+  grid-area: chrome;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -96,6 +101,7 @@
 }
 
 .code-label-row {
+  grid-area: tabs;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -125,12 +131,14 @@
 }
 
 .editor-preview {
-  min-height: 58px;
+  grid-area: preview;
+  min-height: 360px;
   display: grid;
-  place-items: center;
+  grid-template-rows: auto 1fr;
+  gap: 10px;
   padding: 12px;
   background: #fffdf7;
-  border-bottom: 1.5px solid var(--ink);
+  border-left: 1.5px solid var(--ink);
   color: var(--soft);
   font: 600 11px/1.4 var(--mono);
   letter-spacing: .03em;
@@ -148,6 +156,29 @@
 @keyframes preview-slide {
   from { background-position: 0 0; }
   to { background-position: 48px 0; }
+}
+
+.preview-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--soft);
+  text-transform: uppercase;
+}
+
+.preview-label:after {
+  content: "canvas output";
+  color: var(--faint);
+  font-size: 9px;
+}
+
+.preview-frame {
+  width: 100%;
+  min-height: 300px;
+  border: 1.5px solid var(--ink);
+  background: white;
+  box-shadow: 2px 2px 0 var(--edge);
 }
 
 .processing-code .code-label {
@@ -181,6 +212,7 @@
 }
 
 pre {
+  grid-area: code;
   margin: 0;
   padding: 18px 20px;
   background: #1a1916;
@@ -463,6 +495,20 @@ pre {
 }
 
 @media (max-width: 760px) {
+  .code-pane.web-editor {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "chrome"
+      "tabs"
+      "preview"
+      "code";
+  }
+
+  .editor-preview {
+    border-left: 0;
+    border-bottom: 1.5px solid var(--ink);
+  }
+
   .concept-nav,
   .section-nav {
     flex-direction: column;

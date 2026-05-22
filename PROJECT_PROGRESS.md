@@ -12,7 +12,7 @@ Last updated: May 22, 2026
 
 Coding the Canvas is a static GitHub Pages site for the Coding the Canvas / CC Fest curriculum. The site has a root homepage, concept pages, section pages, language pages, bridge pages, tool pages, teacher resources, search/browse pages, and a wireframe preview.
 
-The working tree currently has 65 HTML files with local links verified clean. `main` is aligned with `origin/main`; the teacher pages, project docs, site branding, and favicon work have been committed and pushed.
+The working tree currently has 77 HTML files with local links verified clean. The teacher pages, project docs, site branding, and favicon work have been committed and pushed; the starter sketch library, expanded tools index, and bridge template are current local work awaiting commit/push.
 
 Current local counts:
 
@@ -20,9 +20,10 @@ Current local counts:
 - 8 section folders, including `sections/impact/` as an alias
 - 10 teacher resource pages
 - 5 language/setup pages
-- 3 bridge pages
-- 3 tool pages
-- 65 total HTML files
+- 3 bridge pages plus 1 reusable bridge-page template
+- 3 tool pages plus an expanded tools index
+- 10 starter sketch pages plus `sketches/index.html`
+- 77 total HTML files
 
 ## Major Work Completed
 
@@ -108,6 +109,25 @@ Current local counts:
 - Added `assets/resource-pages.css`.
 - Added and patched `scripts/write-bridge-tool-pages.mjs` so regenerated bridge/tool pages preserve the footer and Browse active-state fixes.
 
+### Starter Sketches and Tool Taxonomy
+
+- Added a new `sketches/` area with 10 starter sketches:
+  - Visual Hello Postcard
+  - Bouncing Ball Starter
+  - Mouse Trail Drawing
+  - Click-to-Create Shapes
+  - Color From Position
+  - Noise Walker
+  - Function Creature Stamp
+  - Data Self-Portrait
+  - Simple Collision Game
+  - Particle System Seed
+- Each starter sketch includes a p5.js seed, teacher framing, Foundation / Exploration / Classroom Adaptation prompts, and related lesson links.
+- Rewrote `tools/index.html` around the six-suit CC Fest taxonomy: Marks, Motion, Systems, Data, Open, Support.
+- Added `bridges/bridge-page-template/` as a reusable structure for future bridge pages: misconception, discussion question, vocabulary, paired tool/sketch, and 3-minute demo.
+- Added Tools and Sketches to the sitewide nav and browse/search entry points.
+- Added `scripts/write-starter-sketches.mjs` to regenerate the sketch index and starter sketch pages.
+
 ### Teacher and Language Pages
 
 - All 10 teacher resource pages are fully built out (150–452 lines each):
@@ -125,16 +145,17 @@ Current local counts:
 - AP CSA's former `pixel-grid` link was fixed to `concepts/pixels-image-data/`.
 - AP CSA stale labels were updated to the current 22-concept map.
 - Sitewide header brand now reads `Coding the Canvas`.
-- `assets/favicon.svg` is linked from all 65 HTML pages.
+- `assets/favicon.svg` is linked from all 77 HTML pages.
 
 ## Validation Performed
 
-- Local link checks across all 65 HTML files currently report no broken local `href` or `src` references.
+- Local link checks across all 77 HTML files currently report no broken local `href` or `src` references.
 - Local DOM checks were run against selected local pages while a local server was available.
 - GitHub Pages build status was checked through the GitHub API during deployment work.
 - Teacher-page link checks currently pass.
 - AP CSA teacher page concept references are aligned with the current concept map.
-- All 65 HTML pages currently include the favicon link.
+- All 77 HTML pages currently include the favicon link.
+- All non-wireframe HTML pages currently include Tools and Sketches in the top navigation.
 
 ## Important Scripts
 
@@ -152,6 +173,9 @@ Current local counts:
 - `scripts/write-bridge-tool-pages.mjs`
   - Generates bridge, tool, and CC Fest resource pages.
   - Locally patched to keep footer punctuation and `data-page="browse"` consistent.
+- `scripts/write-starter-sketches.mjs`
+  - Generates the starter sketch library and the 10 individual sketch pages.
+  - Keeps sketch pages linked back into concepts, sections, bridges, and tools.
 
 ## Recent Commits
 
@@ -178,6 +202,8 @@ Current local counts:
 ### Near-term
 - Add copy buttons to Processing / Java code panels (p5.js and Canvas API already have them).
 - Add automated link validation script (check all href="../..." paths resolve).
+- Decide whether the three existing bridge pages should be rewritten using `bridges/bridge-page-template/`.
+- Port the highest-value CC Fest tools into real interactive local pages: Pattern Logic Explorer, Noise vs Random Explorer, and Data Story Planner.
 
 ### If expanding bridge/tool pages
 - Bridge pages are thin (~72 lines). Could expand each to ~150 lines with: deeper conceptual explanation, before/after code comparison, student misconception section.

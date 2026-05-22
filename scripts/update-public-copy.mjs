@@ -17,6 +17,8 @@ const navItems = [
   ['Concepts', 'concepts/index.html', 'concepts'],
   ['Sections', 'sections/index.html', 'sections'],
   ['Languages', 'languages/index.html', 'languages'],
+  ['Tools', 'tools/index.html', 'tools'],
+  ['Sketches', 'sketches/index.html', 'sketches'],
   ['Browse', 'browse/index.html', 'browse'],
   ['Teachers', 'teachers/index.html', 'teachers'],
   ['About', 'about/index.html', 'about'],

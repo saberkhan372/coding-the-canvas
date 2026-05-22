@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Function Creature Stamp - Coding the Canvas</title>
+  <meta name="description" content="A small creature-drawing function called several times with different arguments." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/resource-pages.css" />
+</head>
+<body data-page="sketch">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Coding the Canvas</a>
+    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../tools/index.html">Tools</a><a class="" href="../../sketches/index.html">Sketches</a><a class="" href="../../browse/index.html">Browse</a><a class="" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kicker">starter sketch · Systems</p>
+      <h1>Function Creature Stamp</h1>
+      <p class="lede">A small creature-drawing function called several times with different arguments.</p>
+      <div class="actions">
+        <a class="button primary" href="https://editor.p5js.org/" target="_blank" rel="noreferrer">Open p5.js editor</a>
+        <a class="button" href="../index.html">All sketches</a>
+      </div>
+    </section>
+    <section class="band split">
+      <div>
+        <h2>What this seed teaches</h2>
+        <p>Let students copy the creature three times first, then ask what should become a parameter.</p>
+        <div class="tag-row"><span class="tag">functions</span><span class="tag">parameters</span><span class="tag">reuse</span><span class="tag">creature</span></div>
+      </div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+        <rect x="24" y="24" width="132" height="84" fill="none" stroke="currentColor" stroke-width="3"/>
+        <path d="M40 82 C66 28 96 116 136 50" fill="none" stroke="#d96a3d" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="58" cy="72" r="9" class="accent-fill"/><circle cx="126" cy="54" r="7"/>
+      </svg></div>
+    </section>
+    <section class="band"><div class="code-sample"><span class="meta">p5.js starter</span><pre>function setup() {
+  createCanvas(500, 320);
+  noLoop();
+}
+
+function draw() {
+  background(246, 242, 234);
+  drawCreature(120, 170, 70, &quot;#d96a3d&quot;);
+  drawCreature(250, 130, 52, &quot;#1c1a17&quot;);
+  drawCreature(370, 190, 88, &quot;#6aa7a0&quot;);
+}
+
+function drawCreature(x, y, size, bodyColor) {
+  fill(bodyColor);
+  circle(x, y, size);
+  fill(255);
+  circle(x - size * 0.15, y - size * 0.12, size * 0.18);
+  circle(x + size * 0.15, y - size * 0.12, size * 0.18);
+}</pre></div></section>
+    <section class="band">
+      <p class="meta">Try this</p>
+      <div class="resource-grid">
+        <article class="resource-panel"><h2>Foundation</h2><p>Run the sketch and point to the line that creates the most important visual change.</p></article>
+        <article class="resource-panel"><h2>Exploration</h2><ul class="checklist"><li>Add a mouth, legs, or antennae to the function.</li><li>Add a parameter for mood or eye size.</li><li>Use a loop to stamp a whole row of creatures.</li></ul></article>
+        <article class="resource-panel"><h2>Classroom adaptation</h2><p>Write a two-sentence prompt for students: what should they change, and what should they explain?</p></article>
+      </div>
+    </section>
+    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/functions/index.html"><span class="meta">related</span><h2>Functions</h2><p>Continue from this seed into the lesson or bridge.</p></a><a class="card" href="../../bridges/pattern-logic/index.html"><span class="meta">related</span><h2>Pattern Logic</h2><p>Continue from this seed into the lesson or bridge.</p></a><a class="card" href="../../sections/make-systems/index.html"><span class="meta">related</span><h2>Make Systems</h2><p>Continue from this seed into the lesson or bridge.</p></a></div></section>
+  </main>
+  <footer class="site-footer">
+    <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

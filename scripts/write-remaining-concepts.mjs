@@ -801,7 +801,7 @@ function html(page) {
 <body data-page="concepts">
   <header class="site-header">
     <a class="brand" href="../../index.html">Coding the Canvas</a>
-    <nav><a href="../../index.html">Home</a><a class="active" href="../../concepts/index.html">Concepts</a><a href="../../sections/index.html">Sections</a><a href="../../languages/index.html">Languages</a><a href="../../browse/index.html">Browse</a><a href="../../teachers/index.html">Teachers</a><a href="../../about/index.html">About</a></nav>
+    <nav><a href="../../index.html">Home</a><a class="active" href="../../concepts/index.html">Concepts</a><a href="../../sections/index.html">Sections</a><a href="../../languages/index.html">Languages</a><a href="../../tools/index.html">Tools</a><a href="../../sketches/index.html">Sketches</a><a href="../../browse/index.html">Browse</a><a href="../../teachers/index.html">Teachers</a><a href="../../about/index.html">About</a></nav>
   </header>
   <main>
     <section class="hero">

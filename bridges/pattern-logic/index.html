@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pattern Logic - Coding the Canvas</title>
-  <meta name="description" content="A bridge for turning visual rules into loops, conditionals, and reusable drawing recipes." />
+  <meta name="description" content="See it, say it, code it — turning visual rules into loops, conditions, and map() expressions that scale data to the canvas." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
@@ -15,55 +15,138 @@
 <body data-page="browse">
   <header class="site-header">
     <a class="brand" href="../../index.html">Coding the Canvas</a>
-    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../browse/index.html">Browse</a><a class="" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../tools/index.html">Tools</a><a class="" href="../../sketches/index.html">Sketches</a><a class="" href="../../browse/index.html">Browse</a><a class="" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
   </header>
   <main>
+
     <section class="hero">
       <p class="kicker">concept bridge</p>
       <h1>Pattern Logic</h1>
-      <p class="lede">A bridge for turning visual rules into loops, conditionals, and reusable drawing recipes.</p>
+      <p class="lede">See it, say it, code it — turning visual rules into loops, conditions, and <code>map()</code> expressions that scale data to the canvas.</p>
     </section>
-    
+
     <section class="band split">
       <div>
-        <h2>Turn a pattern into a rule.</h2>
-        <p>Pattern logic asks students to describe what they see before coding it. Once the visual rule is named, loops, conditions, and functions become tools for expressing it.</p>
-        <ul class="checklist"><li>Notice repetition, alternation, symmetry, and variation.</li><li>Translate each visual decision into a rule.</li><li>Remix one rule at a time so cause and effect stay clear.</li></ul>
+        <h2>Describe it before you code it.</h2>
+        <p>Pattern logic asks students to say the rule out loud before writing it. Once the visual decision is named — "every even column is orange, every odd is dark" — loops, conditionals, and <code>map()</code> become tools for expressing it, not arbitrary syntax to memorize.</p>
+        <ul class="checklist">
+          <li>Circle what repeats. Underline what changes.</li>
+          <li>Translate each visual decision into one sentence.</li>
+          <li>Change one thing at a time — predict before running.</li>
+          <li>Use <code>map()</code> to scale raw data values to canvas dimensions.</li>
+        </ul>
       </div>
-      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
-    <path d="M10 72 C34 28 62 28 90 72 S146 116 170 72" fill="none" stroke="currentColor" stroke-width="4"/>
-    <circle cx="38" cy="48" r="7" class="accent-fill"/><circle cx="90" cy="72" r="7"/><circle cx="142" cy="96" r="7" class="accent-fill"/>
-  </svg></div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <circle cx="20" cy="66" r="9" fill="#d96a3d" opacity=".9"/>
+          <circle cx="46" cy="66" r="9" fill="currentColor" opacity=".25"/>
+          <circle cx="72" cy="66" r="9" fill="#d96a3d" opacity=".9"/>
+          <circle cx="98" cy="66" r="9" fill="currentColor" opacity=".25"/>
+          <circle cx="124" cy="66" r="9" fill="#d96a3d" opacity=".9"/>
+          <circle cx="150" cy="66" r="9" fill="currentColor" opacity=".25"/>
+          <text x="20" y="88" font-family="monospace" font-size="6" text-anchor="middle" fill="#d96a3d">even</text>
+          <text x="46" y="88" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">odd</text>
+          <text x="72" y="88" font-family="monospace" font-size="6" text-anchor="middle" fill="#d96a3d">even</text>
+          <text x="98" y="88" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">odd</text>
+          <text x="124" y="88" font-family="monospace" font-size="6" text-anchor="middle" fill="#d96a3d">even</text>
+          <text x="150" y="88" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">odd</text>
+        </svg>
+      </div>
     </section>
+
+    <section class="band">
+      <div style="background:#fff8f5;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 4px 4px 0">
+        <p class="meta" style="margin-bottom:4px">Common misconception</p>
+        <p style="font-size:14px;margin:0"><strong>"Data visualization is a specialized field — not something you do with a for loop."</strong> — Every bar chart, dot plot, and heat map students have seen is a for loop with a visual decision inside. Reading data, scaling it with <code>map()</code>, and drawing it is the whole job.</p>
+      </div>
+    </section>
+
     <section class="band">
       <p class="meta">Bridge moves</p>
-      <div class="bridge-map"><div class="bridge-step"><div><h2>See it</h2><p>Ask students to circle what repeats and underline what changes.</p></div></div><div class="bridge-step"><div><h2>Say it</h2><p>Turn the observation into a sentence: every even column is orange.</p></div></div><div class="bridge-step"><div><h2>Code it</h2><p>Translate the sentence with a loop variable and a condition.</p></div></div></div>
+      <div class="bridge-map">
+        <div class="bridge-step"><div><h2>See it</h2><p>Show a pattern. Ask students to circle what repeats and underline what changes. Keep the code editor closed — describe it first.</p></div></div>
+        <div class="bridge-step"><div><h2>Say it</h2><p>Turn the observation into one rule: "every even column is orange." If you can say it in one sentence, you can code it.</p></div></div>
+        <div class="bridge-step"><div><h2>Code it</h2><p>Translate the sentence — a loop variable and a condition. Then: change one thing and predict the result before running.</p></div></div>
+      </div>
     </section>
+
     <section class="band columns">
-      <article class="resource-panel"><h2>Teacher move</h2><p>Keep the first rule simple, then invite controlled remixing.</p></article><article class="resource-panel"><h2>Common snag</h2><p>Students often change too many variables at once. Slow the remix down.</p></article><article class="resource-panel"><h2>AP connection</h2><p>Pattern logic supports algorithms, abstraction, conditionals, and procedural decomposition.</p></article>
+      <article>
+        <h2>Discussion question</h2>
+        <p style="font-size:13px">Which visual property makes large values feel most dramatic — height, size, or color? Which is most subtle?</p>
+        <p style="font-size:13px;margin-top:8px;color:var(--soft)">Follow-up: if you sorted the data before drawing it, would the pattern become clearer or less clear?</p>
+      </article>
+      <article>
+        <h2>Key vocabulary</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">map()</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">input range</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">output range</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">i % 2</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">alternation</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">visual encoding</span>
+        </div>
+      </article>
+      <article class="resource-panel">
+        <h2>AP connection</h2>
+        <p>Pattern logic supports algorithmic thinking, abstraction, conditionals, and data representation — AP CSP (AAP, DAT) and AP CS A array iteration problems.</p>
+      </article>
     </section>
-    <section class="band"><div class="code-sample"><span class="meta">visual rule</span><pre>for (let col = 0; col &lt; 8; col++) {
-  if (col % 2 === 0) {
-    fill(217, 106, 61);
-  } else {
-    fill(28);
+
+    <section class="band">
+      <div class="code-sample">
+        <span class="meta">visual rule — data drives the drawing</span>
+        <pre>let data = [40, 85, 60, 20, 95, 55, 70];
+
+function setup() {
+  createCanvas(400, 200);
+}
+
+function draw() {
+  background(246);
+  for (let i = 0; i &lt; data.length; i++) {
+    // scale raw value to bar height
+    let h = map(data[i], 0, 100, 0, height - 40);
+
+    // alternate fill on even / odd index
+    fill(i % 2 === 0 ? '#d96a3d' : '#1c1a17');
+    noStroke();
+    rect(20 + i * 52, height - h - 20, 40, h);
   }
-  circle(40 + col * 36, 100, 24);
-}</pre></div></section>
-    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/for-loops-and-grids/index.html">
-    <span class="meta">concept 06</span>
-    <h2>For Loops &amp; Grids</h2>
-    <p>Build patterns from counters.</p>
-  </a><a class="card" href="../../concepts/conditionals/index.html">
-    <span class="meta">concept 05</span>
-    <h2>Conditionals</h2>
-    <p>Make a pattern choose between cases.</p>
-  </a><a class="card" href="../../concepts/functions/index.html">
-    <span class="meta">concept 07</span>
-    <h2>Functions</h2>
-    <p>Name repeated drawing recipes.</p>
-  </a></div></section>
-  
+}</pre>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:8px">3-minute demo script</p>
+      <div style="border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink)">
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 1.</strong> Show a grid loop drawing same-sized circles with no conditions. Ask: "What one rule would make every even column orange?" Let students predict before typing anything.</p>
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 2.</strong> Add <code>if (i % 2 === 0)</code>. Run. Change the divisor to 3 — ask "what pattern do you expect?" before running again.</p>
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 3.</strong> Replace uniform sizes with <code>map()</code> driven by a data array. Ask: "which property shows the differences most clearly — height, width, or color?"</p>
+        <p style="font-size:13px;margin:0;border-top:1px solid var(--edge);padding-top:10px"><strong style="color:var(--accent)">Watch for:</strong> students changing too many variables at once and losing track of cause and effect. Say: "change one thing, predict what happens, then run." That discipline is half the lesson.</p>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="grid cards">
+        <a class="card" href="../../concepts/for-loops-and-grids/index.html">
+          <span class="meta">concept 06</span>
+          <h2>For Loops &amp; Grids</h2>
+          <p>Build patterns from loop counters.</p>
+        </a>
+        <a class="card" href="../../concepts/conditionals/index.html">
+          <span class="meta">concept 05</span>
+          <h2>Conditionals</h2>
+          <p>Make a pattern choose between cases.</p>
+        </a>
+        <a class="card" href="../../concepts/data-as-material/index.html">
+          <span class="meta">concept 16</span>
+          <h2>Data as Material</h2>
+          <p>Arrays of values become visual marks.</p>
+        </a>
+      </div>
+    </section>
+
   </main>
   <footer class="site-footer">
     <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>

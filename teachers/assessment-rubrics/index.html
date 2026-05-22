@@ -28,7 +28,7 @@
       <a href="../../index.html">Home</a>
       <a href="../../concepts/index.html">Concepts</a>
       <a href="../../sections/index.html">Sections</a>
-      <a href="../../languages/index.html">Languages</a>
+      <a href="../../languages/index.html">Languages</a><a href="../../tools/index.html">Tools</a><a href="../../sketches/index.html">Sketches</a>
       <a href="../../browse/index.html">Browse</a>
       <a class="active" href="../../teachers/index.html">Teachers</a>
       <a href="../../about/index.html">About</a>
@@ -107,6 +107,88 @@
               <td>Sketch does not run, or output is unrelated to the concept.</td>
               <td>Student cannot explain any part of the code.</td>
               <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:16px">Common mistakes quick reference — from the CC Fest bridge guides</p>
+      <div style="overflow-x:auto">
+        <table class="rubric-table">
+          <thead>
+            <tr>
+              <th>Concept area</th>
+              <th>Mistake</th>
+              <th>What to say</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code style="font:600 11px/1 var(--mono);background:var(--edge);padding:2px 6px;border-radius:2px">draw() / time</code></td>
+              <td>Putting changing variables in <code>setup()</code> — nothing moves.</td>
+              <td>"If it should change each frame, it lives in <code>draw()</code>."</td>
+            </tr>
+            <tr>
+              <td><code style="font:600 11px/1 var(--mono);background:var(--edge);padding:2px 6px;border-radius:2px">conditionals</code></td>
+              <td>Using <code>=</code> instead of <code>===</code> — silent assignment, no comparison.</td>
+              <td>"One equals assigns. Three equals compares. Read it aloud."</td>
+            </tr>
+            <tr>
+              <td><code style="font:600 11px/1 var(--mono);background:var(--edge);padding:2px 6px;border-radius:2px">arrays</code></td>
+              <td>Accessing <code>arr[arr.length]</code> — off by one, returns <code>undefined</code>.</td>
+              <td>"Print the value before using it. See <code>undefined</code> in the console."</td>
+            </tr>
+            <tr>
+              <td><code style="font:600 11px/1 var(--mono);background:var(--edge);padding:2px 6px;border-radius:2px">push() / pop()</code></td>
+              <td>Forgetting <code>pop()</code> — transforms leak into every shape after.</td>
+              <td>"Every <code>push()</code> needs a <code>pop()</code>. They're a pair."</td>
+            </tr>
+            <tr>
+              <td><code style="font:600 11px/1 var(--mono);background:var(--edge);padding:2px 6px;border-radius:2px">map()</code></td>
+              <td>Assuming <code>map()</code> clamps out-of-range values — it does not.</td>
+              <td>"<code>map()</code> scales linearly. Use <code>constrain()</code> if you need clamping."</td>
+            </tr>
+            <tr>
+              <td><code style="font:600 11px/1 var(--mono);background:var(--edge);padding:2px 6px;border-radius:2px">for loops</code></td>
+              <td>Forgetting the loop body runs many times per frame.</td>
+              <td>"How many times does this line run? Count with <code>print(i)</code>."</td>
+            </tr>
+            <tr>
+              <td><code style="font:600 11px/1 var(--mono);background:var(--edge);padding:2px 6px;border-radius:2px">objects / classes</code></td>
+              <td>Forgetting <code>new</code> before a class name.</td>
+              <td>"<code>new</code> calls the constructor. Without it you get a function, not an object."</td>
+            </tr>
+            <tr>
+              <td><code style="font:600 11px/1 var(--mono);background:var(--edge);padding:2px 6px;border-radius:2px">state machines</code></td>
+              <td>Multiple conflicting booleans instead of one state variable.</td>
+              <td>"If you need three booleans, you probably need one state string instead."</td>
+            </tr>
+            <tr>
+              <td><code style="font:600 11px/1 var(--mono);background:var(--edge);padding:2px 6px;border-radius:2px">pixels[]</code></td>
+              <td>Forgetting <code>updatePixels()</code> after writing — canvas doesn't refresh.</td>
+              <td>"<code>loadPixels()</code> before reading, <code>updatePixels()</code> after writing. Always paired."</td>
+            </tr>
+            <tr>
+              <td><code style="font:600 11px/1 var(--mono);background:var(--edge);padding:2px 6px;border-radius:2px">data / map()</code></td>
+              <td>Drawing raw data values without scaling them to the canvas.</td>
+              <td>"What is the real data range? What is your canvas range? Use <code>map()</code>."</td>
+            </tr>
+            <tr>
+              <td><code style="font:600 11px/1 var(--mono);background:var(--edge);padding:2px 6px;border-radius:2px">mouse events</code></td>
+              <td>Using <code>if(mouseIsPressed)</code> in <code>draw()</code> instead of <code>mousePressed()</code>.</td>
+              <td>"<code>draw()</code> fires every frame. <code>mousePressed()</code> fires once per click."</td>
+            </tr>
+            <tr>
+              <td><code style="font:600 11px/1 var(--mono);background:var(--edge);padding:2px 6px;border-radius:2px">noise()</code></td>
+              <td>Calling <code>noise()</code> with the same argument every frame — same value every frame.</td>
+              <td>"Advance the input each frame: <code>noise(t)</code> where <code>t += 0.01</code>."</td>
+            </tr>
+            <tr>
+              <td><code style="font:600 11px/1 var(--mono);background:var(--edge);padding:2px 6px;border-radius:2px">vectors</code></td>
+              <td>Normalizing a zero vector — produces <code>NaN</code>.</td>
+              <td>"Check <code>mag() &gt; 0</code> before normalizing. Zero vectors have no direction."</td>
             </tr>
           </tbody>
         </table>

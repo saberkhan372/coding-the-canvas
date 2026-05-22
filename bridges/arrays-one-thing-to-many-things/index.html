@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Arrays: One Thing to Many Things - Coding the Canvas</title>
-  <meta name="description" content="A bridge from single variables to indexed collections of related values." />
+  <meta name="description" content="A bridge from single variables to indexed collections — and a loop that visits every item automatically." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
@@ -15,57 +15,128 @@
 <body data-page="browse">
   <header class="site-header">
     <a class="brand" href="../../index.html">Coding the Canvas</a>
-    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../browse/index.html">Browse</a><a class="" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../tools/index.html">Tools</a><a class="" href="../../sketches/index.html">Sketches</a><a class="" href="../../browse/index.html">Browse</a><a class="" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
   </header>
   <main>
+
     <section class="hero">
       <p class="kicker">concept bridge</p>
       <h1>Arrays: One Thing to Many Things</h1>
-      <p class="lede">A bridge from single variables to indexed collections of related values.</p>
+      <p class="lede">How code moves from one named variable to a list — and a loop that visits every item without growing the drawing code.</p>
     </section>
-    
+
     <section class="band split">
       <div>
-        <h2>Move from one object to a collection.</h2>
-        <p>Students understand one ball before they understand fifty. This bridge makes the shift explicit: the same properties still exist, but now they live in a list and a loop visits each one.</p>
-        <ul class="checklist"><li>Start with one visible object and name its properties.</li><li>Replace repeated variables with indexed positions.</li><li>Use a loop to update and draw every item.</li></ul>
+        <h2>One object before fifty.</h2>
+        <p>Students understand one ball before they understand fifty. This bridge makes the shift explicit: the same properties still exist, but now they live in an array and a loop visits each one. The key moment is adding a new value to the array and watching the drawing code stay exactly the same.</p>
+        <ul class="checklist">
+          <li>Start with one visible object — name every property out loud.</li>
+          <li>Replace repeated variables (<code>x1, x2, x3</code>) with an indexed array.</li>
+          <li>Write a loop so one rule draws every item.</li>
+          <li>Push a new value to the array — notice the loop code didn't change.</li>
+        </ul>
       </div>
-      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
-    <path d="M10 72 C34 28 62 28 90 72 S146 116 170 72" fill="none" stroke="currentColor" stroke-width="4"/>
-    <circle cx="38" cy="48" r="7" class="accent-fill"/><circle cx="90" cy="72" r="7"/><circle cx="142" cy="96" r="7" class="accent-fill"/>
-  </svg></div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <rect x="10" y="40" width="44" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".3"/>
+          <rect x="68" y="40" width="44" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".3"/>
+          <rect x="126" y="40" width="44" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".3"/>
+          <text x="32" y="57" font-family="monospace" font-size="9" text-anchor="middle" fill="currentColor">[0]</text>
+          <text x="90" y="57" font-family="monospace" font-size="9" text-anchor="middle" fill="currentColor">[1]</text>
+          <text x="148" y="57" font-family="monospace" font-size="9" text-anchor="middle" fill="#d96a3d">[2]</text>
+          <circle cx="32" cy="98" r="10" fill="currentColor" opacity=".3"/>
+          <circle cx="90" cy="98" r="10" fill="currentColor" opacity=".3"/>
+          <circle cx="148" cy="98" r="10" fill="#d96a3d" opacity=".8"/>
+        </svg>
+      </div>
     </section>
+
+    <section class="band">
+      <div style="background:#fff8f5;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 4px 4px 0">
+        <p class="meta" style="margin-bottom:4px">Common misconception</p>
+        <p style="font-size:14px;margin:0"><strong>"To draw five shapes, I copy the drawing code five times."</strong> — Let students try <code>x1, x2, x3, x4, x5</code> first. The awkwardness creates the need. The moment they ask "what happens when I need twenty?" is when the array makes sense.</p>
+      </div>
+    </section>
+
     <section class="band">
       <p class="meta">Bridge moves</p>
-      <div class="bridge-map"><div class="bridge-step"><div><h2>One thing</h2><p>Draw one circle with x, y, and speed. Ask what changes if the sketch needs ten circles.</p></div></div><div class="bridge-step"><div><h2>Many values</h2><p>Collect related x values in one array so index 0, 1, and 2 become visible handles.</p></div></div><div class="bridge-step"><div><h2>One rule</h2><p>Use a loop so every item follows the same update-and-draw rule.</p></div></div></div>
+      <div class="bridge-map">
+        <div class="bridge-step"><div><h2>One thing</h2><p>Draw one circle with <code>x</code>, <code>y</code>, and <code>speed</code>. Name every property out loud. Ask: "What changes if the sketch needs ten circles?"</p></div></div>
+        <div class="bridge-step"><div><h2>Many values</h2><p>Collect related values in one array. Print the array so students can see the list exist in memory — not just as code on screen.</p></div></div>
+        <div class="bridge-step"><div><h2>One rule</h2><p>Write a loop so every item follows the same update-and-draw rule. Push a new value to the array — the loop code stays the same.</p></div></div>
+      </div>
     </section>
+
     <section class="band columns">
-      <article class="resource-panel"><h2>Teacher move</h2><p>Let students try x1, x2, x3 first. The awkwardness creates the need for arrays.</p></article><article class="resource-panel"><h2>Common snag</h2><p>Students often mix up the index and the value stored at that index. Point to both on the canvas.</p></article><article class="resource-panel"><h2>AP connection</h2><p>This bridge supports list traversal, parallel arrays, ArrayList, and object collections.</p></article>
+      <article>
+        <h2>Discussion question</h2>
+        <p style="font-size:13px">If you push a new item to the array, what changes in the loop code?</p>
+        <p style="font-size:13px;margin-top:8px;color:var(--soft)">Follow-up: what happens if <code>xs</code> has 3 items but <code>ys</code> has only 2?</p>
+      </article>
+      <article>
+        <h2>Key vocabulary</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">array</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">index</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">.length</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">push()</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">for loop</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">off-by-one</span>
+        </div>
+      </article>
+      <article class="resource-panel">
+        <h2>AP connection</h2>
+        <p>Supports list traversal, parallel arrays, ArrayList, and object collections — AP CSP (AAP) and AP CS A (U6 Array, U7 ArrayList).</p>
+      </article>
     </section>
-    <section class="band"><div class="code-sample"><span class="meta">p5.js pattern</span><pre>let xs = [40, 90, 140];
-let ys = [80, 60, 100];
+
+    <section class="band">
+      <div class="code-sample">
+        <span class="meta">p5.js — one rule draws every item</span>
+        <pre>let xs = [40, 90, 140, 190];
+let ys = [80, 60, 100, 75];
 
 function draw() {
   background(246);
   for (let i = 0; i &lt; xs.length; i++) {
     circle(xs[i], ys[i], 24);
-    xs[i] += 1;
+    xs[i] += 1;          // same rule, every item
   }
-}</pre></div></section>
-    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/arrays/index.html">
-    <span class="meta">concept 08</span>
-    <h2>Arrays</h2>
-    <p>Open the full array lesson.</p>
-  </a><a class="card" href="../../concepts/arraylist-in-action/index.html">
-    <span class="meta">concept 22</span>
-    <h2>ArrayList in Action</h2>
-    <p>Continue toward dynamic Java lists.</p>
-  </a><a class="card" href="../../concepts/objects/index.html">
-    <span class="meta">concept 09</span>
-    <h2>Objects</h2>
-    <p>Group each item into a data-and-behavior unit.</p>
-  </a></div></section>
-  
+  // Try: xs.push(230); in setup() — loop code unchanged
+}</pre>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:8px">3-minute demo script</p>
+      <div style="border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink)">
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 1.</strong> Write <code>let x1 = 40; let x2 = 90; let x3 = 140;</code> and draw three circles by hand. Ask: "What happens when we need a fourth?" Let students feel the repetition build.</p>
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 2.</strong> Replace with <code>let xs = [40, 90, 140];</code> and <code>print(xs)</code>. Show the list in the console. Ask: "How do we get the first item? The last?"</p>
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 3.</strong> Write the for loop. Run it. Add a fourth value to the array in <code>setup()</code>. Run again — ask "what changed in the loop code?" (Nothing did.)</p>
+        <p style="font-size:13px;margin:0;border-top:1px solid var(--edge);padding-top:10px"><strong style="color:var(--accent)">Watch for:</strong> students accessing <code>arr[arr.length]</code> — off by one, returns <code>undefined</code>. Print the value before using it so students can see <code>undefined</code> appear in the console.</p>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="grid cards">
+        <a class="card" href="../../concepts/arrays/index.html">
+          <span class="meta">concept 08</span>
+          <h2>Arrays</h2>
+          <p>Open the full array lesson.</p>
+        </a>
+        <a class="card" href="../../concepts/arraylist-in-action/index.html">
+          <span class="meta">concept 22</span>
+          <h2>ArrayList in Action</h2>
+          <p>Continue toward dynamic Java lists.</p>
+        </a>
+        <a class="card" href="../../concepts/objects/index.html">
+          <span class="meta">concept 09</span>
+          <h2>Objects</h2>
+          <p>Group each item into a data-and-behavior unit.</p>
+        </a>
+      </div>
+    </section>
+
   </main>
   <footer class="site-footer">
     <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>

@@ -135,6 +135,8 @@ const nav = [
   ['Concepts', '/concepts/'],
   ['Sections', '/sections/'],
   ['Languages', '/languages/'],
+  ['Tools', '/tools/'],
+  ['Sketches', '/sketches/'],
   ['Browse', '/browse/'],
   ['Teachers', '/teachers/'],
   ['About', '/about/'],
@@ -388,7 +390,7 @@ function writeAssets() {
   if (!cardBands.length) return;
 
   const pageType = document.body.dataset.page || '';
-  const shouldAddFilter = ['browse', 'concepts', 'sections', 'teachers', 'languages'].includes(pageType);
+  const shouldAddFilter = ['browse', 'concepts', 'sections', 'teachers', 'languages', 'tools', 'sketches'].includes(pageType);
   if (!shouldAddFilter) return;
 
   const filterBar = document.createElement('section');

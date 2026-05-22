@@ -4,41 +4,89 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tools - Coding the Canvas</title>
-  <meta name="description" content="Interactive studios and explainers for workshop use." />
+  <meta name="description" content="Workshop tools grouped by Marks, Motion, Systems, Data, Open, and Support." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/resource-pages.css" />
 </head>
-<body data-page="browse">
+<body data-page="tools">
   <header class="site-header">
     <a class="brand" href="../index.html">Coding the Canvas</a>
-    <nav><a class="" href="../index.html">Home</a><a class="" href="../concepts/index.html">Concepts</a><a class="" href="../sections/index.html">Sections</a><a class="" href="../languages/index.html">Languages</a><a class="" href="../browse/index.html">Browse</a><a class="" href="../teachers/index.html">Teachers</a><a class="" href="../about/index.html">About</a></nav>
+    <nav><a class="" href="../index.html">Home</a><a class="" href="../concepts/index.html">Concepts</a><a class="" href="../sections/index.html">Sections</a><a class="" href="../languages/index.html">Languages</a><a class="active" href="../tools/index.html">Tools</a><a class="" href="../sketches/index.html">Sketches</a><a class="" href="../browse/index.html">Browse</a><a class="" href="../teachers/index.html">Teachers</a><a class="" href="../about/index.html">About</a></nav>
   </header>
   <main>
     <section class="hero">
-      <p class="kicker">tools</p>
+      <p class="kicker">workshop tools</p>
       <h1>Tools</h1>
-      <p class="lede">Interactive studios and explainers for workshop use.</p>
+      <p class="lede">Interactive studios, explainers, and teaching surfaces grouped by the six CC Fest suits: Marks, Motion, Systems, Data, Open, and Support.</p>
+      <div class="actions">
+        <a class="button primary" href="./for-loop-stepper/index.html">Open local tool</a>
+        <a class="button" href="../sketches/index.html">Starter sketches</a>
+        <a class="button" href="https://saberkhan372.github.io/CC-Fest-Coding-Camp/index.html" target="_blank" rel="noreferrer">CC Fest library</a>
+      </div>
     </section>
-    <section class="band"><div class="grid cards"><a class="card" href="./index.html">
-    <span class="meta">tools</span>
-    <h2>Workshop Tools</h2>
-    <p>Interactive helpers, studios, and explainers grouped by concept.</p>
-  </a><a class="card" href="./for-loop-stepper/index.html">
-    <span class="meta">tools</span>
-    <h2>For Loop Stepper</h2>
-    <p>Step through initialization, condition, body, and increment.</p>
-  </a><a class="card" href="./sketch-playground/index.html">
-    <span class="meta">tools</span>
-    <h2>Sketch Playground</h2>
-    <p>A live canvas and code surface for remixing examples.</p>
-  </a><a class="card" href="./share-export/index.html">
-    <span class="meta">tools</span>
-    <h2>Share &amp; Export Flow</h2>
-    <p>Save an image, copy a sketch, or prepare a classroom-safe link.</p>
-  </a></div></section>
+
+    <section class="band split">
+      <div>
+        <h2>Pick a tool when an idea needs to become visible.</h2>
+        <p>The tool suite is a teaching layer, not a replacement for lessons. Use a tool for a live demo, a station rotation, or a quick “play before reading” moment, then send students to a starter sketch or concept page.</p>
+        <ul class="checklist">
+          <li>Open one tool before explaining the syntax.</li>
+          <li>Ask students to predict before moving a slider.</li>
+          <li>Move from tool → sketch → concept explanation.</li>
+        </ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+        <rect x="28" y="26" width="124" height="80" fill="none" stroke="currentColor" stroke-width="3"/>
+        <circle cx="66" cy="66" r="18" class="accent-fill"/>
+        <path d="M96 90 L126 42" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+      </svg></div>
+    </section>
+
+    <section class="band">
+      <p class="meta">Six-suit map</p>
+      <div class="resource-grid">
+        <article class="resource-panel"><h2>✦ Marks</h2><p>Drawing, coordinates, shape, text, color, and first visual composition.</p><p><a class="button" href="https://saberkhan372.github.io/CC-Fest-Coding-Camp/tools/coordinate-system-explorer/" target="_blank" rel="noreferrer">Coordinate Explorer</a></p></article>
+        <article class="resource-panel"><h2>◎ Motion</h2><p>Animation, input, frame rate, easing, events, and motion as changing state.</p><p><a class="button" href="https://saberkhan372.github.io/CC-Fest-Coding-Camp/tools/animation-explorer/" target="_blank" rel="noreferrer">Animation Explorer</a></p></article>
+        <article class="resource-panel"><h2>⬡ Systems</h2><p>Loops, functions, arrays, objects, noise, grids, and reusable structure.</p><p><a class="button" href="./for-loop-stepper/index.html">For Loop Stepper</a></p></article>
+        <article class="resource-panel"><h2>▦ Data</h2><p>Data stories, arrays of values, CSV/JSON, pixels, and visual mapping.</p><p><a class="button" href="https://saberkhan372.github.io/CC-Fest-Coding-Camp/tools/data-mapper/" target="_blank" rel="noreferrer">Data Mapper</a></p></article>
+        <article class="resource-panel"><h2>☽ Open</h2><p>Games, sound, image remixing, 3D, particles, and final project seeds.</p><p><a class="button" href="https://saberkhan372.github.io/CC-Fest-Coding-Camp/tools/postcard-studio/" target="_blank" rel="noreferrer">Postcard Studio</a></p></article>
+        <article class="resource-panel"><h2>⊕ Support</h2><p>Debugging, readable code, sharing, exporting, reflection, and confidence.</p><p><a class="button" href="./share-export/index.html">Share &amp; Export</a></p></article>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta">Local tools</p>
+      <div class="grid cards">
+        <a class="card" href="./for-loop-stepper/index.html" data-tags="systems loops stepper">
+          <span class="meta">⬡ Systems</span>
+          <h2>For Loop Stepper</h2>
+          <p>Step through initialization, condition, body, and increment.</p>
+        </a>
+        <a class="card" href="./sketch-playground/index.html" data-tags="support playground editor">
+          <span class="meta">⊕ Support</span>
+          <h2>Sketch Playground</h2>
+          <p>A live canvas and code surface for remixing examples.</p>
+        </a>
+        <a class="card" href="./share-export/index.html" data-tags="support export sharing">
+          <span class="meta">⊕ Support</span>
+          <h2>Share &amp; Export Flow</h2>
+          <p>Save an image, copy a sketch, or prepare a classroom-safe link.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta">High-priority ports from CC Fest</p>
+      <div class="resource-grid">
+        <article class="resource-panel"><h2>Pattern Logic Explorer</h2><p>Click conditions like <code>i === j</code> and see the visual rule appear on a grid.</p></article>
+        <article class="resource-panel"><h2>Noise vs Random Explorer</h2><p>Compare jitter, terrain, wave, and walk modes so smooth randomness becomes visible.</p></article>
+        <article class="resource-panel"><h2>Data Story Planner</h2><p>Five planning questions that turn a dataset into visual decisions before code.</p></article>
+      </div>
+    </section>
   </main>
   <footer class="site-footer">
     <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>

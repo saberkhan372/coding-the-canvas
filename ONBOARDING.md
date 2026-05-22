@@ -9,7 +9,7 @@
 
 ---
 
-## Site Structure (65 HTML files)
+## Site Structure (77 HTML files)
 
 ```
 index.html                    homepage
@@ -22,7 +22,9 @@ sections/                     7 section pages
 languages/                    5 language pages (p5js, canvas-api, processing-java, hello-canvas, setup)
 teachers/                     10 teacher resource pages
 bridges/                      3 bridge pages (concept connectors)
-tools/                        3 tool pages
+bridges/bridge-page-template/ reusable bridge-page structure
+tools/                        3 tool pages + six-suit tools index
+sketches/                     10 starter sketches + index
 cc-fest/                      CC Fest origin page
 ```
 
@@ -114,6 +116,8 @@ This map is critical. **The directory names do not match the concept numbers** i
       <a href="[path]/concepts/index.html">Concepts</a>
       <a href="[path]/sections/index.html">Sections</a>
       <a href="[path]/languages/index.html">Languages</a>
+      <a href="[path]/tools/index.html">Tools</a>
+      <a href="[path]/sketches/index.html">Sketches</a>
       <a href="[path]/browse/index.html">Browse</a>
       <a class="active" href="[path]/teachers/index.html">Teachers</a>
       <a href="[path]/about/index.html">About</a>
@@ -180,6 +184,9 @@ This map is critical. **The directory names do not match the concept numbers** i
   - `teachers/frq-practice/` — 4 FRQ types with Processing Java prompts
 - Browse/directory pages
 - Language pages (p5js, canvas-api, processing-java, hello-canvas, setup)
+- `sketches/` starter library: 10 p5.js seed sketches with Foundation / Exploration / Classroom Adaptation prompts
+- `tools/index.html` organized by the six-suit CC Fest taxonomy: Marks, Motion, Systems, Data, Open, Support
+- `bridges/bridge-page-template/` reusable template for richer bridge pages
 
 ### ⚠️ Thin — first-pass/template-generated (70–75 lines each)
 These exist and have real content but are much shallower than the teacher pages:
@@ -190,6 +197,13 @@ These exist and have real content but are much shallower than the teacher pages:
 - `tools/for-loop-stepper/` — thin
 - `tools/share-export/` — thin
 - `cc-fest/` — CC Fest origin story, thin
+
+The bridge template now documents the richer target structure for future bridge rewrites:
+- Common misconception
+- Discussion question
+- Vocabulary
+- Paired tool + starter sketch
+- 3-minute demo script
 
 ### 🐛 Known issues / watch items
 - Bridge/tool/CC Fest pages are still thin first-pass pages even though their links and footer formatting are now locally clean.
@@ -203,14 +217,15 @@ These exist and have real content but are much shallower than the teacher pages:
 After broad markup changes, check the homepage, one concept page, one section page, one teacher resource page, Browse, and one bridge/tool page.
 
 ### Priority 2 — Flesh out bridge pages (if desired)
-The 3 bridge pages are useful placeholders but much thinner than the teacher pages. Each could be expanded to ~150–200 lines with:
-- Deeper explanation of the conceptual shift
-- Side-by-side before/after code examples
-- Student misconceptions section
-- Connections to specific AP exam questions
+The 3 bridge pages are useful placeholders but much thinner than the teacher pages. Use `bridges/bridge-page-template/` to expand each into the CC Fest bridge format:
+- Common misconception
+- Discussion question
+- Vocabulary
+- Paired tool + sketch
+- 3-minute demo
 
 ### Priority 3 — Flesh out tool pages (if desired)
-The 3 tool pages describe workflows but don't have real interactivity. Options:
+The 3 tool pages describe workflows but don't have real interactivity. `tools/index.html` now names the six-suit taxonomy and the highest-value future ports. Options:
 - Keep as workflow docs (low effort, acceptable)
 - Add actual embedded editors (high effort, significant UX improvement)
 - For Loop Stepper could be a real interactive tool (step through a loop visually)

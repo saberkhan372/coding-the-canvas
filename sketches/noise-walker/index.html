@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Noise Walker - Coding the Canvas</title>
+  <meta name="description" content="A single dot drifts smoothly through noise space, making randomness feel organic instead of jumpy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/resource-pages.css" />
+</head>
+<body data-page="sketch">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Coding the Canvas</a>
+    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../tools/index.html">Tools</a><a class="" href="../../sketches/index.html">Sketches</a><a class="" href="../../browse/index.html">Browse</a><a class="" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kicker">starter sketch · Systems</p>
+      <h1>Noise Walker</h1>
+      <p class="lede">A single dot drifts smoothly through noise space, making randomness feel organic instead of jumpy.</p>
+      <div class="actions">
+        <a class="button primary" href="https://editor.p5js.org/" target="_blank" rel="noreferrer">Open p5.js editor</a>
+        <a class="button" href="../index.html">All sketches</a>
+      </div>
+    </section>
+    <section class="band split">
+      <div>
+        <h2>What this seed teaches</h2>
+        <p>Use this next to a `random()` version. Students can feel the difference before naming Perlin noise.</p>
+        <div class="tag-row"><span class="tag">noise</span><span class="tag">motion</span><span class="tag">systems</span><span class="tag">organic</span></div>
+      </div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+        <rect x="24" y="24" width="132" height="84" fill="none" stroke="currentColor" stroke-width="3"/>
+        <path d="M40 82 C66 28 96 116 136 50" fill="none" stroke="#d96a3d" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="58" cy="72" r="9" class="accent-fill"/><circle cx="126" cy="54" r="7"/>
+      </svg></div>
+    </section>
+    <section class="band"><div class="code-sample"><span class="meta">p5.js starter</span><pre>let t = 0;
+
+function setup() {
+  createCanvas(500, 320);
+}
+
+function draw() {
+  background(246, 242, 234, 24);
+
+  let x = noise(t) * width;
+  let y = noise(t + 100) * height;
+
+  fill(28, 26, 23);
+  circle(x, y, 18);
+  t += 0.01;
+}</pre></div></section>
+    <section class="band">
+      <p class="meta">Try this</p>
+      <div class="resource-grid">
+        <article class="resource-panel"><h2>Foundation</h2><p>Run the sketch and point to the line that creates the most important visual change.</p></article>
+        <article class="resource-panel"><h2>Exploration</h2><ul class="checklist"><li>Change the step size and describe the motion personality.</li><li>Draw a trail instead of clearing the background completely.</li><li>Use noise to control color or size too.</li></ul></article>
+        <article class="resource-panel"><h2>Classroom adaptation</h2><p>Write a two-sentence prompt for students: what should they change, and what should they explain?</p></article>
+      </div>
+    </section>
+    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/for-loops-and-grids/index.html"><span class="meta">related</span><h2>For Loops &amp; Grids</h2><p>Continue from this seed into the lesson or bridge.</p></a><a class="card" href="../../concepts/objects/index.html"><span class="meta">related</span><h2>Objects</h2><p>Continue from this seed into the lesson or bridge.</p></a><a class="card" href="../../sections/make-systems/index.html"><span class="meta">related</span><h2>Make Systems</h2><p>Continue from this seed into the lesson or bridge.</p></a></div></section>
+  </main>
+  <footer class="site-footer">
+    <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

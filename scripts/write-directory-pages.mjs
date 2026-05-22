@@ -46,6 +46,8 @@ const nav = (active, prefix = '..') => `<header class="site-header">
       ['Concepts', `${prefix}/concepts/index.html`, 'concepts'],
       ['Sections', `${prefix}/sections/index.html`, 'sections'],
       ['Languages', `${prefix}/languages/index.html`, 'languages'],
+      ['Tools', `${prefix}/tools/index.html`, 'tools'],
+      ['Sketches', `${prefix}/sketches/index.html`, 'sketches'],
       ['Browse', `${prefix}/browse/index.html`, 'browse'],
       ['Teachers', `${prefix}/teachers/index.html`, 'teachers'],
       ['About', `${prefix}/about/index.html`, 'about'],
@@ -179,8 +181,24 @@ function writeBrowseIndex() {
     `<a class="card result-card" href="../tools/index.html" data-tags="tool workshop interactive">
       <span class="lesson-badge">✦</span><span><span class="meta">tools</span><h2>Workshop Tools</h2><p>Interactive studios and explainers for classroom use.</p>${tagRow(['tool', 'interactive'])}</span><span class="meta">open</span>
     </a>`,
+    `<a class="card result-card" href="../sketches/index.html" data-tags="sketch starter p5.js remix seed">
+      <span class="lesson-badge">Seed</span><span><span class="meta">sketches</span><h2>Starter Sketches</h2><p>Small p5.js projects for quick remixing and classroom adaptation.</p>${tagRow(['p5.js', 'remix', 'starter'])}</span><span class="meta">open</span>
+    </a>`,
   ].join('');
   const body = `
+    <section class="band">
+      <p class="meta">New entry points</p>
+      <div class="grid cards">
+        <a class="card directory-card" href="../tools/index.html" data-section="tools" data-tags="tools marks motion systems data open support">
+          <span class="lesson-badge">Tools</span>
+          <span><span class="meta">six-suit taxonomy</span><h2>Workshop Tools</h2><p>Interactive explainers grouped as Marks, Motion, Systems, Data, Open, and Support.</p>${tagRow(['tools', 'systems', 'data'])}</span>
+        </a>
+        <a class="card directory-card" href="../sketches/index.html" data-section="sketches" data-tags="sketches starters p5.js remix seeds">
+          <span class="lesson-badge">Sketches</span>
+          <span><span class="meta">starter seeds</span><h2>Starter Sketches</h2><p>Small p5.js projects for quick remixing, extension, and classroom adaptation.</p>${tagRow(['p5.js', 'remix', 'starter'])}</span>
+        </a>
+      </div>
+    </section>
     <section class="band browse-layout">
       <aside class="facet-panel">
         <div class="facet-group"><h2>Movements</h2>${tagRow(['Start', 'Move', 'Respond', 'Systems', 'Data', 'Impact', 'Algorithms'])}</div>

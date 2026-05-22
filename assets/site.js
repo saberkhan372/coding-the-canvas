@@ -119,7 +119,7 @@ ${code}
   if (!cardBands.length) return;
 
   const pageType = document.body.dataset.page || '';
-  const shouldAddFilter = ['browse', 'concepts', 'sections', 'teachers', 'languages'].includes(pageType);
+  const shouldAddFilter = ['browse', 'concepts', 'sections', 'teachers', 'languages', 'tools', 'sketches'].includes(pageType);
   if (!shouldAddFilter) return;
 
   const filterBar = document.createElement('section');

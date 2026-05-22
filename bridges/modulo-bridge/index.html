@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Modulo Bridge - Coding the Canvas</title>
-  <meta name="description" content="A visual bridge for cycles, wrapping, repeated patterns, and clock-like logic." />
+  <title>Modulo: Counting in Cycles - Coding the Canvas</title>
+  <meta name="description" content="The % operator turns any growing counter into a repeating cycle — position wrap, color alternation, and animation on a beat." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
@@ -15,54 +15,134 @@
 <body data-page="browse">
   <header class="site-header">
     <a class="brand" href="../../index.html">Coding the Canvas</a>
-    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../browse/index.html">Browse</a><a class="" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../tools/index.html">Tools</a><a class="" href="../../sketches/index.html">Sketches</a><a class="" href="../../browse/index.html">Browse</a><a class="" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
   </header>
   <main>
+
     <section class="hero">
       <p class="kicker">concept bridge</p>
-      <h1>Modulo Bridge</h1>
-      <p class="lede">A visual bridge for cycles, wrapping, repeated patterns, and clock-like logic.</p>
+      <h1>Modulo: Counting in Cycles</h1>
+      <p class="lede">The % operator turns any growing counter into a repeating cycle — position wrap, color alternation, and animation on a beat.</p>
     </section>
-    
+
     <section class="band split">
       <div>
-        <h2>Use remainders to make patterns loop.</h2>
-        <p>Modulo is easiest to feel when something wraps: a dot leaves the right side and returns on the left, colors repeat every third item, or a clock resets after 12.</p>
-        <ul class="checklist"><li>Use % to keep values inside a range.</li><li>Alternate choices without long if/else chains.</li><li>Name the pattern before naming the operator.</li></ul>
+        <h2>Numbers that loop instead of grow.</h2>
+        <p>Modulo is easiest to feel when something wraps: a dot leaves the right edge and returns on the left, colors repeat every third item, a clock resets after 12. The key insight is that <code>%</code> isn't a formula to memorize — it's a question: "how far around the cycle am I?"</p>
+        <ul class="checklist">
+          <li>Name the pattern before naming the operator.</li>
+          <li>Use <code>%</code> to keep values inside a fixed range.</li>
+          <li>Alternate choices with <code>i % 2</code> — no long if/else chain needed.</li>
+          <li>Animate on a beat with <code>frameCount % n</code>.</li>
+        </ul>
       </div>
-      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
-    <path d="M10 72 C34 28 62 28 90 72 S146 116 170 72" fill="none" stroke="currentColor" stroke-width="4"/>
-    <circle cx="38" cy="48" r="7" class="accent-fill"/><circle cx="90" cy="72" r="7"/><circle cx="142" cy="96" r="7" class="accent-fill"/>
-  </svg></div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <circle cx="18" cy="66" r="7" fill="#d96a3d" opacity=".9"/>
+          <circle cx="48" cy="66" r="7" fill="currentColor" opacity=".25"/>
+          <circle cx="78" cy="66" r="7" fill="currentColor" opacity=".25"/>
+          <circle cx="108" cy="66" r="7" fill="#d96a3d" opacity=".9"/>
+          <circle cx="138" cy="66" r="7" fill="currentColor" opacity=".25"/>
+          <circle cx="162" cy="66" r="7" fill="currentColor" opacity=".25"/>
+          <text x="18" y="86" font-family="monospace" font-size="6" text-anchor="middle" fill="#d96a3d">0%3=0</text>
+          <text x="48" y="86" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">1%3=1</text>
+          <text x="78" y="86" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">2%3=2</text>
+          <text x="108" y="86" font-family="monospace" font-size="6" text-anchor="middle" fill="#d96a3d">3%3=0</text>
+          <text x="138" y="86" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">4%3=1</text>
+          <text x="162" y="86" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">5%3=2</text>
+        </svg>
+      </div>
     </section>
+
+    <section class="band">
+      <div style="background:#fff8f5;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 4px 4px 0">
+        <p class="meta" style="margin-bottom:4px">Common misconception</p>
+        <p style="font-size:14px;margin:0"><strong>"% is just a math leftover — I don't need it for visual work."</strong> — Students also read <code>%</code> as percent. Say "remainder after division" every time at first. The visual payoff — wrapping motion, alternating colors, on-beat pulses — makes the operator stick faster than any definition.</p>
+      </div>
+    </section>
+
     <section class="band">
       <p class="meta">Bridge moves</p>
-      <div class="bridge-map"><div class="bridge-step"><div><h2>Wrap position</h2><p>Use x = (x + speed) % width so motion stays on the canvas.</p></div></div><div class="bridge-step"><div><h2>Cycle style</h2><p>Use i % 3 to choose a color, shape, or rhythm.</p></div></div><div class="bridge-step"><div><h2>Debug the remainder</h2><p>Print i and i % n side by side until the repeating sequence is visible.</p></div></div></div>
+      <div class="bridge-map">
+        <div class="bridge-step"><div><h2>Name the cycle</h2><p>A clock resets at 12. A dot wraps at the canvas edge. Colors repeat every 3 items. Name the thing that loops before writing any code.</p></div></div>
+        <div class="bridge-step"><div><h2>Wrap position</h2><p>Use <code>x = (x + speed) % width</code> so motion stays on canvas forever. Ask: what is the remainder when <code>x</code> equals <code>width</code> exactly?</p></div></div>
+        <div class="bridge-step"><div><h2>Debug the pattern</h2><p>Print <code>i</code> and <code>i % n</code> side by side. Count aloud as the sequence repeats — 0, 1, 2, 0, 1, 2. The repetition is the whole idea.</p></div></div>
+      </div>
     </section>
+
     <section class="band columns">
-      <article class="resource-panel"><h2>Teacher move</h2><p>Draw a number line that bends into a loop. Remainders become locations around the loop.</p></article><article class="resource-panel"><h2>Common snag</h2><p>Students may read % as percent. Say “remainder after division” every time at first.</p></article><article class="resource-panel"><h2>AP connection</h2><p>Modulo supports loop patterns, bounds logic, simulations, and algorithmic thinking.</p></article>
+      <article>
+        <h2>Discussion question</h2>
+        <p style="font-size:13px">What does <code>frameCount % 60</code> equal at frame 59? Frame 60? Frame 61?</p>
+        <p style="font-size:13px;margin-top:8px;color:var(--soft)">Follow-up: if you want something to pulse every 2 seconds at 30 fps, what divisor would you use?</p>
+      </article>
+      <article>
+        <h2>Key vocabulary</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">%</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">modulo</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">remainder</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">cycle</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">frameCount</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">width</span>
+        </div>
+      </article>
+      <article class="resource-panel">
+        <h2>AP connection</h2>
+        <p>Modulo appears in loop patterns, bounds checking, grid row/column logic, and algorithmic thinking — core to AP CSP (AAP) and AP CS A iteration problems.</p>
+      </article>
     </section>
-    <section class="band"><div class="code-sample"><span class="meta">wrapping motion</span><pre>let x = 0;
+
+    <section class="band">
+      <div class="code-sample">
+        <span class="meta">wrapping motion + alternating style</span>
+        <pre>let x = 0;
 
 function draw() {
   background(246);
+
+  // wrap: dot returns when it leaves the right edge
   x = (x + 3) % width;
+
+  // alternate fill on every other position slot
+  let slot = floor(x / 60) % 2;
+  fill(slot === 0 ? '#d96a3d' : '#1c1a17');
+
   circle(x, height / 2, 30);
-}</pre></div></section>
-    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/draw-loop-time/index.html">
-    <span class="meta">concept 03</span>
-    <h2>Draw Loop / Time</h2>
-    <p>Use modulo with frameCount and motion.</p>
-  </a><a class="card" href="../../concepts/for-loops-and-grids/index.html">
-    <span class="meta">concept 06</span>
-    <h2>For Loops &amp; Grids</h2>
-    <p>Use remainders for every-nth patterns.</p>
-  </a><a class="card" href="../pattern-logic/index.html">
-    <span class="meta">bridge</span>
-    <h2>Pattern Logic</h2>
-    <p>Turn cycles into visual rules.</p>
-  </a></div></section>
-  
+}</pre>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:8px">3-minute demo script</p>
+      <div style="border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink)">
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 1.</strong> Draw a number line 0–8 on the whiteboard. Bend it into a circle so that 3 connects back to 0. "Modulo tells you where you are on this circle."</p>
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 2.</strong> Count from 0 to 8 with divisor 3. Say each remainder aloud before running any code: "0, 1, 2, 0, 1, 2, 0, 1, 2." The pattern is the payoff.</p>
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 3.</strong> Code the wrapping dot. Set <code>x = width</code> manually. Ask: "what does <code>width % width</code> give us?" (0 — it teleports to the left.)</p>
+        <p style="font-size:13px;margin:0;border-top:1px solid var(--edge);padding-top:10px"><strong style="color:var(--accent)">Watch for:</strong> students thinking <code>%</code> gives 0 when the counter exactly hits the divisor is surprising — make that moment explicit because that is exactly why wrapping works.</p>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="grid cards">
+        <a class="card" href="../../concepts/draw-loop-time/index.html">
+          <span class="meta">concept 03</span>
+          <h2>Draw Loop / Time</h2>
+          <p>Use modulo with <code>frameCount</code> and motion.</p>
+        </a>
+        <a class="card" href="../../concepts/for-loops-and-grids/index.html">
+          <span class="meta">concept 06</span>
+          <h2>For Loops &amp; Grids</h2>
+          <p>Use remainders for every-nth patterns in grids.</p>
+        </a>
+        <a class="card" href="../pattern-logic/index.html">
+          <span class="meta">bridge</span>
+          <h2>Pattern Logic</h2>
+          <p>Turn cycles into visual rules and drawing recipes.</p>
+        </a>
+      </div>
+    </section>
+
   </main>
   <footer class="site-footer">
     <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>

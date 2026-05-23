@@ -38,6 +38,46 @@ const concepts = [
   ['22', 'arraylist-in-action', 'ArrayList in Action', 'dynamic lists, particles', 'Algorithms', 'algorithms', ['p5.js', 'Processing'], ['AAP', 'CSA']],
 ];
 
+const bridges = [
+  ['modulo-bridge',                   'Modulo Bridge',                                  'Counting in cycles for wrapping, patterns, and every-nth behavior.',    ['bridge', 'modulo', 'loops', 'patterns', 'systems', 'AAP']],
+  ['pattern-logic',                   'Pattern Logic',                                  'How repetition, conditions, symmetry, and variation create visual systems.', ['bridge', 'patterns', 'loops', 'conditions', 'systems', 'AAP']],
+  ['arrays-one-thing-to-many-things', 'Arrays: One Thing to Many Things',               'The conceptual bridge from one variable to lists of values.',           ['bridge', 'arrays', 'data', 'AAP', 'CSA', 'systems']],
+  ['objects-bridge',                  'Objects: Bundling Data and Behavior',            'When a thing needs more than one variable to describe it — that\'s an object.', ['bridge', 'objects', 'data', 'AAP', 'CSA', 'systems']],
+  ['push-pop-bridge',                 'World Coordinates: push() and pop()',            'translate() moves the origin. push() saves the world. pop() restores it.', ['bridge', 'transform', 'coordinates', 'push', 'pop', 'motion']],
+  ['state-machines-bridge',           'State Machines: Screens, Modes, and Transitions','A state variable names the current mode. Events move between screens.',  ['bridge', 'state', 'machines', 'modes', 'conditionals', 'AAP', 'CSA', 'systems']],
+];
+
+const tools = [
+  ['for-loop-stepper',      'For Loop Stepper',        'Slow a for loop down until every part — init, test, body, increment — is visible.',  ['tool', 'loops', 'systems', 'AAP', 'CSA', 'interactive']],
+  ['pattern-logic-explorer','Pattern Logic Explorer',   'Adjust modulo and conditions to watch grid patterns change live.',                    ['tool', 'patterns', 'modulo', 'loops', 'systems', 'interactive']],
+  ['noise-random-explorer', 'Noise vs Random Explorer', 'Toggle between noise and random to see the difference side by side.',                 ['tool', 'noise', 'random', 'motion', 'animation', 'interactive']],
+  ['data-story-planner',    'Data Story Planner',       'Plan a data visualization project from question to visual form.',                     ['tool', 'data', 'planning', 'visualization', 'DAT', 'interactive']],
+  ['sketch-playground',     'Sketch Playground',        'An open canvas for experimenting with p5.js ideas.',                                  ['tool', 'sketch', 'open', 'p5.js', 'interactive']],
+  ['share-export',          'Share & Export',           'Export a sketch to the p5.js editor or share a standalone version.',                  ['tool', 'export', 'share', 'open', 'support']],
+];
+
+const bridgeCard = ([slug, title, desc, tags]) =>
+  `<a class="card directory-card" href="../bridges/${slug}/index.html" data-section="bridges" data-tags="${tags.join(' ')}">
+    <span class="lesson-badge">⬡</span>
+    <span>
+      <span class="meta">bridge</span>
+      <h2>${title}</h2>
+      <p>${desc}</p>
+      ${tagRow(tags.slice(0, 3))}
+    </span>
+  </a>`;
+
+const toolCard = ([slug, title, desc, tags]) =>
+  `<a class="card directory-card" href="../tools/${slug}/index.html" data-section="tools" data-tags="${tags.join(' ')}">
+    <span class="lesson-badge">✦</span>
+    <span>
+      <span class="meta">tool</span>
+      <h2>${title}</h2>
+      <p>${desc}</p>
+      ${tagRow(tags.slice(0, 3))}
+    </span>
+  </a>`;
+
 const nav = (active, prefix = '..') => `<header class="site-header">
   <a class="brand" href="${prefix}/index.html">Coding the Canvas</a>
   <nav>
@@ -175,6 +215,8 @@ function writeBrowseIndex() {
   const results = [
     ...sections.map((s) => sectionCard(s, '../sections/')),
     ...concepts.map((c) => conceptCard(c, '../concepts/')),
+    ...bridges.map(bridgeCard),
+    ...tools.map(toolCard),
     `<a class="card result-card" href="../bridges/index.html" data-tags="bridge tool concept">
       <span class="lesson-badge">⬡</span><span><span class="meta">bridges</span><h2>Concept Bridges</h2><p>Cross-cutting ideas that connect lessons and tools.</p>${tagRow(['bridge', 'tool'])}</span><span class="meta">open</span>
     </a>`,

@@ -65,11 +65,60 @@
       </div>
     </section>
 
+    <section class="band columns">
+      <article>
+        <h2>Before: transform leak</h2>
+        <div class="code-sample" style="box-shadow:none;margin-top:8px">
+          <span class="meta">the second shape inherits the moved world</span>
+          <pre>function draw() {
+  background(246);
+
+  translate(120, 80);
+  rotate(frameCount * 0.02);
+  rect(-30, -6, 60, 12);
+
+  // also translated and rotated
+  circle(30, 30, 20);
+}</pre>
+        </div>
+        <p style="font-size:13px;margin-top:10px;color:var(--soft)">The circle is coded at <code>(30, 30)</code>, but it is drawn inside the transformed coordinate system because nothing restored the original world first.</p>
+      </article>
+      <article>
+        <h2>After: save and restore</h2>
+        <div class="code-sample" style="box-shadow:none;margin-top:8px">
+          <span class="meta">the second shape gets the normal world back</span>
+          <pre>function draw() {
+  background(246);
+
+  push();
+    translate(120, 80);
+    rotate(frameCount * 0.02);
+    rect(-30, -6, 60, 12);
+  pop();
+
+  circle(30, 30, 20);
+}</pre>
+        </div>
+        <p style="font-size:13px;margin-top:10px;color:var(--soft)"><code>push()</code> takes a snapshot before the transform. <code>pop()</code> returns to that snapshot so later drawing is independent.</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <h2>What students are really learning</h2>
+      <p>Transforms do not move one rectangle. They move the coordinate system that future drawing commands use. That is why <code>rect(0, 0, 40, 20)</code> can appear at a translated origin, and why <code>rotate()</code> affects every shape drawn after it until the transform is restored.</p>
+      <p>In p5.js and Processing, the transform state is reset at the start of each new <code>draw()</code> frame. The bug is not that the canvas drifts forever from frame to frame. The bug is that one transformed object leaks into the next object in the same frame, same function, or same recursive call. <code>push()</code> and <code>pop()</code> create a local drawing context so each object can move its own world without surprising the rest of the sketch.</p>
+      <div class="bridge-map" style="margin-top:14px">
+        <div class="bridge-step"><div><h2>Save</h2><p><code>push()</code> remembers the current transform and style settings before a local drawing move.</p></div></div>
+        <div class="bridge-step"><div><h2>Change</h2><p><code>translate()</code>, <code>rotate()</code>, <code>fill()</code>, and <code>stroke()</code> affect drawing commands that come after them.</p></div></div>
+        <div class="bridge-step"><div><h2>Restore</h2><p><code>pop()</code> returns to the saved state so the next shape starts from the expected coordinate system.</p></div></div>
+      </div>
+    </section>
+
     <section class="band">
       <p class="meta">Bridge moves</p>
       <div class="bridge-map">
         <div class="bridge-step"><div><h2>Translate, then draw</h2><p>Call <code>translate(100, 50)</code> and draw a <code>rect(0, 0, 40, 40)</code>. The rect appears at (100, 50) even though you coded (0, 0). Ask: "Where is the origin now?"</p></div></div>
-        <div class="bridge-step"><div><h2>Without pop(), the leak</h2><p>Don't use <code>push()</code>/<code>pop()</code>. Draw a second shape expecting it at (0, 0). It appears shifted. Every frame, <code>translate()</code> compounds — the origin drifts across the canvas until everything disappears.</p></div></div>
+        <div class="bridge-step"><div><h2>Without pop(), the leak</h2><p>Don't use <code>push()</code>/<code>pop()</code>. Draw a second shape expecting it at (0, 0). It appears shifted or rotated because it inherits the transform from earlier in the same <code>draw()</code> pass.</p></div></div>
         <div class="bridge-step"><div><h2>Wrap and restore</h2><p>Wrap the first shape in <code>push()</code>/<code>pop()</code>. The second shape returns to the original (0, 0). Ask: "What saved the world?" (push() did. pop() restored it.)</p></div></div>
       </div>
     </section>
@@ -77,8 +126,8 @@
     <section class="band columns">
       <article>
         <h2>Discussion question</h2>
-        <p style="font-size:13px">If you call <code>translate(10, 0)</code> inside <code>draw()</code> without <code>push()</code>/<code>pop()</code>, where does the origin end up after 100 frames?</p>
-        <p style="font-size:13px;margin-top:8px;color:var(--soft)">Follow-up: what one line of code would you add to stop the drift?</p>
+        <p style="font-size:13px">If you call <code>translate(100, 0)</code>, draw a rectangle, and then draw a circle without <code>pop()</code>, which coordinate system does the circle use?</p>
+        <p style="font-size:13px;margin-top:8px;color:var(--soft)">Follow-up: where should <code>push()</code> and <code>pop()</code> go if only the rectangle should be translated?</p>
       </article>
       <article>
         <h2>Key vocabulary</h2>
@@ -124,7 +173,7 @@
         <p style="font-size:13px;margin:0 0 10px"><strong>Step 1.</strong> Draw a rect at (0, 0) with no translate. Run. Then add <code>translate(100, 60)</code> before the rect and run again. Ask: "Where is (0, 0) now? What moved — the shape, or the world?"</p>
         <p style="font-size:13px;margin:0 0 10px"><strong>Step 2.</strong> Add a second <code>circle(0, 0, 20)</code> after the rect, no push/pop. Ask students to predict where it appears. Run. The circle is also at (100, 60) — the world moved for everything.</p>
         <p style="font-size:13px;margin:0 0 10px"><strong>Step 3.</strong> Wrap the rect in <code>push()</code>/<code>pop()</code>. Run. Circle returns to (0, 0). Ask: "What did push() save? What did pop() restore?"</p>
-        <p style="font-size:13px;margin:0;border-top:1px solid var(--edge);padding-top:10px"><strong style="color:var(--accent)">Watch for:</strong> Students putting <code>translate()</code> inside <code>draw()</code> without <code>push()</code>/<code>pop()</code> — the origin drifts a little every frame. Ask "how many translates happened after 60 frames?" (60.) That's the bug.</p>
+        <p style="font-size:13px;margin:0;border-top:1px solid var(--edge);padding-top:10px"><strong style="color:var(--accent)">Watch for:</strong> Students expecting <code>translate()</code> to affect only the next shape. Say: "It changes the world for every drawing command after it until we restore the world." Then point out that p5.js resets transforms at the start of the next frame, so the leak is about order inside the current frame.</p>
       </div>
     </section>
 

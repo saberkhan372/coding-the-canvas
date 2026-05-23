@@ -1,6 +1,6 @@
 # Coding the Canvas Progress
 
-Last updated: May 22, 2026 (updated)
+Last updated: May 22, 2026
 
 ## Live Site
 
@@ -12,18 +12,18 @@ Last updated: May 22, 2026 (updated)
 
 Coding the Canvas is a static GitHub Pages site for the Coding the Canvas / CC Fest curriculum. The site has a root homepage, concept pages, section pages, language pages, bridge pages, tool pages, teacher resources, search/browse pages, and a wireframe preview.
 
-The working tree currently has 81+ HTML files with local links verified clean. All prior work has been committed and pushed. Two new bridge pages (`objects-bridge`, `push-pop-bridge`) are untracked and pending commit. Three new tool pages (`pattern-logic-explorer`, `noise-random-explorer`, `data-story-planner`) and a `state-machines-bridge` folder (no content yet) are also present locally.
+All work through Tier 1–3 is committed. The working tree is clean. 3 commits ahead of origin/main, not yet pushed.
 
-Current local counts:
+Current counts:
 
 - 22 concept pages
 - 8 section folders, including `sections/impact/` as an alias
 - 10 teacher resource pages
 - 5 language/setup pages
-- 5 bridge pages plus 1 reusable bridge-page template (`state-machines-bridge` folder exists but has no index.html yet)
-- 6 tool pages plus an expanded tools index
+- 6 bridge pages (arrays, modulo, pattern-logic, objects, push-pop, state-machines) plus 1 reusable bridge-page template
+- 6 tool pages (for-loop-stepper, pattern-logic-explorer, noise-random-explorer, data-story-planner, sketch-playground, share-export) plus an expanded tools index
 - 10 starter sketch pages plus `sketches/index.html`
-- 81+ total HTML files
+- 85+ total HTML files
 
 ## Major Work Completed
 
@@ -98,18 +98,18 @@ Current local counts:
   - `bridges/arrays-one-thing-to-many-things/`
   - `bridges/modulo-bridge/`
   - `bridges/pattern-logic/`
-  - `bridges/objects-bridge/` (184 lines — pending commit)
-  - `bridges/push-pop-bridge/` (158 lines — pending commit)
-  - `bridges/state-machines-bridge/` (folder only, no index.html yet)
+  - `bridges/objects-bridge/` (184 lines)
+  - `bridges/push-pop-bridge/` (expanded, inaccurate cross-frame drift claim corrected)
+  - `bridges/state-machines-bridge/` (232 lines — SVG diagram, before/after, demo script)
   - `tools/sketch-playground/`
-  - `tools/for-loop-stepper/` (70 lines — stub only, no real interactivity)
+  - `tools/for-loop-stepper/` (real JS stepper — step/reset, canvas, code highlighting)
   - `tools/share-export/`
-  - `tools/pattern-logic-explorer/` (177 lines — static mock, no real JS interactivity)
-  - `tools/noise-random-explorer/` (162 lines — static mock, no real JS interactivity)
-  - `tools/data-story-planner/` (186 lines — static mock, no real JS interactivity)
+  - `tools/pattern-logic-explorer/` (real JS — 6 live rules, 1D row + 2D grid SVG)
+  - `tools/noise-random-explorer/` (real animation — 4 modes, value noise, speed slider)
+  - `tools/data-story-planner/` (interactive — editable fields, live map() call, copy)
   - `cc-fest/`
-- Each page currently has a consistent generated structure: short explanation, workflow/flow steps, teacher notes or classroom notes, one code sample, mock visual/tool panel where relevant, and related page cards.
-- Tool pages are still static mocks with no real JavaScript interactivity — building out real interactivity is the primary Tier 2 task.
+- Each bridge page: misconception callout, before/after code comparison, bridge moves, vocabulary, AP connection, code sample, 3-minute demo script.
+- All four primary tool pages now have real JavaScript interactivity (Tier 2 complete).
 - Local footer consistency has been fixed across the site: em dash in the site tagline and middle dots between language names.
 - Bridge/tool pages now use `data-page="browse"` because they sit most naturally under Browse.
 - Added `assets/resource-pages.css`.
@@ -185,38 +185,36 @@ Current local counts:
 
 ## Recent Commits
 
+- `4e998c9` Add state-machines bridge and expand bridge content (ChatGPT Tier 3)
+- `fb2b45b` Tier 2: Add real JS interactivity to all four tool pages
+- `a524931` Tier 1 housekeeping: add bridge pages, fix indexes, update project docs
 - `4588f09` Add three local tool pages and unify tools index
 - `e1258e2` Add Copy Java button to Processing/Java code panels via site.js
 - `1b1691a` Fix browse page nav missing Tools and Sketches links
-- `bdfeb87` Fix hardcoded active class on Browse nav link in bridge template
+- `bdfev87` Fix hardcoded active class on Browse nav link in bridge template
 - `8267918` Add CC Fest pedagogy layer across teacher resources and bridge pages
-- `5fed085` Replace CS Canvas with Coding the Canvas in all prose and docs
-- `4dcbf64` Rename CS Canvas → Coding the Canvas site-wide
-- `c6f988d` Update site branding and favicon
-- `8e7c517` Fix bridge/tool footer punctuation and add project docs
-- `19093e4` Build out all 10 teacher resource pages
 
 ## Remaining / Suggested Next Work
 
-### Tier 1 — Housekeeping (in progress)
-- [x] Fix `bridges/index.html` — add cards for objects-bridge and push-pop-bridge
+### Tier 1 — Housekeeping ✅ Complete
+- [x] Fix `bridges/index.html` — all 6 bridge pages linked
 - [x] Add individual bridge + tool cards to `browse/index.html`
-- [x] Update `PROJECT_PROGRESS.md` to reflect current reality
-- [ ] Commit `objects-bridge` and `push-pop-bridge` to git
-- [ ] Write content for `bridges/state-machines-bridge/` (folder exists, no index.html)
+- [x] Update `scripts/write-directory-pages.mjs` so bridge/tool cards survive regeneration
+- [x] Commit `objects-bridge` and `push-pop-bridge`
+- [x] Write content for `bridges/state-machines-bridge/`
 
-### Tier 2 — Tool Interactivity (biggest gap — Claude)
-- [ ] **For Loop Stepper** — build real JS: step/reset buttons, live `i` counter, canvas draws one dot per step
-- [ ] **Pattern Logic Explorer** — sliders for modulo + offset, live p5-in-iframe preview
-- [ ] **Noise vs Random Explorer** — toggle button, side-by-side canvas comparison
-- [ ] **Data Story Planner** — decide UX scope (form-based? visual?), then build
+### Tier 2 — Tool Interactivity ✅ Complete
+- [x] **For Loop Stepper** — step/reset, phase tokens, code highlighting, canvas
+- [x] **Pattern Logic Explorer** — 6 live rules, 1D row + 2D grid SVG
+- [x] **Noise vs Random Explorer** — live animation, 4 modes, speed slider
+- [x] **Data Story Planner** — editable fields, live map() call, copy buttons
 
-### Tier 3 — Bridge Content Depth (ChatGPT)
-- [ ] Expand `arrays-one-thing-to-many-things` — before/after code, misconception section (147 → ~220 lines)
-- [ ] Expand `modulo-bridge` same way
-- [ ] Expand `pattern-logic` bridge
-- [ ] Decide if `objects-bridge` + `push-pop-bridge` need rewriting vs. expanding
-- [ ] Write content for `state-machines-bridge`
+### Tier 3 — Bridge Content Depth ✅ Complete
+- [x] Expand `arrays-one-thing-to-many-things` — before/after, misconception (→198 lines)
+- [x] Expand `modulo-bridge` (→190 lines)
+- [x] Expand `pattern-logic` bridge (→199 lines)
+- [x] Correct `push-pop-bridge` — removed inaccurate cross-frame drift claim
+- [x] Write `state-machines-bridge` (232 lines)
 
 ### Tier 4 — Polish / Lower Priority
 - [ ] Automated link validation script (check all `href="../..."` paths resolve)

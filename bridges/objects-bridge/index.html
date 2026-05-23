@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Objects: Bundling Data and Behavior - Coding the Canvas</title>
+  <meta name="description" content="When a thing needs more than one variable to describe it and more than one function to update it, that's an object." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/resource-pages.css" />
+</head>
+<body data-page="browse">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Coding the Canvas</a>
+    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../tools/index.html">Tools</a><a class="" href="../../sketches/index.html">Sketches</a><a class="" href="../../browse/index.html">Browse</a><a class="" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+
+    <section class="hero">
+      <p class="kicker">concept bridge</p>
+      <h1>Objects: Bundling Data and Behavior</h1>
+      <p class="lede">When a thing needs more than one variable to describe it — and more than one function to update it — that's an object.</p>
+    </section>
+
+    <section class="band split">
+      <div>
+        <h2>Parallel arrays break when the thing gets complicated.</h2>
+        <p>Three dots: <code>xs[3]</code>, <code>ys[3]</code>, <code>speeds[3]</code>. Add color: now <code>colors[3]</code>. Add size: now <code>sizes[3]</code>. Add a second dot type: you need a second set of five arrays. The moment you want a thing with multiple properties that move together, reach for a class instead.</p>
+        <ul class="checklist">
+          <li>An object bundles its data (<em>fields</em>) and its actions (<em>methods</em>) in one place.</li>
+          <li>The constructor sets starting values: <code>this.x = x</code>.</li>
+          <li><code>update()</code> changes the object's state. <code>show()</code> draws it.</li>
+          <li>Add a new property → change only the class, not the loop.</li>
+          <li>Forgetting <code>new</code> returns <code>undefined</code>, not an object.</li>
+        </ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- Parallel arrays (left, messy) -->
+          <rect x="8" y="18" width="38" height="14" rx="2" fill="currentColor" opacity=".15" stroke="currentColor" stroke-width="1"/>
+          <rect x="8" y="36" width="38" height="14" rx="2" fill="currentColor" opacity=".15" stroke="currentColor" stroke-width="1"/>
+          <rect x="8" y="54" width="38" height="14" rx="2" fill="currentColor" opacity=".15" stroke="currentColor" stroke-width="1"/>
+          <text x="27" y="29" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">xs[]</text>
+          <text x="27" y="47" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">ys[]</text>
+          <text x="27" y="65" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">speeds[]</text>
+          <text x="27" y="84" font-family="monospace" font-size="5" text-anchor="middle" fill="#d96a3d">+ colors[]?</text>
+          <!-- Arrow -->
+          <path d="M56 52 L74 52" stroke="currentColor" stroke-width="1.5" marker-end="url(#arr)" opacity=".5"/>
+          <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="currentColor" opacity=".5"/></marker></defs>
+          <!-- Object (right, clean) -->
+          <rect x="80" y="18" width="88" height="82" rx="4" fill="none" stroke="#d96a3d" stroke-width="1.5"/>
+          <text x="124" y="32" font-family="monospace" font-size="7" text-anchor="middle" fill="#d96a3d">class Dot</text>
+          <line x1="80" y1="36" x2="168" y2="36" stroke="#d96a3d" stroke-width="1" opacity=".5"/>
+          <text x="124" y="48" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">this.x</text>
+          <text x="124" y="58" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">this.y</text>
+          <text x="124" y="68" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">this.speed</text>
+          <line x1="80" y1="74" x2="168" y2="74" stroke="currentColor" stroke-width="1" opacity=".3"/>
+          <text x="124" y="84" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">update()</text>
+          <text x="124" y="94" font-family="monospace" font-size="6" text-anchor="middle" fill="currentColor">show()</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <div style="background:#fff8f5;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 4px 4px 0">
+        <p class="meta" style="margin-bottom:4px">Common misconception</p>
+        <p style="font-size:14px;margin:0"><strong>"Objects are just a fancier way to group variables."</strong> — The data bundling is the smaller half. The bigger insight is <em>behavior</em>: a Dot knows how to <code>update()</code> and <code>show()</code> itself. The for loop stays unchanged whether you have 3 dots or 300, and adding a new property means changing the class — not the loop, not the draw function, not the array.</p>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta">Bridge moves</p>
+      <div class="bridge-map">
+        <div class="bridge-step"><div><h2>Feel the parallel array pain</h2><p>Start with <code>xs[]</code>, <code>ys[]</code>, <code>speeds[]</code>. Ask students to add a <code>color</code> property. They now need a fourth array, four pushes, and an updated loop. Let the friction build before offering the fix.</p></div></div>
+        <div class="bridge-step"><div><h2>Bundle into a class</h2><p>Write <code>class Dot</code> with a constructor, <code>this.x</code>, <code>this.y</code>, <code>this.speed</code>. Create one dot with <code>new Dot(40, 80)</code>. Print it — students see all properties together in the console. Ask: "How would you add color now?" (One line in the constructor.)</p></div></div>
+        <div class="bridge-step"><div><h2>Add behavior as methods</h2><p>Add <code>update()</code> and <code>show()</code> methods. The for loop becomes <code>d.update(); d.show()</code>. Push a new Dot to the array — the loop code is unchanged. That's the payoff.</p></div></div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>Discussion question</h2>
+        <p style="font-size:13px">If <code>xs</code> has 3 values and <code>ys</code> has 3 values and you add a 4th dot, what is <code>xs[3]</code>? What happens in the draw loop at index 3 for <code>ys</code>?</p>
+        <p style="font-size:13px;margin-top:8px;color:var(--soft)">Follow-up: with a class, can this mismatch happen? Why not?</p>
+      </article>
+      <article>
+        <h2>Key vocabulary</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">class</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">constructor</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">this</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">new</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">method</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">field</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">instance</span>
+        </div>
+      </article>
+      <article class="resource-panel">
+        <h2>AP connection</h2>
+        <p>AP CS A Unit 5 (Writing Classes) is tested in every exam. All four FRQ types involve writing or completing a class. The §4 particle system checkpoint maps directly to U5 + U6.</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <div class="code-sample">
+        <span class="meta">p5.js — parallel arrays → class with methods</span>
+        <pre>class Dot {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.speed = random(1, 3);
+    this.col = color(random(255), 100, 80);
+  }
+
+  update() {
+    this.x = (this.x + this.speed) % width;
+  }
+
+  show() {
+    fill(this.col);
+    circle(this.x, this.y, 20);
+  }
+}
+
+let dots = [];
+
+function setup() {
+  createCanvas(400, 200);
+  for (let i = 0; i &lt; 10; i++) {
+    dots.push(new Dot(random(width), random(height)));
+  }
+}
+
+function draw() {
+  background(246);
+  for (let d of dots) {
+    d.update(); // same two lines for 10 or 1000 dots
+    d.show();
+  }
+}</pre>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:8px">3-minute demo script</p>
+      <div style="border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink)">
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 1.</strong> Write <code>let xs = [40, 120, 200]</code> and the matching <code>ys</code> and <code>speeds</code> arrays. Draw 3 dots moving. Now say: "Add a color to each dot." Let students feel the awkwardness of a fourth parallel array.</p>
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 2.</strong> Write <code>class Dot</code> with a constructor and <code>this.color</code>. Create one: <code>let d = new Dot(40, 80)</code>. Print <code>d</code> in the console — students see the whole thing at once.</p>
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 3.</strong> Add <code>update()</code> and <code>show()</code>. Move to an array of dots and a for-of loop. Push one more dot and run — ask "what changed in the loop?" (Nothing.)</p>
+        <p style="font-size:13px;margin:0;border-top:1px solid var(--edge);padding-top:10px"><strong style="color:var(--accent)">Watch for:</strong> Students forgetting <code>new</code> — <code>Dot(40, 80)</code> without <code>new</code> returns <code>undefined</code> and the error message doesn't say why. Print the variable before using it so students see <code>undefined</code> in the console.</p>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="grid cards">
+        <a class="card" href="../../concepts/objects/index.html">
+          <span class="meta">concept 09</span>
+          <h2>Objects</h2>
+          <p>Open the full objects lesson.</p>
+        </a>
+        <a class="card" href="../../concepts/arraylist-in-action/index.html">
+          <span class="meta">concept 22</span>
+          <h2>ArrayList in Action</h2>
+          <p>Dynamic lists of objects that grow and shrink.</p>
+        </a>
+        <a class="card" href="../arrays-one-thing-to-many-things/index.html">
+          <span class="meta">bridge</span>
+          <h2>Arrays: One Thing to Many Things</h2>
+          <p>The step before objects — indexed collections.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

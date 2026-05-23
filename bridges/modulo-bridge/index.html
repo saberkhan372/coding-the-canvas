@@ -61,6 +61,43 @@
       </div>
     </section>
 
+    <section class="band columns">
+      <article>
+        <h2>Before: reset by hand</h2>
+        <div class="code-sample" style="box-shadow:none;margin-top:8px">
+          <span class="meta">works, but only for one case</span>
+          <pre>x += 3;
+
+if (x &gt; width) {
+  x = 0;
+}</pre>
+        </div>
+        <p style="font-size:13px;margin-top:10px;color:var(--soft)">This is readable for a single wrapping dot, but students do not yet see the general pattern: keep a value inside a cycle.</p>
+      </article>
+      <article>
+        <h2>After: cycle with modulo</h2>
+        <div class="code-sample" style="box-shadow:none;margin-top:8px">
+          <span class="meta">one expression keeps the range</span>
+          <pre>x = (x + 3) % width;
+
+let stripe = i % 3;
+let beat = frameCount % 60;</pre>
+        </div>
+        <p style="font-size:13px;margin-top:10px;color:var(--soft)">Now the same idea works for position, stripes, animation timing, clock faces, row/column patterns, and every-nth decisions.</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <h2>What students are really learning</h2>
+      <p>Modulo gives a program a memory of where it is inside a repeated structure. The counter can grow forever, but the remainder stays inside a fixed set of answers. With <code>i % 3</code>, there are only three possible results: 0, 1, 2. That small set is why modulo is so useful for visual rules.</p>
+      <p>For students, the hard part is not calculating a remainder. The hard part is seeing that a repeated visual pattern can be described as a cycle. Once they can say "this repeats every 4 items" or "this wraps after the canvas width," the code is just the written form of that observation.</p>
+      <div class="bridge-map" style="margin-top:14px">
+        <div class="bridge-step"><div><h2>Growing value</h2><p><code>frameCount</code>, <code>x</code>, or <code>i</code> keeps increasing.</p></div></div>
+        <div class="bridge-step"><div><h2>Cycle size</h2><p>The divisor names the length of the loop: 2 choices, 3 colors, 60 frames, <code>width</code> pixels.</p></div></div>
+        <div class="bridge-step"><div><h2>Remainder</h2><p>The result tells the sketch where it is inside that cycle right now.</p></div></div>
+      </div>
+    </section>
+
     <section class="band">
       <p class="meta">Bridge moves</p>
       <div class="bridge-map">

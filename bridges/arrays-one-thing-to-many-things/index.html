@@ -58,6 +58,57 @@
       </div>
     </section>
 
+    <section class="band columns">
+      <article>
+        <h2>Before: repeated variables</h2>
+        <div class="code-sample" style="box-shadow:none;margin-top:8px">
+          <span class="meta">three names, three edits</span>
+          <pre>let x1 = 40;
+let x2 = 90;
+let x3 = 140;
+
+function draw() {
+  background(246);
+  circle(x1, 80, 24);
+  circle(x2, 80, 24);
+  circle(x3, 80, 24);
+
+  x1 += 1;
+  x2 += 1;
+  x3 += 1;
+}</pre>
+        </div>
+        <p style="font-size:13px;margin-top:10px;color:var(--soft)">This works, but the structure is fragile. A fourth circle means a fourth variable, a fourth draw line, and a fourth update line.</p>
+      </article>
+      <article>
+        <h2>After: one array, one rule</h2>
+        <div class="code-sample" style="box-shadow:none;margin-top:8px">
+          <span class="meta">many values, same loop</span>
+          <pre>let xs = [40, 90, 140];
+
+function draw() {
+  background(246);
+  for (let i = 0; i &lt; xs.length; i++) {
+    circle(xs[i], 80, 24);
+    xs[i] += 1;
+  }
+}</pre>
+        </div>
+        <p style="font-size:13px;margin-top:10px;color:var(--soft)">The amount of data can change without changing the algorithm. Add <code>xs.push(190)</code>; the loop already knows how to visit it.</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <h2>What students are really learning</h2>
+      <p>An array is not just "several variables in brackets." It changes the shape of the problem. With separate names, the program asks the programmer to remember every object. With an array, the program asks for a rule that applies to each item. That is the move from manual drawing to algorithmic drawing.</p>
+      <p>The index is the bridge between the list and the canvas. <code>xs[i]</code> means "the x value for the item I am visiting right now." When students can point to the current item, predict the next index, and explain why the loop stops at <code>i &lt; xs.length</code>, they have the mental model needed for arrays of objects, ArrayList traversal, and data-driven sketches.</p>
+      <div class="bridge-map" style="margin-top:14px">
+        <div class="bridge-step"><div><h2>Stable part</h2><p>The drawing rule stays stable: draw a circle, move it, check the next item.</p></div></div>
+        <div class="bridge-step"><div><h2>Changing part</h2><p>The data changes: more positions, fewer positions, different starting values.</p></div></div>
+        <div class="bridge-step"><div><h2>Payoff</h2><p>The loop connects the stable rule to whatever data exists today.</p></div></div>
+      </div>
+    </section>
+
     <section class="band">
       <p class="meta">Bridge moves</p>
       <div class="bridge-map">

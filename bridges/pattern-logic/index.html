@@ -61,6 +61,48 @@
       </div>
     </section>
 
+    <section class="band columns">
+      <article>
+        <h2>Before: draw what you see</h2>
+        <div class="code-sample" style="box-shadow:none;margin-top:8px">
+          <span class="meta">manual marks hide the rule</span>
+          <pre>fill('#d96a3d');
+circle(30, 80, 20);
+fill('#1c1a17');
+circle(60, 80, 20);
+fill('#d96a3d');
+circle(90, 80, 20);</pre>
+        </div>
+        <p style="font-size:13px;margin-top:10px;color:var(--soft)">This copies the appearance, but the program does not yet understand the pattern that produced it.</p>
+      </article>
+      <article>
+        <h2>After: code the rule</h2>
+        <div class="code-sample" style="box-shadow:none;margin-top:8px">
+          <span class="meta">the rule can scale</span>
+          <pre>for (let i = 0; i &lt; 12; i++) {
+  if (i % 2 === 0) {
+    fill('#d96a3d');
+  } else {
+    fill('#1c1a17');
+  }
+  circle(30 + i * 30, 80, 20);
+}</pre>
+        </div>
+        <p style="font-size:13px;margin-top:10px;color:var(--soft)">Now the visual decision has a name: even items are orange, odd items are dark. Twelve marks or twelve hundred use the same rule.</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <h2>What students are really learning</h2>
+      <p>Pattern logic is the habit of separating a drawing into decisions. Position might come from the loop counter. Color might come from a condition. Size might come from data through <code>map()</code>. Once those decisions are separate, students can change one rule without rewriting the whole sketch.</p>
+      <p>This is also the bridge from decorative patterns to data work. A data visualization is not magic; it is a pattern where some visual properties are controlled by values. When students can say "larger data value means taller bar" or "category chooses color," they are already designing an encoding.</p>
+      <div class="bridge-map" style="margin-top:14px">
+        <div class="bridge-step"><div><h2>Locate</h2><p>Where does each mark go? Usually the loop counter controls position.</p></div></div>
+        <div class="bridge-step"><div><h2>Choose</h2><p>What changes between marks? A condition or lookup controls style.</p></div></div>
+        <div class="bridge-step"><div><h2>Scale</h2><p>How do raw values become pixels? <code>map()</code> connects data range to canvas range.</p></div></div>
+      </div>
+    </section>
+
     <section class="band">
       <p class="meta">Bridge moves</p>
       <div class="bridge-map">

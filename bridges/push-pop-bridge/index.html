@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>World Coordinates: push() and pop() - Coding the Canvas</title>
+  <meta name="description" content="translate() moves the origin. rotate() spins everything after it. push() saves the world. pop() restores it. Without pop(), transforms leak." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/resource-pages.css" />
+</head>
+<body data-page="browse">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Coding the Canvas</a>
+    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../tools/index.html">Tools</a><a class="" href="../../sketches/index.html">Sketches</a><a class="" href="../../browse/index.html">Browse</a><a class="" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+
+    <section class="hero">
+      <p class="kicker">concept bridge</p>
+      <h1>World Coordinates: push() and pop()</h1>
+      <p class="lede"><code>translate()</code> moves the origin. <code>rotate()</code> spins everything after it. <code>push()</code> saves the world. <code>pop()</code> restores it. Without <code>pop()</code>, transforms leak.</p>
+    </section>
+
+    <section class="band split">
+      <div>
+        <h2>Every shape lives in a world. You can move the world.</h2>
+        <p>Instead of calculating rotated positions by hand, you move the coordinate system to where you want to draw, draw at (0, 0), then restore the system. <code>push()</code> saves the current transform state. <code>pop()</code> restores it. They are always a pair.</p>
+        <ul class="checklist">
+          <li><code>translate(x, y)</code> moves the origin — all shapes shift.</li>
+          <li><code>rotate(angle)</code> spins the entire world from the current origin.</li>
+          <li><code>push()</code> saves: origin position, rotation, fill, stroke.</li>
+          <li><code>pop()</code> restores exactly what was saved — no math required.</li>
+          <li>Every <code>push()</code> must have a matching <code>pop()</code>.</li>
+        </ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <!-- Original world axes -->
+          <line x1="14" y1="14" x2="14" y2="118" stroke="currentColor" stroke-width="1" opacity=".3"/>
+          <line x1="14" y1="14" x2="166" y2="14" stroke="currentColor" stroke-width="1" opacity=".3"/>
+          <text x="16" y="12" font-family="monospace" font-size="6" fill="currentColor" opacity=".4">(0,0)</text>
+          <!-- Translated world axes -->
+          <line x1="70" y1="56" x2="70" y2="118" stroke="#d96a3d" stroke-width="1.5" opacity=".7"/>
+          <line x1="70" y1="56" x2="160" y2="56" stroke="#d96a3d" stroke-width="1.5" opacity=".7"/>
+          <text x="72" y="54" font-family="monospace" font-size="6" fill="#d96a3d">translate(60,44)</text>
+          <!-- Rotated rect drawn at translated origin -->
+          <g transform="translate(70,80) rotate(25)">
+            <rect x="-22" y="-12" width="44" height="24" fill="#d96a3d" opacity=".7" rx="2"/>
+          </g>
+          <!-- Unaffected circle at true (0,0) area -->
+          <circle cx="32" cy="100" r="8" fill="currentColor" opacity=".3"/>
+          <text x="32" y="118" font-family="monospace" font-size="5" text-anchor="middle" fill="currentColor" opacity=".5">pop() restored</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <div style="background:#fff8f5;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 4px 4px 0">
+        <p class="meta" style="margin-bottom:4px">Common misconception</p>
+        <p style="font-size:14px;margin:0"><strong>"push() and pop() are the same as array methods."</strong> — These have nothing to do with arrays. <code>push()</code> saves the current drawing state (origin, rotation, fill, stroke) onto an internal stack. <code>pop()</code> restores the most recently saved state. The name is from a stack data structure, not from Array.push().</p>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta">Bridge moves</p>
+      <div class="bridge-map">
+        <div class="bridge-step"><div><h2>Translate, then draw</h2><p>Call <code>translate(100, 50)</code> and draw a <code>rect(0, 0, 40, 40)</code>. The rect appears at (100, 50) even though you coded (0, 0). Ask: "Where is the origin now?"</p></div></div>
+        <div class="bridge-step"><div><h2>Without pop(), the leak</h2><p>Don't use <code>push()</code>/<code>pop()</code>. Draw a second shape expecting it at (0, 0). It appears shifted. Every frame, <code>translate()</code> compounds — the origin drifts across the canvas until everything disappears.</p></div></div>
+        <div class="bridge-step"><div><h2>Wrap and restore</h2><p>Wrap the first shape in <code>push()</code>/<code>pop()</code>. The second shape returns to the original (0, 0). Ask: "What saved the world?" (push() did. pop() restored it.)</p></div></div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>Discussion question</h2>
+        <p style="font-size:13px">If you call <code>translate(10, 0)</code> inside <code>draw()</code> without <code>push()</code>/<code>pop()</code>, where does the origin end up after 100 frames?</p>
+        <p style="font-size:13px;margin-top:8px;color:var(--soft)">Follow-up: what one line of code would you add to stop the drift?</p>
+      </article>
+      <article>
+        <h2>Key vocabulary</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">translate()</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">rotate()</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">push()</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">pop()</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">origin</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">transform stack</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">leak</span>
+        </div>
+      </article>
+      <article class="resource-panel">
+        <h2>AP connection</h2>
+        <p>World transforms appear in recursion (each call gets its own transform context), object drawing methods, and any sketch with independently positioned elements. AP CS A: abstraction through encapsulating state.</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <div class="code-sample">
+        <span class="meta">p5.js — push/pop keeps shapes independent</span>
+        <pre>function draw() {
+  background(246);
+
+  // shape 1: rotated arm at (120, 80)
+  push();
+    translate(120, 80);
+    rotate(frameCount * 0.02);
+    rect(-30, -6, 60, 12); // drawn around local (0,0)
+  pop(); // origin restored to (0, 0)
+
+  // shape 2: unaffected by the rotation above
+  fill(217, 106, 61);
+  circle(30, 30, 20);
+}</pre>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:8px">3-minute demo script</p>
+      <div style="border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink)">
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 1.</strong> Draw a rect at (0, 0) with no translate. Run. Then add <code>translate(100, 60)</code> before the rect and run again. Ask: "Where is (0, 0) now? What moved — the shape, or the world?"</p>
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 2.</strong> Add a second <code>circle(0, 0, 20)</code> after the rect, no push/pop. Ask students to predict where it appears. Run. The circle is also at (100, 60) — the world moved for everything.</p>
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 3.</strong> Wrap the rect in <code>push()</code>/<code>pop()</code>. Run. Circle returns to (0, 0). Ask: "What did push() save? What did pop() restore?"</p>
+        <p style="font-size:13px;margin:0;border-top:1px solid var(--edge);padding-top:10px"><strong style="color:var(--accent)">Watch for:</strong> Students putting <code>translate()</code> inside <code>draw()</code> without <code>push()</code>/<code>pop()</code> — the origin drifts a little every frame. Ask "how many translates happened after 60 frames?" (60.) That's the bug.</p>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="grid cards">
+        <a class="card" href="../../concepts/functions/index.html">
+          <span class="meta">concept 07</span>
+          <h2>Functions</h2>
+          <p>Wrap push/pop + draw calls into a reusable function.</p>
+        </a>
+        <a class="card" href="../../concepts/recursion-as-fractals/index.html">
+          <span class="meta">concept 21</span>
+          <h2>Recursion as Fractals</h2>
+          <p>Each recursive call gets its own push/pop transform context.</p>
+        </a>
+        <a class="card" href="../../concepts/objects/index.html">
+          <span class="meta">concept 09</span>
+          <h2>Objects</h2>
+          <p>A show() method wraps push/pop so each object draws itself.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

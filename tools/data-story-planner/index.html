@@ -11,6 +11,104 @@
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="../../assets/styles.css" />
   <link rel="stylesheet" href="../../assets/resource-pages.css" />
+  <style>
+    .planner-card {
+      border: 1.5px solid var(--ink);
+      border-radius: 4px;
+      padding: 18px;
+      background: #fffdf7;
+      box-shadow: 2px 3px 0 var(--ink);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .planner-num {
+      font: 700 36px/1 var(--hand);
+      color: var(--accent);
+    }
+    .planner-card h2 { margin: 0 0 4px; font-size: 18px; }
+    .planner-card p.hint { font-size: 13px; color: var(--soft); margin: 0 0 10px; }
+    .planner-card textarea {
+      width: 100%;
+      min-height: 64px;
+      padding: 8px 10px;
+      border: 1.2px solid var(--ink);
+      border-radius: 3px;
+      background: var(--edge);
+      font: 13px/1.6 var(--body);
+      color: var(--ink);
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    .planner-card textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: #fff;
+    }
+    .planner-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .planner-inputs label {
+      font: 600 11px/1.2 var(--mono);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--soft);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .planner-inputs input[type=number] {
+      padding: 6px 8px;
+      border: 1.2px solid var(--ink);
+      border-radius: 3px;
+      background: var(--edge);
+      font: 600 13px/1 var(--mono);
+      color: var(--ink);
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .planner-inputs input[type=number]:focus {
+      outline: none; border-color: var(--accent); background: #fff;
+    }
+    .map-output {
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: var(--ink);
+      border-radius: 3px;
+      font: 600 13px/1.7 var(--mono);
+      color: #f6f2ea;
+      word-break: break-all;
+    }
+    .map-output .dim { color: #8c857a; }
+    .planner-actions { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+    .copy-btn {
+      font: 700 13px/1 var(--body);
+      padding: 10px 16px;
+      border: 1.2px solid var(--ink);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--ink);
+      cursor: pointer;
+      transition: background .1s;
+    }
+    .copy-btn:hover { background: var(--edge); }
+    .copy-btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .copy-btn.primary:hover { opacity: .9; }
+    .copy-feedback {
+      font-size: 12px;
+      color: var(--accent);
+      align-self: center;
+      display: none;
+    }
+    @media (max-width: 600px) {
+      .planner-card { grid-template-columns: 1fr; }
+      .planner-inputs { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
 </head>
 <body data-page="tools">
   <header class="site-header">
@@ -18,7 +116,6 @@
     <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="active" href="../../tools/index.html">Tools</a><a class="" href="../../sketches/index.html">Sketches</a><a class="" href="../../browse/index.html">Browse</a><a class="" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
   </header>
   <main>
-
     <section class="hero">
       <p class="kicker">classroom tool · ▦ Data</p>
       <h1>Data Story Planner</h1>
@@ -32,17 +129,16 @@
     <section class="band split">
       <div>
         <h2>Plan the drawing before planning the code.</h2>
-        <p>Students who jump straight to code make two decisions at once: what to show and how to show it. This planner separates them. Answer the five questions on paper first. By the time students open an editor, the hard design work is already done.</p>
+        <p>Students who jump straight to code make two decisions at once: what to show and how to show it. This planner separates them. Answer the five questions on screen first. By the time students open an editor, the hard design work is already done.</p>
         <ul class="checklist">
           <li>Name your data and its real-world range before mapping anything.</li>
           <li>Choose the visual mark (bar height, circle size, color) deliberately.</li>
-          <li>Write the <code>map()</code> call on paper — then copy it into code.</li>
+          <li>Write the <code>map()</code> call in Q4 — then copy it into code.</li>
           <li>Ask what the chart reveals that a table of numbers doesn't.</li>
         </ul>
       </div>
       <div class="mini-canvas" aria-hidden="true">
         <svg viewBox="0 0 180 132">
-          <!-- Simple bar chart -->
           <rect x="18" y="92" width="16" height="28" fill="currentColor" opacity=".3"/>
           <rect x="42" y="68" width="16" height="52" fill="currentColor" opacity=".3"/>
           <rect x="66" y="50" width="16" height="70" fill="#d96a3d" opacity=".85"/>
@@ -55,63 +151,82 @@
     </section>
 
     <section class="band">
-      <p class="meta" style="margin-bottom:16px">The five planning questions</p>
+      <p class="meta" style="margin-bottom:16px">Fill in your plan</p>
       <div style="display:grid;gap:12px">
 
-        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start">
-          <span style="font:700 36px/1 var(--hand);color:var(--accent)">1</span>
+        <div class="planner-card">
+          <span class="planner-num">1</span>
           <div>
-            <h2 style="margin:0 0 6px;font-size:18px">What is your dataset?</h2>
-            <p style="font-size:13px;color:var(--soft);margin:0 0 8px">Name the data and where it came from. A dataset without a source is just numbers.</p>
-            <div style="background:var(--edge);border-radius:3px;padding:8px 12px;font:600 12px/1.5 var(--mono);color:var(--soft)">Example: Hours of sleep for each day of the week. Collected from my own phone health app.</div>
+            <h2>What is your dataset?</h2>
+            <p class="hint">Name the data and where it came from. A dataset without a source is just numbers.</p>
+            <textarea id="q1" placeholder="Example: Hours of sleep for each day of the week. Collected from my phone health app."></textarea>
           </div>
         </div>
 
-        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start">
-          <span style="font:700 36px/1 var(--hand);color:var(--accent)">2</span>
+        <div class="planner-card">
+          <span class="planner-num">2</span>
           <div>
-            <h2 style="margin:0 0 6px;font-size:18px">What is the real range of your values?</h2>
-            <p style="font-size:13px;color:var(--soft);margin:0 0 8px">The minimum and maximum in the real world — not on the canvas. You need this to write your <code>map()</code> call.</p>
-            <div style="background:var(--edge);border-radius:3px;padding:8px 12px;font:600 12px/1.5 var(--mono);color:var(--soft)">Example: Minimum 4 hours, maximum 9 hours. Real range: 0 to 10 (or 4 to 9 — your choice).</div>
+            <h2>What is the real range of your values?</h2>
+            <p class="hint">The min and max in the real world — not on canvas. You need this to write your <code>map()</code> call.</p>
+            <textarea id="q2-desc" placeholder="Example: Hours of sleep. Min is about 4, max is about 9."></textarea>
+            <div class="planner-inputs" style="margin-top:10px">
+              <label>Real min<input type="number" id="real-min" value="0" step="any" /></label>
+              <label>Real max<input type="number" id="real-max" value="10" step="any" /></label>
+            </div>
           </div>
         </div>
 
-        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start">
-          <span style="font:700 36px/1 var(--hand);color:var(--accent)">3</span>
+        <div class="planner-card">
+          <span class="planner-num">3</span>
           <div>
-            <h2 style="margin:0 0 6px;font-size:18px">What visual mark will carry the data?</h2>
-            <p style="font-size:13px;color:var(--soft);margin:0 0 8px">Height? Width? Radius? Brightness? Color hue? Each encodes differently. Choose deliberately, not by default.</p>
-            <div style="background:var(--edge);border-radius:3px;padding:8px 12px;font:600 12px/1.5 var(--mono);color:var(--soft)">Example: Bar height. Taller bar = more sleep. Bars grow up from the bottom edge.</div>
+            <h2>What visual mark will carry the data?</h2>
+            <p class="hint">Height? Width? Radius? Brightness? Color hue? Each encodes differently. Choose deliberately, not by default.</p>
+            <textarea id="q3" placeholder="Example: Bar height. Taller bar = more sleep. Bars grow up from the bottom edge."></textarea>
           </div>
         </div>
 
-        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start">
-          <span style="font:700 36px/1 var(--hand);color:var(--accent)">4</span>
+        <div class="planner-card">
+          <span class="planner-num">4</span>
           <div>
-            <h2 style="margin:0 0 6px;font-size:18px">What are your canvas dimensions and output range?</h2>
-            <p style="font-size:13px;color:var(--soft);margin:0 0 8px">Write the <code>map()</code> call before opening the editor. If you can write it on paper, you understand it.</p>
-            <div style="background:var(--edge);border-radius:3px;padding:8px 12px;font:600 12px/1.5 var(--mono);color:var(--soft)">Example: Canvas 500 × 300. Bar height: map(value, 0, 10, 0, 220). Bars drawn from y=260 upward.</div>
+            <h2>What are your canvas dimensions and output range?</h2>
+            <p class="hint">Fill in the numbers — your <code>map()</code> call is generated automatically below.</p>
+            <div class="planner-inputs">
+              <label>Canvas width (px)<input type="number" id="canvas-w" value="500" /></label>
+              <label>Canvas height (px)<input type="number" id="canvas-h" value="300" /></label>
+              <label>Output min (px)<input type="number" id="out-min" value="0" /></label>
+              <label>Output max (px)<input type="number" id="out-max" value="220" /></label>
+            </div>
+            <div class="map-output" id="map-output">
+              <span class="dim">// your map() call:</span><br>
+              map(value, <span id="m-rmin">0</span>, <span id="m-rmax">10</span>, <span id="m-omin">0</span>, <span id="m-omax">220</span>)
+            </div>
           </div>
         </div>
 
-        <div style="border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start">
-          <span style="font:700 36px/1 var(--hand);color:var(--accent)">5</span>
+        <div class="planner-card">
+          <span class="planner-num">5</span>
           <div>
-            <h2 style="margin:0 0 6px;font-size:18px">What does this chart reveal that numbers alone don't?</h2>
-            <p style="font-size:13px;color:var(--soft);margin:0 0 8px">This is the most important question. If the chart doesn't reveal anything new, the visual mark choice may be wrong.</p>
-            <div style="background:var(--edge);border-radius:3px;padding:8px 12px;font:600 12px/1.5 var(--mono);color:var(--soft)">Example: The Thursday dip is obvious at a glance. A table of numbers makes it easy to skip over.</div>
+            <h2>What does this chart reveal that numbers alone don't?</h2>
+            <p class="hint">This is the most important question. If the chart doesn't reveal anything new, the visual mark choice may be wrong.</p>
+            <textarea id="q5" placeholder="Example: The Thursday dip is obvious at a glance. A table of numbers makes it easy to skip over."></textarea>
           </div>
         </div>
+      </div>
 
+      <div class="planner-actions">
+        <button class="copy-btn primary" id="btn-copy-map">Copy map() call</button>
+        <button class="copy-btn" id="btn-copy-plan">Copy full plan</button>
+        <button class="copy-btn" id="btn-clear">Clear</button>
+        <span class="copy-feedback" id="copy-feedback">Copied!</span>
       </div>
     </section>
 
     <section class="band">
       <p class="meta">Classroom flow</p>
       <div class="tool-flow">
-        <div class="tool-step"><div><h2>Paper first</h2><p>Print the five questions as a half-sheet. Students answer in pencil before opening any editor. The planner should take 5–8 minutes.</p></div></div>
-        <div class="tool-step"><div><h2>Write the map() call</h2><p>Question 4 forces students to write <code>map(value, min, max, 0, height - 40)</code> before seeing a canvas. If they can write it, they understand the scaling.</p></div></div>
-        <div class="tool-step"><div><h2>Compare with a partner</h2><p>Swap planners. Can your partner read your plan and describe what the canvas will look like? If yes, the plan is complete. If not, revise before coding.</p></div></div>
+        <div class="tool-step"><div><h2>Paper first</h2><p>Run the planner before opening any editor. The planner should take 5–8 minutes.</p></div></div>
+        <div class="tool-step"><div><h2>Write the map() call</h2><p>Q4 forces students to think through the scaling before seeing a canvas. If they can fill it in, they understand it.</p></div></div>
+        <div class="tool-step"><div><h2>Compare with a partner</h2><p>Can your partner read your plan and describe what the canvas will look like? If yes, the plan is complete. If not, revise before coding.</p></div></div>
       </div>
     </section>
 
@@ -126,7 +241,7 @@
       </article>
       <article class="resource-panel">
         <h2>Extension</h2>
-        <p style="font-size:13px">Run the planner twice with the same data but two different visual marks. Draw both charts and compare: which shows the story more clearly? Which hides something the other reveals?</p>
+        <p style="font-size:13px">Run the planner twice with the same data but two different visual marks. Compare: which shows the story more clearly? Which hides something the other reveals?</p>
       </article>
     </section>
 
@@ -175,12 +290,90 @@ function draw() {
         </a>
       </div>
     </section>
-
   </main>
   <footer class="site-footer">
     <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>
     <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="../../assets/site.js"></script>
+  <script>
+    const ids = { rMin: 'real-min', rMax: 'real-max', oMin: 'out-min', oMax: 'out-max' };
+
+    function updateMap() {
+      const rMin = document.getElementById('real-min').value || '0';
+      const rMax = document.getElementById('real-max').value || '10';
+      const oMin = document.getElementById('out-min').value  || '0';
+      const oMax = document.getElementById('out-max').value  || '220';
+      document.getElementById('m-rmin').textContent = rMin;
+      document.getElementById('m-rmax').textContent = rMax;
+      document.getElementById('m-omin').textContent = oMin;
+      document.getElementById('m-omax').textContent = oMax;
+    }
+
+    ['real-min','real-max','out-min','out-max'].forEach(id => {
+      document.getElementById(id).addEventListener('input', updateMap);
+    });
+
+    function showFeedback(msg) {
+      const el = document.getElementById('copy-feedback');
+      el.textContent = msg;
+      el.style.display = 'inline';
+      setTimeout(() => { el.style.display = 'none'; }, 1800);
+    }
+
+    document.getElementById('btn-copy-map').addEventListener('click', () => {
+      const rMin = document.getElementById('real-min').value || '0';
+      const rMax = document.getElementById('real-max').value || '10';
+      const oMin = document.getElementById('out-min').value  || '0';
+      const oMax = document.getElementById('out-max').value  || '220';
+      const text = `map(value, ${rMin}, ${rMax}, ${oMin}, ${oMax})`;
+      navigator.clipboard.writeText(text).then(() => showFeedback('Copied!'));
+    });
+
+    document.getElementById('btn-copy-plan').addEventListener('click', () => {
+      const q1   = document.getElementById('q1').value;
+      const q2   = document.getElementById('q2-desc').value;
+      const rMin = document.getElementById('real-min').value;
+      const rMax = document.getElementById('real-max').value;
+      const q3   = document.getElementById('q3').value;
+      const cW   = document.getElementById('canvas-w').value;
+      const cH   = document.getElementById('canvas-h').value;
+      const oMin = document.getElementById('out-min').value;
+      const oMax = document.getElementById('out-max').value;
+      const q5   = document.getElementById('q5').value;
+
+      const text = [
+        'DATA STORY PLAN',
+        '',
+        '1. Dataset',
+        q1 || '(blank)',
+        '',
+        '2. Real range',
+        q2 || '(blank)',
+        `   min: ${rMin}  max: ${rMax}`,
+        '',
+        '3. Visual mark',
+        q3 || '(blank)',
+        '',
+        '4. Canvas + map() call',
+        `   Canvas: ${cW} × ${cH}`,
+        `   map(value, ${rMin}, ${rMax}, ${oMin}, ${oMax})`,
+        '',
+        '5. What does this reveal?',
+        q5 || '(blank)',
+      ].join('\n');
+
+      navigator.clipboard.writeText(text).then(() => showFeedback('Plan copied!'));
+    });
+
+    document.getElementById('btn-clear').addEventListener('click', () => {
+      ['q1','q2-desc','q3','q5'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('real-min').value = '0';
+      document.getElementById('real-max').value = '10';
+      document.getElementById('out-min').value  = '0';
+      document.getElementById('out-max').value  = '220';
+      updateMap();
+    });
+  </script>
 </body>
 </html>

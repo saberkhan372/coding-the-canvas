@@ -11,6 +11,75 @@
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="../../assets/styles.css" />
   <link rel="stylesheet" href="../../assets/resource-pages.css" />
+  <style>
+    .noise-tool {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .noise-pane {
+      background: #fffdf7;
+      border: 1.5px solid var(--ink);
+      border-radius: 4px;
+      padding: 20px;
+      box-shadow: 2px 3px 0 var(--ink);
+    }
+    .mode-buttons { display: flex; flex-direction: column; gap: 6px; margin: 10px 0 14px; }
+    .mode-btn {
+      font: 600 12px/1 var(--body);
+      padding: 9px 12px;
+      border: 1.2px solid var(--ink);
+      border-radius: 3px;
+      background: var(--edge);
+      color: var(--soft);
+      cursor: pointer;
+      text-align: left;
+      transition: background .1s, color .1s;
+    }
+    .mode-btn:hover { background: var(--paper); }
+    .mode-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .noise-canvas-wrap {
+      background: #fff;
+      border: 1.5px solid var(--ink);
+      border-radius: 4px;
+      padding: 16px;
+      box-shadow: 2px 3px 0 var(--ink);
+    }
+    .noise-canvases {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .noise-canvas-col { display: flex; flex-direction: column; gap: 6px; }
+    .noise-canvas-label {
+      font: 600 10px/1 var(--mono);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--soft);
+    }
+    canvas.noise-c {
+      width: 100%;
+      height: 160px;
+      display: block;
+      border: 1px solid var(--edge);
+      border-radius: 3px;
+      background: #f9f7f2;
+    }
+    .speed-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--soft);
+    }
+    .speed-row input[type=range] { flex: 1; accent-color: var(--accent); }
+    @media (max-width: 700px) {
+      .noise-tool { grid-template-columns: 1fr; }
+      .noise-canvases { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body data-page="tools">
   <header class="site-header">
@@ -18,7 +87,6 @@
     <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="active" href="../../tools/index.html">Tools</a><a class="" href="../../sketches/index.html">Sketches</a><a class="" href="../../browse/index.html">Browse</a><a class="" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
   </header>
   <main>
-
     <section class="hero">
       <p class="kicker">classroom tool · ◎ Motion</p>
       <h1>Noise vs Random Explorer</h1>
@@ -42,10 +110,8 @@
       </div>
       <div class="mini-canvas" aria-hidden="true">
         <svg viewBox="0 0 180 132">
-          <!-- Top: jittery random path -->
           <polyline points="10,30 32,18 54,42 76,22 98,38 120,14 142,40 164,20" fill="none" stroke="currentColor" stroke-width="2" opacity=".4"/>
           <text x="10" y="12" font-family="monospace" font-size="6" fill="currentColor" opacity=".5">random()</text>
-          <!-- Bottom: smooth noise path -->
           <path d="M10,100 C30,88 50,112 70,100 S110,88 130,100 S160,112 170,100" fill="none" stroke="#d96a3d" stroke-width="2.5"/>
           <text x="10" y="94" font-family="monospace" font-size="6" fill="#d96a3d">noise(t)</text>
         </svg>
@@ -53,28 +119,35 @@
     </section>
 
     <section class="band">
-      <div class="mock-tool">
-        <div class="mock-tool-pane">
+      <p class="meta" style="margin-bottom:14px">Live comparison</p>
+      <div class="noise-tool">
+        <div class="noise-pane">
           <p class="meta">Mode</p>
-          <h2 style="margin:8px 0 4px">Walk</h2>
-          <p style="font-size:13px;color:var(--soft);margin:0 0 14px">x moves right; y controlled by noise. The dot drifts — never teleports.</p>
-          <div class="token-row">
-            <span class="token">Jitter</span>
-            <span class="token">Walk</span>
-            <span class="token">Wave</span>
-            <span class="token">Terrain</span>
+          <div class="mode-buttons">
+            <button class="mode-btn active" data-mode="jitter">Jitter</button>
+            <button class="mode-btn" data-mode="walk">Walk</button>
+            <button class="mode-btn" data-mode="wave">Wave</button>
+            <button class="mode-btn" data-mode="terrain">Terrain</button>
           </div>
-          <p style="font-size:12px;color:var(--faint);margin-top:14px">Each mode uses the same noise() call with a different visual mapping.</p>
+          <p style="font-size:11px;color:var(--faint);margin:0 0 12px" id="mode-desc">Each frame picks a completely new position.</p>
+          <div class="speed-row">
+            <span>Slow</span>
+            <input type="range" id="speed-slider" min="1" max="20" value="5" />
+            <span>Fast</span>
+          </div>
+          <p style="font-size:11px;color:var(--faint);margin-top:6px">t increment: <span id="speed-val">0.02</span></p>
         </div>
-        <div class="mock-canvas">
-          <svg viewBox="0 0 220 150">
-            <!-- Smooth noise walk path in orange -->
-            <path d="M10,100 C30,70 50,120 80,90 S120,60 150,85 S190,110 210,75" fill="none" stroke="#d96a3d" stroke-width="3" stroke-linecap="round"/>
-            <!-- Jittery random path in grey (faded, top) -->
-            <polyline points="10,35 30,20 50,45 70,28 90,42 110,18 130,38 150,24 170,40 190,15 210,35" fill="none" stroke="#8c857a" stroke-width="1.5" stroke-dasharray="3 3"/>
-            <text x="12" y="14" font-family="monospace" font-size="7" fill="#8c857a">random()</text>
-            <text x="12" y="140" font-family="monospace" font-size="7" fill="#d96a3d">noise(t) — Walk mode</text>
-          </svg>
+        <div class="noise-canvas-wrap">
+          <div class="noise-canvases">
+            <div class="noise-canvas-col">
+              <span class="noise-canvas-label" style="color:#8c857a">random()</span>
+              <canvas class="noise-c" id="canvas-random"></canvas>
+            </div>
+            <div class="noise-canvas-col">
+              <span class="noise-canvas-label" style="color:#d96a3d">noise(t)</span>
+              <canvas class="noise-c" id="canvas-noise"></canvas>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -82,9 +155,9 @@
     <section class="band">
       <p class="meta">Classroom flow</p>
       <div class="tool-flow">
-        <div class="tool-step"><div><h2>Jitter first</h2><p>Show a dot at <code>random(width)</code> each frame. Students feel how abrasive it is. Ask: "What would you change to make it calmer?" Let them reach toward the idea of memory.</p></div></div>
-        <div class="tool-step"><div><h2>Introduce noise(t)</h2><p>Replace with <code>noise(t)</code> where <code>t += 0.02</code> each frame. The dot now drifts. Ask: "What is <code>t</code> doing? What happens if we don't change it?" (Same value every frame — it freezes.)</p></div></div>
-        <div class="tool-step"><div><h2>Tune the increment</h2><p>Set <code>t += 0.001</code> (very slow) vs <code>t += 0.1</code> (fast/jittery). Ask: "What does the increment control?" Smooth randomness is a design parameter, not an accident.</p></div></div>
+        <div class="tool-step"><div><h2>Jitter first</h2><p>Show a dot at <code>random(width)</code> each frame. Students feel how abrasive it is. Ask: "What would make it calmer?"</p></div></div>
+        <div class="tool-step"><div><h2>Introduce noise(t)</h2><p>Replace with <code>noise(t)</code> where <code>t += 0.02</code> each frame. The dot now drifts. Ask: "What happens if we don't change t?"</p></div></div>
+        <div class="tool-step"><div><h2>Tune the increment</h2><p>Use the slider — very slow vs fast. Ask: "What does the increment control?" Smooth randomness is a design parameter, not an accident.</p></div></div>
       </div>
     </section>
 
@@ -99,7 +172,7 @@
       </article>
       <article class="resource-panel">
         <h2>Extension: 2D noise</h2>
-        <p style="font-size:13px">Map a grid of cells to <code>noise(x * 0.05, y * 0.05)</code> — values close in space are close in value. This produces terrain. Compare to a grid of <code>random()</code> values (static snow).</p>
+        <p style="font-size:13px">Switch to Terrain mode — values close in space are close in value. Compare to a grid of <code>random()</code> values (static snow).</p>
       </article>
     </section>
 
@@ -151,12 +224,186 @@ function draw() {
         </a>
       </div>
     </section>
-
   </main>
   <footer class="site-footer">
     <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>
     <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="../../assets/site.js"></script>
+  <script>
+    // --- Value noise (smoothstep interpolation between random table) ---
+    const noiseTable = new Float32Array(512);
+    for (let k = 0; k < 512; k++) noiseTable[k] = Math.random();
+
+    function vnoise(t) {
+      const ti = Math.floor(t) & 511;
+      const tf = t - Math.floor(t);
+      const u  = tf * tf * (3 - 2 * tf); // smoothstep
+      return noiseTable[ti] * (1 - u) + noiseTable[(ti + 1) & 511] * u;
+    }
+
+    function vnoise2(x, y) {
+      const xi = Math.floor(x) & 255, yi = Math.floor(y) & 255;
+      const xf = x - Math.floor(x),  yf = y - Math.floor(y);
+      const ux  = xf * xf * (3 - 2 * xf);
+      const uy  = yf * yf * (3 - 2 * yf);
+      const n00 = noiseTable[(xi + yi * 57) & 511];
+      const n10 = noiseTable[(xi + 1 + yi * 57) & 511];
+      const n01 = noiseTable[(xi + (yi + 1) * 57) & 511];
+      const n11 = noiseTable[(xi + 1 + (yi + 1) * 57) & 511];
+      return (n00*(1-ux) + n10*ux) * (1-uy) + (n01*(1-ux) + n11*ux) * uy;
+    }
+
+    // --- State ---
+    const cR   = document.getElementById('canvas-random');
+    const cN   = document.getElementById('canvas-noise');
+    const ctxR = cR.getContext('2d');
+    const ctxN = cN.getContext('2d');
+    const modeDesc  = document.getElementById('mode-desc');
+    const speedSlider = document.getElementById('speed-slider');
+    const speedVal    = document.getElementById('speed-val');
+
+    let mode = 'jitter';
+    let t = 0;
+    let rTrail = [], nTrail = [];
+    let raf;
+
+    const modeDescs = {
+      jitter:  'Each frame picks a completely new random position.',
+      walk:    'x moves right; y from noise vs random. The noise dot drifts, the random dot teleports.',
+      wave:    'Both draw a wave — noise is smooth, random is jagged.',
+      terrain: 'A 2D grid: noise produces hills, random produces static snow.',
+    };
+
+    function resize() {
+      [cR, cN].forEach(c => {
+        c.width  = c.offsetWidth;
+        c.height = c.offsetHeight || 160;
+      });
+      rTrail = []; nTrail = [];
+    }
+
+    function getIncrement() {
+      return parseFloat(speedSlider.value) * 0.004;
+    }
+
+    function drawFrame() {
+      const W = cR.width, H = cR.height;
+      const inc = getIncrement();
+
+      if (mode === 'jitter') {
+        // random: dot at random position
+        ctxR.clearRect(0, 0, W, H);
+        ctxR.fillStyle = '#f9f7f2';
+        ctxR.fillRect(0, 0, W, H);
+        const rx = Math.random() * (W - 20) + 10;
+        const ry = Math.random() * (H - 20) + 10;
+        ctxR.beginPath(); ctxR.arc(rx, ry, 10, 0, Math.PI*2);
+        ctxR.fillStyle = '#8c857a'; ctxR.fill();
+
+        // noise: dot at smooth position
+        ctxN.clearRect(0, 0, W, H);
+        ctxN.fillStyle = '#f9f7f2';
+        ctxN.fillRect(0, 0, W, H);
+        const nx = vnoise(t) * (W - 20) + 10;
+        const ny = vnoise(t + 100) * (H - 20) + 10;
+        ctxN.beginPath(); ctxN.arc(nx, ny, 10, 0, Math.PI*2);
+        ctxN.fillStyle = '#d96a3d'; ctxN.fill();
+
+      } else if (mode === 'walk') {
+        // trail walk: scroll left, plot new rightmost point
+        const plotX = W - 2;
+
+        // random: new random y each frame
+        const ry = Math.random() * (H - 20) + 10;
+        rTrail.push(ry);
+        if (rTrail.length > W) rTrail.shift();
+
+        // noise: smooth y
+        const ny = vnoise(t) * (H - 20) + 10;
+        nTrail.push(ny);
+        if (nTrail.length > W) nTrail.shift();
+
+        [ctxR, ctxN].forEach((ctx, idx) => {
+          const trail = idx === 0 ? rTrail : nTrail;
+          const col   = idx === 0 ? '#8c857a' : '#d96a3d';
+          ctx.clearRect(0, 0, W, H);
+          ctx.fillStyle = '#f9f7f2'; ctx.fillRect(0, 0, W, H);
+          ctx.beginPath();
+          trail.forEach((y, x) => x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y));
+          ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.stroke();
+          // current dot
+          if (trail.length > 0) {
+            ctx.beginPath();
+            ctx.arc(trail.length - 1, trail[trail.length-1], 5, 0, Math.PI*2);
+            ctx.fillStyle = col; ctx.fill();
+          }
+        });
+
+      } else if (mode === 'wave') {
+        [ctxR, ctxN].forEach((ctx, idx) => {
+          ctx.clearRect(0, 0, W, H);
+          ctx.fillStyle = '#f9f7f2'; ctx.fillRect(0, 0, W, H);
+          ctx.beginPath();
+          for (let x = 0; x < W; x++) {
+            let y;
+            if (idx === 0) {
+              // random: reseed each frame using a stable-ish per-x random
+              y = H/2 + (noiseTable[(x * 7 + Math.floor(t * 50)) & 511] * 2 - 1) * (H * 0.38);
+            } else {
+              y = H/2 + (vnoise(x * 0.015 + t) * 2 - 1) * (H * 0.38);
+            }
+            x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+          }
+          ctx.strokeStyle = idx === 0 ? '#8c857a' : '#d96a3d';
+          ctx.lineWidth = 2; ctx.stroke();
+        });
+
+      } else if (mode === 'terrain') {
+        const COLS = 28, ROWS = 18;
+        const cw = W / COLS, ch = H / ROWS;
+
+        [ctxR, ctxN].forEach((ctx, idx) => {
+          ctx.clearRect(0, 0, W, H);
+          for (let row = 0; row < ROWS; row++) {
+            for (let col = 0; col < COLS; col++) {
+              let v;
+              if (idx === 0) {
+                v = noiseTable[(col + row * COLS + Math.floor(t * 8)) & 511];
+              } else {
+                v = vnoise2(col * 0.3 + t * 0.5, row * 0.3);
+              }
+              const brightness = Math.round(v * 200 + 30);
+              ctx.fillStyle = idx === 0
+                ? `rgb(${brightness},${brightness},${brightness})`
+                : `rgb(${Math.round(brightness * 0.9)},${Math.round(brightness * 0.55)},${Math.round(brightness * 0.35)})`;
+              ctx.fillRect(col * cw, row * ch, cw - 1, ch - 1);
+            }
+          }
+        });
+      }
+
+      t += inc;
+      raf = requestAnimationFrame(drawFrame);
+    }
+
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        mode = btn.dataset.mode;
+        modeDesc.textContent = modeDescs[mode];
+        t = 0; rTrail = []; nTrail = [];
+      });
+    });
+
+    speedSlider.addEventListener('input', () => {
+      speedVal.textContent = getIncrement().toFixed(3);
+    });
+
+    window.addEventListener('resize', resize);
+    resize();
+    drawFrame();
+  </script>
 </body>
 </html>

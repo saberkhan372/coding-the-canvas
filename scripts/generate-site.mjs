@@ -119,10 +119,13 @@ const bridges = [
 ];
 
 const tools = [
-  ['index', 'Workshop Tools', 'Interactive helpers, studios, and explainers grouped by concept.', ['Tool cards', 'Related concept links', 'Teacher launch mode', 'Estimated use time']],
-  ['for-loop-stepper', 'For Loop Stepper', 'Step through initialization, condition, body, and increment.', ['Step controls', 'Grid output', 'Variable readout', 'Reset/share/copy']],
-  ['sketch-playground', 'Sketch Playground', 'A live canvas and code surface for remixing examples.', ['Code editor area', 'Canvas preview', 'Console/errors', 'Fork/copy/export']],
-  ['share-export', 'Share & Export Flow', 'Save an image, copy a sketch, or prepare a classroom-safe link.', ['Copy link', 'Download code', 'Export image', 'Sharing notes']],
+  ['index',                   'Workshop Tools',            'Interactive helpers, studios, and explainers grouped by concept.',                          ['Tool cards', 'Related concept links', 'Teacher launch mode', 'Estimated use time']],
+  ['for-loop-stepper',        'For Loop Stepper',          'Step through initialization, condition, body, and increment one press at a time.',          ['Step/reset controls', 'Live canvas', 'Code highlighting', 'Phase tokens']],
+  ['pattern-logic-explorer',  'Pattern Logic Explorer',    'Pick a rule, see it on the grid — every pattern is an if-statement on a loop variable.',    ['Rule buttons', '1D row + 2D grid', 'Live SVG redraw', 'Predict before check']],
+  ['noise-random-explorer',   'Noise vs Random Explorer',  'Compare noise() and random() side by side across four visual modes.',                       ['Jitter/Walk/Wave/Terrain', 'Live animation', 'Speed slider', 'Value noise']],
+  ['data-story-planner',      'Data Story Planner',        'Answer five questions to plan a data visualization before writing any code.',               ['Editable fields', 'Live map() call', 'Copy buttons', 'Clear/reset']],
+  ['sketch-playground',       'Sketch Playground',         'A live canvas and code surface for remixing examples.',                                     ['Code editor area', 'Canvas preview', 'Console/errors', 'Fork/copy/export']],
+  ['share-export',            'Share & Export Flow',       'Save an image, copy a sketch, or prepare a classroom-safe link.',                           ['Copy link', 'Download code', 'Export image', 'Sharing notes']],
 ];
 
 const corePages = [

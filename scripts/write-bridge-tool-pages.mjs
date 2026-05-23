@@ -3,6 +3,14 @@ import { dirname, join } from 'node:path';
 
 const root = process.cwd();
 
+// These tool pages have hand-crafted interactive JS. The generator must never overwrite them.
+const HANDCRAFTED = new Set([
+  'tools/for-loop-stepper/index.html',
+  'tools/pattern-logic-explorer/index.html',
+  'tools/noise-random-explorer/index.html',
+  'tools/data-story-planner/index.html',
+]);
+
 const navItems = [
   ['Home', 'index.html', 'home'],
   ['Concepts', 'concepts/index.html', 'concepts'],
@@ -397,6 +405,7 @@ for (const page of bridges) {
 }
 
 for (const page of tools) {
+  if (HANDCRAFTED.has(page.filePath)) continue; // preserve hand-crafted interactive pages
   writeFileSync(join(root, page.filePath), shell({
     filePath: page.filePath,
     active: 'browse',

@@ -113,6 +113,9 @@ const bridges = [
   ['modulo-bridge', 'Modulo Bridge', 'Counting in cycles for wrapping, patterns, and every-nth behavior.', ['Cycle visual', 'Pattern examples', 'Related lessons', 'Short code snippets']],
   ['pattern-logic', 'Pattern Logic', 'How repetition, conditions, symmetry, and variation create visual systems.', ['Recipe gallery', 'Grid variations', 'Rule cards', 'Extension prompts']],
   ['arrays-one-thing-to-many-things', 'Arrays: One Thing to Many Things', 'The conceptual bridge from one variable to lists of values.', ['Memory/index model', 'Single-to-many comparison', 'Loop traversal', 'ArrayList connection']],
+  ['objects-bridge', 'Objects: Bundling Data and Behavior', 'When a thing needs more than one variable to describe it, that is an object.', ['Parallel array pain', 'Class refactor', 'Methods and behavior', 'AP CSA class connection']],
+  ['push-pop-bridge', 'World Coordinates: push() and pop()', 'Saving and restoring drawing state so transforms do not leak into later shapes.', ['Translate/rotate model', 'Transform stack', 'Leak demo', 'Object drawing methods']],
+  ['state-machines-bridge', 'State Machines: Screens, Modes, and Transitions', 'A state variable names the current mode and events move between screens.', ['Mode diagram', 'Before/after booleans', 'Transition events', 'Three-screen sketch']],
 ];
 
 const tools = [

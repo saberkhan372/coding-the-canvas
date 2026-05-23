@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>State Machines: Screens, Modes, and Transitions - Coding the Canvas</title>
+  <meta name="description" content="A state variable names the current mode. draw() renders one mode at a time. Events change the state and move the sketch to a new screen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/resource-pages.css" />
+</head>
+<body data-page="browse">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Coding the Canvas</a>
+    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../tools/index.html">Tools</a><a class="" href="../../sketches/index.html">Sketches</a><a class="" href="../../browse/index.html">Browse</a><a class="" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+
+    <section class="hero">
+      <p class="kicker">concept bridge</p>
+      <h1>State Machines: Screens, Modes, and Transitions</h1>
+      <p class="lede">A state variable names the current mode. <code>draw()</code> renders one mode at a time. Events change the state and move the sketch to a new screen.</p>
+    </section>
+
+    <section class="band split">
+      <div>
+        <h2>One sketch can have many modes.</h2>
+        <p>Students often build a game by piling every condition into <code>draw()</code>: if the mouse is clicked, if the score is high, if the timer is done, if the player is alive. A state machine makes the structure visible. The sketch is in exactly one mode now, and only some events are allowed to move it to another mode.</p>
+        <ul class="checklist">
+          <li>Use one variable to name the active mode: <code>let state = "menu"</code>.</li>
+          <li>In <code>draw()</code>, choose exactly one screen based on that value.</li>
+          <li>Events create transitions: click, key press, score limit, timer end.</li>
+          <li>Draw the diagram first: states are circles, transitions are arrows.</li>
+          <li>Reset mode-specific variables when entering a new state.</li>
+        </ul>
+      </div>
+      <div class="mini-canvas" aria-hidden="true">
+        <svg viewBox="0 0 180 132">
+          <circle cx="35" cy="66" r="24" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="35" y="69" font-family="monospace" font-size="8" text-anchor="middle" fill="currentColor">menu</text>
+          <circle cx="92" cy="38" r="24" fill="#fff8f5" stroke="#d96a3d" stroke-width="1.5"/>
+          <text x="92" y="41" font-family="monospace" font-size="8" text-anchor="middle" fill="#d96a3d">play</text>
+          <circle cx="145" cy="88" r="24" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="145" y="91" font-family="monospace" font-size="7" text-anchor="middle" fill="currentColor">gameover</text>
+          <path d="M56 56 L69 49" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <polygon points="69,45 77,45 72,52" fill="currentColor"/>
+          <path d="M112 51 L126 65" stroke="#d96a3d" stroke-width="1.2" fill="none"/>
+          <polygon points="129,61 133,69 124,67" fill="#d96a3d"/>
+          <path d="M122 91 Q82 118 52 80" stroke="currentColor" stroke-width="1.2" fill="none" opacity=".55"/>
+          <polygon points="53,84 47,75 57,77" fill="currentColor" opacity=".55"/>
+          <text x="62" y="42" font-family="monospace" font-size="6" fill="currentColor">click</text>
+          <text x="123" y="55" font-family="monospace" font-size="6" fill="#d96a3d">lose</text>
+          <text x="83" y="114" font-family="monospace" font-size="6" fill="currentColor" opacity=".65">restart</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="band">
+      <div style="background:#fff8f5;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 4px 4px 0">
+        <p class="meta" style="margin-bottom:4px">Common misconception</p>
+        <p style="font-size:14px;margin:0"><strong>"A state machine is a special advanced feature."</strong> — It is just a variable plus conditionals plus events. The power comes from naming the modes clearly and making transitions explicit, not from new syntax.</p>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>Before: scattered booleans</h2>
+        <div class="code-sample" style="box-shadow:none;margin-top:8px">
+          <span class="meta">many flags can conflict</span>
+          <pre>let started = false;
+let paused = false;
+let lost = false;
+
+function draw() {
+  if (!started) drawMenu();
+  if (started && !paused) drawGame();
+  if (paused) drawPause();
+  if (lost) drawGameOver();
+}</pre>
+        </div>
+        <p style="font-size:13px;margin-top:10px;color:var(--soft)">This can accidentally describe impossible situations: started and lost, paused and not started, game over and still playing.</p>
+      </article>
+      <article>
+        <h2>After: one state</h2>
+        <div class="code-sample" style="box-shadow:none;margin-top:8px">
+          <span class="meta">one value names the mode</span>
+          <pre>let state = "menu";
+
+function draw() {
+  if (state === "menu") {
+    drawMenu();
+  } else if (state === "playing") {
+    drawGame();
+  } else if (state === "paused") {
+    drawPause();
+  } else if (state === "gameover") {
+    drawGameOver();
+  }
+}</pre>
+        </div>
+        <p style="font-size:13px;margin-top:10px;color:var(--soft)">The sketch is in one mode at a time. That makes the code easier to read, test, and extend.</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <h2>What students are really learning</h2>
+      <p>A state machine gives structure to time. The sketch is not just responding to the current mouse position; it remembers where the user is in the experience. Menu, playing, paused, and game over are not separate programs. They are modes inside one program.</p>
+      <p>The diagram matters because it separates allowed moves from accidental ones. From <code>"menu"</code>, a click can start the game. From <code>"playing"</code>, a collision can move to <code>"gameover"</code>. From <code>"gameover"</code>, a click can restart. If there is no arrow, the code should not transition that way.</p>
+      <div class="bridge-map" style="margin-top:14px">
+        <div class="bridge-step"><div><h2>State</h2><p>The current mode: <code>"menu"</code>, <code>"playing"</code>, <code>"paused"</code>, or <code>"gameover"</code>.</p></div></div>
+        <div class="bridge-step"><div><h2>Render</h2><p><code>draw()</code> checks the mode and runs the screen logic for that mode only.</p></div></div>
+        <div class="bridge-step"><div><h2>Transition</h2><p>An event or condition changes the mode and may reset variables for the next screen.</p></div></div>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta">Bridge moves</p>
+      <div class="bridge-map">
+        <div class="bridge-step"><div><h2>List the screens</h2><p>Ask students to name every screen or mode before opening the editor. Keep the first version small: menu, playing, game over.</p></div></div>
+        <div class="bridge-step"><div><h2>Draw arrows</h2><p>For each arrow, write the event above it: click starts, collision loses, click restarts. This becomes the transition code.</p></div></div>
+        <div class="bridge-step"><div><h2>Code one transition</h2><p>Start with menu to playing. Then add one losing condition. Test each transition before adding another state.</p></div></div>
+      </div>
+    </section>
+
+    <section class="band columns">
+      <article>
+        <h2>Discussion question</h2>
+        <p style="font-size:13px">Can the sketch be both <code>"menu"</code> and <code>"playing"</code> at the same time? What bug becomes possible if you use two booleans instead?</p>
+        <p style="font-size:13px;margin-top:8px;color:var(--soft)">Follow-up: where should you reset <code>score</code> - while drawing the menu, or when transitioning into a new game?</p>
+      </article>
+      <article>
+        <h2>Key vocabulary</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">state</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">mode</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">transition</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">event</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">diagram</span>
+          <span style="display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:3px 10px;font:600 11px/1 var(--mono)">reset</span>
+        </div>
+      </article>
+      <article class="resource-panel">
+        <h2>AP connection</h2>
+        <p>State machines combine variables, conditionals, events, and abstraction. They support AP CSP selection/iteration and AP CS A object design when each state delegates to methods.</p>
+      </article>
+    </section>
+
+    <section class="band">
+      <div class="code-sample">
+        <span class="meta">p5.js - three-screen state machine</span>
+        <pre>let state = "menu";
+let score = 0;
+
+function setup() {
+  createCanvas(400, 240);
+  textAlign(CENTER, CENTER);
+}
+
+function draw() {
+  if (state === "menu") {
+    background(30);
+    fill(255);
+    text("Click to start", width / 2, height / 2);
+  } else if (state === "playing") {
+    background(246);
+    score++;
+    fill('#d96a3d');
+    circle(width / 2, height / 2, 40);
+    fill(30);
+    text("Score: " + score, width / 2, 30);
+    if (score &gt; 180) {
+      state = "gameover";
+    }
+  } else if (state === "gameover") {
+    background('#fff8f5');
+    fill(30);
+    text("Game over - click to restart", width / 2, height / 2);
+  }
+}
+
+function mousePressed() {
+  if (state === "menu") {
+    score = 0;
+    state = "playing";
+  } else if (state === "gameover") {
+    state = "menu";
+  }
+}</pre>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="meta" style="margin-bottom:8px">3-minute demo script</p>
+      <div style="border:1.5px solid var(--ink);border-radius:4px;padding:18px;background:#fffdf7;box-shadow:2px 3px 0 var(--ink)">
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 1.</strong> Ask students to name the screens in a simple game. Write <code>menu</code>, <code>playing</code>, and <code>gameover</code> as circles on the board.</p>
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 2.</strong> Add arrows and labels: click, lose, restart. Say: "These arrows are the only legal ways the sketch moves between screens."</p>
+        <p style="font-size:13px;margin:0 0 10px"><strong>Step 3.</strong> Code only <code>menu</code> and <code>playing</code>. Test the click transition. Then add <code>gameover</code>. Reset <code>score</code> when entering a new game.</p>
+        <p style="font-size:13px;margin:0;border-top:1px solid var(--edge);padding-top:10px"><strong style="color:var(--accent)">Watch for:</strong> students resetting variables inside <code>draw()</code> every frame. Put reset logic in the transition, not in the screen's drawing code.</p>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="grid cards">
+        <a class="card" href="../../concepts/state-machines/index.html">
+          <span class="meta">concept 10</span>
+          <h2>State Machines</h2>
+          <p>Open the full lesson on modes, screens, and transitions.</p>
+        </a>
+        <a class="card" href="../../concepts/conditionals/index.html">
+          <span class="meta">concept 05</span>
+          <h2>Conditionals</h2>
+          <p>The if/else foundation for choosing a screen.</p>
+        </a>
+        <a class="card" href="../../concepts/objects/index.html">
+          <span class="meta">concept 09</span>
+          <h2>Objects</h2>
+          <p>Let each object update differently depending on the current state.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

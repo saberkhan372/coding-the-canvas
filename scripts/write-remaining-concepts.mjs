@@ -39,7 +39,7 @@ const pages = [
     bigIdea: 'A color is not magic or paint. It is data: 8 bits for red, 8 bits for green, and 8 bits for blue. Each channel stores a number from 0 to 255. Put three channels together and you get a 24-bit color.',
     checklist: ['RGB channels: red, green, blue', '8 bits per channel means 0-255', '24 bits total means 16,777,216 colors', 'Hex color pairs are the same numbers in base 16', 'Changing one channel changes the feeling of the image'],
     visual: 'rgb',
-    codeTitle: 'Code - build a color from three numbers',
+    codeTitle: 'Code — build a color from three numbers',
     p5: `let r = 217;
 let g = 106;
 let b = 61;
@@ -98,7 +98,7 @@ void draw() {
     bigIdea: 'A bitmap is a grid where each cell stores data for a pixel. In the simplest version, 0 means white and 1 means black. Students can draw with bits, then decode the same grid back into an image.',
     checklist: ['A bit has two states: 0 or 1', 'A bitmap maps bits to pixels', 'Rows and columns are data structure and image at the same time', 'Resolution is grid size', 'More bits per pixel means more possible colors'],
     visual: 'bitmap',
-    codeTitle: 'Code - draw a bitmap from 0s and 1s',
+    codeTitle: 'Code — draw a bitmap from 0s and 1s',
     p5: `let bits = [
   '00111100',
   '01000010',
@@ -173,7 +173,7 @@ void draw() {
     bigIdea: 'If a bitmap has a long run of repeated pixels, you do not need to write every pixel down. You can store the value and the count. That is the heart of run-length encoding: data becomes drawing instructions.',
     checklist: ['Identify repeated runs', 'Encode as value + count', 'Decode by drawing the run back out', 'Compare original length to compressed length', 'Name the tradeoff: compression works best when data has patterns'],
     visual: 'rle',
-    codeTitle: 'Code - decode run-length drawing instructions',
+    codeTitle: 'Code — decode run-length drawing instructions',
     p5: `let runs = [
   ['white', 3], ['black', 5],
   ['white', 2], ['black', 2], ['white', 4],
@@ -243,7 +243,7 @@ void draw() {
     bigIdea: 'A histogram is a drawing of counts. Instead of looking at every pixel individually, count how often each brightness or color value appears. Sampling asks a related question: can a smaller set of values represent the whole?',
     checklist: ['Extract brightness from pixels', 'Count values into buckets', 'Draw bars from counts', 'Change sample size and compare the result', 'Discuss what gets missed by sampling'],
     visual: 'histogram',
-    codeTitle: 'Code - count brightness buckets',
+    codeTitle: 'Code — count brightness buckets',
     p5: `let buckets = new Array(8).fill(0);
 
 function setup() {
@@ -310,7 +310,7 @@ void draw() {
     bigIdea: 'A dataset is a list of records. Each record can become a shape, position, color, or motion. The creative decision is the mapping: which data field controls which visual property?',
     checklist: ['Load CSV or JSON', 'Preview rows and fields', 'Map values to x, y, size, color, or opacity', 'Normalize with map()', 'Ask what the visualization reveals and hides'],
     visual: 'data',
-    codeTitle: 'Code - map rows to marks',
+    codeTitle: 'Code — map rows to marks',
     p5: `let rows = [
   {name: 'A', value: 12},
   {name: 'B', value: 34},
@@ -372,7 +372,7 @@ void draw() {
     bigIdea: 'Students build a simple image filter, then test it on different images. The same rule can work well for one case and fail badly for another. Bias becomes concrete: not intention, but uneven performance across examples.',
     checklist: ['Build a threshold or color-detection filter', 'Test on multiple images', 'Record where it works and fails', 'Name assumptions in the rule', 'Propose a better test set'],
     visual: 'bias',
-    codeTitle: 'Code - a threshold filter with visible failure',
+    codeTitle: 'Code — a threshold filter with visible failure',
     p5: `function isLightEnough(r, g, b) {
   let brightness = (r + g + b) / 3;
   return brightness > 140;
@@ -414,7 +414,7 @@ boolean passes = isLightEnough(red(c), green(c), blue(c));`,
     bigIdea: 'Students test their own sketches for contrast and color dependence. A beautiful palette can still be inaccessible. The goal is not to remove style, but to make style work for more people.',
     checklist: ['Measure contrast between foreground and background', 'Simulate color-vision differences', 'Avoid meaning by color alone', 'Add labels, patterns, or shape differences', 'Build an accessible palette'],
     visual: 'access',
-    codeTitle: 'Code - compare color contrast',
+    codeTitle: 'Code — compare color contrast',
     p5: `function luminance(r, g, b) {
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
@@ -453,7 +453,7 @@ float contrast = abs(luminance(246,242,234) - luminance(28,26,23));`,
     bigIdea: 'A generative sketch contains human decisions: the rules, the randomness, the constraints, the dataset, and the act of curation. Students trace which parts of the output came from code and which came from the person who wrote or selected it.',
     checklist: ['Identify human choices in a generative sketch', 'Identify algorithmic choices', 'Distinguish randomness from authorship', 'Write an attribution statement', 'Discuss remix and credit'],
     visual: 'authorship',
-    codeTitle: 'Code - controlled randomness',
+    codeTitle: 'Code — controlled randomness',
     p5: `let seed = 42;
 
 function setup() {
@@ -508,7 +508,7 @@ void draw() {
     bigIdea: 'Students measure how much work a sketch does each frame. Drawing 50 circles is different from touching 500,000 pixels 60 times per second. Performance becomes an ethical and practical design question.',
     checklist: ['Count operations per frame', 'Compare noLoop() and draw()', 'Measure frameRate()', 'Reduce unnecessary work', 'Discuss energy and device access'],
     visual: 'energy',
-    codeTitle: 'Code - count work per frame',
+    codeTitle: 'Code — count work per frame',
     p5: `let work = 0;
 
 function draw() {
@@ -561,7 +561,7 @@ void draw() {
     bigIdea: 'A recursive drawing has two parts: a base case that stops, and a recursive case that draws smaller copies. The canvas lets students see each call as a visible branch.',
     checklist: ['Name the base case', 'Name the recursive case', 'Decrease size or depth each call', 'Trace one branch before the whole tree', 'Connect depth to call stack'],
     visual: 'fractal',
-    codeTitle: 'Code - recursive tree',
+    codeTitle: 'Code — recursive tree',
     p5: `function setup() {
   createCanvas(400, 320);
 }
@@ -629,7 +629,7 @@ function branch(len) {
     bigIdea: 'An ArrayList is a collection whose size can change. In a particle system, new particles are added, old particles are removed, and every particle updates each frame. Students see dynamic data structures as motion.',
     checklist: ['Add particles over time', 'Loop backward when removing', 'Give each particle update and draw behavior', 'Compare fixed arrays to dynamic lists', 'Connect to AP CSA ArrayList FRQs'],
     visual: 'particles',
-    codeTitle: 'Code - particles in a dynamic list',
+    codeTitle: 'Code — particles in a dynamic list',
     p5: `let particles = [];
 
 function draw() {
@@ -767,8 +767,8 @@ function relatedCards(page) {
   const prev = concepts[i - 1];
   const next = concepts[i + 1];
   const cards = [];
-  if (prev) cards.push(`<a class="card" href="../${prev[1]}/index.html"><span class="meta">previous</span><h2>${prev[0]} - ${esc(prev[2])}</h2><p>Review the previous concept.</p></a>`);
-  if (next) cards.push(`<a class="card" href="../${next[1]}/index.html"><span class="meta">next</span><h2>${next[0]} - ${esc(next[2])}</h2><p>Continue the sequence.</p></a>`);
+  if (prev) cards.push(`<a class="card" href="../${prev[1]}/index.html"><span class="meta">previous</span><h2>${prev[0]} – ${esc(prev[2])}</h2><p>Review the previous concept.</p></a>`);
+  if (next) cards.push(`<a class="card" href="../${next[1]}/index.html"><span class="meta">next</span><h2>${next[0]} – ${esc(next[2])}</h2><p>Continue the sequence.</p></a>`);
   cards.push(`<a class="card" href="${page.sectionHref}"><span class="meta">section</span><h2>${esc(page.section.replace(/^§\\d+ /, ''))}</h2><p>See the movement overview.</p></a>`);
   return cards.join('');
 }
@@ -778,8 +778,8 @@ function nav(page) {
   const prev = concepts[i - 1];
   const next = concepts[i + 1];
   return `<div class="concept-nav">
-    ${prev ? `<a class="nav-btn" href="../${prev[1]}/index.html"><span class="nav-dir">Previous concept</span><span class="nav-title">${prev[0]} - ${esc(prev[2])}</span></a>` : '<span></span>'}
-    ${next ? `<a class="nav-btn next" href="../${next[1]}/index.html"><span class="nav-dir">Next concept</span><span class="nav-title">${next[0]} - ${esc(next[2])}</span></a>` : '<a class="nav-btn next" href="../../browse/index.html"><span class="nav-dir">Finished</span><span class="nav-title">Browse all 22</span></a>'}
+    ${prev ? `<a class="nav-btn" href="../${prev[1]}/index.html"><span class="nav-dir">Previous concept</span><span class="nav-title">${prev[0]} – ${esc(prev[2])}</span></a>` : '<span></span>'}
+    ${next ? `<a class="nav-btn next" href="../${next[1]}/index.html"><span class="nav-dir">Next concept</span><span class="nav-title">${next[0]} – ${esc(next[2])}</span></a>` : '<a class="nav-btn next" href="../../browse/index.html"><span class="nav-dir">Finished</span><span class="nav-title">Browse all 22</span></a>'}
   </div>`;
 }
 

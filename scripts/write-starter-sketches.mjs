@@ -366,6 +366,242 @@ function mousePressed() {
       ['Algorithms', '../sections/algorithms/index.html'],
     ],
   },
+  {
+    slug: 'modulo-orbit-clock',
+    title: 'Modulo Orbit Clock',
+    suit: 'Systems',
+    concept: '03, 06',
+    lede: 'A looping orbit where modulo turns a growing frame counter into a repeating visual rhythm.',
+    tags: ['modulo', 'motion', 'cycles', 'frameCount'],
+    code: `function setup() {
+  createCanvas(500, 320);
+  angleMode(DEGREES);
+}
+
+function draw() {
+  background(246, 242, 234);
+  translate(width / 2, height / 2);
+
+  let tick = frameCount % 120;
+  let angle = map(tick, 0, 120, 0, 360);
+
+  noFill();
+  stroke(28);
+  circle(0, 0, 180);
+
+  let x = cos(angle) * 90;
+  let y = sin(angle) * 90;
+
+  fill(217, 106, 61);
+  noStroke();
+  circle(x, y, 28);
+
+  fill(28);
+  textAlign(CENTER);
+  text("frameCount % 120 = " + tick, 0, 130);
+}`,
+    remix: ['Change 120 to 60 or 240 and describe the speed change.', 'Add a second orbit with a different modulo cycle.', 'Color the dot differently when tick is less than 30.'],
+    teacher: 'This seed makes modulo feel like a clock: the number grows forever, but the visual state loops cleanly.',
+    links: [
+      ['Draw Loop / Time', '../concepts/draw-loop-time/index.html'],
+      ['For Loops & Grids', '../concepts/for-loops-and-grids/index.html'],
+      ['Modulo Bridge', '../bridges/modulo-bridge/index.html'],
+    ],
+  },
+  {
+    slug: 'screen-state-switcher',
+    title: 'Screen State Switcher',
+    suit: 'Open',
+    concept: '05, 10',
+    lede: 'Click through menu, play, and win screens using one state variable instead of scattered booleans.',
+    tags: ['state', 'screens', 'events', 'game'],
+    code: `let state = "menu";
+let score = 0;
+
+function setup() {
+  createCanvas(500, 320);
+  textAlign(CENTER, CENTER);
+}
+
+function draw() {
+  if (state === "menu") {
+    background(28);
+    fill(255);
+    textSize(28);
+    text("Click to start", width / 2, height / 2);
+  } else if (state === "playing") {
+    background(246, 242, 234);
+    score++;
+    fill(217, 106, 61);
+    circle(width / 2, height / 2, 70);
+    fill(28);
+    text("score: " + score, width / 2, 50);
+    if (score > 180) state = "win";
+  } else if (state === "win") {
+    background(215, 240, 223);
+    fill(28);
+    textSize(28);
+    text("You win. Click to reset.", width / 2, height / 2);
+  }
+}
+
+function mousePressed() {
+  if (state === "menu") {
+    score = 0;
+    state = "playing";
+  } else if (state === "win") {
+    state = "menu";
+  }
+}`,
+    remix: ['Add a paused state controlled by the spacebar.', 'Replace the timer win condition with a target collision.', 'Draw a state diagram before adding a fourth screen.'],
+    teacher: 'Use this as the smallest possible state machine: one variable chooses one screen, and events move between screens.',
+    links: [
+      ['Conditionals', '../concepts/conditionals/index.html'],
+      ['State Machines', '../concepts/state-machines/index.html'],
+      ['State Machines Bridge', '../bridges/state-machines-bridge/index.html'],
+    ],
+  },
+  {
+    slug: 'pixel-mood-grid',
+    title: 'Pixel Mood Grid',
+    suit: 'Data',
+    concept: '12-13',
+    lede: 'A hand-coded bitmap where 0s and 1s become pixels, then colors turn the grid into a tiny mood icon.',
+    tags: ['binary', 'pixels', 'color', 'grid'],
+    code: `let bits = [
+  "00111100",
+  "01111110",
+  "11011011",
+  "11111111",
+  "11100111",
+  "01111110",
+  "00111100",
+  "00000000"
+];
+
+function setup() {
+  createCanvas(500, 320);
+  noLoop();
+}
+
+function draw() {
+  background(246, 242, 234);
+  let size = 28;
+  let startX = 138;
+  let startY = 48;
+
+  for (let row = 0; row < bits.length; row++) {
+    for (let col = 0; col < bits[row].length; col++) {
+      if (bits[row][col] === "1") fill(217, 106, 61);
+      else fill(236, 229, 214);
+      stroke(28);
+      square(startX + col * size, startY + row * size, size);
+    }
+  }
+}`,
+    remix: ['Change the 0/1 pattern to make a new icon.', 'Use three symbols instead of two and map each to a color.', 'Add labels that explain how many bits wide and tall the image is.'],
+    teacher: 'This is a concrete bridge from binary data to image data: the string is the picture before it is drawn.',
+    links: [
+      ['Color is 24 Bits', '../concepts/color-is-24-bits/index.html'],
+      ['Binary as Pixels', '../concepts/binary-as-pixels/index.html'],
+      ['Data as Material', '../sections/data-as-material/index.html'],
+    ],
+  },
+  {
+    slug: 'accessible-pattern-poster',
+    title: 'Accessible Pattern Poster',
+    suit: 'Support',
+    concept: '18',
+    lede: 'A poster seed that communicates categories with color and pattern, not color alone.',
+    tags: ['accessibility', 'color', 'patterns', 'labels'],
+    code: `let labels = ["A", "B", "C", "D"];
+let colors = ["#d96a3d", "#6aa7a0", "#1c1a17", "#ece5d6"];
+
+function setup() {
+  createCanvas(500, 320);
+  noLoop();
+}
+
+function draw() {
+  background(246, 242, 234);
+  textAlign(CENTER, CENTER);
+  textSize(18);
+
+  for (let i = 0; i < 4; i++) {
+    let x = 70 + i * 105;
+    fill(colors[i]);
+    stroke(28);
+    rect(x, 80, 78, 120);
+
+    stroke(28);
+    for (let y = 90; y < 195; y += 16) {
+      if (i % 2 === 0) line(x + 8, y, x + 70, y);
+      else line(x + 12, y - 8, x + 66, y + 8);
+    }
+
+    noStroke();
+    fill(i === 2 ? 255 : 28);
+    text(labels[i], x + 39, 140);
+  }
+}`,
+    remix: ['Remove the patterns and ask what becomes harder to read.', 'Add a legend under the four categories.', 'Use shape differences instead of line patterns.'],
+    teacher: 'This seed turns accessibility into a making problem: students can see why labels and patterns help when color is not enough.',
+    links: [
+      ['Color & Accessibility', '../concepts/color-and-accessibility/index.html'],
+      ['Bias in a Filter', '../concepts/bias-in-a-filter/index.html'],
+      ['Computing in the World', '../sections/computing-in-the-world/index.html'],
+    ],
+  },
+  {
+    slug: 'recursive-branch-garden',
+    title: 'Recursive Branch Garden',
+    suit: 'Open',
+    concept: '21',
+    lede: 'A tiny recursive tree where each branch draws two smaller branches until the base case stops.',
+    tags: ['recursion', 'fractals', 'functions', 'algorithms'],
+    code: `function setup() {
+  createCanvas(500, 360);
+  angleMode(DEGREES);
+  noLoop();
+}
+
+function draw() {
+  background(246, 242, 234);
+  translate(width / 2, height - 30);
+  stroke(28);
+  branch(85);
+}
+
+function branch(len) {
+  line(0, 0, 0, -len);
+  translate(0, -len);
+
+  if (len < 12) {
+    fill(217, 106, 61);
+    noStroke();
+    circle(0, 0, 8);
+    stroke(28);
+    return;
+  }
+
+  push();
+  rotate(28);
+  branch(len * 0.68);
+  pop();
+
+  push();
+  rotate(-24);
+  branch(len * 0.72);
+  pop();
+}`,
+    remix: ['Change the branch angles and describe the tree personality.', 'Change the base case from 12 to 5 or 25.', 'Add a third branch or color by recursion depth.'],
+    teacher: 'This seed pairs recursion with push/pop: each branch gets its own local world, then returns to the parent branch.',
+    links: [
+      ['Recursion as Fractals', '../concepts/recursion-as-fractals/index.html'],
+      ['World Coordinates Bridge', '../bridges/push-pop-bridge/index.html'],
+      ['Algorithms', '../sections/algorithms/index.html'],
+    ],
+  },
 ];
 
 const suitMeta = {

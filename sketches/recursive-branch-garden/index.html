@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recursive Branch Garden - Coding the Canvas</title>
+  <meta name="description" content="A tiny recursive tree where each branch draws two smaller branches until the base case stops." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/resource-pages.css" />
+</head>
+<body data-page="sketch">
+  <header class="site-header">
+    <a class="brand" href="../../index.html">Coding the Canvas</a>
+    <nav><a class="" href="../../index.html">Home</a><a class="" href="../../concepts/index.html">Concepts</a><a class="" href="../../sections/index.html">Sections</a><a class="" href="../../languages/index.html">Languages</a><a class="" href="../../tools/index.html">Tools</a><a class="" href="../../sketches/index.html">Sketches</a><a class="" href="../../browse/index.html">Browse</a><a class="" href="../../teachers/index.html">Teachers</a><a class="" href="../../about/index.html">About</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kicker">starter sketch · Open</p>
+      <h1>Recursive Branch Garden</h1>
+      <p class="lede">A tiny recursive tree where each branch draws two smaller branches until the base case stops.</p>
+      <div class="actions">
+        <a class="button primary" href="https://editor.p5js.org/" target="_blank" rel="noreferrer">Open p5.js editor</a>
+        <a class="button" href="../index.html">All sketches</a>
+      </div>
+    </section>
+    <section class="band split">
+      <div>
+        <h2>What this seed teaches</h2>
+        <p>This seed pairs recursion with push/pop: each branch gets its own local world, then returns to the parent branch.</p>
+        <div class="tag-row"><span class="tag">recursion</span><span class="tag">fractals</span><span class="tag">functions</span><span class="tag">algorithms</span></div>
+      </div>
+      <div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">
+        <rect x="24" y="24" width="132" height="84" fill="none" stroke="currentColor" stroke-width="3"/>
+        <path d="M40 82 C66 28 96 116 136 50" fill="none" stroke="#d96a3d" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="58" cy="72" r="9" class="accent-fill"/><circle cx="126" cy="54" r="7"/>
+      </svg></div>
+    </section>
+    <section class="band"><div class="code-sample"><span class="meta">p5.js starter</span><pre>function setup() {
+  createCanvas(500, 360);
+  angleMode(DEGREES);
+  noLoop();
+}
+
+function draw() {
+  background(246, 242, 234);
+  translate(width / 2, height - 30);
+  stroke(28);
+  branch(85);
+}
+
+function branch(len) {
+  line(0, 0, 0, -len);
+  translate(0, -len);
+
+  if (len &lt; 12) {
+    fill(217, 106, 61);
+    noStroke();
+    circle(0, 0, 8);
+    stroke(28);
+    return;
+  }
+
+  push();
+  rotate(28);
+  branch(len * 0.68);
+  pop();
+
+  push();
+  rotate(-24);
+  branch(len * 0.72);
+  pop();
+}</pre></div></section>
+    <section class="band">
+      <p class="meta">Try this</p>
+      <div class="resource-grid">
+        <article class="resource-panel"><h2>Foundation</h2><p>Run the sketch and point to the line that creates the most important visual change.</p></article>
+        <article class="resource-panel"><h2>Exploration</h2><ul class="checklist"><li>Change the branch angles and describe the tree personality.</li><li>Change the base case from 12 to 5 or 25.</li><li>Add a third branch or color by recursion depth.</li></ul></article>
+        <article class="resource-panel"><h2>Classroom adaptation</h2><p>Write a two-sentence prompt for students: what should they change, and what should they explain?</p></article>
+      </div>
+    </section>
+    <section class="band"><div class="grid cards"><a class="card" href="../../concepts/recursion-as-fractals/index.html"><span class="meta">related</span><h2>Recursion as Fractals</h2><p>Continue from this seed into the lesson or bridge.</p></a><a class="card" href="../../bridges/push-pop-bridge/index.html"><span class="meta">related</span><h2>World Coordinates Bridge</h2><p>Continue from this seed into the lesson or bridge.</p></a><a class="card" href="../../sections/algorithms/index.html"><span class="meta">related</span><h2>Algorithms</h2><p>Continue from this seed into the lesson or bridge.</p></a></div></section>
+  </main>
+  <footer class="site-footer">
+    <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>p5.js · Canvas API · Processing Java</span>
+  </footer>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>

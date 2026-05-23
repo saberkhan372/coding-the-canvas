@@ -10,9 +10,9 @@ Last updated: May 22, 2026
 
 ## Current State
 
-Coding the Canvas is a static GitHub Pages site for the Coding the Canvas / CC Fest curriculum. The site has a root homepage, concept pages, section pages, language pages, bridge pages, tool pages, teacher resources, search/browse pages, and a wireframe preview.
+Coding the Canvas is a static GitHub Pages site for the Coding the Canvas / CC Fest curriculum. The site has a root homepage, concept pages, section pages, language pages, bridge pages, tool pages, teacher resources, search/browse pages, and an internal wireframe archive.
 
-All work through Tier 1–3 is committed. The working tree is clean. 3 commits ahead of origin/main, not yet pushed.
+All work through Tier 1–4 polish is committed locally. `main` is ahead of `origin/main` until the latest commit is pushed.
 
 Current counts:
 
@@ -22,7 +22,7 @@ Current counts:
 - 5 language/setup pages
 - 6 bridge pages (arrays, modulo, pattern-logic, objects, push-pop, state-machines) plus 1 reusable bridge-page template
 - 6 tool pages (for-loop-stepper, pattern-logic-explorer, noise-random-explorer, data-story-planner, sketch-playground, share-export) plus an expanded tools index
-- 10 starter sketch pages plus `sketches/index.html`
+- 15 starter sketch pages plus `sketches/index.html`
 - 85+ total HTML files
 
 ## Major Work Completed
@@ -117,7 +117,7 @@ Current counts:
 
 ### Starter Sketches and Tool Taxonomy
 
-- Added a new `sketches/` area with 10 starter sketches:
+- Added a `sketches/` area with 15 starter sketches:
   - Visual Hello Postcard
   - Bouncing Ball Starter
   - Mouse Trail Drawing
@@ -128,6 +128,11 @@ Current counts:
   - Data Self-Portrait
   - Simple Collision Game
   - Particle System Seed
+  - Modulo Orbit Clock
+  - Screen State Switcher
+  - Pixel Mood Grid
+  - Accessible Pattern Poster
+  - Recursive Branch Garden
 - Each starter sketch includes a p5.js seed, teacher framing, Foundation / Exploration / Classroom Adaptation prompts, and related lesson links.
 - Rewrote `tools/index.html` around the six-suit CC Fest taxonomy: Marks, Motion, Systems, Data, Open, Support.
 - Added `bridges/bridge-page-template/` as a reusable structure for future bridge pages: misconception, discussion question, vocabulary, paired tool/sketch, and 3-minute demo.
@@ -180,7 +185,7 @@ Current counts:
   - Generates bridge, tool, and CC Fest resource pages.
   - Locally patched to keep footer punctuation and `data-page="browse"` consistent.
 - `scripts/write-starter-sketches.mjs`
-  - Generates the starter sketch library and the 10 individual sketch pages.
+  - Generates the starter sketch library and the 15 individual sketch pages.
   - Keeps sketch pages linked back into concepts, sections, bridges, and tools.
 
 ## Recent Commits
@@ -218,7 +223,7 @@ Current counts:
 
 ### Tier 4 — Polish / Lower Priority
 - [ ] Automated link validation script (check all `href="../..."` paths resolve)
-- [ ] Add visual thumbnails to resource/section cards (ChatGPT SVG, Claude wires in)
-- [ ] Terminology consistency pass across 22 concept pages (ChatGPT)
-- [ ] Decide whether wireframe preview (`wireframes.html`) stays publicly linked
-- [ ] More starter sketches beyond the current 10 (ChatGPT)
+- [x] Add visual thumbnail concepts for resource/section cards (documented in `docs/tier-4-polish-notes.md`; wiring still separate)
+- [x] Terminology consistency pass across 22 concept pages (ChatGPT)
+- [x] Decide whether wireframe preview (`wireframes.html`) stays publicly linked — keep as an internal archive, not public nav
+- [x] More starter sketches beyond the original 10 (15 total)

@@ -75,7 +75,7 @@ function shell({ filePath, active = '', title, kicker, description, body }) {
     ${body}
   </main>
   <footer class="site-footer">
-    <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>Coding the Canvas — creative coding for all, through visible computer science.</span>
     <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="${href(prefix, 'assets/site.js')}"></script>

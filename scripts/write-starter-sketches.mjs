@@ -659,7 +659,7 @@ function shell({ filePath, active = 'sketches', title, description, body, extraC
     ${body}
   </main>
   <footer class="site-footer">
-    <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>Coding the Canvas — creative coding for all, through visible computer science.</span>
     <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="${href(prefix, 'assets/site.js')}"></script>
@@ -677,10 +677,13 @@ function detailHref(link) {
 }
 
 function sketchCard(sketch, prefix = '.') {
-  return `<a class="card sketch-card" href="${prefix}/${sketch.slug}/index.html" data-tags="${esc(sketch.tags.join(' '))} ${esc(sketch.suit)}">
+  return `<a class="card sketch-card workshop-card" href="${prefix}/${sketch.slug}/index.html" data-tags="${esc(sketch.tags.join(' '))} ${esc(sketch.suit)}">
+    <span class="thumb" aria-hidden="true"></span>
     <span class="meta">${esc(sketch.suit)} · Concept ${esc(sketch.concept)}</span>
     <h2>${esc(sketch.title)}</h2>
-    <p>${esc(sketch.lede)}</p>
+    <span class="see"><strong>See:</strong> ${esc(sketch.lede)}</span>
+    <p><strong>Code idea:</strong> ${esc(sketch.tags.slice(0, 3).join(', '))}</p>
+    <p><strong>Try this:</strong> ${esc(sketch.remix[0])}</p>
     <div class="tag-row">${sketch.tags.slice(0, 4).map((tag) => `<span class="tag">${esc(tag)}</span>`).join('')}</div>
   </a>`;
 }
@@ -698,14 +701,35 @@ function writeSketchIndex() {
       </section>`;
     }).join('\n');
 
-  const body = `<section class="hero">
-      <p class="kicker">starter sketches</p>
+  const body = `<section class="hero poster-hero">
+      <div>
+      <p class="kicker">open to remix</p>
       <h1>Sketches</h1>
-      <p class="lede">Small remixable p5.js seeds. Open one when you want less explanation and more making.</p>
+      <p class="lede">Small remixable p5.js seeds for creative coding for all. Open one when you want less explanation and more making.</p>
+      <div class="hero-labels" aria-label="Sketch workflow">
+        <span class="label red">open</span>
+        <span class="label green">change</span>
+        <span class="label blue">predict</span>
+        <span class="label">remix</span>
+        <span class="label">teach</span>
+      </div>
       <div class="actions">
         <a class="button primary" href="./bouncing-ball-starter/index.html">Start with motion</a>
         <a class="button" href="./visual-hello-postcard/index.html">Make a visual hello</a>
         <a class="button" href="../tools/index.html">Browse tools</a>
+      </div>
+      </div>
+      <div class="poster-stack" aria-label="Starter sketch archive preview">
+        <div class="poster-card"><span>p5.js seed</span><strong>Change one value and see what happens</strong><div class="artifact-line" aria-hidden="true"><i></i><i></i><i></i></div></div>
+        <div class="poster-card"><span>classroom prompt</span><strong>What changed? What does it teach?</strong><div class="artifact-line" aria-hidden="true"><i></i><i></i><i></i></div></div>
+        <div class="poster-card"><span>remix path</span><strong>Foundation, exploration, adaptation</strong><div class="artifact-line" aria-hidden="true"><i></i><i></i><i></i></div></div>
+      </div>
+    </section>
+    <section class="band">
+      <div class="care-callout">
+        <p class="meta">starter sketch norm</p>
+        <h2>Run it first. Change one thing. Explain what moved.</h2>
+        <p>Unfinished work is welcome here; a good remix can start as a question.</p>
       </div>
     </section>
     <section class="band columns">

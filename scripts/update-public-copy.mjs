@@ -63,8 +63,13 @@ function miniCanvas(kind = 'grid') {
   return `<div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132"><circle cx="36" cy="34" r="5"/><circle cx="72" cy="34" r="8"/><circle cx="108" cy="34" r="5"/><circle cx="144" cy="34" r="8"/><circle cx="36" cy="72" r="8"/><circle cx="72" cy="72" r="5"/><circle cx="108" cy="72" r="8"/><circle cx="144" cy="72" r="5"/></svg></div>`;
 }
 
-function shell({ filePath, active = '', title, kicker, description, body }) {
+function shell({ filePath, active = '', title, kicker, description, body, includeHero = true }) {
   const prefix = depthPrefix(filePath);
+  const hero = includeHero ? `<section class="hero">
+      <p class="kicker">${esc(kicker)}</p>
+      <h1>${esc(title)}</h1>
+      <p class="lede">${esc(description)}</p>
+    </section>` : '';
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -81,15 +86,11 @@ function shell({ filePath, active = '', title, kicker, description, body }) {
 <body data-page="${active}">
   ${nav(active, prefix)}
   <main>
-    <section class="hero">
-      <p class="kicker">${esc(kicker)}</p>
-      <h1>${esc(title)}</h1>
-      <p class="lede">${esc(description)}</p>
-    </section>
+    ${hero}
     ${body}
   </main>
   <footer class="site-footer">
-    <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>Coding the Canvas — creative coding for all, through visible computer science.</span>
     <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="${href(prefix, 'assets/site.js')}"></script>
@@ -134,17 +135,63 @@ function writePage(filePath, config) {
 
 function writeHome() {
   const body = `
-    <section class="band split">
+    <section class="hero poster-hero">
       <div>
-        <h2>Make computer science visible.</h2>
-        <p>Coding the Canvas is a visual path into CS: students draw, animate, listen for input, work with pixels and data, then use those sketches to understand algorithms, abstraction, impact, and Java-ready ideas.</p>
+        <p class="kicker">creative coding for all</p>
+        <h1>Coding the Canvas</h1>
+        <p class="lede">A free and friendly path into computer science through images, animations, interactions, data, and remixable sketches. You do not have to be a coder to begin.</p>
+        <div class="hero-labels" aria-label="Community values">
+          <span class="label red">free and friendly</span>
+          <span class="label green">open to remix</span>
+          <span class="label blue">beginners protected</span>
+        </div>
         <div class="actions">
           <a class="button primary" href="./start/index.html">Start learning</a>
           <a class="button" href="./teachers/index.html">Plan a class</a>
           <a class="button" href="./browse/index.html">Browse everything</a>
         </div>
       </div>
+      <div class="poster-stack" aria-label="Workshop archive preview">
+        <div class="poster-card">
+          <span>poster slot</span>
+          <strong>Add CC Fest Coding Camp flyer</strong>
+          <div class="artifact-line" aria-hidden="true"><i></i><i></i><i></i></div>
+        </div>
+        <div class="poster-card">
+          <span>starter sketch</span>
+          <strong>Open, change, predict, remix</strong>
+          <div class="artifact-line" aria-hidden="true"><i></i><i></i><i></i></div>
+        </div>
+        <div class="poster-card">
+          <span>teacher table</span>
+          <strong>Concepts, tools, prompts, reflection</strong>
+          <div class="artifact-line" aria-hidden="true"><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </section>
+    <section class="band split">
+      <div>
+        <h2>Make computer science visible.</h2>
+        <p>Coding the Canvas is a workshop table for CS: students draw, animate, listen for input, work with pixels and data, then use those sketches to understand algorithms, abstraction, impact, and Java-ready ideas.</p>
+        <p>Every page tries to make the abstract visible, make the task doable, and invite someone to go further.</p>
+      </div>
       ${miniCanvas('grid')}
+    </section>
+    <section class="band">
+      <div class="care-callout">
+        <p class="meta">community care</p>
+        <h2>Questions count as participation. Unfinished work is welcome.</h2>
+        <p>Bring a sketch, a bug, a question, or a half-formed idea. Tools are optional. People come first.</p>
+      </div>
+    </section>
+    <section class="band">
+      <p class="meta">ways in</p>
+      <div class="pathway-strip">
+        <article class="pathway-step"><strong>Foundation</strong><span>Run a small sketch and explain what each visible part does.</span></article>
+        <article class="pathway-step"><strong>Creative exploration</strong><span>Change one thing, predict what happens, then remix with intention.</span></article>
+        <article class="pathway-step"><strong>Classroom adaptation</strong><span>Turn the sketch into a prompt, demo, reflection, or assessment.</span></article>
+        <article class="pathway-step"><strong>Stretch</strong><span>Build toward tools, Java structures, data stories, and open projects.</span></article>
+      </div>
     </section>
     <section class="band columns">
       <article><h2>For learners</h2><p>Start with coordinates and color, then build toward animation, interaction, loops, arrays, image data, recursion, and dynamic lists.</p></article>
@@ -161,8 +208,9 @@ function writeHome() {
   writePage('index.html', {
     active: 'home',
     title: 'Coding the Canvas',
-    kicker: 'visual computer science',
-    description: 'A hands-on CS curriculum where students learn programming by making images, animations, interactions, and data-driven sketches.',
+    kicker: 'creative coding for all',
+    description: 'A free and friendly path into computer science through images, animations, interactions, data, and remixable sketches.',
+    includeHero: false,
     body,
   });
 }

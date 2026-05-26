@@ -1,6 +1,6 @@
 # Coding the Canvas Progress
 
-Last updated: May 22, 2026
+Last updated: May 25, 2026
 
 ## Live Site
 
@@ -12,7 +12,7 @@ Last updated: May 22, 2026
 
 Coding the Canvas is a static GitHub Pages site for the Coding the Canvas / CC Fest curriculum. The site has a root homepage, concept pages, section pages, language pages, bridge pages, tool pages, teacher resources, search/browse pages, and an internal wireframe archive.
 
-All work through Tier 1–4 polish is committed locally. `main` is ahead of `origin/main` until the latest commit is pushed.
+All work through Tier 1–4 polish is committed locally. A CC Fest design language integration pass is in progress locally; `main` is ahead of `origin/main` until the latest commit is pushed.
 
 Current counts:
 
@@ -23,7 +23,7 @@ Current counts:
 - 6 bridge pages (arrays, modulo, pattern-logic, objects, push-pop, state-machines) plus 1 reusable bridge-page template
 - 6 tool pages (for-loop-stepper, pattern-logic-explorer, noise-random-explorer, data-story-planner, sketch-playground, share-export) plus an expanded tools index
 - 15 starter sketch pages plus `sketches/index.html`
-- 85+ total HTML files
+- 88 total HTML files
 
 ## Major Work Completed
 
@@ -39,8 +39,18 @@ Current counts:
 
 - Replaced the original scaffold/Claude-task homepage copy with audience-facing messaging.
 - Homepage now explains the project for learners, teachers, and makers.
+- Homepage has been refreshed around the CC Fest design language: poster-bright archive cues, “creative coding for all,” visible care language, and pathway entry points.
 - Rewrote scaffold-style public pages that said “What this page needs.”
 - Added `scripts/update-public-copy.mjs` to regenerate public copy while preserving authored resource pages.
+
+### CC Fest Design Language
+
+- Added `ccfest_design_language_agent_guide.md` as the project design reference for future agents.
+- Added shared poster/archive/workshop modules to `assets/styles.css`: poster hero, poster stack, artifact cards, archive wall, care callout, pathway strip, evidence cards, and workshop cards.
+- Refreshed `cc-fest/index.html` into a more public-facing archive page with exact artifact slots, evidence timeline cards, visible community-care language, and a human-first AI/consent section.
+- Updated starter sketch cards to follow the Workshop Table structure: See, Code idea, Try this, and classroom-ready entry points.
+- Began the subpage pass: About, Start, Languages, and Teachers now use poster/workshop entry framing, while deep concept pages keep a quieter learning-mode layout.
+- Updated sitewide footer language to make “creative coding for all” visible across all HTML pages.
 
 ### Concepts
 
@@ -133,7 +143,7 @@ Current counts:
   - Pixel Mood Grid
   - Accessible Pattern Poster
   - Recursive Branch Garden
-- Each starter sketch includes a p5.js seed, teacher framing, Foundation / Exploration / Classroom Adaptation prompts, and related lesson links.
+- Each starter sketch includes a p5.js seed, teacher framing, Foundation / Exploration / Classroom Adaptation prompts, Workshop Table card framing, and related lesson links.
 - Rewrote `tools/index.html` around the six-suit CC Fest taxonomy: Marks, Motion, Systems, Data, Open, Support.
 - Added `bridges/bridge-page-template/` as a reusable structure for future bridge pages: misconception, discussion question, vocabulary, paired tool/sketch, and 3-minute demo.
 - Added Tools and Sketches to the sitewide nav and browse/search entry points.
@@ -156,16 +166,16 @@ Current counts:
 - AP CSA's former `pixel-grid` link was fixed to `concepts/pixels-image-data/`.
 - AP CSA stale labels were updated to the current 22-concept map.
 - Sitewide header brand now reads `Coding the Canvas`.
-- `assets/favicon.svg` is linked from all 77 HTML pages.
+- `assets/favicon.svg` is linked from all 88 HTML pages.
 
 ## Validation Performed
 
-- Local link checks across all 77 HTML files currently report no broken local `href` or `src` references.
+- Local link checks across all 88 HTML files currently report no broken local `href` or `src` references.
 - Local DOM checks were run against selected local pages while a local server was available.
 - GitHub Pages build status was checked through the GitHub API during deployment work.
 - Teacher-page link checks currently pass.
 - AP CSA teacher page concept references are aligned with the current concept map.
-- All 77 HTML pages currently include the favicon link.
+- All 88 HTML pages currently include the favicon link.
 - All non-wireframe HTML pages currently include Tools and Sketches in the top navigation.
 
 ## Important Scripts
@@ -190,14 +200,14 @@ Current counts:
 
 ## Recent Commits
 
+- `0507f47` Complete Tier 4 polish pass
+- `bb9813f` Fix three Tier 2 review issues
+- `42cee4d` Fix three issues from Tier 1 review
 - `4e998c9` Add state-machines bridge and expand bridge content (ChatGPT Tier 3)
 - `fb2b45b` Tier 2: Add real JS interactivity to all four tool pages
 - `a524931` Tier 1 housekeeping: add bridge pages, fix indexes, update project docs
 - `4588f09` Add three local tool pages and unify tools index
 - `e1258e2` Add Copy Java button to Processing/Java code panels via site.js
-- `1b1691a` Fix browse page nav missing Tools and Sketches links
-- `bdfev87` Fix hardcoded active class on Browse nav link in bridge template
-- `8267918` Add CC Fest pedagogy layer across teacher resources and bridge pages
 
 ## Remaining / Suggested Next Work
 

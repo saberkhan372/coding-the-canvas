@@ -181,12 +181,17 @@ function miniCanvas(kind = 'grid') {
   return `<div class="mini-canvas" aria-hidden="true"><svg viewBox="0 0 180 132">${guts}</svg></div>`;
 }
 
-function shell({ path, title, kicker = 'Coding the Canvas', description, body, active = '' }) {
+function shell({ path, title, kicker = 'Coding the Canvas', description, body, active = '', includeHero = true }) {
   const prefix = relPrefix(path);
   const navHtml = nav.map(([label, href]) => {
     const isActive = active === label.toLowerCase();
     return `<a class="${isActive ? 'active' : ''}" href="${prefix}${href === '/' ? '/index.html' : `${href}index.html`}">${label}</a>`;
   }).join('');
+  const hero = includeHero ? `<section class="hero">
+      <p class="kicker">${htmlEscape(kicker)}</p>
+      <h1>${htmlEscape(title)}</h1>
+      <p class="lede">${htmlEscape(description)}</p>
+    </section>` : '';
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -206,15 +211,11 @@ function shell({ path, title, kicker = 'Coding the Canvas', description, body, a
     <nav>${navHtml}</nav>
   </header>
   <main>
-    <section class="hero">
-      <p class="kicker">${htmlEscape(kicker)}</p>
-      <h1>${htmlEscape(title)}</h1>
-      <p class="lede">${htmlEscape(description)}</p>
-    </section>
+    ${hero}
     ${body}
   </main>
   <footer class="site-footer">
-    <span>Coding the Canvas — learn computer science by seeing code act on a canvas.</span>
+    <span>Coding the Canvas — creative coding for all, through visible computer science.</span>
     <span>p5.js · Canvas API · Processing Java</span>
   </footer>
   <script src="${prefix}/assets/site.js"></script>
@@ -258,16 +259,51 @@ function sectionFor(id) {
 
 function writeHome() {
   const body = `
-    <section class="band split">
+    <section class="hero poster-hero">
       <div>
-        <h2>Seven movements. Twenty-two ideas.</h2>
-        <p>These pages turn the Claude wireframes into a navigable HTML scaffold. Every missing page now has a home, a purpose, and a checklist for the content/design it still needs.</p>
+        <p class="kicker">creative coding for all</p>
+        <h1>Coding the Canvas</h1>
+        <p class="lede">A free and friendly path into computer science through images, animations, interactions, data, and remixable sketches. You do not have to be a coder to begin.</p>
+        <div class="hero-labels" aria-label="Community values">
+          <span class="label red">free and friendly</span>
+          <span class="label green">open to remix</span>
+          <span class="label blue">beginners protected</span>
+        </div>
         <div class="actions">
-          <a class="button primary" href="./start/index.html">Start here</a>
-          <a class="button" href="./concepts/index.html">Browse concepts</a>
+          <a class="button primary" href="./start/index.html">Start learning</a>
+          <a class="button" href="./teachers/index.html">Plan a class</a>
+          <a class="button" href="./browse/index.html">Browse everything</a>
         </div>
       </div>
+      <div class="poster-stack" aria-label="Workshop archive preview">
+        <div class="poster-card"><span>poster slot</span><strong>Add CC Fest Coding Camp flyer</strong><div class="artifact-line" aria-hidden="true"><i></i><i></i><i></i></div></div>
+        <div class="poster-card"><span>starter sketch</span><strong>Open, change, predict, remix</strong><div class="artifact-line" aria-hidden="true"><i></i><i></i><i></i></div></div>
+        <div class="poster-card"><span>teacher table</span><strong>Concepts, tools, prompts, reflection</strong><div class="artifact-line" aria-hidden="true"><i></i><i></i><i></i></div></div>
+      </div>
+    </section>
+    <section class="band split">
+      <div>
+        <h2>Make computer science visible.</h2>
+        <p>Coding the Canvas is a workshop table for CS: students draw, animate, listen for input, work with pixels and data, then use those sketches to understand algorithms, abstraction, impact, and Java-ready ideas.</p>
+        <p>Every page tries to make the abstract visible, make the task doable, and invite someone to go further.</p>
+      </div>
       ${miniCanvas('grid')}
+    </section>
+    <section class="band">
+      <div class="care-callout">
+        <p class="meta">community care</p>
+        <h2>Questions count as participation. Unfinished work is welcome.</h2>
+        <p>Bring a sketch, a bug, a question, or a half-formed idea. Tools are optional. People come first.</p>
+      </div>
+    </section>
+    <section class="band">
+      <p class="meta">ways in</p>
+      <div class="pathway-strip">
+        <article class="pathway-step"><strong>Foundation</strong><span>Run a small sketch and explain what each visible part does.</span></article>
+        <article class="pathway-step"><strong>Creative exploration</strong><span>Change one thing, predict what happens, then remix with intention.</span></article>
+        <article class="pathway-step"><strong>Classroom adaptation</strong><span>Turn the sketch into a prompt, demo, reflection, or assessment.</span></article>
+        <article class="pathway-step"><strong>Stretch</strong><span>Build toward tools, Java structures, data stories, and open projects.</span></article>
+      </div>
     </section>
     ${cardGrid([
       pageCard('Concepts', './concepts/', 'All 22 concept pages, grouped by movement.', 'curriculum'),
@@ -276,7 +312,7 @@ function writeHome() {
       pageCard('Teachers', './teachers/', 'AP coverage, pacing, rubrics, FRQ, and portfolio resources.', 'classroom'),
     ])}
   `;
-  writeIfMissing('index.html', shell({ path: 'index.html', title: 'Coding the Canvas', kicker: 'visual CS atlas', description: 'A hands-on CS curriculum where students learn programming by making images, animations, interactions, and data-driven sketches.', body, active: 'home' }));
+  writeIfMissing('index.html', shell({ path: 'index.html', title: 'Coding the Canvas', kicker: 'creative coding for all', description: 'A free and friendly path into computer science through images, animations, interactions, data, and remixable sketches.', body, active: 'home', includeHero: false }));
 }
 
 function writeConceptIndex() {

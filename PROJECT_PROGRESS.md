@@ -200,14 +200,15 @@ Current counts:
 
 ## Recent Commits
 
+- `fb94351` Fix homepage meta description to use CC Fest voice
+- `f32e773` Update bridge template to list all 6 bridges
+- `bc4e883` Apply CC Fest design language
 - `0507f47` Complete Tier 4 polish pass
 - `bb9813f` Fix three Tier 2 review issues
 - `42cee4d` Fix three issues from Tier 1 review
 - `4e998c9` Add state-machines bridge and expand bridge content (ChatGPT Tier 3)
 - `fb2b45b` Tier 2: Add real JS interactivity to all four tool pages
 - `a524931` Tier 1 housekeeping: add bridge pages, fix indexes, update project docs
-- `4588f09` Add three local tool pages and unify tools index
-- `e1258e2` Add Copy Java button to Processing/Java code panels via site.js
 
 ## Remaining / Suggested Next Work
 
@@ -237,3 +238,20 @@ Current counts:
 - [x] Terminology consistency pass across 22 concept pages (ChatGPT)
 - [x] Decide whether wireframe preview (`wireframes.html`) stays publicly linked — keep as an internal archive, not public nav
 - [x] More starter sketches beyond the original 10 (15 total)
+
+### CC Fest Design Language ✅ Complete
+- [x] Add `ccfest_design_language_agent_guide.md` as design reference
+- [x] Add CC Fest CSS modules to `assets/styles.css` (poster-hero, poster-stack, care-callout, pathway-strip, archive-wall, artifact-cards, evidence-cards, workshop-cards)
+- [x] Apply design language to homepage (poster-hero, "creative coding for all" kicker, care-callout, pathway-strip, updated lede)
+- [x] Apply design language to `cc-fest/index.html` (full archive page, care callouts, AI/consent section)
+- [x] Apply design language to `teachers/index.html`, `about/index.html`, `start/index.html`
+- [x] Add "creative coding for all" to all page footers sitewide
+- [x] Fix homepage meta description to CC Fest plainspoken voice
+- [x] Update bridge template to list all 6 bridges
+
+### Suggested Next Work
+- [ ] Replace poster-card placeholder slots with real CC Fest poster images when available
+- [ ] Add a real participant-work gallery to `cc-fest/index.html`
+- [ ] Build a 7th bridge: `for-loops-bridge` (connecting modulo to array iteration)
+- [ ] Add keyboard shortcut / accessibility notes to tool pages
+- [ ] Link validation as a CI step (GitHub Actions)
